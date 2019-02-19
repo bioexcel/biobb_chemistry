@@ -1,0 +1,12 @@
+working_dir_path: /tmp/biobb/unitests
+
+babel_convert:
+  paths:
+    input_path: file:test_data_dir/babel/babel.smi
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.convert.pdb
+  properties:
+    input_format: smi
+    output_format: pdb
+    coordinates: 3
+
