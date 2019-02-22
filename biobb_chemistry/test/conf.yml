@@ -10,3 +10,22 @@ babel_convert:
     output_format: mol2
     coordinates: 2
 
+babel_add_hydrogens:
+  paths:
+    input_path: file:test_data_dir/babel/babel.smi
+    output_path: output.mol2
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.mol2
+  properties:
+    input_format: smi
+    output_format: mol2
+    coordinates: 2
+
+babel_remove_hydrogens:
+  paths:
+    input_path: file:test_data_dir/babel/babel.H.mol2
+    output_path: output.mol2
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.nohydrogens.mol2
+  properties:
+    input_format: mol2
+    output_format: mol2
+    coordinates: 2
