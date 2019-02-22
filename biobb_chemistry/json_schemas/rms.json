@@ -1,0 +1,44 @@
+{ 
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb_analysis/json_schemas/0.1/rms",
+    "title": "Wrapper of the GROMACS rms (http://manual.gromacs.org/current/onlinehelp/gmx-rms.html) module",
+    "type": "object",
+    "required": ["input_structure_path", "input_traj_path", "output_xvg_path"],
+    "properties": {
+        "input_structure_path": {
+            "type": "string",
+            "description": "Path to the input GRO/PDB/TPR file"
+        },
+        "input_traj_path": {
+            "type": "string",
+            "description": "Path to the GROMACS trajectory file XTC/TRR"
+        },
+        "output_xvg_path": {
+            "type": "string", 
+            "description": "Path to the XVG output file"
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "xvg": {
+                    "type": "string",
+                    "default": "none",
+                    "description": "XVG plot formatting",
+                    "enum": ["xmgrace", "xmgr", "none"]
+                },
+                "selection": {
+                    "type": "string",
+                    "default": "Protein-H",
+                    "description": "Group where the rms will be performed",
+                    "enum": ["System", "Protein", "Protein-H", "..."]
+                },
+                "gmx_path": {
+                    "type": "string",
+                    "default": "gmx",
+                    "description": "Path to the GROMACS executable binary"
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

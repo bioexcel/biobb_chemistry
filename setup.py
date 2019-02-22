@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="biobb_chemistry",
-    version="0.0.3",
+    version="0.0.1",
     author="Biobb developers",
-    author_email="pau.andrio@bsc.es",
+    author_email="genis.bayarri@irbbarcelona.org",
     description="Biobb_md is the Biobb module collection to perform molecular dynamics simulations.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="Bioinformatics Workflows BioExcel Compatibility",
-    url="https://github.com/bioexcel/biobb_md",
+    url="https://github.com/bioexcel/biobb_chemistry",
     project_urls={
         "Documentation": "http://biobb_md.readthedocs.io/en/latest/",
         "Bioexcel": "https://bioexcel.eu/"

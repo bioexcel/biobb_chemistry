@@ -1,0 +1,48 @@
+{ 
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb_analysis/json_schemas/0.1/cluster",
+    "title": "Wrapper class for the GROMACS cluster (http://manual.gromacs.org/current/onlinehelp/gmx-cluster.html) module",
+    "type": "object",
+    "required": ["input_gro_path", "input_traj_path", "output_pdb_path"],
+    "properties": {
+        "input_gro_path": {
+            "type": "string",
+            "description": "Path to the initial GROMACS structure file GRO."
+        },
+        "input_traj_path": {
+            "type": "string",
+            "description": "Path to the GROMACS trajectory: TRR or XTC formats."
+        },
+        "output_pdb_path": {
+            "type": "string", 
+            "description": "Path to the output cluster PDB file"
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "dista": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use RMSD of distances instead of RMS deviation"
+                },
+                "method": {
+                    "type":"string",
+                    "default": "linkage",
+                    "description": "Method for cluster determination",
+                    "enum": ["linkage","jarvis-patrick","monte-carlo","diagonalization","gromos"]
+                },
+                "cutoff": {
+                    "type": "number", 
+                    "default": 0.1,
+                    "description": "RMSD cut-off (nm) for two structures to be neighbors"
+                },
+                "gmx_path": {
+                    "type": "string",
+                    "default": "gmx",
+                    "description": "Path to the GROMACS executable binary"
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

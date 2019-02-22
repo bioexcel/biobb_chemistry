@@ -18,9 +18,9 @@ def check_input_path(path):
 	return path
 
 def check_output_path(path):
-	""" Checks input file """ 
-	if not os.path.exists(path):
-		raise SystemExit('Unexisting output file')
+	""" Checks output path and file """ 
+	if not os.path.exists(os.path.dirname(path)):
+		raise SystemExit('Unexisting output folder')
 	filename, file_extension = os.path.splitext(path)
 	if not is_valid_input(file_extension[1:]):
 		raise SystemExit('Format %s in output file is not compatible' % file_extension[1:])
