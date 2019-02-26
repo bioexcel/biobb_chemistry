@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.babel.babel_convert import Convert
+from biobb_chemistry.babel.babel_convert import BabelConvert
 
 
 class TestBabelConvert():
@@ -11,6 +11,6 @@ class TestBabelConvert():
         pass
 
     def test_convert(self):
-        Convert(properties=self.properties, **self.paths).launch()
+        BabelConvert(properties=self.properties, **self.paths).launch()
         assert fx.not_empty(self.paths['output_path'])
         assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])

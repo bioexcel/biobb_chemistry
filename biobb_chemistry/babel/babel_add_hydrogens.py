@@ -7,7 +7,7 @@ from biobb_common.tools import file_utils as fu
 from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.babel.common import *
 
-class AddHydrogens():
+class BabelAddHydrogens():
     """Wrapper of the Open Babel module.
     Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project 
     allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, 
@@ -106,7 +106,7 @@ def main():
         properties = properties[args.step]
 
     # Specific call of each building block
-    AddHydrogens(input_path=args.input_path, output_path=args.output_path, properties=properties).launch()
+    BabelAddHydrogens(input_path=args.input_path, output_path=args.output_path, properties=properties).launch()
 
 if __name__ == '__main__':
     main()

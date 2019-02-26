@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.babel.babel_remove_hydrogens import RemoveHydrogens
+from biobb_chemistry.babel.babel_remove_hydrogens import BabelRemoveHydrogens
 
 
 class TestBabelRemoveHydrogens():
@@ -11,6 +11,6 @@ class TestBabelRemoveHydrogens():
         pass
 
     def test_remove_hydrogens(self):
-        RemoveHydrogens(properties=self.properties, **self.paths).launch()
+        BabelRemoveHydrogens(properties=self.properties, **self.paths).launch()
         assert fx.not_empty(self.paths['output_path'])
         assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])
