@@ -26,15 +26,15 @@ class BabelMinimize():
             * **rvdw** (*float*) - (6.0) VDW cut-off distance.
             * **rele** (*float*) - (10.0) Electrostatic cut-off distance.
             * **frequency** (*int*) - (10) Frequency to update the non-bonded pairs.
-            * **obabel_path** (*str*) - ("obabel") Path to the obabel executable binary.
+            * **obminimize_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
     """
 
     def __init__(self, input_path, output_path, properties=None, **kwargs):
         properties = properties or {}
 
         # Input/Output files
-        self.input_path = check_input_path(input_path)
-        self.output_path = check_output_path(output_path)
+        self.input_path = check_input_path_minimize(input_path)
+        self.output_path = check_output_path_minimize(output_path)
 
         # Properties specific for BB
         self.criteria = properties.get('criteria', '')
@@ -46,7 +46,7 @@ class BabelMinimize():
         self.rvdw = properties.get('rvdw', '')
         self.rele = properties.get('rele', '')
         self.frequency = properties.get('frequency', '')
-        self.obabel_path = get_binary_path(properties, 'obabel_path')
+        self.obminimize_path = get_binary_path(properties, 'obminimize_path')
 
         # Properties common in all BB
         self.can_write_console_log = properties.get('can_write_console_log', True)
@@ -59,28 +59,27 @@ class BabelMinimize():
         """Creates the command line instruction using the properties file settings"""
         instructions_list = []
 
-        # obminimize -ff UFF -newton -c 0.000008 -ipdb output.pdb -opdb > smth.pd
-
         # executable path
-        instructions_list.append(self.obabel_path)
+        instructions_list.append(self.obminimize_path)
 
-        if self.criteria: instructions_list.append('-c ' + self.criteria)
+        # check all properties
+        if check_minimize_property("criteria", self.criteria, self): instructions_list.append('-c ' + self.criteria)
 
-        #if self.method: instructions_list.append('-c ' + self.method)
+        if check_minimize_property("method", self.method, self): instructions_list.append('-' + self.method)
 
-        if self.force_field: instructions_list.append('-ff ' + self.force_field)
+        if check_minimize_property("force_field", self.force_field, self): instructions_list.append('-ff ' + self.force_field)
 
-        if self.hydrogens: instructions_list.append('-h')
+        if check_minimize_property("hydrogens", self.hydrogens, self): instructions_list.append('-h')
 
-        if self.steps: instructions_list.append('-n ' + str(self.steps))
+        if check_minimize_property("steps", self.steps, self): instructions_list.append('-n ' + str(self.steps))
 
-        if self.cutoff: instructions_list.append('-cut')
+        if check_minimize_property("cutoff", self.cutoff, self): instructions_list.append('-cut')
 
-        if self.rvdw: instructions_list.append('-rvdw ' + str(self.rvdw))
+        if check_minimize_property("rvdw", self.rvdw, self): instructions_list.append('-rvdw ' + str(self.rvdw))
 
-        if self.rele: instructions_list.append('-rele ' + str(self.rele))
+        if check_minimize_property("rele", self.rele, self): instructions_list.append('-rele ' + str(self.rele))
 
-        if self.frequency: instructions_list.append('-pf ' + str(self.frequency))
+        if check_minimize_property("frequency", self.frequency, self): instructions_list.append('-pf ' + str(self.frequency))
 
         instructions_list.append('-ipdb ' + self.input_path)
 

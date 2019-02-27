@@ -29,3 +29,19 @@ babel_remove_hydrogens:
     input_format: mol2
     output_format: mol2
     coordinates: 2
+
+babel_minimize:
+  paths:
+    input_path: file:test_data_dir/babel/babel.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.minimize.pdb
+  properties:
+    criteria: 1e-6
+    method: cg
+    force_field: GAFF
+    hydrogens: True
+    steps: 2500
+    cutoff: True
+    rvdw: 6.0
+    rele: 10.0
+    frequency: 10
