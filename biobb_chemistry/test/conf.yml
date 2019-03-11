@@ -32,7 +32,7 @@ babel_remove_hydrogens:
 
 babel_minimize:
   paths:
-    input_path: file:test_data_dir/babel/babel.pdb
+    input_path: file:test_data_dir/babel/babel.minimize.pdb
     output_path: output.pdb
     ref_output_babel_path: file:test_reference_dir/babel/ref_babel.minimize.pdb
   properties:
