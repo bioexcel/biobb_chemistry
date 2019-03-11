@@ -8,7 +8,7 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.babel.common import *
 
 class BabelMinimize():
-    """Wrapper of the Open Babel module.
+    """Wrapper of the Open Babel module. Structure minimization.
     Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project 
     allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, 
     biochemistry, or related areas. Visit the official page: http://openbabel.org/wiki/Main_Page
@@ -102,17 +102,17 @@ class BabelMinimize():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper for the Open Babel module.")
-    parser.add_argument('--config', required=True, help='Configuration file')
-    parser.add_argument('--system', required=False)
-    parser.add_argument('--step', required=False)
+    parser = argparse.ArgumentParser(description="Wrapper for the Open Babel module. Structure minimization.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser.add_argument('--config', required=False, help='Configuration file')
+    parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
+    parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
 
     # Specific args of each building block
-    parser.add_argument('--input_path', required=True, help='Path to the input file.')
-    parser.add_argument('--output_path', required=True, help='Path to the output file.')
+    required_args = parser.add_argument_group('required arguments')
+    required_args.add_argument('--input_path', required=True, help='Path to the input file.')
+    required_args.add_argument('--output_path', required=True, help='Path to the output file.')
 
     args = parser.parse_args()
-    check_conf(args.config)
     args.config = args.config or "{}"
     properties = settings.ConfReader(config=args.config, system=args.system).get_prop_dic()
     if args.step:

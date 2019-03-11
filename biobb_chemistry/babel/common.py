@@ -3,11 +3,6 @@ import os.path
 import re
 from biobb_common.tools import file_utils as fu
 
-def check_conf(path):
-	""" Checks configuration file """
-	if not os.path.exists(path):
-		raise SystemExit('Unexisting configuration file')
-	return path
 
 def check_input_path(path):
 	""" Checks input file """ 
