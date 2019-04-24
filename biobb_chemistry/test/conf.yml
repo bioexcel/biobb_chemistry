@@ -9,26 +9,29 @@ babel_convert:
     input_format: smi
     output_format: mol2
     coordinates: 2
+    ph: 7.4
 
 babel_add_hydrogens:
   paths:
-    input_path: file:test_data_dir/babel/babel.smi
-    output_path: output.mol2
-    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.mol2
+    input_path: file:test_data_dir/babel/babel.no.H.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.pdb
   properties:
-    input_format: smi
-    output_format: mol2
-    coordinates: 2
+    input_format: pdb
+    output_format: pdb
+    coordinates: 3
+    ph: 7.4
 
 babel_remove_hydrogens:
   paths:
-    input_path: file:test_data_dir/babel/babel.H.mol2
-    output_path: output.mol2
-    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.nohydrogens.mol2
+    input_path: file:test_data_dir/babel/babel.H.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.nohydrogens.pdb
   properties:
-    input_format: mol2
-    output_format: mol2
-    coordinates: 2
+    input_format: pdb
+    output_format: pdb
+    coordinates: 3
+    ph: 7.4
 
 babel_minimize:
   paths:

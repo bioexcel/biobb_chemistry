@@ -57,29 +57,30 @@ class BabelMinimize():
 
     def create_cmd(self):
         """Creates the command line instruction using the properties file settings"""
+        out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
         instructions_list = []
 
         # executable path
         instructions_list.append(self.obminimize_path)
 
         # check all properties
-        if check_minimize_property("criteria", self.criteria, self): instructions_list.append('-c ' + self.criteria)
+        if check_minimize_property("criteria", self.criteria, out_log): instructions_list.append('-c ' + self.criteria)
 
-        if check_minimize_property("method", self.method, self): instructions_list.append('-' + self.method)
+        if check_minimize_property("method", self.method, out_log): instructions_list.append('-' + self.method)
 
-        if check_minimize_property("force_field", self.force_field, self): instructions_list.append('-ff ' + self.force_field)
+        if check_minimize_property("force_field", self.force_field, out_log): instructions_list.append('-ff ' + self.force_field)
 
-        if check_minimize_property("hydrogens", self.hydrogens, self): instructions_list.append('-h')
+        if check_minimize_property("hydrogens", self.hydrogens, out_log): instructions_list.append('-h')
 
-        if check_minimize_property("steps", self.steps, self): instructions_list.append('-n ' + str(self.steps))
+        if check_minimize_property("steps", self.steps, out_log): instructions_list.append('-n ' + str(self.steps))
 
-        if check_minimize_property("cutoff", self.cutoff, self): instructions_list.append('-cut')
+        if check_minimize_property("cutoff", self.cutoff, out_log): instructions_list.append('-cut')
 
-        if check_minimize_property("rvdw", self.rvdw, self): instructions_list.append('-rvdw ' + str(self.rvdw))
+        if check_minimize_property("rvdw", self.rvdw, out_log): instructions_list.append('-rvdw ' + str(self.rvdw))
 
-        if check_minimize_property("rele", self.rele, self): instructions_list.append('-rele ' + str(self.rele))
+        if check_minimize_property("rele", self.rele, out_log): instructions_list.append('-rele ' + str(self.rele))
 
-        if check_minimize_property("frequency", self.frequency, self): instructions_list.append('-pf ' + str(self.frequency))
+        if check_minimize_property("frequency", self.frequency, out_log): instructions_list.append('-pf ' + str(self.frequency))
 
         instructions_list.append('-ipdb ' + self.input_path)
 

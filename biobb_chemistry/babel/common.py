@@ -51,40 +51,37 @@ def get_binary_path(properties, type):
 	""" Gets binary path """
 	return properties.get(type, get_default_value(type))
 
-def get_input_format(obj):
+def get_input_format(input_format, input_path, out_log):
 	""" Checks if provided input format is correct """
-	out_log, err_log = fu.get_logs(path=obj.path, prefix=obj.prefix, step=obj.step, can_write_console=obj.can_write_console_log)
-
-	infr = obj.input_format
+	infr = input_format
 	if not is_valid_input(infr):
-		filename, file_extension = os.path.splitext(obj.input_path)
-		fu.log('Format %s is not compatible as an input format, assigned input file extension: %s' % (infr, file_extension[1:]), out_log, obj.global_log)
+		filename, file_extension = os.path.splitext(input_path)
+		fu.log('Format %s is not compatible as an input format, assigned input file extension: %s' % (infr, file_extension[1:]), out_log)
 		infr = file_extension[1:]
 
 	return infr
 
-def check_minimize_property(type, value, obj):
+def check_minimize_property(type, value, out_log):
 	""" Checks all minimize properties """
-	out_log, err_log = fu.get_logs(path=obj.path, prefix=obj.prefix, step=obj.step, can_write_console=obj.can_write_console_log)
 	value = str(value)
 
 	if type == "criteria":
 		if re.match('[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?', value):
 			return True
 		else:
-			fu.log('Criteria %s is not correct, assigned default value: %s' % (value, get_default_value('criteria')), out_log, obj.global_log)
+			fu.log('Criteria %s is not correct, assigned default value: %s' % (value, get_default_value('criteria')), out_log)
 
 	if type == "method":
 		if value in ['cg', 'sd']:
 			return True
 		else:
-			fu.log('Method %s is not correct, assigned default value: %s' % (value, get_default_value('method')), out_log, obj.global_log)
+			fu.log('Method %s is not correct, assigned default value: %s' % (value, get_default_value('method')), out_log)
 
 	if type == "force_field":
 		if value in ['GAFF', 'Ghemical', 'MMFF94', 'MMFF94s', 'UFF']:
 			return True
 		else:
-			fu.log('Force field %s is not correct, no force field assigned' % (value), out_log, obj.global_log)
+			fu.log('Force field %s is not correct, no force field assigned' % (value), out_log)
 
 	if type == "hydrogens":
 		if value == 'True':
@@ -92,13 +89,13 @@ def check_minimize_property(type, value, obj):
 		elif value == 'False':
 			pass
 		else:
-			fu.log('Hydrogens %s is not correct, assigned default value: %s' % (value, get_default_value('hydrogens')), out_log, obj.global_log)
+			fu.log('Hydrogens %s is not correct, assigned default value: %s' % (value, get_default_value('hydrogens')), out_log)
 
 	if type == "steps":
 		if re.match('^\d+$', value):
 			return True
 		else:
-			fu.log('Steps %s is not correct, assigned default value: %s' % (value, get_default_value('steps')), out_log, obj.global_log)
+			fu.log('Steps %s is not correct, assigned default value: %s' % (value, get_default_value('steps')), out_log)
 
 	if type == "cutoff":
 		if value == 'True':
@@ -106,51 +103,56 @@ def check_minimize_property(type, value, obj):
 		elif value == 'False':
 			pass
 		else:
-			fu.log('Cut-off %s is not correct, assigned default value: %s' % (value, get_default_value('cutoff')), out_log, obj.global_log)
+			fu.log('Cut-off %s is not correct, assigned default value: %s' % (value, get_default_value('cutoff')), out_log)
 
 	if type == "rvdw":
 		if re.match('(\d+(\.\d+)?)', value):
 			return True
 		else:
-			fu.log('Rvdw %s is not correct, assigned default value: %s' % (value, get_default_value('rvdw')), out_log, obj.global_log)
+			fu.log('Rvdw %s is not correct, assigned default value: %s' % (value, get_default_value('rvdw')), out_log)
 
 	if type == "rele":
 		if re.match('(\d+(\.\d+)?)', value):
 			return True
 		else:
-			fu.log('Rele %s is not correct, assigned default value: %s' % (value, get_default_value('rele')), out_log, obj.global_log)
+			fu.log('Rele %s is not correct, assigned default value: %s' % (value, get_default_value('rele')), out_log)
 
 	if type == "frequency":
 		if re.match('^\d+$', value):
 			return True
 		else:
-			fu.log('Frequency %s is not correct, assigned default value: %s' % (value, get_default_value('frequency')), out_log, obj.global_log)
+			fu.log('Frequency %s is not correct, assigned default value: %s' % (value, get_default_value('frequency')), out_log)
 
 	return False
 
 
-def get_output_format(obj):
+def get_output_format(output_format, output_path, out_log):
 	""" Checks if provided output format is correct """
-	out_log, err_log = fu.get_logs(path=obj.path, prefix=obj.prefix, step=obj.step, can_write_console=obj.can_write_console_log)
-
-	oufr = obj.output_format
+	oufr = output_format
 	if not is_valid_output(oufr):
-		filename, file_extension = os.path.splitext(obj.output_path)
-		fu.log('Format %s is not compatible as an output format, assigned output file extension: %s' % (oufr, file_extension[1:]), out_log, obj.global_log)
+		filename, file_extension = os.path.splitext(output_path)
+		fu.log('Format %s is not compatible as an output format, assigned output file extension: %s' % (oufr, file_extension[1:]), out_log)
 		oufr = file_extension[1:]
 
 	return oufr
 
-def get_coordinates(obj):
+def get_coordinates(coordinates, out_log):
 	""" Checks if provided coordinates value is correct """
-	out_log, err_log = fu.get_logs(path=obj.path, prefix=obj.prefix, step=obj.step, can_write_console=obj.can_write_console_log)
-
-	crd = str(obj.coordinates)
+	crd = str(coordinates)
 	if crd != '3' and crd != '2':
-		fu.log('Value %s is not compatible as a coordinates value' % crd, out_log, obj.global_log)
+		fu.log('Value %s is not compatible as a coordinates value' % crd, out_log)
 		crd = ''
 
 	return crd
+
+def get_ph(p, out_log):
+	""" Checks if provided coordinates value is correct """
+	ph = str(p)
+	if p and not isinstance(p, float) and not isinstance(p, int):
+		ph = ''
+		fu.log('Incorrect format for pH, no value assigned', out_log)
+
+	return ph
 
 
 def get_default_value(key):
