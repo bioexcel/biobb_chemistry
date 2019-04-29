@@ -5,6 +5,14 @@ Submodules
 -----------
 
 
+babel.babel_add_hydrogens module
+---------------------------
+
+.. automodule:: babel.babel_add_hydrogens
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 babel.babel_convert module
 ---------------------------
 
@@ -12,3 +20,19 @@ babel.babel_convert module
     :members:
     :undoc-members:
     :show-inheritance:
+
+babel.babel_minimize module
+---------------------------
+
+.. automodule:: babel.babel_minimize
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+babel.babel_remove_hydrogens module
+---------------------------
+
+.. automodule:: babel.babel_remove_hydrogens
+    :members:
+    :undoc-members:
+    :show-inheritance:º
