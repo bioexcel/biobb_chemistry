@@ -6,7 +6,7 @@ Submodules
 
 
 babel.babel_add_hydrogens module
----------------------------
+---------------------------------
 
 .. automodule:: babel.babel_add_hydrogens
     :members:
@@ -22,7 +22,7 @@ babel.babel_convert module
     :show-inheritance:
 
 babel.babel_minimize module
----------------------------
+----------------------------
 
 .. automodule:: babel.babel_minimize
     :members:
@@ -30,7 +30,7 @@ babel.babel_minimize module
     :show-inheritance:
 
 babel.babel_remove_hydrogens module
----------------------------
+------------------------------------
 
 .. automodule:: babel.babel_remove_hydrogens
     :members:

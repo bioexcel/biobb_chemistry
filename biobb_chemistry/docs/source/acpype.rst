@@ -1,14 +1,14 @@
 acpype package
-==============
+===============
 
 Submodules
 -----------
 
 
-acpype.acpype module
----------------------------
+acpype.acpype_params_gmx module
+--------------------------------
 
-.. automodule:: acpype.acpype
+.. automodule:: acpype.acpype_params_gmx
     :members:
     :undoc-members:
     :show-inheritance:

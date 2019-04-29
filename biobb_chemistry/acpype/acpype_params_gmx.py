@@ -71,7 +71,7 @@ class AcpypeParamsGMX():
         print(os.getcwd())"""
 
         print(instructions_list)
-        raise SystemExit('exiting')
+        #raise SystemExit('exiting')
 
         return instructions_list
 
@@ -79,15 +79,29 @@ class AcpypeParamsGMX():
         """Launches the execution of the Open Babel module."""
         out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
 
+        # create temporary folder
+        ############################################
+        # self.tmp_folder = fu.create_unique_dir()
+        self.tmp_folder = '64b2e756-7c28-4463-941b-aba7d3fd9282'
+        ############################################
+
         # create command line instruction
-        cmd = self.create_cmd() 
+        ############################################
+        # cmd = self.create_cmd() 
+        cmd = ["ls"]
+        ############################################
 
         # change execution directory to output_path
-        # TODO: EXECUTE ACPYPE IN TEMPORARY FOLDER, MOVE DESIRED FILES TO OUTPUT AND REMOVE TEMPORARY FOLDER
-        os.chdir(self.output_path)
+        ############################################
+        # os.chdir(self.tmp_folder)
+        ############################################
 
+        # execute cmd
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
         # create here a function that changes directory, executes acpype, moves files and removes temporary folder
+        # print(os.path.join(self.tmp_folder, self.basename + ".acpype"))
+        # '64b2e756-7c28-4463-941b-aba7d3fd9282/BBB.acpype', 
+        process_output(self.tmp_folder, self.basename + ".acpype", get_default_value(self.__class__.__name__)['topology'], self.output_path, out_log)
         return returncode
 
 def main():
