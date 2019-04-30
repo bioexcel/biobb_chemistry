@@ -1,5 +1,5 @@
 [![Documentation Status](https://readthedocs.org/projects/biobb-chemistry/badge/?version=latest)](https://biobb-chemistry.readthedocs.io/en/latest/?badge=latest)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/159c05eeeb094019b4ef0b4ab000d566)](https://www.codacy.com/app/andriopau/biobb_chemistry?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=bioexcel/biobb_chemistry&amp;utm_campaign=Badge_Grade)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # biobb_chemistry
 
@@ -12,7 +12,7 @@ The latest documentation of this package can be found in our readthedocs site:
 [latest API documentation](http://biobb_chemistry.readthedocs.io/en/latest/).
 
 ### Version
-v1.0.1 April 2019 Release
+v1.0.2 April 2019 Release
 
 ### Copyright & Licensing
 This software has been developed in the MMB group (http://mmb.irbbarcelona.org) at the
