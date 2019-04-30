@@ -101,7 +101,7 @@ class AcpypeParamsGMX():
         # create here a function that changes directory, executes acpype, moves files and removes temporary folder
         # print(os.path.join(self.tmp_folder, self.basename + ".acpype"))
         # '64b2e756-7c28-4463-941b-aba7d3fd9282/BBB.acpype', 
-        process_output(self.tmp_folder, self.basename + ".acpype", get_default_value(self.__class__.__name__)['topology'], self.output_path, out_log)
+        process_output(self.tmp_folder, self.basename + ".acpype", get_default_value(self.__class__.__name__), self.output_path, out_log)
         return returncode
 
 def main():

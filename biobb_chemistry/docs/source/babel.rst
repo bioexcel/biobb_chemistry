@@ -35,4 +35,4 @@ babel.babel_remove_hydrogens module
 .. automodule:: babel.babel_remove_hydrogens
     :members:
     :undoc-members:
-    :show-inheritance:º
+    :show-inheritance:
