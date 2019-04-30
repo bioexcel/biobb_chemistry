@@ -15,19 +15,23 @@ class AcpypeParamsGMX():
 
     Args:
         input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2.
-        output_path (str): Path to the output folder where the multiple input files will be saved.
+        output_path_gro (str): Path to the GRO output file. Accepted format: gro.
+        output_path_itp (str): Path to the ITP output file. Accepted format: itp.
+        output_path_top (str): Path to the TOP output file. Accepted format: top.
         properties (dic):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
     """
 
-    def __init__(self, input_path, output_path, properties=None, **kwargs):
+    def __init__(self, input_path, output_path_gro, output_path_itp, output_path_top, properties=None, **kwargs):
         properties = properties or {}
 
         # Input/Output files
-        self.input_path = check_input_path(input_path)
-        self.output_path = check_output_path(output_path)
+        self.input_path = input_path
+        self.output_path_gro = output_path_gro
+        self.output_path_itp = output_path_itp
+        self.output_path_top = output_path_top
 
         # Properties specific for BB
         self.basename = properties.get('basename', '')
@@ -40,6 +44,19 @@ class AcpypeParamsGMX():
         self.prefix = properties.get('prefix', None)
         self.step = properties.get('step', None)
         self.path = properties.get('path', '')
+
+    def check_data_params(self):
+        """ Checks all the input/output paths and parameters """
+        out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
+        self.input_path = check_input_path(self.input_path, out_log)
+        self.output_path_gro = check_output_path(self.output_path_gro, 'gro', out_log)
+        self.output_path_itp = check_output_path(self.output_path_itp, 'itp', out_log)
+        self.output_path_top = check_output_path(self.output_path_top, 'top', out_log)
+        self.output_files = {
+            'gro': self.output_path_gro,
+            'itp': self.output_path_itp,
+            'top': self.output_path_top,
+        }
 
     def create_cmd(self):
         """Creates the command line instruction using the properties file settings"""
@@ -57,21 +74,9 @@ class AcpypeParamsGMX():
         basename = '-b ' + get_basename(self.basename, out_log)
         instructions_list.append(basename)
 
-        # CNS, GMX and AMBER
-        # acpype -i ZEN.pdb -b ZEN -n 0 
-
         # adding charge
         charge = '-n ' + get_charge(self.charge, out_log)
         instructions_list.append(charge)
-
-        """print(os.getcwd())
-
-        os.chdir(self.output_path)
-
-        print(os.getcwd())"""
-
-        print(instructions_list)
-        #raise SystemExit('exiting')
 
         return instructions_list
 
@@ -79,29 +84,26 @@ class AcpypeParamsGMX():
         """Launches the execution of the Open Babel module."""
         out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
 
+        # check input/output paths and parameters
+        self.check_data_params()
+
         # create temporary folder
-        ############################################
-        # self.tmp_folder = fu.create_unique_dir()
-        self.tmp_folder = '64b2e756-7c28-4463-941b-aba7d3fd9282'
-        ############################################
+        self.tmp_folder = fu.create_unique_dir()
+        fu.log('Creating %s temporary folder' % self.tmp_folder, out_log)
 
         # create command line instruction
-        ############################################
-        # cmd = self.create_cmd() 
-        cmd = ["ls"]
-        ############################################
+        cmd = self.create_cmd() 
 
         # change execution directory to output_path
-        ############################################
-        # os.chdir(self.tmp_folder)
-        ############################################
+        cwd = os.getcwd()
+        os.chdir(self.tmp_folder)
 
         # execute cmd
+        fu.log('Running %s, this execution can take a while' % self.acpype_path, out_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
-        # create here a function that changes directory, executes acpype, moves files and removes temporary folder
-        # print(os.path.join(self.tmp_folder, self.basename + ".acpype"))
-        # '64b2e756-7c28-4463-941b-aba7d3fd9282/BBB.acpype', 
-        process_output(self.tmp_folder, self.basename + ".acpype", get_default_value(self.__class__.__name__), self.output_path, out_log)
+        # move files to output_path and removes temporary folder
+        os.chdir(cwd)
+        process_output(self.tmp_folder, self.basename + ".acpype", get_default_value(self.__class__.__name__), self.output_files, out_log)
         return returncode
 
 def main():
@@ -113,7 +115,9 @@ def main():
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
     required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mdl, mol2.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output folder where the multiple input files will be saved.')
+    required_args.add_argument('--output_path_gro', required=True, help='Path to the GRO output file. Accepted format: gro.')
+    required_args.add_argument('--output_path_itp', required=True, help='Path to the ITP output file. Accepted format: itp.')
+    required_args.add_argument('--output_path_top', required=True, help='Path to the TOP output file. Accepted format: top.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"
@@ -122,7 +126,7 @@ def main():
         properties = properties[args.step]
 
     # Specific call of each building block
-    AcpypeParamsGMX(input_path=args.input_path, output_path=args.output_path, properties=properties).launch()
+    AcpypeParamsGMX(input_path=args.input_path, output_path_gro=args.output_path_gro, output_path_itp=args.output_path_itp, output_path_top=args.output_path_top, properties=properties).launch()
 
 if __name__ == '__main__':
     main()

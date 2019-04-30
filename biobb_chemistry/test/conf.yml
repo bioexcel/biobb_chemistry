@@ -48,3 +48,16 @@ babel_minimize:
     rvdw: 6.0
     rele: 10.0
     frequency: 10
+
+acpype_params_gmx:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.pdb
+    output_path_gro: output.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
+    output_path_itp: output.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.itp
+    output_path_top: output.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.top
+  properties:
+    basename: "BBB"
+    charge: 0
