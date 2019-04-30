@@ -289,7 +289,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'biobb_chemistry', u'biobb_chemistry Documentation',
-     author, 'biobb_chemistry', 'biobb_chemistry molecular dynamics analysis building blocks',
+     author, 'biobb_chemistry', 'biobb_chemistry molecular dynamics chemistry building blocks',
      'Miscellaneous'),
 ]
 
