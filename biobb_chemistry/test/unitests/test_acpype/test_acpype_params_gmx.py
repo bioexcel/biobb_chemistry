@@ -7,7 +7,7 @@ class TestAcpypeParamsGMX():
         fx.test_setup(self,'acpype_params_gmx')
 
     def tearDown(self):
-        #fx.test_teardown(self)
+        fx.test_teardown(self)
         pass
 
     def test_params_gmx(self):

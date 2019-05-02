@@ -12,7 +12,7 @@ The latest documentation of this package can be found in our readthedocs site:
 [latest API documentation](http://biobb_chemistry.readthedocs.io/en/latest/).
 
 ### Version
-v1.0.2 April 2019 Release
+v1.0.3 April 2019 Release
 
 ### Copyright & Licensing
 This software has been developed in the MMB group (http://mmb.irbbarcelona.org) at the
