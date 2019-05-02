@@ -5,7 +5,7 @@ import argparse
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
 from biobb_common.command_wrapper import cmd_wrapper
-from biobb_chemistry.babel.common import *
+from biobb_chemistry.babelm.common import *
 
 class BabelMinimize():
     """Wrapper of the Open Babel module. Structure minimization.

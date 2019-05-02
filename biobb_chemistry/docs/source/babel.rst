@@ -1,14 +1,14 @@
-babel package
+babelm package
 ===============
 
 Submodules
 -----------
 
 
-babel.babel_convert module
+babelm.babel_convert module
 --------------------------------
 
-.. automodule:: babel.babel_convert
+.. automodule:: babelm.babel_convert
     :members:
     :undoc-members:
     :show-inheritance:

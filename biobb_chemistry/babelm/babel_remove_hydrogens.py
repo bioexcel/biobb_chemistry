@@ -5,10 +5,10 @@ import argparse
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
 from biobb_common.command_wrapper import cmd_wrapper
-from biobb_chemistry.babel.common import *
+from biobb_chemistry.babelm.common import *
 
-class BabelAddHydrogens():
-    """Wrapper of the Open Babel module. Adds hydrogens to a given structure or trajectory.
+class BabelRemoveHydrogens():
+    """Wrapper of the Open Babel module. Removes hydrogens to a given structure or trajectory.
     Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project 
     allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, 
     biochemistry, or related areas. Visit the official page: http://openbabel.org/wiki/Main_Page
@@ -75,7 +75,7 @@ class BabelAddHydrogens():
 
         instructions_list.append(coordinates)
 
-        hydrogens = '-h'
+        hydrogens = '-d'
 
         instructions_list.append(hydrogens)
 
@@ -100,7 +100,7 @@ class BabelAddHydrogens():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper for the Open Babel module. Adds hydrogens to a given structure or trajectory.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser = argparse.ArgumentParser(description="Wrapper for the Open Babel module. Removes hydrogens to a given structure or trajectory.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
     parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
     parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
@@ -117,7 +117,7 @@ def main():
         properties = properties[args.step]
 
     # Specific call of each building block
-    BabelAddHydrogens(input_path=args.input_path, output_path=args.output_path, properties=properties).launch()
+    BabelRemoveHydrogens(input_path=args.input_path, output_path=args.output_path, properties=properties).launch()
 
 if __name__ == '__main__':
     main()

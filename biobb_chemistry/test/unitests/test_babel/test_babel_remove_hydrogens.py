@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.babel.babel_remove_hydrogens import BabelRemoveHydrogens
+from biobb_chemistry.babelm.babel_remove_hydrogens import BabelRemoveHydrogens
 
 
 class TestBabelRemoveHydrogens():

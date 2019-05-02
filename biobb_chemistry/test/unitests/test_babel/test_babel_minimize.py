@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.babel.babel_minimize import BabelMinimize
+from biobb_chemistry.babelm.babel_minimize import BabelMinimize
 
 
 class TestBabelMinimize():

@@ -5,4 +5,4 @@ biobb_chemistry
    :maxdepth: 4
 
    acpype
-   babel
+   babelm

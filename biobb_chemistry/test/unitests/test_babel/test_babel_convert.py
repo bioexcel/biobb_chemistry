@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.babel.babel_convert import BabelConvert
+from biobb_chemistry.babelm.babel_convert import BabelConvert
 
 
 class TestBabelConvert():
