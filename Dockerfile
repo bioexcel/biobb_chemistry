@@ -28,8 +28,3 @@ RUN conda install -y biobb_chemistry==1.0.4
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
-
-
-
-
-FROM continuumio/anaconda3:latest
