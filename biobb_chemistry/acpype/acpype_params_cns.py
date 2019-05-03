@@ -7,16 +7,16 @@ from biobb_common.tools import file_utils as fu
 from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.acpype.common import *
 
-class AcpypeParamsGMX():
-    """Wrapper for the Acpype module. Generation of topologies for GROMACS.
+class AcpypeParamsCNS():
+    """Wrapper for the Acpype module. Generation of topologies for CNS/XPLOR.
     Acpype is a tool based in Python to use Antechamber to generate topologies for chemical
     compounds and to interface with others python applications like CCPN or ARIA. 
     Visit the official page: https://github.com/alanwilter/acpype
 
     Args:
         input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2.
-        output_path_gro (str): Path to the GRO output file. Accepted format: gro.
-        output_path_itp (str): Path to the ITP output file. Accepted format: itp.
+        output_path_par (str): Path to the PAR output file. Accepted format: par.
+        output_path_inp (str): Path to the INP output file. Accepted format: inp.
         output_path_top (str): Path to the TOP output file. Accepted format: top.
         properties (dic):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
@@ -24,13 +24,13 @@ class AcpypeParamsGMX():
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
     """
 
-    def __init__(self, input_path, output_path_gro, output_path_itp, output_path_top, properties=None, **kwargs):
+    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, properties=None, **kwargs):
         properties = properties or {}
 
         # Input/Output files
         self.input_path = input_path
-        self.output_path_gro = output_path_gro
-        self.output_path_itp = output_path_itp
+        self.output_path_par = output_path_par
+        self.output_path_inp = output_path_inp
         self.output_path_top = output_path_top
 
         # Properties specific for BB
@@ -49,12 +49,12 @@ class AcpypeParamsGMX():
         """ Checks all the input/output paths and parameters """
         out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
         self.input_path = check_input_path(self.input_path, out_log)
-        self.output_path_gro = check_output_path(self.output_path_gro, 'gro', out_log)
-        self.output_path_itp = check_output_path(self.output_path_itp, 'itp', out_log)
+        self.output_path_par = check_output_path(self.output_path_par, 'par', out_log)
+        self.output_path_inp = check_output_path(self.output_path_inp, 'inp', out_log)
         self.output_path_top = check_output_path(self.output_path_top, 'top', out_log)
         self.output_files = {
-            'gro': self.output_path_gro,
-            'itp': self.output_path_itp,
+            'par': self.output_path_par,
+            'inp': self.output_path_inp,
             'top': self.output_path_top,
         }
 
@@ -107,7 +107,7 @@ class AcpypeParamsGMX():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper for the Acpype module. Generation of topologies for GROMACS.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser = argparse.ArgumentParser(description="Wrapper for the Acpype module. Generation of topologies for CNS/XPLOR.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
     parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
     parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
@@ -115,8 +115,8 @@ def main():
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
     required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mdl, mol2.')
-    required_args.add_argument('--output_path_gro', required=True, help='Path to the GRO output file. Accepted format: gro.')
-    required_args.add_argument('--output_path_itp', required=True, help='Path to the ITP output file. Accepted format: itp.')
+    required_args.add_argument('--output_path_par', required=True, help='Path to the PAR output file. Accepted format: par.')
+    required_args.add_argument('--output_path_inp', required=True, help='Path to the INP output file. Accepted format: inp.')
     required_args.add_argument('--output_path_top', required=True, help='Path to the TOP output file. Accepted format: top.')
 
     args = parser.parse_args()
@@ -126,7 +126,7 @@ def main():
         properties = properties[args.step]
 
     # Specific call of each building block
-    AcpypeParamsGMX(input_path=args.input_path, output_path_gro=args.output_path_gro, output_path_itp=args.output_path_itp, output_path_top=args.output_path_top, properties=properties).launch()
+    AcpypeParamsCNS(input_path=args.input_path, output_path_par=args.output_path_par, output_path_inp=args.output_path_inp, output_path_top=args.output_path_top, properties=properties).launch()
 
 if __name__ == '__main__':
     main()
