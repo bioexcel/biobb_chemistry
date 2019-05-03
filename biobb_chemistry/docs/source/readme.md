@@ -1,4 +1,6 @@
 [![Documentation Status](https://readthedocs.org/projects/biobb-chemistry/badge/?version=latest)](https://biobb-chemistry.readthedocs.io/en/latest/?badge=latest)
+[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/biobb_chemistry/README.html)
+[![Docker image](https://quay.io/repository/biocontainers/biobb_io/status)](https://hub.docker.com/r/mmbirb/biobb_chemistry)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # biobb_chemistry
@@ -13,6 +15,40 @@ The latest documentation of this package can be found in our readthedocs site:
 
 ### Version
 v1.0.4 April 2019 Release
+
+### Installation
+Using PIP:
+* Installation:
+
+
+        pip install "biobb_chemistry>=1.0.4"
+
+
+* Usage: [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html)
+
+Using ANACONDA:
+
+* Installation:
+
+
+        conda install -c bioconda "biobb_chemistry>=1.0.4"
+
+
+* Usage: With conda installation BioBBs can be used with the [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html) and the [Command Line documentation](https://biobb-chemistry.readthedocs.io/en/latest/command_line.html)
+
+Using DOCKER:
+
+* Installation:
+
+
+        docker pull mmbirb/biobb_chemistry:latest
+
+
+* Usage:
+
+
+        docker run mmbirb/biobb_chemistry:latest <command>
+
 
 ### Copyright & Licensing
 This software has been developed in the MMB group (http://mmb.irbbarcelona.org) at the
