@@ -1,8 +1,8 @@
-[![Documentation Status](https://readthedocs.org/projects/biobb-chemistry/badge/?version=latest)](https://biobb-chemistry.readthedocs.io/en/latest/?badge=latest)
-[![install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/biobb_chemistry/README.html)
-[![Docker image](https://quay.io/repository/biocontainers/biobb_io/status)](https://hub.docker.com/r/mmbirb/biobb_chemistry)
-[![Singularity image](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://www.singularity-hub.org/collections/2886)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![](https://readthedocs.org/projects/biobb-chemistry/badge/?version=latest)](https://biobb-chemistry.readthedocs.io/en/latest/?badge=latest)
+[![](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/biobb_chemistry/README.html)
+[![](https://quay.io/repository/biocontainers/biobb_io/status)](https://hub.docker.com/r/mmbirb/biobb_chemistry)
+[![](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://www.singularity-hub.org/collections/2886)
+[![](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # biobb_chemistry
 
