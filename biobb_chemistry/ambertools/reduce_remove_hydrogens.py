@@ -8,7 +8,7 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.ambertools.common import *
 
 class ReduceRemoveHydrogens():
-    """Wrapper of the Ambertools reduce module. Removes hydrogens to a given structure.
+    """Wrapper of the Ambertools reduce module. Removes hydrogens from a given structure.
     Reduce is a program for adding hydrogens to a Protein DataBank (PDB) molecular structure file: http://ambermd.org/doc12/AmberTools12.pdf
 
     Args:
@@ -65,7 +65,7 @@ class ReduceRemoveHydrogens():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper of the Ambertools reduce module. Removes hydrogens to a given structure.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser = argparse.ArgumentParser(description="Wrapper of the Ambertools reduce module. Removes hydrogens from a given structure.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
     parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
     parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
