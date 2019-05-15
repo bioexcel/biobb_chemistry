@@ -6,3 +6,4 @@ biobb_chemistry
 
    acpype
    babelm
+   ambertools

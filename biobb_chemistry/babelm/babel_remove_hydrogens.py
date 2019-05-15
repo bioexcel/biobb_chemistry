@@ -28,12 +28,12 @@ class BabelRemoveHydrogens():
         properties = properties or {}
 
         # Input/Output files
-        self.input_path = check_input_path(input_path)
-        self.output_path = check_output_path(output_path)
+        self.input_path = check_input_path(input_path, self.__class__.__name__)
+        self.output_path = check_output_path(output_path, self.__class__.__name__)
 
         # Properties specific for BB
-        self.input_format = get_parameters(properties, 'input_format')
-        self.output_format = get_parameters(properties, 'output_format')
+        self.input_format = properties.get('input_format', '')
+        self.output_format = properties.get('output_format', '')
         self.coordinates = properties.get('coordinates', '')
         self.ph = properties.get('ph', '')
         self.obabel_path = get_binary_path(properties, 'obabel_path')
@@ -44,6 +44,9 @@ class BabelRemoveHydrogens():
         self.prefix = properties.get('prefix', None)
         self.step = properties.get('step', None)
         self.path = properties.get('path', '')
+
+        # Check the properties
+        fu.check_properties(self, properties)
 
     def create_cmd(self):
         """Creates the command line instruction using the properties file settings"""

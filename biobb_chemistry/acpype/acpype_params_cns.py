@@ -45,13 +45,16 @@ class AcpypeParamsCNS():
         self.step = properties.get('step', None)
         self.path = properties.get('path', '')
 
+        # Check the properties
+        fu.check_properties(self, properties)
+
     def check_data_params(self):
         """ Checks all the input/output paths and parameters """
         out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
-        self.input_path = check_input_path(self.input_path, out_log)
-        self.output_path_par = check_output_path(self.output_path_par, 'par', out_log)
-        self.output_path_inp = check_output_path(self.output_path_inp, 'inp', out_log)
-        self.output_path_top = check_output_path(self.output_path_top, 'top', out_log)
+        self.input_path = check_input_path(self.input_path, out_log, self.__class__.__name__)
+        self.output_path_par = check_output_path(self.output_path_par, 'par', out_log, self.__class__.__name__)
+        self.output_path_inp = check_output_path(self.output_path_inp, 'inp', out_log, self.__class__.__name__)
+        self.output_path_top = check_output_path(self.output_path_top, 'top', out_log, self.__class__.__name__)
         self.output_files = {
             'par': self.output_path_par,
             'inp': self.output_path_inp,

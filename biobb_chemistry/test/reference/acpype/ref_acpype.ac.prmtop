@@ -1,4 +1,4 @@
-%VERSION  VERSION_STAMP = V0001.000  DATE = 05/03/19  14:21:11                  
+%VERSION  VERSION_STAMP = V0001.000  DATE = 05/14/19  15:52:01                  
 %FLAG TITLE                                                                     
 %FORMAT(20a4)                                                                   
 acpype.params.pdb                                                               

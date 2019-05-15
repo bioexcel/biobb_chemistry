@@ -43,12 +43,15 @@ class AcpypeParamsGMXOPLS():
         self.step = properties.get('step', None)
         self.path = properties.get('path', '')
 
+        # Check the properties
+        fu.check_properties(self, properties)
+
     def check_data_params(self):
         """ Checks all the input/output paths and parameters """
         out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
-        self.input_path = check_input_path(self.input_path, out_log)
-        self.output_path_itp = check_output_path(self.output_path_itp, 'itp', out_log)
-        self.output_path_top = check_output_path(self.output_path_top, 'top', out_log)
+        self.input_path = check_input_path(self.input_path, out_log, self.__class__.__name__)
+        self.output_path_itp = check_output_path(self.output_path_itp, 'itp', out_log, self.__class__.__name__)
+        self.output_path_top = check_output_path(self.output_path_top, 'top', out_log, self.__class__.__name__)
         self.output_files = {
             'itp': self.output_path_itp,
             'top': self.output_path_top,
@@ -99,7 +102,7 @@ class AcpypeParamsGMXOPLS():
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
         # move files to output_path and removes temporary folder
         os.chdir(cwd)
-        process_output(self.tmp_folder, self.basename + ".acpype", self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+        process_output_gmx(self.tmp_folder, self.basename + ".acpype", self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
         return returncode
 
 def main():

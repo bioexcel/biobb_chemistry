@@ -33,8 +33,8 @@ class BabelMinimize():
         properties = properties or {}
 
         # Input/Output files
-        self.input_path = check_input_path_minimize(input_path)
-        self.output_path = check_output_path_minimize(output_path)
+        self.input_path = check_input_path_minimize(input_path, self.__class__.__name__)
+        self.output_path = check_output_path_minimize(output_path, self.__class__.__name__)
 
         # Properties specific for BB
         self.criteria = properties.get('criteria', '')
@@ -55,6 +55,9 @@ class BabelMinimize():
         self.step = properties.get('step', None)
         self.path = properties.get('path', '')
 
+        # Check the properties
+        fu.check_properties(self, properties)
+
     def create_cmd(self):
         """Creates the command line instruction using the properties file settings"""
         out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
@@ -64,7 +67,7 @@ class BabelMinimize():
         instructions_list.append(self.obminimize_path)
 
         # check all properties
-        if check_minimize_property("criteria", self.criteria, out_log): instructions_list.append('-c ' + self.criteria)
+        if check_minimize_property("criteria", self.criteria, out_log): instructions_list.append('-c ' + str(self.criteria))
 
         if check_minimize_property("method", self.method, out_log): instructions_list.append('-' + self.method)
 

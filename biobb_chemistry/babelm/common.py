@@ -4,48 +4,41 @@ import re
 from biobb_common.tools import file_utils as fu
 
 
-def check_input_path(path):
+def check_input_path(path, classname):
 	""" Checks input file """ 
 	if not os.path.exists(path):
-		raise SystemExit('Unexisting input file')
+		raise SystemExit(classname + ': Unexisting input file')
 	filename, file_extension = os.path.splitext(path)
 	if not is_valid_input(file_extension[1:]):
-		raise SystemExit('Format %s in input file is not compatible' % file_extension[1:])
+		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 	return path
 
-def check_output_path(path):
+def check_output_path(path, classname):
 	""" Checks output path and file """ 
-	if not os.path.exists(os.path.dirname(path)):
-		raise SystemExit('Unexisting output folder')
+	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+		raise SystemExit(classname + ': Unexisting output folder')
 	filename, file_extension = os.path.splitext(path)
 	if not is_valid_input(file_extension[1:]):
-		raise SystemExit('Format %s in output file is not compatible' % file_extension[1:])
+		raise SystemExit(classname + ': Format %s in output file is not compatible' % file_extension[1:])
 	return path
 
-def check_input_path_minimize(path):
+def check_input_path_minimize(path, classname):
 	""" Checks input file """ 
 	if not os.path.exists(path):
-		raise SystemExit('Unexisting input file')
+		raise SystemExit(classname + ': Unexisting input file')
 	filename, file_extension = os.path.splitext(path)
 	if not is_valid_input_minimize(file_extension[1:]):
-		raise SystemExit('Format %s in input file is not compatible' % file_extension[1:])
+		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 	return path
 
-def check_output_path_minimize(path):
+def check_output_path_minimize(path, classname):
 	""" Checks output path and file """ 
-	if not os.path.exists(os.path.dirname(path)):
-		raise SystemExit('Unexisting output folder')
+	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+		raise SystemExit(classname + ': Unexisting output folder')
 	filename, file_extension = os.path.splitext(path)
 	if not is_valid_input_minimize(file_extension[1:]):
-		raise SystemExit('Format %s in output file is not compatible' % file_extension[1:])
+		raise SystemExit(classname + ': Format %s in output file is not compatible' % file_extension[1:])
 	return path
-
-def get_parameters(properties, type):
-	""" Gets configuration file parameters """
-	if not properties.get(type, dict()):
-		raise SystemExit('No ' + type + ' parameter provided')
-	else:
-		return properties.get(type, dict())
 
 def get_binary_path(properties, type):
 	""" Gets binary path """
@@ -66,7 +59,8 @@ def check_minimize_property(type, value, out_log):
 	value = str(value)
 
 	if type == "criteria":
-		if re.match('[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?', value):
+
+		if re.match('(\d+(\.\d+)?)', value) or re.match('[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?', value):
 			return True
 		else:
 			fu.log('Criteria %s is not correct, assigned default value: %s' % (value, get_default_value('criteria')), out_log)

@@ -1,10 +1,10 @@
-; BBB_GMX_OPLS.top created by acpype (v: 2018-04-24T22:34:57UTC) on Fri May  3 14:32:00 2019
+; BBB_GMX_OPLS.top created by acpype (v: 2018-04-24T22:34:57UTC) on Tue May 14 15:32:17 2019
 
 ; Include forcefield parameters
 #include "ffoplsaa.itp"
 
-; Include BBB_GMX.itp topology
-#include "BBB_GMX.itp"
+; Include ref_acpype.gmx.opls.itp topology
+#include "ref_acpype.gmx.opls.itp"
 
 [ system ]
  BBB

@@ -49,14 +49,28 @@ babel_minimize:
     rele: 10.0
     frequency: 10
 
+reduce_add_hydrogens:
+  paths:
+    input_path: file:test_data_dir/ambertools/reduce.no.H.pdb
+    output_path: output.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.add.pdb
+  properties:
+    nooh: True
+
+reduce_remove_hydrogens:
+  paths:
+    input_path: file:test_data_dir/ambertools/reduce.H.pdb
+    output_path: output.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.pdb
+
 acpype_params_gmx:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.pdb
-    output_path_gro: output.gro
+    output_path_gro: ref_acpype.gmx.gro
     ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
-    output_path_itp: output.itp
+    output_path_itp: ref_acpype.gmx.itp
     ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.itp
-    output_path_top: output.top
+    output_path_top: ref_acpype.gmx.top
     ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.top
   properties:
     basename: "BBB"
@@ -80,9 +94,9 @@ acpype_params_ac:
 acpype_params_gmx_opls:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.pdb
-    output_path_itp: output.itp
+    output_path_itp: ref_acpype.gmx.opls.itp
     ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.opls.itp
-    output_path_top: output.top
+    output_path_top: ref_acpype.gmx.opls.top
     ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.opls.top
   properties:
     basename: "BBB"

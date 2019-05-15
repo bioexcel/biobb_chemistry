@@ -1,5 +1,5 @@
 [![](https://readthedocs.org/projects/biobb-chemistry/badge/?version=latest)](https://biobb-chemistry.readthedocs.io/en/latest/?badge=latest)
-[![](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/biobb_chemistry/README.html)
+[![](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](https://anaconda.org/bioconda/biobb_chemistry)
 [![](https://quay.io/repository/biocontainers/biobb_io/status)](https://hub.docker.com/r/mmbirb/biobb_chemistry)
 [![](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://www.singularity-hub.org/collections/2886)
 [![](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -15,14 +15,14 @@ The latest documentation of this package can be found in our readthedocs site:
 [latest API documentation](http://biobb_chemistry.readthedocs.io/en/latest/).
 
 ### Version
-v1.0.5 May 2019 Release
+v1.0.6 May 2019 Release
 
 ### Installation
 Using PIP:
 * Installation:
 
 
-        pip install "biobb_chemistry>=1.0.5"
+        pip install "biobb_chemistry>=1.0.6"
 
 
 * Usage: [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html)
@@ -32,7 +32,7 @@ Using ANACONDA:
 * Installation:
 
 
-        conda install -c bioconda "biobb_chemistry>=1.0.5"
+        conda install -c bioconda "biobb_chemistry>=1.0.6"
 
 
 * Usage: With conda installation BioBBs can be used with the [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html) and the [Command Line documentation](https://biobb-chemistry.readthedocs.io/en/latest/command_line.html)
