@@ -1,6 +1,6 @@
 {
     "_id": "biobb_chemistry",
-    "desc" : "Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations", 
+    "desc" : "Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.", 
     "github" : "https://github.com/bioexcel/biobb_chemistry", 
     "readthedocs" : "https://biobb-chemistry.readthedocs.io/en/latest/", 
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
