@@ -8,7 +8,7 @@ setuptools.setup(
     version="1.0.6",
     author="Biobb developers",
     author_email="genis.bayarri@irbbarcelona.org",
-    description="biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.",
+    description="Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="Bioinformatics Workflows BioExcel Compatibility",

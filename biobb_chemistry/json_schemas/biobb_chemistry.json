@@ -1,0 +1,75 @@
+{
+    "_id": "biobb_chemistry",
+    "desc" : "Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.", 
+    "github" : "https://github.com/bioexcel/biobb_chemistry", 
+    "readthedocs" : "https://biobb-chemistry.readthedocs.io/en/latest/", 
+    "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
+    "docker" : "https://hub.docker.com/r/mmbirb/biobb_chemistry", 
+    "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
+    "version" : "1.0.6",
+    "tools" : [
+        {
+            "bb" : "acpype_params_gmx", 
+            "tool" : "acpype", 
+            "desc" : "Generation of topologies for GROMACS ."
+        }, 
+        {
+            "bb" : "acpype_params_gmx_opls", 
+            "tool" : "acpype", 
+            "desc" : "Generation of topologies for OPLS/AA."
+        }, 
+        {
+            "bb" : "acpype_params_ac", 
+            "tool" : "acpype", 
+            "desc" : "Generation of topologies for Antechamber."
+        }, 
+        {
+            "bb" : "acpype_params_cns", 
+            "tool" : "acpype", 
+            "desc" : "Generation of topologies for CNS/XPLOR."
+        }, 
+        {
+            "bb" : "babel_add_hydrogens", 
+            "tool" : "obabel", 
+            "desc" : "Adds hydrogens to a given structure or trajectory."
+        }, 
+        {
+            "bb" : "babel_convert", 
+            "tool" : "obabel", 
+            "desc" : "Format conversion for structures or trajectories."
+        }, 
+        {
+            "bb" : "babel_minimize", 
+            "tool" : "obabel", 
+            "desc" : "Structure minimization."
+        }, 
+        {
+            "bb" : "babel_remove_hydrogens", 
+            "tool" : "obabel", 
+            "desc" : " Removes hydrogens to a given structure or trajectory."
+        },
+        {
+            "bb" : "reduce_add_hydrogens", 
+            "tool" : "reduce", 
+            "desc" : "Adds hydrogens to a given structure."
+        },
+        {
+            "bb" : "reduce_remove_hydrogens", 
+            "tool" : "reduce", 
+            "desc" : "Removes hydrogens from a given structure."
+        }
+    ],
+    "dep_pypi" : [
+        "install_requires=['biobb_common==1.1.6']", 
+        "python_requires='==3.6.*'"
+    ], 
+    "dep_conda" : [
+        "python ==3.6.*", 
+        "biobb_common ==1.1.6", 
+        "openbabel ==2.4.1"
+    ],
+    "dep_conda_extra" : [
+        "conda install -y  -c ambermd ambertools==18.0",
+        "conda install -y  -c acpype acpype==2018.4.24.22.34.57"
+    ]
+}
