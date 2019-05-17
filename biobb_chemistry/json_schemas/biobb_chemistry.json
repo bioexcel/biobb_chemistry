@@ -9,52 +9,52 @@
     "version" : "1.0.6",
     "tools" : [
         {
-            "bb" : "acpype_params_gmx", 
+            "block" : "acpype_params_gmx", 
             "tool" : "acpype", 
             "desc" : "Generation of topologies for GROMACS ."
         }, 
         {
-            "bb" : "acpype_params_gmx_opls", 
+            "block" : "acpype_params_gmx_opls", 
             "tool" : "acpype", 
             "desc" : "Generation of topologies for OPLS/AA."
         }, 
         {
-            "bb" : "acpype_params_ac", 
+            "block" : "acpype_params_ac", 
             "tool" : "acpype", 
             "desc" : "Generation of topologies for Antechamber."
         }, 
         {
-            "bb" : "acpype_params_cns", 
+            "block" : "acpype_params_cns", 
             "tool" : "acpype", 
             "desc" : "Generation of topologies for CNS/XPLOR."
         }, 
         {
-            "bb" : "babel_add_hydrogens", 
+            "block" : "babel_add_hydrogens", 
             "tool" : "obabel", 
             "desc" : "Adds hydrogens to a given structure or trajectory."
         }, 
         {
-            "bb" : "babel_convert", 
+            "block" : "babel_convert", 
             "tool" : "obabel", 
             "desc" : "Format conversion for structures or trajectories."
         }, 
         {
-            "bb" : "babel_minimize", 
+            "block" : "babel_minimize", 
             "tool" : "obabel", 
             "desc" : "Structure minimization."
         }, 
         {
-            "bb" : "babel_remove_hydrogens", 
+            "block" : "babel_remove_hydrogens", 
             "tool" : "obabel", 
             "desc" : " Removes hydrogens to a given structure or trajectory."
         },
         {
-            "bb" : "reduce_add_hydrogens", 
+            "block" : "reduce_add_hydrogens", 
             "tool" : "reduce", 
             "desc" : "Adds hydrogens to a given structure."
         },
         {
-            "bb" : "reduce_remove_hydrogens", 
+            "block" : "reduce_remove_hydrogens", 
             "tool" : "reduce", 
             "desc" : "Removes hydrogens from a given structure."
         }
