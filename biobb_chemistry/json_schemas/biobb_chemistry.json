@@ -6,7 +6,7 @@
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
     "docker" : "https://hub.docker.com/r/mmbirb/biobb_chemistry", 
     "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
-    "version" : "1.0.6",
+    "version" : "1.0.7",
     "tools" : [
         {
             "block" : "acpype_params_gmx", 
