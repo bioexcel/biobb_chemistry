@@ -2,6 +2,7 @@
 
 """Module containing the Open Babel class and the command line interface."""
 import argparse
+import os.path
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
 from biobb_common.command_wrapper import cmd_wrapper
@@ -14,8 +15,8 @@ class BabelMinimize():
     biochemistry, or related areas. Visit the official page: http://openbabel.org/wiki/Main_Page
 
     Args:
-        input_path (str): Path to the input file. Accepted format: pdb
-        output_path (str): Path to the output file. Accepted format: pdb
+        input_path (str): Path to the input file. Accepted formats: pdb, mol2.
+        output_path (str): Path to the output file. Accepted formats: pdb, mol2.
         properties (dic):
             * **criteria** (*float*) - (1e-6) Convergence criteria
             * **method** (*str*) - ("cg") Method. Values: cg (conjugate gradients algorithm), sd (steepest descent algorithm).
@@ -85,9 +86,12 @@ class BabelMinimize():
 
         if check_minimize_property("frequency", self.frequency, out_log): instructions_list.append('-pf ' + str(self.frequency))
 
-        instructions_list.append('-ipdb ' + self.input_path)
+        iname, iextension = os.path.splitext(self.input_path)
+        oname, oextension = os.path.splitext(self.output_path)
 
-        instructions_list.append('-opdb')
+        instructions_list.append('-i' + iextension[1:] + ' ' + self.input_path)
+
+        instructions_list.append('-o' + oextension[1:])
 
         instructions_list.append('>')
 
@@ -113,8 +117,8 @@ def main():
 
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file.')
+    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mol2.')
+    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: pdb, mol2.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"

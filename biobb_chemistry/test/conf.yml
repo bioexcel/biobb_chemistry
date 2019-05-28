@@ -65,7 +65,7 @@ reduce_remove_hydrogens:
 
 acpype_params_gmx:
   paths:
-    input_path: file:test_data_dir/acpype/acpype.params.pdb
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_gro: ref_acpype.gmx.gro
     ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
     output_path_itp: ref_acpype.gmx.itp
@@ -78,7 +78,7 @@ acpype_params_gmx:
 
 acpype_params_ac:
   paths:
-    input_path: file:test_data_dir/acpype/acpype.params.pdb
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_frcmod: output.frcmod
     ref_output_acpype_path_frcmod: file:test_reference_dir/acpype/ref_acpype.ac.frcmod
     output_path_inpcrd: output.inpcrd
@@ -93,7 +93,7 @@ acpype_params_ac:
 
 acpype_params_gmx_opls:
   paths:
-    input_path: file:test_data_dir/acpype/acpype.params.pdb
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_itp: ref_acpype.gmx.opls.itp
     ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.opls.itp
     output_path_top: ref_acpype.gmx.opls.top
@@ -104,7 +104,7 @@ acpype_params_gmx_opls:
 
 acpype_params_cns:
   paths:
-    input_path: file:test_data_dir/acpype/acpype.params.pdb
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_par: output.par
     ref_output_acpype_path_par: file:test_reference_dir/acpype/ref_acpype.cns.par
     output_path_inp: output.inp

@@ -179,10 +179,10 @@ def is_valid_output(ext):
 
 def is_valid_input_minimize(ext):
 	""" Checks if input file format is compatible with Obminimize """
-	formats = ["pdb"]
+	formats = ["pdb", "mol2"]
 	return ext in formats
 
 def is_valid_output_minimize(ext):
 	""" Checks if output file format is compatible with Obminimize """
-	formats = ["pdb"]
+	formats = ["pdb", "mol2"]
 	return ext in formats
