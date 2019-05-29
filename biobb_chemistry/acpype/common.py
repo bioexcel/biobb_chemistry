@@ -14,7 +14,7 @@ def check_input_path(path, out_log, classname):
 		fu.log(classname + ': Format %s in input file is not compatible' % file_extension[1:], out_log)
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 	# if file input has no path, add cwd because execution is launched on tmp folder
-	if(os.path.basename(path) == path):
+	if(os.path.basename(path) == path or not os.path.isabs(path)):
 		path = os.path.join(os.getcwd(), path)
 
 	return path
