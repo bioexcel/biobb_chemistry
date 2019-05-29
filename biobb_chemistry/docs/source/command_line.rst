@@ -86,7 +86,7 @@ Config parameters for this building block:
 YAML file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_ac.yml:
+ac.yml:
 
 .. parsed-literal::
 
@@ -103,7 +103,7 @@ Command:
 JSON file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_ac.json:
+ac.json:
 
 .. parsed-literal::
 
@@ -188,7 +188,7 @@ Config parameters for this building block:
 YAML file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_cns.yml:
+cns.yml:
 
 .. parsed-literal::
 
@@ -205,7 +205,7 @@ Command:
 JSON file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_cns.json:
+cns.json:
 
 .. parsed-literal::
 
@@ -290,7 +290,7 @@ Config parameters for this building block:
 YAML file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_gmx.yml:
+gmx.yml:
 
 .. parsed-literal::
 
@@ -307,7 +307,7 @@ Command:
 JSON file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_gmx.json:
+gmx.json:
 
 .. parsed-literal::
 
@@ -388,7 +388,7 @@ Config parameters for this building block:
 YAML file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_gmx_opls.yml:
+gmx.yml:
 
 .. parsed-literal::
 
@@ -405,7 +405,7 @@ Command:
 JSON file config
 ~~~~~~~~~~~~~~~~
 
-acpype_params_gmx_opls.json:
+gmx.json:
 
 .. parsed-literal::
 
@@ -1167,14 +1167,38 @@ Config parameters for this building block:
 -  **reduce_path** (*str*) - (“reduce”) Path to the reduce executable
    binary.
 
-Execution
-~~~~~~~~~
+YAML file config
+~~~~~~~~~~~~~~~~
 
-There is no need of yaml neither json file config:
+reduce_remove_hydrogens.yml:
+
+.. parsed-literal::
+
+    properties:
+      reduce_path: "reduce"
 
 Command:
 
 .. parsed-literal::
 
-    reduce_remove_hydrogens --input_path data/input/reduce.H.pdb --output_path data/output/output.reduce.pdb
+    reduce_remove_hydrogens --config data/conf/reduce_remove_hydrogens.yml --input_path data/input/reduce.H.pdb --output_path data/output/output.reduce.pdb
+
+JSON file config
+~~~~~~~~~~~~~~~~
+
+reduce_remove_hydrogens.json:
+
+.. parsed-literal::
+
+    {
+      "properties": {
+        "reduce_path": "reduce"
+      }
+    }
+
+Command:
+
+.. parsed-literal::
+
+    reduce_remove_hydrogens --config data/conf/reduce_remove_hydrogens.json --input_path data/input/reduce.H.pdb --output_path data/output/output.reduce.pdb
 
