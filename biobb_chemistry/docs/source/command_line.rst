@@ -1023,9 +1023,9 @@ Command:
     
     required arguments:
       --input_path INPUT_PATH
-                            Path to the input file. Accepted format: pdb.
+                            Path to the input file. Accepted formats: pdb, mol2.
       --output_path OUTPUT_PATH
-                            Path to the output file. Accepted format: pdb.
+                            Path to the output file. Accepted formats: pdb, mol2.
 
 I / O Arguments
 ~~~~~~~~~~~~~~~
@@ -1142,9 +1142,9 @@ Command:
     
     required arguments:
       --input_path INPUT_PATH
-                            Path to the input file. Accepted format: pdb.
+                            Path to the input file. Accepted formats: pdb, mol2
       --output_path OUTPUT_PATH
-                            Path to the output file. Accepted format: pdb.
+                            Path to the output file. Accepted formats: pdb, mol2
 
 I / O Arguments
 ~~~~~~~~~~~~~~~

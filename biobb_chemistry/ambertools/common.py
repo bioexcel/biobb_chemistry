@@ -9,7 +9,7 @@ def check_input_path_reduce(path, classname):
 	if not os.path.exists(path):
 		raise SystemExit(classname + ': Unexisting input file')
 	filename, file_extension = os.path.splitext(path)
-	if not is_valid_pdb(file_extension[1:]):
+	if not is_valid_reduce(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 
 	return path
@@ -19,7 +19,7 @@ def check_output_path_reduce(path, classname):
 	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
 		raise SystemExit(classname + ': Unexisting output folder')
 	filename, file_extension = os.path.splitext(path)
-	if not is_valid_pdb(file_extension[1:]):
+	if not is_valid_reduce(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 
 	return path
@@ -37,8 +37,8 @@ def get_default_value(key):
 
 	return default_values[key]
 
-def is_valid_pdb(ext):
+def is_valid_reduce(ext):
 	""" Checks if input file format is compatible with Reduce """
-	formats = ["pdb"]
+	formats = ["pdb", "mol2"]
 
 	return ext in formats
