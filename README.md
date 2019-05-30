@@ -15,14 +15,14 @@ The latest documentation of this package can be found in our readthedocs site:
 [latest API documentation](http://biobb_chemistry.readthedocs.io/en/latest/).
 
 ### Version
-v1.0.7 May 2019 Release
+v1.0.8 May 2019 Release
 
 ### Installation
 Using PIP:
 * Installation:
 
 
-        pip install "biobb_chemistry>=1.0.7"
+        pip install "biobb_chemistry>=1.0.8"
 
 
 * Usage: [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html)
@@ -32,7 +32,7 @@ Using ANACONDA:
 * Installation:
 
 
-        conda install -c bioconda "biobb_chemistry>=1.0.7"
+        conda install -c bioconda "biobb_chemistry>=1.0.8"
 
 
 * Usage: With conda installation BioBBs can be used with the [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html) and the [Command Line documentation](https://biobb-chemistry.readthedocs.io/en/latest/command_line.html)
