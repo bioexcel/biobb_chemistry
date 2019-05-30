@@ -68,8 +68,7 @@ The command list and specification can be found at the [Command Line documentati
 
 
 ### Copyright & Licensing
-This software has been developed in the MMB group (http://mmb.irbbarcelona.org) at the
-BSC [http://www.bsc.es](http://www.bsc.es/) & IRB [https://www.irbbarcelona.org](https://www.irbbarcelona.org/) for the European BioExcel [http://bioexcel.eu](http://bioexcel.eu/), funded by the European Commission (EU H2020 [675728](http://cordis.europa.eu/projects/675728)).
+This software has been developed in the [MMB group](http://mmb.irbbarcelona.org) at the [BSC](http://www.bsc.es/) & [IRB](https://www.irbbarcelona.org/) for the [European BioExcel](http://bioexcel.eu/), funded by the European Commission (EU H2020 [675728](http://cordis.europa.eu/projects/675728)).
 
 * (c) 2015-2018 [Barcelona Supercomputing Center](https://www.bsc.es/)
 * (c) 2015-2018 [Institute for Research in Biomedicine](https://www.irbbarcelona.org/)
