@@ -39,6 +39,6 @@ def get_default_value(key):
 
 def is_valid_reduce(ext):
 	""" Checks if input file format is compatible with Reduce """
-	formats = ["pdb", "mol2"]
+	formats = ["pdb"]
 
 	return ext in formats

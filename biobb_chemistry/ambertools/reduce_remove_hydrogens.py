@@ -12,8 +12,8 @@ class ReduceRemoveHydrogens():
     Reduce is a program for adding hydrogens to a Protein DataBank (PDB) molecular structure file: http://ambermd.org/doc12/AmberTools12.pdf
 
     Args:
-        input_path (str): Path to the input file. Accepted formats: pdb, mol2.
-        output_path (str): Path to the output file. Accepted formats: pdb, mol2.
+        input_path (str): Path to the input file. Accepted format: pdb.
+        output_path (str): Path to the output file. Accepted format: pdb.
         properties (dic):
             * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
     """
@@ -72,8 +72,8 @@ def main():
 
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mol2')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: pdb, mol2')
+    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted format: pdb.')
+    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted format: pdb.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"
