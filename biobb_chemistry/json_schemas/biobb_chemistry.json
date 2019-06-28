@@ -9,54 +9,54 @@
     "version" : "1.0.8",
     "tools" : [
         {
-            "block" : "acpype_params_gmx", 
-            "tool" : "acpype", 
-            "desc" : "Generation of topologies for GROMACS ."
+            "block" : "AcpypeParamsAC", 
+            "tool" : "ACPype", 
+            "desc" : "Small molecule parameterization for AMBER MD package."
         }, 
         {
-            "block" : "acpype_params_gmx_opls", 
-            "tool" : "acpype", 
-            "desc" : "Generation of topologies for OPLS/AA."
-        }, 
-        {
-            "block" : "acpype_params_ac", 
-            "tool" : "acpype", 
-            "desc" : "Generation of topologies for Antechamber."
-        }, 
-        {
-            "block" : "acpype_params_cns", 
-            "tool" : "acpype", 
-            "desc" : "Generation of topologies for CNS/XPLOR."
-        }, 
-        {
-            "block" : "babel_add_hydrogens", 
-            "tool" : "obabel", 
-            "desc" : "Adds hydrogens to a given structure or trajectory."
-        }, 
-        {
-            "block" : "babel_convert", 
-            "tool" : "obabel", 
-            "desc" : "Format conversion for structures or trajectories."
-        }, 
-        {
-            "block" : "babel_minimize", 
-            "tool" : "obabel", 
-            "desc" : "Structure minimization."
-        }, 
-        {
-            "block" : "babel_remove_hydrogens", 
-            "tool" : "obabel", 
-            "desc" : " Removes hydrogens to a given structure or trajectory."
+            "block" : "AcpypeParamsCNS", 
+            "tool" : "ACPype", 
+            "desc" : "Small molecule parameterization for CNS/XPLOR MD package."
         },
         {
-            "block" : "reduce_add_hydrogens", 
-            "tool" : "reduce", 
-            "desc" : "Adds hydrogens to a given structure."
+            "block" : "AcpypeParamsGMX", 
+            "tool" : "ACPype", 
+            "desc" : "Small molecule parameterization for GROMACS MD package."
+        }, 
+        {
+            "block" : "AcpypeParamsGMXOPLS", 
+            "tool" : "ACPype", 
+            "desc" : "Small molecule parameterization for OPLS/AA MD package."
+        }, 
+        {
+            "block" : "BabelConvert", 
+            "tool" : "OpenBabel", 
+            "desc" : "Small molecule format conversion."
+        }, 
+        {
+            "block" : "BabelAddHydrogens", 
+            "tool" : "OpenBabel", 
+            "desc" : "Adds hydrogen atoms to small molecules."
+        }, 
+        {
+            "block" : "BabelRemoveHydrogens", 
+            "tool" : "OpenBabel", 
+            "desc" : "Removes hydrogen atoms to small molecules."
         },
         {
-            "block" : "reduce_remove_hydrogens", 
-            "tool" : "reduce", 
-            "desc" : "Removes hydrogens from a given structure."
+            "block" : "BabelMinimize", 
+            "tool" : "OpenBabel", 
+            "desc" : "Energetically minimize small molecules."
+        }, 
+        {
+            "block" : "ReduceAddHydrogens", 
+            "tool" : "AmberTools Reduce", 
+            "desc" : "Adds hydrogen atoms to small molecules."
+        },
+        {
+            "block" : "ReduceRemoveHydrogens", 
+            "tool" : "AmberTools Reduce", 
+            "desc" : "Removes hydrogen atoms to small molecules."
         }
     ],
     "dep_pypi" : [
