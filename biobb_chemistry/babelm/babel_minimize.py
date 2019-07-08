@@ -9,7 +9,8 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.babelm.common import *
 
 class BabelMinimize():
-    """Wrapper of the Open Babel module. Structure minimization.
+    """Energetically minimize small molecules.
+    Wrapper of the Open Babel module. Structure minimization.
     Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project 
     allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, 
     biochemistry, or related areas. Visit the official page: http://openbabel.org/wiki/Main_Page
@@ -110,7 +111,7 @@ class BabelMinimize():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper for the Open Babel module. Structure minimization.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser = argparse.ArgumentParser(description="Energetically minimize small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
     parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
     parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")

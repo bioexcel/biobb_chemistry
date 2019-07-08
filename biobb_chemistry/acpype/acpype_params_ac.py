@@ -8,17 +8,18 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.acpype.common import *
 
 class AcpypeParamsAC():
-    """Wrapper for the Acpype module. Generation of topologies for Antechamber.
+    """Small molecule parameterization for AMBER MD package.
+    Wrapper for the Acpype module. Generation of topologies for Antechamber.
     Acpype is a tool based in Python to use Antechamber to generate topologies for chemical
     compounds and to interface with others python applications like CCPN or ARIA. 
     Visit the official page: https://github.com/alanwilter/acpype
 
     Args:
         input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2.
-        output_path_frcmod (str): Path to the FRCMOD output file. Accepted format: frcmod.
-        output_path_inpcrd (str): Path to the INPCRD output file. Accepted format: inpcrd.
-        output_path_lib (str): Path to the LIB output file. Accepted format: lib.
-        output_path_prmtop (str): Path to the PRMTOP output file. Accepted format: prmtop.
+        output_path_frcmod (str): Path to the FRCMOD output file. Accepted formats: frcmod.
+        output_path_inpcrd (str): Path to the INPCRD output file. Accepted formats: inpcrd.
+        output_path_lib (str): Path to the LIB output file. Accepted formats: lib.
+        output_path_prmtop (str): Path to the PRMTOP output file. Accepted formats: prmtop.
         properties (dic):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
@@ -114,7 +115,7 @@ class AcpypeParamsAC():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper for the Acpype module. Generation of topologies for Antechamber.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser = argparse.ArgumentParser(description="Small molecule parameterization for AMBER MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
     parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
     parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
@@ -122,10 +123,10 @@ def main():
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
     required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mdl, mol2.')
-    required_args.add_argument('--output_path_frcmod', required=True, help='Path to the FRCMOD output file. Accepted format: frcmod.')
-    required_args.add_argument('--output_path_inpcrd', required=True, help='Path to the INPCRD output file. Accepted format: inpcrd.')
-    required_args.add_argument('--output_path_lib', required=True, help='Path to the LIB output file. Accepted format: lib.')
-    required_args.add_argument('--output_path_prmtop', required=True, help='Path to the PRMTOP output file. Accepted format: prmtop.')
+    required_args.add_argument('--output_path_frcmod', required=True, help='Path to the FRCMOD output file. Accepted formats: frcmod.')
+    required_args.add_argument('--output_path_inpcrd', required=True, help='Path to the INPCRD output file. Accepted formats: inpcrd.')
+    required_args.add_argument('--output_path_lib', required=True, help='Path to the LIB output file. Accepted formats: lib.')
+    required_args.add_argument('--output_path_prmtop', required=True, help='Path to the PRMTOP output file. Accepted formats: prmtop.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"

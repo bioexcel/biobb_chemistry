@@ -8,12 +8,13 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.ambertools.common import *
 
 class ReduceAddHydrogens():
-    """Wrapper of the Ambertools reduce module. Adds hydrogens to a given structure.
+    """Adds hydrogen atoms to small molecules.
+    Wrapper of the Ambertools reduce module. Adds hydrogens to a given structure.
     Reduce is a program for adding hydrogens to a Protein DataBank (PDB) molecular structure file: http://ambermd.org/doc12/AmberTools12.pdf
 
     Args:
-        input_path (str): Path to the input file. Accepted format: pdb.
-        output_path (str): Path to the output file. Accepted format: pdb.
+        input_path (str): Path to the input file. Accepted formats: pdb.
+        output_path (str): Path to the output file. Accepted formats: pdb.
         properties (dic):
             * **flip** (*Boolean*) - (False) add H and rotate and flip NQH groups
             * **noflip** (*Boolean*) - (False) add H and rotate groups with no NQH flips
@@ -115,15 +116,15 @@ class ReduceAddHydrogens():
         return returncode
 
 def main():
-    parser = argparse.ArgumentParser(description="Wrapper of the Ambertools reduce module. Adds hydrogens to a given structure.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
+    parser = argparse.ArgumentParser(description="Adds hydrogen atoms to small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
     parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
     parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
 
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted format: pdb.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted format: pdb.')
+    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb.')
+    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: pdb.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"
