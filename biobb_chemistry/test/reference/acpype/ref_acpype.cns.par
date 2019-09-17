@@ -1,4 +1,4 @@
-Remarks BBB_CNS.par created by acpype (v: 2018-04-24T22:34:57UTC) on Tue May 28 16:31:59 2019
+Remarks BBB.cca0570d-8cf9-4e95-a87b-d4bb5bcf7fbe_CNS.par created by acpype (v: 2018-04-24T22:34:57UTC) on Mon Sep 16 15:06:19 2019
 
 set echo=false end
 
@@ -41,40 +41,40 @@ ANGLe    o_   sy_    o_     72.5   121.41
 ANGLe   sy_   cc_   ss_     61.2   121.70
 
 { Proper Dihedrals: aType1 aType2 aType3 aType4 kt period phase }
-DIHEdral   nd_   cc_    n_   hn_           1.650    2   180.00
-DIHEdral   cc_   ss_   cc_    n_           1.100    2   180.00
-DIHEdral   nd_   cc_   sy_   n3_           1.267    2   180.00
 DIHEdral   sy_   cc_   ss_   cc_           1.100    2   180.00
-DIHEdral    o_   sy_   n3_   hn_           3.133    2     0.00
+DIHEdral   sy_   cc_   nd_   nd_           4.750    2   180.00
+DIHEdral   nd_   nd_   cc_    n_           4.750    2   180.00
+DIHEdral   cc_   nd_   nd_   cc_           4.000    2   180.00
+DIHEdral   nd_   cc_   ss_   cc_           1.100    2   180.00
+DIHEdral   nd_   cc_   sy_    o_           1.267    2   180.00
+DIHEdral   cc_   ss_   cc_    n_           1.100    2   180.00
 DIHEdral    o_    c_   c3_   hc_  MULT 3   0.800    1     0.00
                                            0.000    0     0.00
                                            0.080    3   180.00
+DIHEdral   ss_   cc_    n_   hn_           1.650    2   180.00
+DIHEdral   ss_   cc_   sy_   n3_           1.267    2   180.00
+DIHEdral   nd_   cc_   sy_   n3_           1.267    2   180.00
+DIHEdral   cc_    n_    c_   c3_           2.500    2   180.00
+DIHEdral   nd_   cc_    n_   hn_           1.650    2   180.00
 DIHEdral    o_    c_    n_   hn_  MULT 2   2.000    1     0.00
                                            2.500    2   180.00
-DIHEdral   ss_   cc_   sy_    o_           1.267    2   180.00
-DIHEdral   c3_    c_    n_   hn_           2.500    2   180.00
-DIHEdral   sy_   cc_   nd_   nd_           4.750    2   180.00
-DIHEdral    c_    n_   cc_   nd_           1.650    2   180.00
-DIHEdral   cc_    n_    c_   c3_           2.500    2   180.00
-DIHEdral   nd_   cc_   ss_   cc_           1.100    2   180.00
-DIHEdral   cc_   sy_   n3_   hn_           3.133    2     0.00
-DIHEdral   nd_   nd_   cc_    n_           4.750    2   180.00
-DIHEdral   nd_   nd_   cc_   ss_           4.750    2   180.00
-DIHEdral   cc_   ss_   cc_   nd_           1.100    2   180.00
-DIHEdral   ss_   cc_    n_   hn_           1.650    2   180.00
-DIHEdral   nd_   cc_   sy_    o_           1.267    2   180.00
-DIHEdral   ss_   cc_   nd_   nd_           4.750    2   180.00
-DIHEdral   cc_   nd_   nd_   cc_           4.000    2   180.00
-DIHEdral    c_    n_   cc_   ss_           1.650    2   180.00
-DIHEdral    n_    c_   c3_   hc_           0.000    2   180.00
 DIHEdral   cc_    n_    c_    o_           2.500    2   180.00
-DIHEdral   ss_   cc_   sy_   n3_           1.267    2   180.00
+DIHEdral    o_   sy_   n3_   hn_           3.133    2     0.00
+DIHEdral    c_    n_   cc_   ss_           1.650    2   180.00
+DIHEdral    c_    n_   cc_   nd_           1.650    2   180.00
+DIHEdral   ss_   cc_   nd_   nd_           4.750    2   180.00
+DIHEdral   ss_   cc_   sy_    o_           1.267    2   180.00
+DIHEdral   nd_   nd_   cc_   ss_           4.750    2   180.00
+DIHEdral    n_    c_   c3_   hc_           0.000    2   180.00
+DIHEdral   c3_    c_    n_   hn_           2.500    2   180.00
+DIHEdral   cc_   ss_   cc_   nd_           1.100    2   180.00
+DIHEdral   cc_   sy_   n3_   hn_           3.133    2     0.00
 
 { Improper Dihedrals: aType1 aType2 aType3 aType4 kt period phase }
 IMPRoper   c3_    n_    c_    o_          10.5    2   180.00
-IMPRoper    c_   cc_    n_   hn_           1.1    2   180.00
-IMPRoper    n_   nd_   cc_   ss_           1.1    2   180.00
 IMPRoper   sy_   cc_   ss_   nd_           1.1    2   180.00
+IMPRoper    n_   nd_   cc_   ss_           1.1    2   180.00
+IMPRoper    c_   cc_    n_   hn_           1.1    2   180.00
 
 { Nonbonded: Type Emin sigma; (1-4): Emin/2 sigma }
 NONBonded   cc_    0.086000    3.399670    0.043000    3.399670

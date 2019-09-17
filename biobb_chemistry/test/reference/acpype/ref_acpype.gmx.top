@@ -1,15 +1,15 @@
-; BBB_GMX.top created by acpype (v: 2018-04-24T22:34:57UTC) on Wed May 29 17:59:00 2019
+; BBB.63eaa28c-525b-4666-87ee-e1cb12fb7964_GMX.top created by acpype (v: 2018-04-24T22:34:57UTC) on Mon Sep 16 14:58:09 2019
 
 [ defaults ]
 ; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
 1               2               yes             0.5     0.8333
 
-; Include ref_acpype.gmx.itp topology
-#include "ref_acpype.gmx.itp"
+; Include BBB.63eaa28c-525b-4666-87ee-e1cb12fb7964_GMX.itp topology
+#include "BBB.63eaa28c-525b-4666-87ee-e1cb12fb7964_GMX.itp"
 
 [ system ]
- BBB
+ BBB.63eaa28c-525b-4666-87ee-e1cb12fb7964
 
 [ molecules ]
 ; Compound        nmols
- BBB              1     
+ BBB.63eaa28c-525b-4666-87ee-e1cb12fb7964 1     

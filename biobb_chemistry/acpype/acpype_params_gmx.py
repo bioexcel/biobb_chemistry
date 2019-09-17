@@ -75,7 +75,7 @@ class AcpypeParamsGMX():
         instructions_list.append(ipath)
 
         # generating output 
-        basename = '-b ' + get_basename(self.basename, out_log)
+        basename = '-b ' + get_basename(self.basename, out_log) + '.' + self.unique_name
         instructions_list.append(basename)
 
         # adding charge
@@ -91,23 +91,17 @@ class AcpypeParamsGMX():
         # check input/output paths and parameters
         self.check_data_params()
 
-        # create temporary folder
-        self.tmp_folder = fu.create_unique_dir()
-        fu.log('Creating %s temporary folder' % self.tmp_folder, out_log)
+        # create unique name for temporary folder (created by acpype)
+        self.unique_name = create_unique_name()
 
         # create command line instruction
         cmd = self.create_cmd() 
-
-        # change execution directory to temporary folder
-        cwd = os.getcwd()
-        os.chdir(self.tmp_folder)
 
         # execute cmd
         fu.log('Running %s, this execution can take a while' % self.acpype_path, out_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
         # move files to output_path and removes temporary folder
-        os.chdir(cwd)
-        process_output_gmx(self.tmp_folder, self.basename + ".acpype", self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+        process_output_gmx(self.unique_name, self.basename + "." + self.unique_name + ".acpype", self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
         return returncode
 
 def main():

@@ -1,4 +1,4 @@
-; BBB_GMX_OPLS.itp created by acpype (v: 2018-04-24T22:34:57UTC) on Tue May 28 16:31:18 2019
+; BBB.eae6cfb0-0088-4f8c-b2b7-37d3ff1e20bf_GMX_OPLS.itp created by acpype (v: 2018-04-24T22:34:57UTC) on Mon Sep 16 15:03:11 2019
 
 ; For OPLS atomtypes manual fine tuning
 ; AC_at:OPLS_at:OPLScode: Possible_Aternatives (see ffoplsaa.atp and ffoplsaanb.itp)
@@ -16,7 +16,7 @@
 
 [ moleculetype ]
 ;name            nrexcl
- BBB              3
+ BBB.eae6cfb0-0088-4f8c-b2b7-37d3ff1e20bf 3
 
 [ atoms ]
 ;   nr  type  resi  res  atom  cgnr     charge      mass       ; qtot   bond_type
