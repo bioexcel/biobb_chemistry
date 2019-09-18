@@ -1,14 +1,20 @@
 """ Common functions for package biobb_chemistry.ambertools """
-import os.path
+############################################
+## TODO: REMOVE
+#import os.path
+############################################
+from pathlib import Path, PurePath
 import glob
 import shutil
 from biobb_common.tools import file_utils as fu
 
 def check_input_path_reduce(path, classname):
 	""" Checks input file """ 
-	if not os.path.exists(path):
+	#if not os.path.exists(path):
+	if not Path(path).exists():
 		raise SystemExit(classname + ': Unexisting input file')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_reduce(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 
@@ -16,9 +22,11 @@ def check_input_path_reduce(path, classname):
 
 def check_output_path_reduce(path, classname):
 	""" Checks output path """ 
-	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	#if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	if PurePath(path).parent and not Path(PurePath(path).parent).exists():
 		raise SystemExit(classname + ': Unexisting output folder')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_reduce(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 

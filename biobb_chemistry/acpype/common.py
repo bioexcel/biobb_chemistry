@@ -1,5 +1,9 @@
 """ Common functions for package biobb_chemistry.acpype """
-import os.path
+############################################
+## TODO: REMOVE
+#import os.path
+############################################
+from pathlib import Path, PurePath
 import glob
 import shutil
 import uuid
@@ -7,25 +11,31 @@ from biobb_common.tools import file_utils as fu
 
 def check_input_path(path, out_log, classname):
 	""" Checks input file """ 
-	if not os.path.exists(path):
+	#if not os.path.exists(path):
+	if not Path(path).exists():
 		fu.log(classname + ': Unexisting input file, exiting', out_log)
 		raise SystemExit(classname + ': Unexisting input file')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_input(file_extension[1:]):
 		fu.log(classname + ': Format %s in input file is not compatible' % file_extension[1:], out_log)
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 	# if file input has no path, add cwd because execution is launched on tmp folder
-	if(os.path.basename(path) == path or not os.path.isabs(path)):
-		path = os.path.join(os.getcwd(), path)
+	if(PurePath(path).name == path or not PurePath(path).is_absolute()):
+		#path = os.path.join(os.getcwd(), path)
+		path = str(PurePath(Path.cwd()).joinpath(path))
+	return path
 
 	return path
 
 def check_output_path(path, type, out_log, classname):
 	""" Checks output path """ 
-	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	#if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	if PurePath(path).parent and not Path(PurePath(path).parent).exists():
 		fu.log(classname + ': Unexisting output %s output folder, exiting' % type, out_log)
 		raise SystemExit(classname + ': Unexisting %s output folder' % type)
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if type != file_extension[1:]:
 		fu.log(classname + ': Format %s in %s input file is not compatible' % (file_extension[1:], type), out_log)
 		raise SystemExit(classname + ': Format %s in %s input file is not compatible' % (file_extension[1:], type))
@@ -101,8 +111,10 @@ def process_output(unique_name, files_folder, basename, class_params, output_fil
 	print(src_files)
 	# copy files for the requested topology to the output_path
 	for file_name in src_files:
-		if (os.path.isfile(file_name)):
-			filename, file_extension = os.path.splitext(file_name)
+		#if (os.path.isfile(file_name)):
+		if (Path(file_name).is_file()):
+			#filename, file_extension = os.path.splitext(file_name)
+			file_extension = PurePath(file_name).suffix
 			shutil.copy(file_name, output_files[file_extension[1:]])
 			fu.log('File %s succesfully created' % output_files[file_extension[1:]], out_log)
 
@@ -118,12 +130,15 @@ def process_output_gmx(unique_name, files_folder, basename, class_params, output
 	print(src_files)
 	# copy files for the requested topology to the output_path
 	for file_name in src_files:
-		if (os.path.isfile(file_name)):
-			filename, file_extension = os.path.splitext(file_name)
+		#if (os.path.isfile(file_name)):
+		if (Path(file_name).is_file()):
+			#filename, file_extension = os.path.splitext(file_name)
+			file_extension = PurePath(file_name).suffix
 			# in top files for gromacs, replace file.itp by name given by user
 			if(file_extension[1:] == 'top'):
 				with open(file_name) as f:
-					newText = f.read().replace(basename + '_GMX.itp', os.path.basename(output_files['itp']))
+					#newText = f.read().replace(basename + '_GMX.itp', os.path.basename(output_files['itp']))
+					newText = f.read().replace(basename + '_GMX.itp', PurePath(output_files['itp']).name)
 				with open(file_name, "w") as f:
 					f.write(newText)
 			shutil.copy(file_name, output_files[file_extension[1:]])

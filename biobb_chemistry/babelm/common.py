@@ -1,41 +1,53 @@
 """ Common functions for package biobb_chemistry.babel """
-import os.path
+############################################
+## TODO: REMOVE
+#import os.path
+############################################
+from pathlib import Path, PurePath
 import re
 from biobb_common.tools import file_utils as fu
 
 
 def check_input_path(path, classname):
 	""" Checks input file """ 
-	if not os.path.exists(path):
+	#if not os.path.exists(path):
+	if not Path(path).exists():
 		raise SystemExit(classname + ': Unexisting input file')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_input(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 	return path
 
 def check_output_path(path, classname):
 	""" Checks output path and file """ 
-	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	#if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	if PurePath(path).parent and not Path(PurePath(path).parent).exists():
 		raise SystemExit(classname + ': Unexisting output folder')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_input(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in output file is not compatible' % file_extension[1:])
 	return path
 
 def check_input_path_minimize(path, classname):
 	""" Checks input file """ 
-	if not os.path.exists(path):
+	#if not os.path.exists(path):
+	if not Path(path).exists():
 		raise SystemExit(classname + ': Unexisting input file')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_input_minimize(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in input file is not compatible' % file_extension[1:])
 	return path
 
 def check_output_path_minimize(path, classname):
 	""" Checks output path and file """ 
-	if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	#if os.path.dirname(path) and not os.path.exists(os.path.dirname(path)):
+	if PurePath(path).parent and not Path(PurePath(path).parent).exists():
 		raise SystemExit(classname + ': Unexisting output folder')
-	filename, file_extension = os.path.splitext(path)
+	#filename, file_extension = os.path.splitext(path)
+	file_extension = PurePath(path).suffix
 	if not is_valid_input_minimize(file_extension[1:]):
 		raise SystemExit(classname + ': Format %s in output file is not compatible' % file_extension[1:])
 	return path
@@ -48,7 +60,8 @@ def get_input_format(input_format, input_path, out_log):
 	""" Checks if provided input format is correct """
 	infr = input_format
 	if not is_valid_input(infr):
-		filename, file_extension = os.path.splitext(input_path)
+		#filename, file_extension = os.path.splitext(input_path)
+		file_extension = PurePath(input_path).suffix
 		fu.log('Format %s is not compatible as an input format, assigned input file extension: %s' % (infr, file_extension[1:]), out_log)
 		infr = file_extension[1:]
 
@@ -124,7 +137,8 @@ def get_output_format(output_format, output_path, out_log):
 	""" Checks if provided output format is correct """
 	oufr = output_format
 	if not is_valid_output(oufr):
-		filename, file_extension = os.path.splitext(output_path)
+		#filename, file_extension = os.path.splitext(output_path)
+		file_extension = PurePath(output_path).suffix
 		fu.log('Format %s is not compatible as an output format, assigned output file extension: %s' % (oufr, file_extension[1:]), out_log)
 		oufr = file_extension[1:]
 

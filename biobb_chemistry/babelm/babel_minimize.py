@@ -2,7 +2,10 @@
 
 """Module containing the Open Babel class and the command line interface."""
 import argparse
-import os.path
+############################################
+## TODO: REMOVE
+#import os.path
+############################################
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
 from biobb_common.command_wrapper import cmd_wrapper
@@ -87,8 +90,10 @@ class BabelMinimize():
 
         if check_minimize_property("frequency", self.frequency, out_log): instructions_list.append('-pf ' + str(self.frequency))
 
-        iname, iextension = os.path.splitext(self.input_path)
-        oname, oextension = os.path.splitext(self.output_path)
+        #iname, iextension = os.path.splitext(self.input_path)
+        #oname, oextension = os.path.splitext(self.output_path)
+        iextension = PurePath(self.input_path).suffix
+        oextension = PurePath(self.output_path).suffix
 
         instructions_list.append('-i' + iextension[1:] + ' ' + self.input_path)
 
