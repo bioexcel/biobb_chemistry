@@ -4,6 +4,7 @@
 import argparse
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
+from biobb_common.tools.file_utils import launchlogger
 from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.acpype.common import *
 
@@ -24,6 +25,8 @@ class AcpypeParamsAC():
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
+            * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+            * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
     """
     
     def __init__(self, input_path, output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop, properties=None, **kwargs):
@@ -40,6 +43,7 @@ class AcpypeParamsAC():
         self.basename = properties.get('basename', '')
         self.charge = properties.get('charge', '')
         self.acpype_path = get_binary_path(properties, 'acpype_path')
+        self.properties = properties
 
         # Properties common in all BB
         self.can_write_console_log = properties.get('can_write_console_log', True)
@@ -47,13 +51,11 @@ class AcpypeParamsAC():
         self.prefix = properties.get('prefix', None)
         self.step = properties.get('step', None)
         self.path = properties.get('path', '')
+        self.remove_tmp = properties.get('remove_tmp', True)
+        self.restart = properties.get('restart', False)
 
-        # Check the properties
-        fu.check_properties(self, properties)
-
-    def check_data_params(self):
+    def check_data_params(self, out_log, err_log):
         """ Checks all the input/output paths and parameters """
-        out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
         self.input_path = check_input_path(self.input_path, out_log, self.__class__.__name__)
         self.output_path_frcmod = check_output_path(self.output_path_frcmod, 'frcmod', out_log, self.__class__.__name__)
         self.output_path_inpcrd = check_output_path(self.output_path_inpcrd, 'inpcrd', out_log, self.__class__.__name__)
@@ -66,9 +68,8 @@ class AcpypeParamsAC():
             'prmtop': self.output_path_prmtop,
         }
 
-    def create_cmd(self):
+    def create_cmd(self, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
-        out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
         instructions_list = []
 
         # executable path
@@ -88,24 +89,37 @@ class AcpypeParamsAC():
 
         return instructions_list
 
+    @launchlogger
     def launch(self):
         """Launches the execution of the Open Babel module."""
-        out_log, err_log = fu.get_logs(path=self.path, prefix=self.prefix, step=self.step, can_write_console=self.can_write_console_log)
+        
+        # Get local loggers from launchlogger decorator
+        out_log = getattr(self, 'out_log', None)
+        err_log = getattr(self, 'err_log', None)
 
         # check input/output paths and parameters
-        self.check_data_params()
+        self.check_data_params(out_log, err_log)
+
+        # Check the properties
+        fu.check_properties(self, self.properties)
+
+        if self.restart:
+            output_file_list = [self.output_path_frcmod, self.output_path_inpcrd, self.output_path_lib, self.output_path_prmtop]
+            if fu.check_complete_files(output_file_list):
+                fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
+                return 0
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name()
 
         # create command line instruction
-        cmd = self.create_cmd() 
+        cmd = self.create_cmd(out_log, err_log) 
 
         # execute cmd
         fu.log('Running %s, this execution can take a while' % self.acpype_path, out_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
         # move files to output_path and removes temporary folder
-        process_output(self.unique_name, self.basename + "." + self.unique_name + ".acpype", self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+        process_output(self.unique_name, self.basename + "." + self.unique_name + ".acpype", self.remove_tmp, self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
         return returncode
 
 def main():
