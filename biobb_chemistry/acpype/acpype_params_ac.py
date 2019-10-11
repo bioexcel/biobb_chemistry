@@ -110,7 +110,7 @@ class AcpypeParamsAC():
                 return 0
 
         # create unique name for temporary folder (created by acpype)
-        self.unique_name = create_unique_name()
+        self.unique_name = create_unique_name(6)
 
         # create command line instruction
         cmd = self.create_cmd(out_log, err_log) 

@@ -6,7 +6,9 @@
 from pathlib import Path, PurePath
 import glob
 import shutil
-import uuid
+import string
+import random
+import fileinput
 from biobb_common.tools import file_utils as fu
 
 def check_input_path(path, out_log, classname):
@@ -24,7 +26,6 @@ def check_input_path(path, out_log, classname):
 	if(PurePath(path).name == path or not PurePath(path).is_absolute()):
 		#path = os.path.join(os.getcwd(), path)
 		path = str(PurePath(Path.cwd()).joinpath(path))
-	return path
 
 	return path
 
@@ -68,8 +69,10 @@ def get_charge(charge, out_log):
 
 	return str(ch)
 
-def create_unique_name():
-	return str(uuid.uuid4())
+def create_unique_name(length = 10, char = string.ascii_uppercase +
+                          string.digits +           
+                          string.ascii_lowercase ):
+    return ''.join(random.choice( char) for x in range(length))
 
 def get_default_value(key):
 	""" Gives default values according to the given key """
@@ -108,9 +111,14 @@ def process_output(unique_name, files_folder, remove_tmp, basename, class_params
 	path = files_folder
 	suffix = class_params['suffix']
 	src_files = glob.glob(path + '/' + basename + '.' + unique_name + suffix + '*')
-	print(src_files)
+
 	# copy files for the requested topology to the output_path
 	for file_name in src_files:
+		# replace random name by original name in all files
+		with fileinput.FileInput(file_name, inplace=True) as file:
+			for line in file:
+				print(line.replace(basename + '.' + unique_name, basename), end='')
+				
 		#if (os.path.isfile(file_name)):
 		if (Path(file_name).is_file()):
 			#filename, file_extension = os.path.splitext(file_name)
@@ -128,9 +136,14 @@ def process_output_gmx(unique_name, files_folder, remove_tmp, basename, class_pa
 	path = files_folder
 	suffix = class_params['suffix']
 	src_files = glob.glob(path + '/' + basename + '.' + unique_name + suffix + '*')
-	print(src_files)
+
 	# copy files for the requested topology to the output_path
 	for file_name in src_files:
+		# replace random name by original name in all files
+		with fileinput.FileInput(file_name, inplace=True) as file:
+			for line in file:
+				print(line.replace(basename + '.' + unique_name, basename), end='')
+
 		#if (os.path.isfile(file_name)):
 		if (Path(file_name).is_file()):
 			#filename, file_extension = os.path.splitext(file_name)

@@ -1,4 +1,4 @@
-; BBB.0de1fd6d-3016-43b9-a287-124738e7ca8b_GMX.itp created by acpype (v: 2018-04-24T22:34:57UTC) on Wed Sep 18 17:31:12 2019
+; BBB_GMX.itp created by acpype (v: 2018-04-24T22:34:57UTC) on Fri Oct 11 14:23:35 2019
 
 [ atomtypes ]
 ;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
@@ -16,7 +16,7 @@
 
 [ moleculetype ]
 ;name            nrexcl
- BBB.0de1fd6d-3016-43b9-a287-124738e7ca8b 3
+ BBB       3
 
 [ atoms ]
 ;   nr  type  resi  res  atom  cgnr     charge      mass       ; qtot   bond_type
