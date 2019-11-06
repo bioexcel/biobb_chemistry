@@ -1,0 +1,132 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/reduce_add_hydrogens",
+    "title": "Adds hydrogen atoms to small molecules.",
+    "type": "object",
+    "required": [
+        "input_path",
+        "output_path"
+    ],
+    "properties": {
+        "input_path": {
+            "type": "string",
+            "description": "Path to the input file.",
+            "enum": [
+                ".*\\.pdb$"
+            ]
+        },
+        "output_path": {
+            "type": "string",
+            "description": "Path to the output file.",
+            "enum": [
+                ".*\\.pdb$"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "flip": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "add H and rotate and flip NQH groups"
+                },
+                "noflip": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "add H and rotate groups with no NQH flips"
+                },
+                "nuclear": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "use nuclear X-H distances rather than default electron cloud distances"
+                },
+                "nooh": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "remove hydrogens on OH and SH groups"
+                },
+                "oh": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "add hydrogens on OH and SH groups (default)"
+                },
+                "his": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "create NH hydrogens on HIS rings (usually used with -HIS)"
+                },
+                "noheth": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "do not attempt to add NH proton on Het groups"
+                },
+                "rotnh3": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "allow lysine NH3 to rotate (default)"
+                },
+                "norotnh3": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "do not allow lysine NH3 to rotate"
+                },
+                "rotexist": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "to rotate"
+                },
+                "rotexoh": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "allow existing OH & SH groups to rotate"
+                },
+                "allalt": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "process adjustments for all conformations (default)"
+                },
+                "onlya": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "only adjust 'A' conformations"
+                },
+                "charges": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "output charge state for appropriate hydrogen records"
+                },
+                "dorotmet": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "allow methionine methyl groups to rotate (not recommended)"
+                },
+                "noadjust": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "do not process any rot or flip adjustments"
+                },
+                "build": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)"
+                },
+                "reduce_path": {
+                    "type": "string",
+                    "default": "reduce",
+                    "description": "Path to the reduce executable binary."
+                },
+                "remove_tmp": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "[WF property] Remove temporal files."
+                },
+                "restart": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "[WF property] Do not execute if output files exist."
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

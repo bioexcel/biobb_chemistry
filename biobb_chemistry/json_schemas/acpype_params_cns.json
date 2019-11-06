@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/acpype_params_cns",
+    "title": "Small molecule parameterization for CNS/XPLOR MD package.",
+    "type": "object",
+    "required": [
+        "input_path",
+        "output_path_par",
+        "output_path_inp",
+        "output_path_top"
+    ],
+    "properties": {
+        "input_path": {
+            "type": "string",
+            "description": "Path to the input file.",
+            "enum": [
+                ".*\\.pdb$",
+                ".*\\.mdl$",
+                ".*\\.mol2$"
+            ]
+        },
+        "output_path_par": {
+            "type": "string",
+            "description": "Path to the PAR output file.",
+            "enum": [
+                ".*\\.par$"
+            ]
+        },
+        "output_path_inp": {
+            "type": "string",
+            "description": "Path to the INP output file.",
+            "enum": [
+                ".*\\.inp$"
+            ]
+        },
+        "output_path_top": {
+            "type": "string",
+            "description": "Path to the TOP output file.",
+            "enum": [
+                ".*\\.top$"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "basename": {
+                    "type": "string",
+                    "default": "BBB",
+                    "description": "A basename for the project (folder and output files)."
+                },
+                "charge": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "Net molecular charge, for gas default is 0."
+                },
+                "acpype_path": {
+                    "type": "string",
+                    "default": "acpype",
+                    "description": "Path to the acpype executable binary."
+                },
+                "remove_tmp": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "[WF property] Remove temporal files."
+                },
+                "restart": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "[WF property] Do not execute if output files exist."
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

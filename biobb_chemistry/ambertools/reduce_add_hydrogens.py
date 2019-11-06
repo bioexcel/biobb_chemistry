@@ -17,23 +17,23 @@ class ReduceAddHydrogens():
         input_path (str): Path to the input file. Accepted formats: pdb.
         output_path (str): Path to the output file. Accepted formats: pdb.
         properties (dic):
-            * **flip** (*Boolean*) - (False) add H and rotate and flip NQH groups
-            * **noflip** (*Boolean*) - (False) add H and rotate groups with no NQH flips
-            * **nuclear** (*Boolean*) - (False) use nuclear X-H distances rather than default electron cloud distances
-            * **nooh** (*Boolean*) - (False) remove hydrogens on OH and SH groups
-            * **oh** (*Boolean*) - (True) add hydrogens on OH and SH groups (default)
-            * **his** (*Boolean*) - (False) create NH hydrogens on HIS rings (usually used with -HIS)
-            * **noheth** (*Boolean*) - (False) do not attempt to add NH proton on Het groups
-            * **rotnh3** (*Boolean*) - (True) allow lysine NH3 to rotate (default)
-            * **norotnh3** (*Boolean*) - (False) do not allow lysine NH3 to rotate
-            * **rotexist** (*Boolean*) - (False) allow existing rotatable groups (OH, SH, Met-CH3) to rotate
-            * **rotexoh** (*Boolean*) - (False) allow existing OH & SH groups to rotate
-            * **allalt** (*Boolean*) - (True) process adjustments for all conformations (default)
-            * **onlya** (*Boolean*) - (False) only adjust 'A' conformations
-            * **charges** (*Boolean*) - (False) output charge state for appropriate hydrogen records
-            * **dorotmet** (*Boolean*) - (False) allow methionine methyl groups to rotate (not recommended)
-            * **noadjust** (*Boolean*) - (False) do not process any rot or flip adjustments
-            * **build** (*Boolean*) - (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)
+            * **flip** (*bool*) - (False) add H and rotate and flip NQH groups
+            * **noflip** (*bool*) - (False) add H and rotate groups with no NQH flips
+            * **nuclear** (*bool*) - (False) use nuclear X-H distances rather than default electron cloud distances
+            * **nooh** (*bool*) - (False) remove hydrogens on OH and SH groups
+            * **oh** (*bool*) - (True) add hydrogens on OH and SH groups (default)
+            * **his** (*bool*) - (False) create NH hydrogens on HIS rings (usually used with -HIS)
+            * **noheth** (*bool*) - (False) do not attempt to add NH proton on Het groups
+            * **rotnh3** (*bool*) - (True) allow lysine NH3 to rotate (default)
+            * **norotnh3** (*bool*) - (False) do not allow lysine NH3 to rotate
+            * **rotexist** (*bool*) - (False) allow existing rotatable groups (OH, SH, Met-CH3) to rotate
+            * **rotexoh** (*bool*) - (False) allow existing OH & SH groups to rotate
+            * **allalt** (*bool*) - (True) process adjustments for all conformations (default)
+            * **onlya** (*bool*) - (False) only adjust 'A' conformations
+            * **charges** (*bool*) - (False) output charge state for appropriate hydrogen records
+            * **dorotmet** (*bool*) - (False) allow methionine methyl groups to rotate (not recommended)
+            * **noadjust** (*bool*) - (False) do not process any rot or flip adjustments
+            * **build** (*bool*) - (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)
             * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.

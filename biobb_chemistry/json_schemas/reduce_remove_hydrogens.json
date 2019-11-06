@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/reduce_remove_hydrogens",
+    "title": "Removes hydrogen atoms to small molecules.",
+    "type": "object",
+    "required": [
+        "input_path",
+        "output_path"
+    ],
+    "properties": {
+        "input_path": {
+            "type": "string",
+            "description": "Path to the input file.",
+            "enum": [
+                ".*\\.pdb$"
+            ]
+        },
+        "output_path": {
+            "type": "string",
+            "description": "Path to the output file.",
+            "enum": [
+                ".*\\.pdb$"
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "reduce_path": {
+                    "type": "string",
+                    "default": "reduce",
+                    "description": "Path to the reduce executable binary."
+                },
+                "remove_tmp": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "[WF property] Remove temporal files."
+                },
+                "restart": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "[WF property] Do not execute if output files exist."
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}
