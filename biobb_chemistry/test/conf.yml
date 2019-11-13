@@ -11,6 +11,20 @@ babel_convert:
     coordinates: 2
     ph: 7.4
 
+babel_convert_container:
+  paths:
+    input_path: file:test_data_dir/babel/babel.smi
+    output_path: output.mol2
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.convert.mol2
+  properties:
+    input_format: smi
+    output_format: mol2
+    coordinates: 2
+    ph: 7.4
+    container_path: docker
+    container_image: informaticsmatters/obabel:latest
+    container_volume_path: /tmp
+
 babel_add_hydrogens:
   paths:
     input_path: file:test_data_dir/babel/babel.no.H.pdb
@@ -22,6 +36,20 @@ babel_add_hydrogens:
     coordinates: 3
     ph: 7.4
 
+babel_add_hydrogens_container:
+  paths:
+    input_path: file:test_data_dir/babel/babel.no.H.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.pdb
+  properties:
+    input_format: pdb
+    output_format: pdb
+    coordinates: 3
+    ph: 7.4
+    container_path: docker
+    container_image: informaticsmatters/obabel:latest
+    container_volume_path: /tmp
+
 babel_remove_hydrogens:
   paths:
     input_path: file:test_data_dir/babel/babel.H.pdb
@@ -32,6 +60,20 @@ babel_remove_hydrogens:
     output_format: pdb
     coordinates: 3
     ph: 7.4
+
+babel_remove_hydrogens_container:
+  paths:
+    input_path: file:test_data_dir/babel/babel.H.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.nohydrogens.pdb
+  properties:
+    input_format: pdb
+    output_format: pdb
+    coordinates: 3
+    ph: 7.4
+    container_path: docker
+    container_image: informaticsmatters/obabel:latest
+    container_volume_path: /tmp
 
 babel_minimize:
   paths:
@@ -48,6 +90,25 @@ babel_minimize:
     rvdw: 6.0
     rele: 10.0
     frequency: 10
+
+babel_minimize_container:
+  paths:
+    input_path: file:test_data_dir/babel/babel.minimize.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.minimize.pdb
+  properties:
+    criteria: 1e-6
+    method: cg
+    force_field: GAFF
+    hydrogens: True
+    steps: 2500
+    cutoff: True
+    rvdw: 6.0
+    rele: 10.0
+    frequency: 10
+    container_path: docker
+    container_image: informaticsmatters/obabel:latest
+    container_volume_path: /tmp
 
 reduce_add_hydrogens:
   paths:
