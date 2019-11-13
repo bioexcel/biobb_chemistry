@@ -158,6 +158,22 @@ acpype_params_gmx:
     basename: "BBB"
     charge: 0
 
+acpype_params_gmx_container:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_gro: ref_acpype.gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
+    output_path_itp: ref_acpype.gmx.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.itp
+    output_path_top: ref_acpype.gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.top
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: docker
+    container_image: mmbirb/acpype:latest
+    container_volume_path: /tmp
+
 acpype_params_ac:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
@@ -173,6 +189,24 @@ acpype_params_ac:
     basename: "BBB"
     charge: 0
 
+acpype_params_ac_container:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_frcmod: output.frcmod
+    ref_output_acpype_path_frcmod: file:test_reference_dir/acpype/ref_acpype.ac.frcmod
+    output_path_inpcrd: output.inpcrd
+    ref_output_acpype_path_inpcrd: file:test_reference_dir/acpype/ref_acpype.ac.inpcrd
+    output_path_lib: output.lib
+    ref_output_acpype_path_lib: file:test_reference_dir/acpype/ref_acpype.ac.lib
+    output_path_prmtop: output.prmtop
+    ref_output_acpype_path_prmtop: file:test_reference_dir/acpype/ref_acpype.ac.prmtop
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: docker
+    container_image: mmbirb/acpype:latest
+    container_volume_path: /tmp
+
 acpype_params_gmx_opls:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
@@ -183,6 +217,20 @@ acpype_params_gmx_opls:
   properties:
     basename: "BBB"
     charge: 0
+
+acpype_params_gmx_opls_container:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_itp: ref_acpype.gmx.opls.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.opls.itp
+    output_path_top: ref_acpype.gmx.opls.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.opls.top
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: docker
+    container_image: mmbirb/acpype:latest
+    container_volume_path: /tmp
 
 acpype_params_cns:
   paths:
@@ -196,3 +244,19 @@ acpype_params_cns:
   properties:
     basename: "BBB"
     charge: 0
+
+acpype_params_cns_container:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_par: output.par
+    ref_output_acpype_path_par: file:test_reference_dir/acpype/ref_acpype.cns.par
+    output_path_inp: output.inp
+    ref_output_acpype_path_inp: file:test_reference_dir/acpype/ref_acpype.cns.inp
+    output_path_top: output.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.cns.top
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: docker
+    container_image: mmbirb/acpype:latest
+    container_volume_path: /tmp

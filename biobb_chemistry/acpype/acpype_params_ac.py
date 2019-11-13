@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 """Module containing the Acpype class and the command line interface."""
+import os
 import argparse
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
@@ -27,23 +28,32 @@ class AcpypeParamsAC():
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+            * **container_path** (*string*) - (None) container path definition
+            * **container_image** (*string*) - ('afandiadib/ambertools:serial') container image definition
+            * **container_volume_path** (*string*) - ('/tmp') container volume path definition
+            * **container_user_id** (*string*) - (None) container user_id definition
     """
     
     def __init__(self, input_path, output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop, properties=None, **kwargs):
         properties = properties or {}
 
         # Input/Output files
-        self.input_path = input_path
-        self.output_path_frcmod = output_path_frcmod
-        self.output_path_inpcrd = output_path_inpcrd
-        self.output_path_lib = output_path_lib
-        self.output_path_prmtop = output_path_prmtop
+        self.io_dict = { 
+            "in": { "input_path": input_path }, 
+            "out": { "output_path_frcmod": output_path_frcmod, "output_path_inpcrd": output_path_inpcrd, "output_path_lib": output_path_lib, "output_path_prmtop": output_path_prmtop } 
+        }
 
         # Properties specific for BB
         self.basename = properties.get('basename', '')
         self.charge = properties.get('charge', '')
         self.acpype_path = get_binary_path(properties, 'acpype_path')
         self.properties = properties
+
+        # container Specific
+        self.container_path = properties.get('container_path')
+        self.container_image = properties.get('container_image', 'afandiadib/ambertools:serial')
+        self.container_volume_path = properties.get('container_volume_path', '/tmp')
+        self.container_user_id = properties.get('user_id', str(os.getuid()))
 
         # Properties common in all BB
         self.can_write_console_log = properties.get('can_write_console_log', True)
@@ -56,31 +66,38 @@ class AcpypeParamsAC():
 
     def check_data_params(self, out_log, err_log):
         """ Checks all the input/output paths and parameters """
-        self.input_path = check_input_path(self.input_path, out_log, self.__class__.__name__)
-        self.output_path_frcmod = check_output_path(self.output_path_frcmod, 'frcmod', out_log, self.__class__.__name__)
-        self.output_path_inpcrd = check_output_path(self.output_path_inpcrd, 'inpcrd', out_log, self.__class__.__name__)
-        self.output_path_lib = check_output_path(self.output_path_lib, 'lib', out_log, self.__class__.__name__)
-        self.output_path_prmtop = check_output_path(self.output_path_prmtop, 'prmtop', out_log, self.__class__.__name__)
+        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
+        self.io_dict["out"]["output_path_frcmod"] = check_output_path(self.io_dict["out"]["output_path_frcmod"], 'frcmod', out_log, self.__class__.__name__)
+        self.io_dict["out"]["output_path_inpcrd"] = check_output_path(self.io_dict["out"]["output_path_inpcrd"], 'inpcrd', out_log, self.__class__.__name__)
+        self.io_dict["out"]["output_path_lib"] = check_output_path(self.io_dict["out"]["output_path_lib"], 'lib', out_log, self.__class__.__name__)
+        self.io_dict["out"]["output_path_prmtop"] = check_output_path(self.io_dict["out"]["output_path_prmtop"], 'prmtop', out_log, self.__class__.__name__)
         self.output_files = {
-            'frcmod': self.output_path_frcmod,
-            'inpcrd': self.output_path_inpcrd,
-            'lib': self.output_path_lib,
-            'prmtop': self.output_path_prmtop,
+            'frcmod': self.io_dict["out"]["output_path_frcmod"],
+            'inpcrd': self.io_dict["out"]["output_path_inpcrd"],
+            'lib': self.io_dict["out"]["output_path_lib"],
+            'prmtop': self.io_dict["out"]["output_path_prmtop"],
         }
 
-    def create_cmd(self, out_log, err_log):
+    def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
         instructions_list = []
+
+        # generating output path and adding cd /tmp; in case of container because ACPYPE needs writting permissions in the 
+        # execution folder for a temporary folder creation (.acpype_tmp_BBB.<3Q3Atz>)
+        if self.container_path:
+            instructions_list.append('cd ' + self.container_volume_path + ';')
+            out_pth = self.container_volume_path + '/' + get_basename(self.basename, out_log) + '.' + self.unique_name
+        else:
+            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
 
         # executable path
         instructions_list.append(self.acpype_path)
 
         # generating input 
-        ipath = '-i ' + self.input_path
+        ipath = '-i ' + container_io_dict["in"]["input_path"]
         instructions_list.append(ipath)
-
-        # generating output 
-        basename = '-b ' + get_basename(self.basename, out_log) + '.' + self.unique_name
+        
+        basename = '-b ' + out_pth
         instructions_list.append(basename)
 
         # adding charge
@@ -109,17 +126,26 @@ class AcpypeParamsAC():
                 fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
                 return 0
 
+        # copy inputs to container
+        container_io_dict = fu.copy_to_container(self.container_path, self.container_volume_path, self.io_dict)
+
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)
 
         # create command line instruction
-        cmd = self.create_cmd(out_log, err_log) 
+        cmd = self.create_cmd(container_io_dict, out_log, err_log) 
 
         # execute cmd
         fu.log('Running %s, this execution can take a while' % self.acpype_path, out_log)
+        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, host_volume=container_io_dict.get("unique_dir"), container_volume=self.container_volume_path, user_uid=self.container_user_id, container_image=self.container_image, out_log=out_log, global_log=self.global_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
+
         # move files to output_path and removes temporary folder
-        process_output(self.unique_name, self.basename + "." + self.unique_name + ".acpype", self.remove_tmp, self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+        if self.container_path:
+            process_output(self.unique_name, container_io_dict['unique_dir'], self.remove_tmp, self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+        else:
+            process_output(self.unique_name, self.basename + "." + self.unique_name + ".acpype", self.remove_tmp, self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+        
         return returncode
 
 def main():

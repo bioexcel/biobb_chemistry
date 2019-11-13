@@ -1,14 +1,14 @@
-; BBB_GMX_OPLS.top created by acpype (v: 2018-04-24T22:34:57UTC) on Fri Oct 11 14:26:32 2019
+; /tmp/BBB_GMX_OPLS.top created by acpype (v: 2018-04-24T22:34:57UTC) on Wed Nov 13 17:46:50 2019
 
 ; Include forcefield parameters
 #include "ffoplsaa.itp"
 
-; Include ref_acpype.gmx.opls.itp topology
-#include "ref_acpype.gmx.opls.itp"
+; Include /tmp/ref_acpype.gmx.opls.itp topology
+#include "/tmp/ref_acpype.gmx.opls.itp"
 
 [ system ]
- BBB
+ /tmp/BBB
 
 [ molecules ]
 ; Compound        nmols
- BBB       1     
+ /tmp/BBB  1     
