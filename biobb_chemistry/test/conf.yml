@@ -57,11 +57,32 @@ reduce_add_hydrogens:
   properties:
     nooh: True
 
+reduce_add_hydrogens_container:
+  paths:
+    input_path: file:test_data_dir/ambertools/reduce.no.H.pdb
+    output_path: output.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.add.pdb
+  properties:
+    nooh: True
+    container_path: docker
+    container_image: afandiadib/ambertools:serial
+    container_volume_path: /tmp
+
 reduce_remove_hydrogens:
   paths:
     input_path: file:test_data_dir/ambertools/reduce.H.pdb
     output_path: output.pdb
     ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.pdb
+
+reduce_remove_hydrogens_container:
+  paths:
+    input_path: file:test_data_dir/ambertools/reduce.H.pdb
+    output_path: output.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.pdb
+  properties:
+    container_path: docker
+    container_image: afandiadib/ambertools:serial
+    container_volume_path: /tmp
 
 acpype_params_gmx:
   paths:
