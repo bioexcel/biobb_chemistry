@@ -36,7 +36,7 @@ babel_convert_singularity:
     coordinates: 2
     ph: 7.4
     container_path: singularity
-    container_image: ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
+    container_image: bioexcel-obabel_singularity-master-latest.simg
     container_volume_path: /tmp
 
 babel_add_hydrogens:
@@ -75,7 +75,7 @@ babel_add_hydrogens_singularity:
     coordinates: 3
     ph: 7.4
     container_path: singularity
-    container_image: ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
+    container_image: bioexcel-obabel_singularity-master-latest.simg
     container_volume_path: /tmp
 
 babel_remove_hydrogens:
@@ -114,7 +114,7 @@ babel_remove_hydrogens_singularity:
     coordinates: 3
     ph: 7.4
     container_path: singularity
-    container_image: ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
+    container_image: bioexcel-obabel_singularity-master-latest.simg
     container_volume_path: /tmp
 
 babel_minimize:
@@ -168,7 +168,7 @@ babel_minimize_singularity:
     rele: 10.0
     frequency: 10
     container_path: singularity
-    container_image:  ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
+    container_image:  bioexcel-obabel_singularity-master-latest.simg
     container_volume_path: /tmp
 
 reduce_add_hydrogens:
@@ -198,7 +198,7 @@ reduce_add_hydrogens_singularity:
   properties:
     nooh: True
     container_path: singularity
-    container_image: ~/projects/BioBB/bioexcel-ambertools_singularity-master-latest.simg
+    container_image: bioexcel-ambertools_singularity-master-latest.simg
     container_volume_path: /tmp
 
 reduce_remove_hydrogens:
@@ -224,7 +224,7 @@ reduce_remove_hydrogens_singularity:
     ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.container.pdb
   properties:
     container_path: singularity
-    container_image: ~/projects/BioBB/bioexcel-ambertools_singularity-master-latest.simg
+    container_image: bioexcel-ambertools_singularity-master-latest.simg
     container_volume_path: /tmp
 
 acpype_params_gmx:
