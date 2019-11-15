@@ -11,7 +11,7 @@ babel_convert:
     coordinates: 2
     ph: 7.4
 
-babel_convert_container:
+babel_convert_docker:
   paths:
     input_path: file:test_data_dir/babel/babel.smi
     output_path: output.mol2
@@ -25,6 +25,20 @@ babel_convert_container:
     container_image: informaticsmatters/obabel:latest
     container_volume_path: /tmp
 
+babel_convert_singularity:
+  paths:
+    input_path: file:test_data_dir/babel/babel.smi
+    output_path: output.mol2
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.convert.mol2
+  properties:
+    input_format: smi
+    output_format: mol2
+    coordinates: 2
+    ph: 7.4
+    container_path: singularity
+    container_image: ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
+    container_volume_path: /tmp
+
 babel_add_hydrogens:
   paths:
     input_path: file:test_data_dir/babel/babel.no.H.pdb
@@ -36,11 +50,11 @@ babel_add_hydrogens:
     coordinates: 3
     ph: 7.4
 
-babel_add_hydrogens_container:
+babel_add_hydrogens_docker:
   paths:
     input_path: file:test_data_dir/babel/babel.no.H.pdb
     output_path: output.pdb
-    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.container.pdb
   properties:
     input_format: pdb
     output_format: pdb
@@ -48,6 +62,20 @@ babel_add_hydrogens_container:
     ph: 7.4
     container_path: docker
     container_image: informaticsmatters/obabel:latest
+    container_volume_path: /tmp
+
+babel_add_hydrogens_singularity:
+  paths:
+    input_path: file:test_data_dir/babel/babel.no.H.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.hydrogens.container.pdb
+  properties:
+    input_format: pdb
+    output_format: pdb
+    coordinates: 3
+    ph: 7.4
+    container_path: singularity
+    container_image: ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
     container_volume_path: /tmp
 
 babel_remove_hydrogens:
@@ -61,7 +89,7 @@ babel_remove_hydrogens:
     coordinates: 3
     ph: 7.4
 
-babel_remove_hydrogens_container:
+babel_remove_hydrogens_docker:
   paths:
     input_path: file:test_data_dir/babel/babel.H.pdb
     output_path: output.pdb
@@ -73,6 +101,20 @@ babel_remove_hydrogens_container:
     ph: 7.4
     container_path: docker
     container_image: informaticsmatters/obabel:latest
+    container_volume_path: /tmp
+
+babel_remove_hydrogens_singularity:
+  paths:
+    input_path: file:test_data_dir/babel/babel.H.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.nohydrogens.pdb
+  properties:
+    input_format: pdb
+    output_format: pdb
+    coordinates: 3
+    ph: 7.4
+    container_path: singularity
+    container_image: ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
     container_volume_path: /tmp
 
 babel_minimize:
@@ -91,7 +133,7 @@ babel_minimize:
     rele: 10.0
     frequency: 10
 
-babel_minimize_container:
+babel_minimize_docker:
   paths:
     input_path: file:test_data_dir/babel/babel.minimize.pdb
     output_path: output.pdb
@@ -110,6 +152,25 @@ babel_minimize_container:
     container_image: informaticsmatters/obabel:latest
     container_volume_path: /tmp
 
+babel_minimize_singularity:
+  paths:
+    input_path: file:test_data_dir/babel/babel.minimize.pdb
+    output_path: output.pdb
+    ref_output_babel_path: file:test_reference_dir/babel/ref_babel.minimize.pdb
+  properties:
+    criteria: 1e-6
+    method: cg
+    force_field: GAFF
+    hydrogens: True
+    steps: 2500
+    cutoff: True
+    rvdw: 6.0
+    rele: 10.0
+    frequency: 10
+    container_path: singularity
+    container_image:  ~/projects/BioBB/bioexcel-obabel_singularity-master-latest.simg
+    container_volume_path: /tmp
+
 reduce_add_hydrogens:
   paths:
     input_path: file:test_data_dir/ambertools/reduce.no.H.pdb
@@ -118,15 +179,26 @@ reduce_add_hydrogens:
   properties:
     nooh: True
 
-reduce_add_hydrogens_container:
+reduce_add_hydrogens_docker:
   paths:
     input_path: file:test_data_dir/ambertools/reduce.no.H.pdb
     output_path: output.pdb
-    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.add.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.add.container.pdb
   properties:
     nooh: True
     container_path: docker
     container_image: afandiadib/ambertools:serial
+    container_volume_path: /tmp
+
+reduce_add_hydrogens_singularity:
+  paths:
+    input_path: file:test_data_dir/ambertools/reduce.no.H.pdb
+    output_path: output.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.add.container.pdb
+  properties:
+    nooh: True
+    container_path: singularity
+    container_image: ~/projects/BioBB/bioexcel-ambertools_singularity-master-latest.simg
     container_volume_path: /tmp
 
 reduce_remove_hydrogens:
@@ -135,14 +207,24 @@ reduce_remove_hydrogens:
     output_path: output.pdb
     ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.pdb
 
-reduce_remove_hydrogens_container:
+reduce_remove_hydrogens_docker:
   paths:
     input_path: file:test_data_dir/ambertools/reduce.H.pdb
     output_path: output.pdb
-    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.container.pdb
   properties:
     container_path: docker
     container_image: afandiadib/ambertools:serial
+    container_volume_path: /tmp
+
+reduce_remove_hydrogens_singularity:
+  paths:
+    input_path: file:test_data_dir/ambertools/reduce.H.pdb
+    output_path: output.pdb
+    ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.container.pdb
+  properties:
+    container_path: singularity
+    container_image: ~/projects/BioBB/bioexcel-ambertools_singularity-master-latest.simg
     container_volume_path: /tmp
 
 acpype_params_gmx:
@@ -158,7 +240,7 @@ acpype_params_gmx:
     basename: "BBB"
     charge: 0
 
-acpype_params_gmx_container:
+acpype_params_gmx_docker:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_gro: ref_acpype.gmx.gro
@@ -173,6 +255,24 @@ acpype_params_gmx_container:
     container_path: docker
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
+    container_working_dir: /tmp
+
+acpype_params_gmx_singularity:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_gro: ref_acpype.gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
+    output_path_itp: ref_acpype.gmx.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.itp
+    output_path_top: ref_acpype.gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.top
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: singularity
+    container_image: bioexcel-acpype_container-master-latest.simg
+    container_volume_path: /tmp
+    container_working_dir: /tmp
 
 acpype_params_ac:
   paths:
@@ -189,23 +289,43 @@ acpype_params_ac:
     basename: "BBB"
     charge: 0
 
-acpype_params_ac_container:
+acpype_params_ac_docker:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_frcmod: output.frcmod
-    ref_output_acpype_path_frcmod: file:test_reference_dir/acpype/ref_acpype.ac.frcmod
+    ref_output_acpype_path_frcmod: file:test_reference_dir/acpype/ref_acpype.ac.container.frcmod
     output_path_inpcrd: output.inpcrd
-    ref_output_acpype_path_inpcrd: file:test_reference_dir/acpype/ref_acpype.ac.inpcrd
+    ref_output_acpype_path_inpcrd: file:test_reference_dir/acpype/ref_acpype.ac.container.inpcrd
     output_path_lib: output.lib
-    ref_output_acpype_path_lib: file:test_reference_dir/acpype/ref_acpype.ac.lib
+    ref_output_acpype_path_lib: file:test_reference_dir/acpype/ref_acpype.ac.container.lib
     output_path_prmtop: output.prmtop
-    ref_output_acpype_path_prmtop: file:test_reference_dir/acpype/ref_acpype.ac.prmtop
+    ref_output_acpype_path_prmtop: file:test_reference_dir/acpype/ref_acpype.ac.container.prmtop
   properties:
     basename: "BBB"
     charge: 0
     container_path: docker
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
+    container_working_dir: /tmp
+
+acpype_params_ac_singularity:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_frcmod: output.frcmod
+    ref_output_acpype_path_frcmod: file:test_reference_dir/acpype/ref_acpype.ac.container.frcmod
+    output_path_inpcrd: output.inpcrd
+    ref_output_acpype_path_inpcrd: file:test_reference_dir/acpype/ref_acpype.ac.container.inpcrd
+    output_path_lib: output.lib
+    ref_output_acpype_path_lib: file:test_reference_dir/acpype/ref_acpype.ac.container.lib
+    output_path_prmtop: output.prmtop
+    ref_output_acpype_path_prmtop: file:test_reference_dir/acpype/ref_acpype.ac.container.prmtop
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: singularity
+    container_image: bioexcel-acpype_container-master-latest.simg
+    container_volume_path: /tmp
+    container_working_dir: /tmp
 
 acpype_params_gmx_opls:
   paths:
@@ -218,7 +338,7 @@ acpype_params_gmx_opls:
     basename: "BBB"
     charge: 0
 
-acpype_params_gmx_opls_container:
+acpype_params_gmx_opls_docker:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_itp: ref_acpype.gmx.opls.itp
@@ -231,6 +351,22 @@ acpype_params_gmx_opls_container:
     container_path: docker
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
+    container_working_dir: /tmp
+
+acpype_params_gmx_opls_singularity:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_itp: ref_acpype.gmx.opls.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.opls.itp
+    output_path_top: ref_acpype.gmx.opls.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.opls.top
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: singularity
+    container_image: bioexcel-acpype_container-master-latest.simg
+    container_volume_path: /tmp
+    container_working_dir: /tmp
 
 acpype_params_cns:
   paths:
@@ -245,7 +381,7 @@ acpype_params_cns:
     basename: "BBB"
     charge: 0
 
-acpype_params_cns_container:
+acpype_params_cns_docker:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_par: output.par
@@ -260,3 +396,21 @@ acpype_params_cns_container:
     container_path: docker
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
+    container_working_dir: /tmp
+
+acpype_params_cns_singularity:
+  paths:
+    input_path: file:test_data_dir/acpype/acpype.params.mol2
+    output_path_par: output.par
+    ref_output_acpype_path_par: file:test_reference_dir/acpype/ref_acpype.cns.container.par
+    output_path_inp: output.inp
+    ref_output_acpype_path_inp: file:test_reference_dir/acpype/ref_acpype.cns.container.inp
+    output_path_top: output.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.cns.container.top
+  properties:
+    basename: "BBB"
+    charge: 0
+    container_path: singularity
+    container_image: bioexcel-acpype_container-master-latest.simg
+    container_volume_path: /tmp
+    container_working_dir: /tmp

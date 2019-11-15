@@ -1,11 +1,11 @@
-Remarks BBB_CNS.inp created by acpype (v: 2018-04-24T22:34:57UTC) on Fri Nov 15 10:58:13 2019
+Remarks /tmp/BBB_CNS.inp created by acpype (v: 2018-04-24T22:34:57UTC) on Fri Nov 15 09:58:59 2019
 
 topology
-  @BBB_CNS.top
+  @/tmp/BBB_CNS.top
 end
 
 parameters
-  @BBB_CNS.par
+  @/tmp/BBB_CNS.par
   nbonds
       atom cdie shift eps=1.0  e14fac=0.4   tolerance=0.5
       cutnb=9.0 ctonnb=7.5 ctofnb=8.0
@@ -18,17 +18,17 @@ flags exclude elec ? end
 
 segment name="    "
   chain
-   coordinates @BBB_NEW.pdb
+   coordinates @/tmp/BBB_NEW.pdb
   end
 end
-coordinates @BBB_NEW.pdb
+coordinates @/tmp/BBB_NEW.pdb
 coord copy end
 
 ! Remarks If you want to shake up the coordinates a bit ...
  vector do (x=x+6*(rand()-0.5)) (all)
  vector do (y=y+6*(rand()-0.5)) (all)
  vector do (z=z+6*(rand()-0.5)) (all)
- write coordinates output=BBB_rand.pdb end
+ write coordinates output=/tmp/BBB_rand.pdb end
 
 ! Remarks RMS diff after randomisation and before minimisation
 coord rms sele=(known and not hydrogen) end
@@ -43,8 +43,8 @@ minimise powell
   nstep=250 drop=40.0
 end
 
-write coordinates output=BBB_NEW_min.pdb end
-write structure   output=BBB_CNS.psf end
+write coordinates output=/tmp/BBB_NEW_min.pdb end
+write structure   output=/tmp/BBB_CNS.psf end
 
 ! constraints interaction (not hydro) (not hydro) end
 

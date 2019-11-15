@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 """Module containing the Open Babel class and the command line interface."""
-import os
 import argparse
 from biobb_common.configuration import settings
 from biobb_common.tools import file_utils as fu
@@ -24,6 +23,7 @@ class ReduceRemoveHydrogens():
             * **container_path** (*string*) - (None) container path definition
             * **container_image** (*string*) - ('afandiadib/ambertools:serial') container image definition
             * **container_volume_path** (*string*) - ('/tmp') container volume path definition
+            * **container_working_dir** (*string*) - (None) container working directory definition
             * **container_user_id** (*string*) - (None) container user_id definition
     """
 
@@ -44,7 +44,8 @@ class ReduceRemoveHydrogens():
         self.container_path = properties.get('container_path')
         self.container_image = properties.get('container_image', 'afandiadib/ambertools:serial')
         self.container_volume_path = properties.get('container_volume_path', '/tmp')
-        self.container_user_id = properties.get('user_id', str(os.getuid()))
+        self.container_working_dir = properties.get('container_working_dir')
+        self.container_user_id = properties.get('user_id')
 
         # Properties common in all BB
         self.can_write_console_log = properties.get('can_write_console_log', True)
@@ -92,7 +93,7 @@ class ReduceRemoveHydrogens():
 
         # create cmd and launch execution
         cmd = self.create_cmd(container_io_dict, out_log, err_log)
-        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, host_volume=container_io_dict.get("unique_dir"), container_volume=self.container_volume_path, user_uid=self.container_user_id, container_image=self.container_image, out_log=out_log, global_log=self.global_log)
+        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, host_volume=container_io_dict.get("unique_dir"), container_volume=self.container_volume_path, container_working_dir=self.container_working_dir, container_user_uid=self.container_user_id, container_image=self.container_image, out_log=out_log, global_log=self.global_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
 
         # copy output(s) to output(s) path(s) in case of container execution
