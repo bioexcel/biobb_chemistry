@@ -26,11 +26,11 @@ class AcpypeParamsGMX():
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
-            * **container_path** (*string*) - (None) container path definition
-            * **container_image** (*string*) - ('afandiadib/ambertools:serial') container image definition
-            * **container_volume_path** (*string*) - ('/tmp') container volume path definition
-            * **container_working_dir** (*string*) - (None) container working directory definition
-            * **container_user_id** (*string*) - (None) container user_id definition
+            * **container_path** (*string*) - (None) container path definition.
+            * **container_image** (*string*) - ('afandiadib/ambertools:serial') container image definition.
+            * **container_volume_path** (*string*) - ('/tmp') container volume path definition.
+            * **container_working_dir** (*string*) - (None) container working directory definition.
+            * **container_user_id** (*string*) - (None) container user_id definition.
     """
 
     def __init__(self, input_path, output_path_gro, output_path_itp, output_path_top, properties=None, **kwargs):
