@@ -26,11 +26,12 @@ class AcpypeParamsGMX():
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
-            * **container_path** (*string*) - (None) container path definition.
-            * **container_image** (*string*) - ('afandiadib/ambertools:serial') container image definition.
-            * **container_volume_path** (*string*) - ('/tmp') container volume path definition.
-            * **container_working_dir** (*string*) - (None) container working directory definition.
-            * **container_user_id** (*string*) - (None) container user_id definition.
+            * **container_path** (*string*) - (None) Container path definition.
+            * **container_image** (*string*) - ('mmbirb/acpype:latest') Container image definition.
+            * **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+            * **container_working_dir** (*string*) - (None) Container working directory definition.
+            * **container_user_id** (*string*) - (None) Container user_id definition.
+            * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
     """
 
     def __init__(self, input_path, output_path_gro, output_path_itp, output_path_top, properties=None, **kwargs):
@@ -50,10 +51,11 @@ class AcpypeParamsGMX():
 
         # container Specific
         self.container_path = properties.get('container_path')
-        self.container_image = properties.get('container_image', 'afandiadib/ambertools:serial')
+        self.container_image = properties.get('container_image', 'mmbirb/acpype:latest')
         self.container_volume_path = properties.get('container_volume_path', '/tmp')
         self.container_working_dir = properties.get('container_working_dir')
-        self.container_user_id = properties.get('user_id')
+        self.container_user_id = properties.get('container_user_id')
+        self.container_shell_path = properties.get('container_shell_path', '/bin/bash')
 
         # Properties common in all BB
         self.can_write_console_log = properties.get('can_write_console_log', True)
@@ -134,7 +136,7 @@ class AcpypeParamsGMX():
 
         # execute cmd
         fu.log('Running %s, this execution can take a while' % self.acpype_path, out_log)
-        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, host_volume=container_io_dict.get("unique_dir"), container_volume=self.container_volume_path, container_working_dir=self.container_working_dir, container_user_uid=self.container_user_id, container_image=self.container_image, out_log=out_log, global_log=self.global_log)
+        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, host_volume=container_io_dict.get("unique_dir"), container_volume=self.container_volume_path, container_working_dir=self.container_working_dir, container_user_uid=self.container_user_id, container_image=self.container_image, container_shell_path=self.container_shell_path, out_log=out_log, global_log=self.global_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
 
         # move files to output_path and removes temporary folder

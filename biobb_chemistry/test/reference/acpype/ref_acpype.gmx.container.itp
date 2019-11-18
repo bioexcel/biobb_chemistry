@@ -1,4 +1,4 @@
-; /tmp/BBB_GMX.itp created by acpype (v: 2018-04-24T22:34:57UTC) on Fri Nov 15 10:09:40 2019
+; /tmp/BBB_GMX.itp created by acpype (v: 2018-04-24T22:34:57UTC) on Mon Nov 18 12:48:50 2019
 
 [ atomtypes ]
 ;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
@@ -20,25 +20,25 @@
 
 [ atoms ]
 ;   nr  type  resi  res  atom  cgnr     charge      mass       ; qtot   bond_type
-     1   cc     1   AZM    C1    1     0.461300     12.01000 ; qtot 0.461
-     2   cc     1   AZM    C2    2     0.502301     12.01000 ; qtot 0.964
-     3    c     1   AZM    C3    3     0.667101     12.01000 ; qtot 1.631
-     4   c3     1   AZM    C4    4    -0.191100     12.01000 ; qtot 1.440
-     5   n3     1   AZM    N1    5    -1.458701     14.01000 ; qtot -0.019
-     6   nd     1   AZM    N2    6    -0.361000     14.01000 ; qtot -0.380
-     7   nd     1   AZM    N3    7    -0.313000     14.01000 ; qtot -0.693
-     8    n     1   AZM    N4    8    -0.533401     14.01000 ; qtot -1.227
-     9    o     1   AZM    O1    9    -0.721801     16.00000 ; qtot -1.948
-    10    o     1   AZM    O2   10    -0.721801     16.00000 ; qtot -2.670
-    11    o     1   AZM    O3   11    -0.541101     16.00000 ; qtot -3.211
-    12   sy     1   AZM    S1   12     1.577801     32.06000 ; qtot -1.633
-    13   ss     1   AZM    S2   13    -0.040800     32.06000 ; qtot -1.674
-    14   hc     1   AZM     H   14     0.088367      1.00800 ; qtot -1.586
-    15   hc     1   AZM    H1   15     0.088367      1.00800 ; qtot -1.497
-    16   hc     1   AZM    H2   16     0.088367      1.00800 ; qtot -1.409
-    17   hn     1   AZM    H3   17     0.526301      1.00800 ; qtot -0.883
-    18   hn     1   AZM    H4   18     0.526301      1.00800 ; qtot -0.357
-    19   hn     1   AZM    H5   19     0.356500      1.00800 ; qtot 0.000
+     1   cc     1   AZM    C1    1    -0.252700     12.01000 ; qtot -0.253
+     2   cc     1   AZM    C2    2     0.555301     12.01000 ; qtot 0.303
+     3    c     1   AZM    C3    3     0.758101     12.01000 ; qtot 1.061
+     4   c3     1   AZM    C4    4    -0.892101     12.01000 ; qtot 0.169
+     5   n3     1   AZM    N1    5    -1.019701     14.01000 ; qtot -0.851
+     6   nd     1   AZM    N2    6    -0.399000     14.01000 ; qtot -1.250
+     7   nd     1   AZM    N3    7    -0.110000     14.01000 ; qtot -1.360
+     8    n     1   AZM    N4    8    -0.511401     14.01000 ; qtot -1.872
+     9    o     1   AZM    O1    9    -0.658301     16.00000 ; qtot -2.530
+    10    o     1   AZM    O2   10    -0.658301     16.00000 ; qtot -3.188
+    11    o     1   AZM    O3   11    -0.502101     16.00000 ; qtot -3.690
+    12   sy     1   AZM    S1   12     1.493802     32.06000 ; qtot -2.196
+    13   ss     1   AZM    S2   13     0.814201     32.06000 ; qtot -1.382
+    14   hc     1   AZM     H   14     0.036033      1.00800 ; qtot -1.346
+    15   hc     1   AZM    H1   15     0.036033      1.00800 ; qtot -1.310
+    16   hc     1   AZM    H2   16     0.036033      1.00800 ; qtot -1.274
+    17   hn     1   AZM    H3   17     0.455300      1.00800 ; qtot -0.819
+    18   hn     1   AZM    H4   18     0.455300      1.00800 ; qtot -0.364
+    19   hn     1   AZM    H5   19     0.363500      1.00800 ; qtot 0.000
 
 [ bonds ]
 ;   ai     aj funct   r             k

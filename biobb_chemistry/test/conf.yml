@@ -256,6 +256,7 @@ acpype_params_gmx_docker:
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_gmx_singularity:
   paths:
@@ -273,6 +274,7 @@ acpype_params_gmx_singularity:
     container_image: bioexcel-acpype_container-master-latest.simg
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_ac:
   paths:
@@ -307,6 +309,7 @@ acpype_params_ac_docker:
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_ac_singularity:
   paths:
@@ -326,6 +329,7 @@ acpype_params_ac_singularity:
     container_image: bioexcel-acpype_container-master-latest.simg
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_gmx_opls:
   paths:
@@ -352,6 +356,7 @@ acpype_params_gmx_opls_docker:
     container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_gmx_opls_singularity:
   paths:
@@ -367,6 +372,7 @@ acpype_params_gmx_opls_singularity:
     container_image: bioexcel-acpype_container-master-latest.simg
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_cns:
   paths:
@@ -394,9 +400,10 @@ acpype_params_cns_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: mmbirb/acpype:latest
+    container_image: local/acpype
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
 
 acpype_params_cns_singularity:
   paths:
@@ -414,3 +421,4 @@ acpype_params_cns_singularity:
     container_image: bioexcel-acpype_container-master-latest.simg
     container_volume_path: /tmp
     container_working_dir: /tmp
+    container_shell_path: /bin/sh
