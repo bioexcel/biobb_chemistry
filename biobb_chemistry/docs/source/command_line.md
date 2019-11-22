@@ -71,6 +71,14 @@ Config parameters for this building block:
 * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
 * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
 * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('mmbirb/acpype:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -167,6 +175,14 @@ Config parameters for this building block:
 * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
 * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
 * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('mmbirb/acpype:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -263,6 +279,14 @@ Config parameters for this building block:
 * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
 * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
 * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('mmbirb/acpype:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -356,6 +380,14 @@ Config parameters for this building block:
 * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
 * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.
 * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('mmbirb/acpype:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -448,6 +480,14 @@ Config parameters for this building block:
 * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2, 3.
 * **ph** (*float*) - (None) Add hydrogens appropriate for pH.
 * **obabel_path** (*str*) - ("obabel") Path to the obabel executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('informaticsmatters/obabel:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -544,6 +584,14 @@ Config parameters for this building block:
 * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2, 3.
 * **ph** (*float*) - (None) Add hydrogens appropriate for pH.
 * **obabel_path** (*str*) - ("obabel") Path to the obabel executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('informaticsmatters/obabel:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -645,6 +693,14 @@ Config parameters for this building block:
 * **rele** (*float*) - (10.0) Electrostatic cut-off distance.
 * **frequency** (*int*) - (10) Frequency to update the non-bonded pairs.
 * **obminimize_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('informaticsmatters/obabel:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -751,6 +807,14 @@ Config parameters for this building block:
 * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2, 3.
 * **ph** (*float*) - (None) Add hydrogens appropriate for pH.
 * **obabel_path** (*str*) - ("obabel") Path to the obabel executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('informaticsmatters/obabel:latest') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -860,6 +924,14 @@ Config parameters for this building block:
 * **noadjust** (*Boolean*) - (False) do not process any rot or flip adjustments
 * **build** (*Boolean*) - (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)
 * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('afandiadib/ambertools:serial') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
@@ -946,6 +1018,14 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 
 * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
+* **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
+* **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+* **container_path** (*string*) - (None) Container path definition.
+* **container_image** (*string*) - ('afandiadib/ambertools:serial') Container image definition.
+* **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
+* **container_working_dir** (*string*) - (None) Container working directory definition.
+* **container_user_id** (*string*) - (None) Container user_id definition.
+* **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
 ### YAML file config
 
