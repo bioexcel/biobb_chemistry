@@ -30,7 +30,7 @@ acpype.acpype_params_gmx module
     :show-inheritance:
 
 acpype.acpype_params_gmx_opls module
---------------------------------
+-------------------------------------
 
 .. automodule:: acpype.acpype_params_gmx_opls
     :members:
