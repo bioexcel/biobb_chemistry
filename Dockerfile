@@ -24,7 +24,7 @@ RUN apt-get install -y curl grep sed dpkg && \
 RUN conda config --add channels defaults
 RUN conda config --add channels bioconda
 RUN conda config --add channels conda-forge
-RUN conda install -y biobb_chemistry==1.0.8
+RUN conda install -y biobb_chemistry==2.0.0
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
