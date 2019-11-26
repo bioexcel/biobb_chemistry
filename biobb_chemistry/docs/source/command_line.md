@@ -80,9 +80,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-ac.yml:
+#### Common file config
 
 
 ```python
@@ -91,16 +91,44 @@ properties:
   charge: 0
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: docker
+  container_image: mmbirb/acpype:latest
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: singularity
+  container_image: bioexcel-acpype_container-master-latest.simg
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Command line
 
 
 ```python
 acpype_params_ac --config data/conf/ac.yml --input_path data/input/acpype.params.mol2 --output_path_frcmod data/output/output.ac.frcmod --output_path_inpcrd data/output/output.ac.inpcrd --output_path_lib data/output/output.ac.lib --output_path_prmtop data/output/output.ac.prmtop
 ```
 
-### JSON file config
+### JSON
 
-ac.json:
+#### Common file config
 
 
 ```python
@@ -112,7 +140,41 @@ ac.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "docker",
+    "container_image": "mmbirb/acpype:latest",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "singularity",
+    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -184,9 +246,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-cns.yml:
+#### Common file config
 
 
 ```python
@@ -195,16 +257,44 @@ properties:
   charge: 0
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: docker
+  container_image: mmbirb/acpype:latest
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: singularity
+  container_image: bioexcel-acpype_container-master-latest.simg
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Command line
 
 
 ```python
 acpype_params_cns --config data/conf/cns.yml --input_path data/input/acpype.params.mol2 --output_path_par data/output/output.cns.par --output_path_inp data/output/output.cns.inp --output_path_top data/output/output.cns.top
 ```
 
-### JSON file config
+### JSON
 
-cns.json:
+#### Common file config
 
 
 ```python
@@ -216,7 +306,41 @@ cns.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "docker",
+    "container_image": "mmbirb/acpype:latest",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "singularity",
+    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -288,9 +412,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-gmx.yml:
+#### Common file config
 
 
 ```python
@@ -299,16 +423,44 @@ properties:
   charge: 0
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: docker
+  container_image: mmbirb/acpype:latest
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: singularity
+  container_image: bioexcel-acpype_container-master-latest.simg
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Command line
 
 
 ```python
 acpype_params_gmx --config data/conf/gmx.yml --input_path data/input/acpype.params.mol2 --output_path_gro data/output/output.gmx.gro --output_path_itp data/output/output.gmx.itp --output_path_top data/output/output.gmx.top
 ```
 
-### JSON file config
+### JSON
 
-gmx.json:
+#### Common file config
 
 
 ```python
@@ -320,7 +472,41 @@ gmx.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "docker",
+    "container_image": "mmbirb/acpype:latest",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "singularity",
+    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -389,9 +575,11 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
+### YAML
+
 ### YAML file config
 
-gmx.yml:
+#### Common file config
 
 
 ```python
@@ -400,16 +588,44 @@ properties:
   charge: 0
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: docker
+  container_image: mmbirb/acpype:latest
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  basename: "BBB"
+  charge: 0
+  container_path: singularity
+  container_image: bioexcel-acpype_container-master-latest.simg
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+  container_shell_path: /bin/sh
+```
+
+#### Command line
 
 
 ```python
 acpype_params_gmx_opls --config data/conf/gmx.yml --input_path data/input/acpype.params.mol2 --output_path_itp data/output/output.gmx.opls.itp --output_path_top data/output/output.gmx.opls.top
 ```
 
-### JSON file config
+### JSON
 
-gmx.json:
+#### Common  file config
 
 
 ```python
@@ -421,7 +637,41 @@ gmx.json:
 }
 ```
 
-Command:
+#### Docker  file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "docker",
+    "container_image": "mmbirb/acpype:latest",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Singularity  file config
+
+
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "charge": 0,
+    "container_path": "singularity",
+    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp",
+    "container_shell_path": "/bin/sh"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -489,9 +739,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-add_hydrogens.yml:
+#### Common file config
 
 
 ```python
@@ -502,16 +752,44 @@ properties:
   ph: 7.4
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  input_format: pdb
+  output_format: pdb
+  coordinates: 3
+  ph: 7.4
+  container_path: docker
+  container_image: informaticsmatters/obabel:latest
+  container_volume_path: /tmp
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  input_format: pdb
+  output_format: pdb
+  coordinates: 3
+  ph: 7.4
+  container_path: singularity
+  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_volume_path: /tmp
+```
+
+#### Command line
 
 
 ```python
 babel_add_hydrogens --config data/conf/add_hydrogens.yml --input_path data/input/babel.no.H.pdb --output_path data/output/output.add.H.pdb
 ```
 
-### JSON file config
+### JSON
 
-add_hydrogens.json:
+#### Common file config
 
 
 ```python
@@ -525,7 +803,41 @@ add_hydrogens.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "input_format": "pdb",
+    "output_format": "pdb",
+    "coordinates": 3,
+    "ph": 7.4,
+    "container_path": "docker"
+    "container_image": "informaticsmatters/obabel:latest"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "input_format": "pdb",
+    "output_format": "pdb",
+    "coordinates": 3,
+    "ph": 7.4,
+    "container_path": "singularity"
+    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -593,9 +905,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-convert.yml:
+#### Common file config
 
 
 ```python
@@ -606,16 +918,44 @@ properties:
   ph: 7.4
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  input_format: smi
+  output_format: pdb
+  coordinates: 2
+  ph: 7.4
+  container_path: docker
+  container_image: informaticsmatters/obabel:latest
+  container_volume_path: /tmp
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  input_format: smi
+  output_format: pdb
+  coordinates: 2
+  ph: 7.4
+  container_path: singularity
+  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_volume_path: /tmp
+```
+
+#### Command line
 
 
 ```python
 babel_convert --config data/conf/convert.yml --input_path data/input/babel.smi --output_path data/output/output.convert.pdb
 ```
 
-### JSON file config
+### JSON
 
-convert.json:
+#### Common  file config
 
 
 ```python
@@ -629,7 +969,41 @@ convert.json:
 }
 ```
 
-Command:
+#### Docker  file config
+
+
+```python
+{
+  "properties": {
+    "input_format": "smi",
+    "output_format": "pdb",
+    "coordinates": 2,
+    "ph": 7.4,
+    "container_path": "docker"
+    "container_image": "informaticsmatters/obabel:latest"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Singularity  file config
+
+
+```python
+{
+  "properties": {
+    "input_format": "smi",
+    "output_format": "pdb",
+    "coordinates": 2,
+    "ph": 7.4,
+    "container_path": "singularity"
+    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -702,9 +1076,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-minimize.yml:
+#### Common file config
 
 
 ```python
@@ -720,16 +1094,54 @@ properties:
   frequency: 10
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  criteria: 1e-6
+  method: cg
+  force_field: GAFF
+  hydrogens: True
+  steps: 2500
+  cutoff: True
+  rvdw: 6.0
+  rele: 10.0
+  frequency: 10
+  container_path: docker
+  container_image: informaticsmatters/obabel:latest
+  container_volume_path: /tmp
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  criteria: 1e-6
+  method: cg
+  force_field: GAFF
+  hydrogens: True
+  steps: 2500
+  cutoff: True
+  rvdw: 6.0
+  rele: 10.0
+  frequency: 10
+  container_path: singularity
+  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_volume_path: /tmp
+```
+
+#### Command line
 
 
 ```python
 babel_minimize --config data/conf/minimize.yml --input_path data/input/babel.minimize.pdb --output_path data/output/output.minimize.pdb
 ```
 
-### JSON file config
+### JSON
 
-minimize.json:
+#### Common file config
 
 
 ```python
@@ -748,7 +1160,51 @@ minimize.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "criteria": 1e-6,
+    "method": "cg",
+    "force_field": "GAFF",
+    "hydrogens": true,
+    "steps": 2500,
+    "cutoff": true,
+    "rvdw": 6.0,
+    "rele": 10.0,
+    "frequency": 10,
+    "container_path": "docker"
+    "container_image": "informaticsmatters/obabel:latest"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "criteria": 1e-6,
+    "method": "cg",
+    "force_field": "GAFF",
+    "hydrogens": true,
+    "steps": 2500,
+    "cutoff": true,
+    "rvdw": 6.0,
+    "rele": 10.0,
+    "frequency": 10,
+    "container_path": "singularity"
+    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -816,9 +1272,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-remove_hydrogens.yml:
+#### Common file config
 
 
 ```python
@@ -829,16 +1285,44 @@ properties:
   ph: 7.4
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  input_format: pdb
+  output_format: pdb
+  coordinates: 3
+  ph: 7.4
+  container_path: docker
+  container_image: informaticsmatters/obabel:latest
+  container_volume_path: /tmp
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  input_format: pdb
+  output_format: pdb
+  coordinates: 3
+  ph: 7.4
+  container_path: singularity
+  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_volume_path: /tmp
+```
+
+#### Command line
 
 
 ```python
 babel_remove_hydrogens --config data/conf/remove_hydrogens.yml --input_path data/input/babel.H.pdb --output_path data/output/output.remove.H.pdb
 ```
 
-### JSON file config
+### JSON
 
-remove_hydrogens.json:
+#### Common file config
 
 
 ```python
@@ -852,7 +1336,41 @@ remove_hydrogens.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "input_format": "pdb",
+    "output_format": "pdb",
+    "coordinates": 3,
+    "ph": 7.4,
+    "container_path": "docker"
+    "container_image": "informaticsmatters/obabel:latest"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "input_format": "pdb",
+    "output_format": "pdb",
+    "coordinates": 3,
+    "ph": 7.4,
+    "container_path": "singularity"
+    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -933,9 +1451,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-reduce_add_hydrogens.yml:
+#### Common file config
 
 
 ```python
@@ -943,16 +1461,38 @@ properties:
   nooh: True
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  nooh: True
+  container_path: docker
+  container_image: afandiadib/ambertools:serial
+  container_volume_path: /tmp
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  nooh: True
+  container_path: singularity
+  container_image: bioexcel-ambertools_singularity-master-latest.simg
+  container_volume_path: /tmp
+```
+
+#### Command line
 
 
 ```python
 reduce_add_hydrogens --config data/conf/reduce_add_hydrogens.yml --input_path data/input/reduce.no.H.pdb --output_path data/output/output.reduce.H.pdb
 ```
 
-### JSON file config
+### JSON
 
-remove_hydrogens.json:
+#### Common file config
 
 
 ```python
@@ -963,7 +1503,35 @@ remove_hydrogens.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "nooh": true,
+    "container_path": "docker",
+    "container_image": "afandiadib/ambertools:serial",
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "nooh": true,
+    "container_path": "singularity",
+    "container_image": "bioexcel-ambertools_singularity-master-latest.simg",
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
@@ -1027,9 +1595,9 @@ Config parameters for this building block:
 * **container_user_id** (*string*) - (None) Container user_id definition.
 * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
 
-### YAML file config
+### YAML
 
-reduce_remove_hydrogens.yml:
+#### Common file config
 
 
 ```python
@@ -1037,16 +1605,38 @@ properties:
   reduce_path: "reduce"
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+properties:
+  reduce_path: "reduce"
+  container_path: docker
+  container_image: afandiadib/ambertools:serial
+  container_volume_path: /tmp
+```
+
+#### Singularity file config
+
+
+```python
+properties:
+  reduce_path: "reduce"
+  container_path: singularity
+  container_image: bioexcel-ambertools_singularity-master-latest.simg
+  container_volume_path: /tmp
+```
+
+#### Command line
 
 
 ```python
 reduce_remove_hydrogens --config data/conf/reduce_remove_hydrogens.yml --input_path data/input/reduce.H.pdb --output_path data/output/output.reduce.pdb
 ```
 
-### JSON file config
+### JSON
 
-reduce_remove_hydrogens.json:
+#### Common file config
 
 
 ```python
@@ -1057,7 +1647,35 @@ reduce_remove_hydrogens.json:
 }
 ```
 
-Command:
+#### Docker file config
+
+
+```python
+{
+  "properties": {
+    "reduce_path": "reduce",
+    "container_path": "docker",
+    "container_image": "afandiadib/ambertools:serial",
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Singularity file config
+
+
+```python
+{
+  "properties": {
+    "reduce_path": "reduce",
+    "container_path": "singularity",
+    "container_image": "bioexcel-ambertools_singularity-master-latest.simg",
+    "container_volume_path": "/tmp"
+  }
+}
+```
+
+#### Command line
 
 
 ```python
