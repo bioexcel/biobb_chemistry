@@ -11,52 +11,62 @@
         {
             "block" : "AcpypeParamsAC", 
             "tool" : "ACPype", 
-            "desc" : "Small molecule parameterization for AMBER MD package."
+            "desc" : "Small molecule parameterization for AMBER MD package.",
+            "exec" : "acpype_params_ac"
         }, 
         {
             "block" : "AcpypeParamsCNS", 
             "tool" : "ACPype", 
-            "desc" : "Small molecule parameterization for CNS/XPLOR MD package."
+            "desc" : "Small molecule parameterization for CNS/XPLOR MD package.",
+            "exec" : "acpype_params_cns"
         },
         {
             "block" : "AcpypeParamsGMX", 
             "tool" : "ACPype", 
-            "desc" : "Small molecule parameterization for GROMACS MD package."
+            "desc" : "Small molecule parameterization for GROMACS MD package.",
+            "exec" : "acpype_params_gmx"
         }, 
         {
             "block" : "AcpypeParamsGMXOPLS", 
             "tool" : "ACPype", 
-            "desc" : "Small molecule parameterization for OPLS/AA MD package."
+            "desc" : "Small molecule parameterization for OPLS/AA MD package.",
+            "exec" : "acpype_params_gmx_opls"
         }, 
         {
             "block" : "BabelConvert", 
             "tool" : "OpenBabel", 
-            "desc" : "Small molecule format conversion."
+            "desc" : "Small molecule format conversion.",
+            "exec" : "babel_convert"
         }, 
         {
             "block" : "BabelAddHydrogens", 
             "tool" : "OpenBabel", 
-            "desc" : "Adds hydrogen atoms to small molecules."
+            "desc" : "Adds hydrogen atoms to small molecules.",
+            "exec" : "babel_add_hydrogens"
         }, 
         {
             "block" : "BabelRemoveHydrogens", 
             "tool" : "OpenBabel", 
-            "desc" : "Removes hydrogen atoms to small molecules."
+            "desc" : "Removes hydrogen atoms to small molecules.",
+            "exec" : "babel_remove_hydrogens"
         },
         {
             "block" : "BabelMinimize", 
             "tool" : "OpenBabel", 
-            "desc" : "Energetically minimize small molecules."
+            "desc" : "Energetically minimize small molecules.",
+            "exec" : "babel_minimize"
         }, 
         {
             "block" : "ReduceAddHydrogens", 
             "tool" : "AmberTools Reduce", 
-            "desc" : "Adds hydrogen atoms to small molecules."
+            "desc" : "Adds hydrogen atoms to small molecules.",
+            "exec" : "reduce_add_hydrogens"
         },
         {
             "block" : "ReduceRemoveHydrogens", 
             "tool" : "AmberTools Reduce", 
-            "desc" : "Removes hydrogen atoms to small molecules."
+            "desc" : "Removes hydrogen atoms to small molecules.",
+            "exec" : "reduce_remove_hydrogens"
         }
     ],
     "dep_pypi" : [
