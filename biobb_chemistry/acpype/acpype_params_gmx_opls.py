@@ -43,7 +43,7 @@ class AcpypeParamsGMXOPLS():
         }
 
         # Properties specific for BB
-        self.basename = properties.get('basename', '')
+        self.basename = properties.get('basename', 'BBB')
         self.charge = properties.get('charge', '')
         self.acpype_path = get_binary_path(properties, 'acpype_path')
         self.properties = properties
