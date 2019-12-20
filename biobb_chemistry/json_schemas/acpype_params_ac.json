@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/acpype_params_ac",
-    "title": "Small molecule parameterization for AMBER MD package",
+    "title": "Small molecule parameterization for AMBER MD package.",
     "type": "object",
     "required": [
         "input_path",
@@ -75,6 +75,36 @@
                     "type": "boolean",
                     "default": false,
                     "description": "[WF property] Do not execute if output files exist."
+                },
+                "container_path": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Container path definition."
+                },
+                "container_image": {
+                    "type": "string",
+                    "default": "'mmbirb/acpype:latest'",
+                    "description": "Container image definition."
+                },
+                "container_volume_path": {
+                    "type": "string",
+                    "default": "'/tmp'",
+                    "description": "Container volume path definition."
+                },
+                "container_working_dir": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Container working directory definition."
+                },
+                "container_user_id": {
+                    "type": "string",
+                    "default": null,
+                    "description": "Container user_id definition."
+                },
+                "container_shell_path": {
+                    "type": "string",
+                    "default": "'/bin/bash'",
+                    "description": "Path to default shell inside the container."
                 }
             }
         }

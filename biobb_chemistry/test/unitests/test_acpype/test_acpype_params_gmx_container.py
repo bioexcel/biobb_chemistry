@@ -7,7 +7,7 @@ class TestAcpypeParamsGMXDocker():
         fx.test_setup(self,'acpype_params_gmx_docker')
 
     def tearDown(self):
-        #fx.test_teardown(self)
+        fx.test_teardown(self)
         pass
 
     def test_params_gmx_docker(self):

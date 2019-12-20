@@ -123,7 +123,7 @@ class AcpypeParamsAC():
         fu.check_properties(self, self.properties)
 
         if self.restart:
-            output_file_list = [self.output_path_frcmod, self.output_path_inpcrd, self.output_path_lib, self.output_path_prmtop]
+            output_file_list = [container_io_dict["out"]["output_path_frcmod"], container_io_dict["out"]["output_path_inpcrd"], container_io_dict["out"]["output_path_lib"], container_io_dict["out"]["output_path_prmtop"]]
             if fu.check_complete_files(output_file_list):
                 fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
                 return 0

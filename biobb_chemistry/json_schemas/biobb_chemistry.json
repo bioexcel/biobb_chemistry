@@ -6,7 +6,7 @@
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
     "docker" : "https://hub.docker.com/r/mmbirb/biobb_chemistry", 
     "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
-    "version" : "2.0.0",
+    "version" : "2.0.1",
     "tools" : [
         {
             "block" : "AcpypeParamsAC", 
@@ -76,12 +76,10 @@
     "dep_conda" : [
         "python ==3.6.*", 
         "biobb_common ==2.0.1", 
-        "openbabel ==2.4.1"
+        "openbabel ==2.4.1",
+        "ambertools ==19.10",
+        "acpype ==2019.10.05.12.26"
     ],
-    "dep_conda_extra" : [
-        "conda install -y -c ambermd ambertools==18.0",
-        "conda install -y -c acpype acpype==2018.4.24.22.34.57"
-    ], 
     "keywords" : [
         "chemistry", 
         "ambertools", 

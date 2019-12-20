@@ -120,7 +120,7 @@ class AcpypeParamsCNS():
         fu.check_properties(self, self.properties)
 
         if self.restart:
-            output_file_list = [self.output_path_par, self.output_path_inp, self.output_path_top]
+            output_file_list = [container_io_dict["out"]["output_path_par"], container_io_dict["out"]["output_path_inp"], container_io_dict["out"]["output_path_top"]]
             if fu.check_complete_files(output_file_list):
                 fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
                 return 0
