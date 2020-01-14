@@ -146,7 +146,7 @@ class BabelMinimize():
         fu.copy_to_host(self.container_path, container_io_dict, self.io_dict)
 
         # remove temporary folder(s)
-        if self.container_path: 
+        if self.container_path and self.remove_tmp: 
             fu.rm(container_io_dict['unique_dir'])
             fu.log('Removed: %s' % str(container_io_dict['unique_dir']), out_log)
 

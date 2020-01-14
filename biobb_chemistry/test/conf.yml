@@ -400,7 +400,7 @@ acpype_params_cns_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: local/acpype
+    container_image: mmbirb/acpype:latest
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
