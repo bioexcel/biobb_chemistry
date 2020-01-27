@@ -13,7 +13,7 @@ class AcpypeParamsGMX():
     Wrapper for the Acpype module. Generation of topologies for GROMACS.
     Acpype is a tool based in Python to use Antechamber to generate topologies for chemical
     compounds and to interface with others python applications like CCPN or ARIA. 
-    Visit the official page: https://github.com/alanwilter/acpype
+    `Visit the official page <https://github.com/alanwilter/acpype>`_.
 
     Args:
         input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2.
