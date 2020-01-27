@@ -16,7 +16,7 @@ class AcpypeParamsAC():
     `Visit the official page <https://github.com/alanwilter/acpype>`_.
 
     Args:
-        input_path (str) {file_in}: Path to the input file. Accepted formats: pdb, mdl, mol2.
+        input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2. <a href="http://bit.ly/30Zvcoo">Sample file</a>
         output_path_frcmod (str): Path to the FRCMOD output file. Accepted formats: frcmod.
         output_path_inpcrd (str): Path to the INPCRD output file. Accepted formats: inpcrd.
         output_path_lib (str): Path to the LIB output file. Accepted formats: lib.
