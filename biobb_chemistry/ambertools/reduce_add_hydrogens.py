@@ -11,7 +11,7 @@ from biobb_chemistry.ambertools.common import *
 class ReduceAddHydrogens():
     """Adds hydrogen atoms to small molecules.
     Wrapper of the Ambertools reduce module. Adds hydrogens to a given structure.
-    Reduce is a program for adding hydrogens to a Protein DataBank (PDB) molecular structure file: http://ambermd.org/doc12/AmberTools12.pdf
+    Reduce is a program for `adding hydrogens to a Protein DataBank (PDB) molecular structure file <http://ambermd.org/doc12/AmberTools12.pdf>`_.
 
     Args:
         input_path (str): Path to the input file. Accepted formats: pdb.

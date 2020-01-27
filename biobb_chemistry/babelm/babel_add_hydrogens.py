@@ -13,7 +13,7 @@ class BabelAddHydrogens():
     Wrapper of the Open Babel module. Adds hydrogens to a given structure or trajectory.
     Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project 
     allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, 
-    biochemistry, or related areas. Visit the official page: http://openbabel.org/wiki/Main_Page
+    biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
 
     Args:
         input_path (str): Path to the input file. Accepted formats: abinit, acesout, acr, adfout, alc, aoforce, arc, axsf, bgf, box, bs, c09out, c3d2, caccrt, can, car, castep, ccc, cdjson, cdx, cdxml, cif, ck, cml, cmlr, CONFIG, CONTCAR, CONTFF, crk2d, crk3d, ct, cub, cube, dallog, dalmol, dat, dmol, dx, ent, exyz, fa, fasta, fch, fchk, fck, feat, fhiaims, fract, fs, fsa, g03, g09, g92, g94, g98, gal, gam, gamess, gamin, gamout, got, gpr, gro, gukin, gukout, gzmat, hin, HISTORY, inchi, inp, ins, jin, jout, log, lpmd, mcdl, mcif, MDFF, mdl, ml2, mmcif, mmd, mmod, mol, mol2, mold, molden, molf, moo, mop, mopcrt, mopin, mopout, mpc, mpo, mpqc, mrv, msi, nwo, orca, out, outmol, output, pc, pcjson, pcm, pdb, pdbqt, png, pos, POSCAR, POSFF, pqr, pqs, prep, pwscf, qcout, res, rsmi, rxn, sd, sdf, siesta, smi, smiles, smy, sy2, t41, tdd, text, therm, tmol, txt, txyz, unixyz, VASP, vmol, xml, xsf, xtc, xyz, yob.
