@@ -12,7 +12,9 @@
     "properties": {
         "input_path": {
             "type": "string",
-            "description": "Path to the input file.",
+            "description": "Path to the input file",
+            "filetype": "input",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.params.mol2",
             "enum": [
                 ".*\\.pdb$",
                 ".*\\.mdl$",
@@ -21,21 +23,27 @@
         },
         "output_path_par": {
             "type": "string",
-            "description": "Path to the PAR output file.",
+            "description": "Path to the PAR output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.par",
             "enum": [
                 ".*\\.par$"
             ]
         },
         "output_path_inp": {
             "type": "string",
-            "description": "Path to the INP output file.",
+            "description": "Path to the INP output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.inp",
             "enum": [
                 ".*\\.inp$"
             ]
         },
         "output_path_top": {
             "type": "string",
-            "description": "Path to the TOP output file.",
+            "description": "Path to the TOP output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.top",
             "enum": [
                 ".*\\.top$"
             ]

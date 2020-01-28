@@ -10,14 +10,18 @@
     "properties": {
         "input_path": {
             "type": "string",
-            "description": "Path to the input file.",
+            "description": "Path to the input file",
+            "filetype": "input",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/ambertools/reduce.H.pdb",
             "enum": [
                 ".*\\.pdb$"
             ]
         },
         "output_path": {
             "type": "string",
-            "description": "Path to the output file.",
+            "description": "Path to the output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/ambertools/ref_reduce.remove.pdb",
             "enum": [
                 ".*\\.pdb$"
             ]

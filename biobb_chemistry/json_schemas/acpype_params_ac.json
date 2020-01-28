@@ -13,7 +13,9 @@
     "properties": {
         "input_path": {
             "type": "string",
-            "description": "Path to the input file.",
+            "description": "Path to the input file",
+            "filetype": "input",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.params.mol2",
             "enum": [
                 ".*\\.pdb$",
                 ".*\\.mdl$",
@@ -22,28 +24,36 @@
         },
         "output_path_frcmod": {
             "type": "string",
-            "description": "Path to the FRCMOD output file.",
+            "description": "Path to the FRCMOD output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.frcmod",
             "enum": [
                 ".*\\.frcmod$"
             ]
         },
         "output_path_inpcrd": {
             "type": "string",
-            "description": "Path to the INPCRD output file.",
+            "description": "Path to the INPCRD output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.inpcrd",
             "enum": [
                 ".*\\.inpcrd$"
             ]
         },
         "output_path_lib": {
             "type": "string",
-            "description": "Path to the LIB output file.",
+            "description": "Path to the LIB output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.lib",
             "enum": [
                 ".*\\.lib$"
             ]
         },
         "output_path_prmtop": {
             "type": "string",
-            "description": "Path to the PRMTOP output file.",
+            "description": "Path to the PRMTOP output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.prmtop",
             "enum": [
                 ".*\\.prmtop$"
             ]

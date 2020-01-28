@@ -16,9 +16,9 @@ class AcpypeParamsGMXOPLS():
     `Visit the official page <https://github.com/alanwilter/acpype>`_.
 
     Args:
-        input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2.
-        output_path_itp (str): Path to the ITP output file. Accepted formats: itp.
-        output_path_top (str): Path to the TOP output file. Accepted formats: top.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.params.mol2>`_. Accepted formats: pdb, mdl, mol2.
+        output_path_itp (str): Path to the ITP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.opls.itp>`_. Accepted formats: itp.
+        output_path_top (str): Path to the TOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.opls.top>`_. Accepted formats: top.
         properties (dic):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.

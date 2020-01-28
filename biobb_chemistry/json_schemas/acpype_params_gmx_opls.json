@@ -11,7 +11,9 @@
     "properties": {
         "input_path": {
             "type": "string",
-            "description": "Path to the input file.",
+            "description": "Path to the input file",
+            "filetype": "input",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.params.mol2",
             "enum": [
                 ".*\\.pdb$",
                 ".*\\.mdl$",
@@ -20,14 +22,18 @@
         },
         "output_path_itp": {
             "type": "string",
-            "description": "Path to the ITP output file.",
+            "description": "Path to the ITP output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.opls.itp",
             "enum": [
                 ".*\\.itp$"
             ]
         },
         "output_path_top": {
             "type": "string",
-            "description": "Path to the TOP output file.",
+            "description": "Path to the TOP output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.opls.top",
             "enum": [
                 ".*\\.top$"
             ]

@@ -16,10 +16,10 @@ class AcpypeParamsCNS():
     `Visit the official page <https://github.com/alanwilter/acpype>`_.
 
     Args:
-        input_path (str): Path to the input file. Accepted formats: pdb, mdl, mol2.
-        output_path_par (str): Path to the PAR output file. Accepted formats: par.
-        output_path_inp (str): Path to the INP output file. Accepted formats: inp.
-        output_path_top (str): Path to the TOP output file. Accepted formats: top.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.params.mol2>`_. Accepted formats: pdb, mdl, mol2.
+        output_path_par (str): Path to the PAR output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.par>`_. Accepted formats: par.
+        output_path_inp (str): Path to the INP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.inp>`_. Accepted formats: inp.
+        output_path_top (str): Path to the TOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.top>`_. Accepted formats: top.
         properties (dic):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.

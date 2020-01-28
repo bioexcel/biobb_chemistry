@@ -16,11 +16,11 @@ class AcpypeParamsAC():
     `Visit the official page <https://github.com/alanwilter/acpype>`_.
 
     Args:
-        input_path (str): Path to the input file. File type: input. Sample file: http://bit.ly/30Zvcoo. Accepted formats: pdb, mdl, mol2.
-        output_path_frcmod (str): Path to the FRCMOD output file. `Visit the official page <https://github.com/alanwilter/acpype>`_. Accepted formats: frcmod.
-        output_path_inpcrd (str): Path to the INPCRD output file. Accepted formats: inpcrd.
-        output_path_lib (str): Path to the LIB output file. Accepted formats: lib.
-        output_path_prmtop (str): Path to the PRMTOP output file. Accepted formats: prmtop.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.params.mol2>`_. Accepted formats: pdb, mdl, mol2.
+        output_path_frcmod (str): Path to the FRCMOD output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.frcmod>`_. Accepted formats: frcmod.
+        output_path_inpcrd (str): Path to the INPCRD output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.inpcrd>`_. Accepted formats: inpcrd.
+        output_path_lib (str): Path to the LIB output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.lib>`_. Accepted formats: lib.
+        output_path_prmtop (str): Path to the PRMTOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.prmtop>`_. Accepted formats: prmtop.
         properties (dic):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) Net molecular charge, for gas default is 0.

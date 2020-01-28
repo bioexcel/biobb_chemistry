@@ -14,8 +14,8 @@ class ReduceAddHydrogens():
     Reduce is a program for `adding hydrogens to a Protein DataBank (PDB) molecular structure file <http://ambermd.org/doc12/AmberTools12.pdf>`_.
 
     Args:
-        input_path (str): Path to the input file. Accepted formats: pdb.
-        output_path (str): Path to the output file. Accepted formats: pdb.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/ambertools/reduce.no.H.pdb>`_. Accepted formats: pdb.
+        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/ambertools/ref_reduce.add.pdb>`_. Accepted formats: pdb.
         properties (dic):
             * **flip** (*bool*) - (False) add H and rotate and flip NQH groups
             * **noflip** (*bool*) - (False) add H and rotate groups with no NQH flips

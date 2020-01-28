@@ -10,7 +10,9 @@
     "properties": {
         "input_path": {
             "type": "string",
-            "description": "Path to the input file.",
+            "description": "Path to the input file",
+            "filetype": "input",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.no.H.pdb",
             "enum": [
                 ".*\\.abinit$",
                 ".*\\.acesout$",
@@ -158,7 +160,9 @@
         },
         "output_path": {
             "type": "string",
-            "description": "Path to the output file.",
+            "description": "Path to the output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.hydrogens.pdb",
             "enum": [
                 ".*\\.acesin$",
                 ".*\\.adf$",

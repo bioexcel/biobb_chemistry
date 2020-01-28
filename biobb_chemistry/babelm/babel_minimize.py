@@ -16,8 +16,8 @@ class BabelMinimize():
     biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
 
     Args:
-        input_path (str): Path to the input file. Accepted formats: pdb, mol2.
-        output_path (str): Path to the output file. Accepted formats: pdb, mol2.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.minimize.pdb>`_. Accepted formats: pdb, mol2.
+        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.minimize.pdb>`_. Accepted formats: pdb, mol2.
         properties (dic):
             * **criteria** (*float*) - (1e-6) Convergence criteria
             * **method** (*str*) - ("cg") Method. Values: cg (conjugate gradients algorithm), sd (steepest descent algorithm).
