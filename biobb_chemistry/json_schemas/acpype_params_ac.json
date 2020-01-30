@@ -64,7 +64,7 @@
                 "basename": {
                     "type": "string",
                     "default": "BBB",
-                    "description": "A basename for the project (folder and output files)"
+                    "description": "A basename for the project (folder and output files)."
                 },
                 "charge": {
                     "type": "number",
