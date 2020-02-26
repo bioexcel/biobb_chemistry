@@ -1,4 +1,3 @@
-
 # BioBB Chemistry Command Line Help
 
 Generic usage:
@@ -27,15 +26,13 @@ acpype_params_ac -h
 
 
 ```python
-usage: acpype_params_ac [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path_frcmod OUTPUT_PATH_FRCMOD --output_path_inpcrd OUTPUT_PATH_INPCRD --output_path_lib OUTPUT_PATH_LIB --output_path_prmtop OUTPUT_PATH_PRMTOP
+usage: acpype_params_ac [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_frcmod OUTPUT_PATH_FRCMOD --output_path_inpcrd OUTPUT_PATH_INPCRD --output_path_lib OUTPUT_PATH_LIB --output_path_prmtop OUTPUT_PATH_PRMTOP
 
 Small molecule parameterization for AMBER MD package.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -196,15 +193,13 @@ acpype_params_cns -h
 
 
 ```python
-usage: acpype_params_cns [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP
+usage: acpype_params_cns [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP
 
 Small molecule parameterization for CNS/XPLOR MD package.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -362,15 +357,13 @@ acpype_params_gmx -h
 
 
 ```python
-usage: acpype_params_gmx [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
+usage: acpype_params_gmx [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
 
 Small molecule parameterization for GROMACS MD package.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -528,15 +521,13 @@ acpype_params_gmx_opls -h
 
 
 ```python
-usage: acpype_params_gmx_opls [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
+usage: acpype_params_gmx_opls [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
 
 Small molecule parameterization for OPLS/AA MD package.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -693,15 +684,13 @@ babel_add_hydrogens -h
 
 
 ```python
-usage: babel_add_hydrogens [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path OUTPUT_PATH
+usage: babel_add_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
 
 Adds hydrogen atoms to small molecules.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -859,15 +848,13 @@ babel_convert -h
 
 
 ```python
-usage: babel_convert [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path OUTPUT_PATH
+usage: babel_convert [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
 
 Small molecule format conversion.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -1025,15 +1012,13 @@ babel_minimize -h
 
 
 ```python
-usage: babel_minimize [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path OUTPUT_PATH
+usage: babel_minimize [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
 
 Energetically minimize small molecules.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -1226,15 +1211,13 @@ babel_remove_hydrogens -h
 
 
 ```python
-usage: babel_remove_hydrogens [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path OUTPUT_PATH
+usage: babel_remove_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
 
 Removes hydrogen atoms to small molecules.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -1392,15 +1375,13 @@ reduce_add_hydrogens -h
 
 
 ```python
-usage: reduce_add_hydrogens [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path OUTPUT_PATH
+usage: reduce_add_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
 
 Adds hydrogen atoms to small molecules.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH
@@ -1553,15 +1534,13 @@ reduce_remove_hydrogens -h
 
 
 ```python
-usage: reduce_remove_hydrogens [-h] [--config CONFIG] [--system SYSTEM] [--step STEP] --input_path INPUT_PATH --output_path OUTPUT_PATH
+usage: reduce_remove_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
 
 Removes hydrogen atoms to small molecules.
 
 optional arguments:
   -h, --help            show this help message and exit
   --config CONFIG       Configuration file
-  --system SYSTEM       Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
-  --step STEP           Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help
 
 required arguments:
   --input_path INPUT_PATH

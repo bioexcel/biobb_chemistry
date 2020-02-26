@@ -31,12 +31,12 @@ class BabelMinimize():
             * **obminimize_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
-            * **container_path** (*string*) - (None) Container path definition.
-            * **container_image** (*string*) - ('informaticsmatters/obabel:latest') Container image definition.
-            * **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
-            * **container_working_dir** (*string*) - (None) Container working directory definition.
-            * **container_user_id** (*string*) - (None) Container user_id definition.
-            * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
+            * **container_path** (*str*) - (None) Container path definition.
+            * **container_image** (*str*) - ('informaticsmatters/obabel:latest') Container image definition.
+            * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
+            * **container_working_dir** (*str*) - (None) Container working directory definition.
+            * **container_user_id** (*str*) - (None) Container user_id definition.
+            * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
     """
 
     def __init__(self, input_path, output_path, properties=None, **kwargs):
@@ -139,7 +139,14 @@ class BabelMinimize():
 
         # create and execute command line instruction
         cmd = self.create_cmd(container_io_dict, out_log, err_log) 
-        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, host_volume=container_io_dict.get("unique_dir"), container_volume=self.container_volume_path, container_working_dir=self.container_working_dir, container_user_uid=self.container_user_id, container_image=self.container_image, container_shell_path=self.container_shell_path, out_log=out_log, global_log=self.global_log)
+        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, 
+                                 host_volume=container_io_dict.get("unique_dir"), 
+                                 container_volume=self.container_volume_path, 
+                                 container_working_dir=self.container_working_dir, 
+                                 container_user_uid=self.container_user_id, 
+                                 container_image=self.container_image, 
+                                 container_shell_path=self.container_shell_path, 
+                                 out_log=out_log, global_log=self.global_log)
         returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
 
         # copy output(s) to output(s) path(s) in case of container execution
@@ -155,8 +162,6 @@ class BabelMinimize():
 def main():
     parser = argparse.ArgumentParser(description="Energetically minimize small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
-    parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
-    parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
 
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
@@ -165,12 +170,11 @@ def main():
 
     args = parser.parse_args()
     args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config, system=args.system).get_prop_dic()
-    if args.step:
-        properties = properties[args.step]
+    properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    BabelMinimize(input_path=args.input_path, output_path=args.output_path, properties=properties).launch()
+    BabelMinimize(input_path=args.input_path, output_path=args.output_path, 
+                  properties=properties).launch()
 
 if __name__ == '__main__':
     main()

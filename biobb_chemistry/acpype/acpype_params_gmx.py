@@ -26,12 +26,12 @@ class AcpypeParamsGMX():
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
-            * **container_path** (*string*) - (None) Container path definition.
-            * **container_image** (*string*) - ('mmbirb/acpype:latest') Container image definition.
-            * **container_volume_path** (*string*) - ('/tmp') Container volume path definition.
-            * **container_working_dir** (*string*) - (None) Container working directory definition.
-            * **container_user_id** (*string*) - (None) Container user_id definition.
-            * **container_shell_path** (*string*) - ('/bin/bash') Path to default shell inside the container.
+            * **container_path** (*str*) - (None) Container path definition.
+            * **container_image** (*str*) - ('mmbirb/acpype:latest') Container image definition.
+            * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
+            * **container_working_dir** (*str*) - (None) Container working directory definition.
+            * **container_user_id** (*str*) - (None) Container user_id definition.
+            * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
     """
 
     def __init__(self, input_path, output_path_gro, output_path_itp, output_path_top, properties=None, **kwargs):
@@ -120,7 +120,9 @@ class AcpypeParamsGMX():
         fu.check_properties(self, self.properties)
 
         if self.restart:
-            output_file_list = [container_io_dict["out"]["output_path_gro"], container_io_dict["out"]["output_path_itp"], container_io_dict["out"]["output_path_top"]]
+            output_file_list = [container_io_dict["out"]["output_path_gro"], 
+                                container_io_dict["out"]["output_path_itp"], 
+                                container_io_dict["out"]["output_path_top"]]
             if fu.check_complete_files(output_file_list):
                 fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
                 return 0
@@ -141,17 +143,25 @@ class AcpypeParamsGMX():
 
         # move files to output_path and removes temporary folder
         if self.container_path:
-            process_output_gmx(self.unique_name, container_io_dict['unique_dir'], self.remove_tmp, self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+            process_output_gmx(self.unique_name, 
+                               container_io_dict['unique_dir'], 
+                               self.remove_tmp, 
+                               self.basename, 
+                               get_default_value(self.__class__.__name__), 
+                               self.output_files, out_log)
         else:
-            process_output_gmx(self.unique_name, self.basename + "." + self.unique_name + ".acpype", self.remove_tmp, self.basename, get_default_value(self.__class__.__name__), self.output_files, out_log)
+            process_output_gmx(self.unique_name, 
+                               self.basename + "." + self.unique_name + ".acpype", 
+                               self.remove_tmp, 
+                               self.basename, 
+                               get_default_value(self.__class__.__name__), 
+                               self.output_files, out_log)
 
         return returncode
 
 def main():
     parser = argparse.ArgumentParser(description="Small molecule parameterization for GROMACS MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
-    parser.add_argument('--system', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
-    parser.add_argument('--step', required=False, help="Check 'https://biobb-common.readthedocs.io/en/latest/system_step.html' for help")
 
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
@@ -162,12 +172,13 @@ def main():
 
     args = parser.parse_args()
     args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config, system=args.system).get_prop_dic()
-    if args.step:
-        properties = properties[args.step]
+    properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    AcpypeParamsGMX(input_path=args.input_path, output_path_gro=args.output_path_gro, output_path_itp=args.output_path_itp, output_path_top=args.output_path_top, properties=properties).launch()
+    AcpypeParamsGMX(input_path=args.input_path, output_path_gro=args.output_path_gro, 
+                    output_path_itp=args.output_path_itp, 
+                    output_path_top=args.output_path_top, 
+                    properties=properties).launch()
 
 if __name__ == '__main__':
     main()

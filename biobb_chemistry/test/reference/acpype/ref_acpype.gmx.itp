@@ -1,4 +1,4 @@
-; BBB_GMX.itp created by acpype (v: 2019-03-22T14:36:00UTC) on Fri Dec 20 12:59:54 2019
+; BBB_GMX.itp created by acpype (v: 2019-03-22T14:36:00UTC) on Wed Feb 26 10:51:07 2020
 
 [ atomtypes ]
 ;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
