@@ -6,7 +6,7 @@
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
     "docker" : "https://quay.io/repository/biocontainers/biobb_chemistry", 
     "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
-    "version" : "2.0.1",
+    "version" : "2.0.2",
     "tools" : [
         {
             "block" : "AcpypeParamsAC", 
