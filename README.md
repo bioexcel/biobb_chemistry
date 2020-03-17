@@ -55,13 +55,13 @@ Using SINGULARITY:
 * Installation:
 
 
-        singularity pull shub://bioexcel/biobb_chemistry
+        singularity pull --name biobb_chemistry.sif shub://bioexcel/biobb_chemistry
 
 
 * Usage:
 
 
-        singularity exec bioexcel-biobb_chemistry-master-latest.simg <command>
+        singularity exec biobb_chemistry.sif <command>
 
 
 The command list and specification can be found at the [Command Line documentation](https://biobb-chemistry.readthedocs.io/en/latest/command_line.html).

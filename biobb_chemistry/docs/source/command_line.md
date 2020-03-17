@@ -108,7 +108,7 @@ properties:
   basename: "BBB"
   charge: 0
   container_path: singularity
-  container_image: bioexcel-acpype_container-master-latest.simg
+  container_image: acpype.sif
   container_volume_path: /tmp
   container_working_dir: /tmp
   container_shell_path: /bin/sh
@@ -161,7 +161,7 @@ acpype_params_ac --config data/conf/ac.yml --input_path data/input/acpype.params
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_image": "acpype.sif",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh"
@@ -272,7 +272,7 @@ properties:
   basename: "BBB"
   charge: 0
   container_path: singularity
-  container_image: bioexcel-acpype_container-master-latest.simg
+  container_image: acpype.sif
   container_volume_path: /tmp
   container_working_dir: /tmp
   container_shell_path: /bin/sh
@@ -325,7 +325,7 @@ acpype_params_cns --config data/conf/cns.yml --input_path data/input/acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_image": "acpype.sif",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh"
@@ -436,7 +436,7 @@ properties:
   basename: "BBB"
   charge: 0
   container_path: singularity
-  container_image: bioexcel-acpype_container-master-latest.simg
+  container_image: acpype.sif
   container_volume_path: /tmp
   container_working_dir: /tmp
   container_shell_path: /bin/sh
@@ -489,7 +489,7 @@ acpype_params_gmx --config data/conf/gmx.yml --input_path data/input/acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_image": "acpype.sif",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh"
@@ -599,7 +599,7 @@ properties:
   basename: "BBB"
   charge: 0
   container_path: singularity
-  container_image: bioexcel-acpype_container-master-latest.simg
+  container_image: acpype.sif
   container_volume_path: /tmp
   container_working_dir: /tmp
   container_shell_path: /bin/sh
@@ -652,7 +652,7 @@ acpype_params_gmx_opls --config data/conf/gmx.yml --input_path data/input/acpype
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "bioexcel-acpype_container-master-latest.simg",
+    "container_image": "acpype.sif",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh"
@@ -763,7 +763,7 @@ properties:
   coordinates: 3
   ph: 7.4
   container_path: singularity
-  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_image: obabel.sif
   container_volume_path: /tmp
 ```
 
@@ -818,7 +818,7 @@ babel_add_hydrogens --config data/conf/add_hydrogens.yml --input_path data/input
     "coordinates": 3,
     "ph": 7.4,
     "container_path": "singularity"
-    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_image": "obabel.sif"
     "container_volume_path": "/tmp"
   }
 }
@@ -927,7 +927,7 @@ properties:
   coordinates: 2
   ph: 7.4
   container_path: singularity
-  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_image: obabel.sif
   container_volume_path: /tmp
 ```
 
@@ -982,7 +982,7 @@ babel_convert --config data/conf/convert.yml --input_path data/input/babel.smi -
     "coordinates": 2,
     "ph": 7.4,
     "container_path": "singularity"
-    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_image": "obabel.sif"
     "container_volume_path": "/tmp"
   }
 }
@@ -1111,7 +1111,7 @@ properties:
   rele: 10.0
   frequency: 10
   container_path: singularity
-  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_image: obabel.sif
   container_volume_path: /tmp
 ```
 
@@ -1181,7 +1181,7 @@ babel_minimize --config data/conf/minimize.yml --input_path data/input/babel.min
     "rele": 10.0,
     "frequency": 10,
     "container_path": "singularity"
-    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_image": "obabel.sif"
     "container_volume_path": "/tmp"
   }
 }
@@ -1290,7 +1290,7 @@ properties:
   coordinates: 3
   ph: 7.4
   container_path: singularity
-  container_image: bioexcel-obabel_singularity-master-latest.simg
+  container_image: obabel.sif
   container_volume_path: /tmp
 ```
 
@@ -1345,7 +1345,7 @@ babel_remove_hydrogens --config data/conf/remove_hydrogens.yml --input_path data
     "coordinates": 3,
     "ph": 7.4,
     "container_path": "singularity"
-    "container_image": "bioexcel-obabel_singularity-master-latest.simg"
+    "container_image": "obabel.sif"
     "container_volume_path": "/tmp"
   }
 }
@@ -1458,7 +1458,7 @@ properties:
 properties:
   nooh: True
   container_path: singularity
-  container_image: bioexcel-ambertools_singularity-master-latest.simg
+  container_image: ambertools.sif
   container_volume_path: /tmp
 ```
 
@@ -1504,7 +1504,7 @@ reduce_add_hydrogens --config data/conf/reduce_add_hydrogens.yml --input_path da
   "properties": {
     "nooh": true,
     "container_path": "singularity",
-    "container_image": "bioexcel-ambertools_singularity-master-latest.simg",
+    "container_image": "ambertools.sif",
     "container_volume_path": "/tmp"
   }
 }
@@ -1600,7 +1600,7 @@ properties:
 properties:
   reduce_path: "reduce"
   container_path: singularity
-  container_image: bioexcel-ambertools_singularity-master-latest.simg
+  container_image: ambertools.sif
   container_volume_path: /tmp
 ```
 
@@ -1646,7 +1646,7 @@ reduce_remove_hydrogens --config data/conf/reduce_remove_hydrogens.yml --input_p
   "properties": {
     "reduce_path": "reduce",
     "container_path": "singularity",
-    "container_image": "bioexcel-ambertools_singularity-master-latest.simg",
+    "container_image": "ambertools.sif",
     "container_volume_path": "/tmp"
   }
 }
