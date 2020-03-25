@@ -52,6 +52,8 @@ Using DOCKER:
 
 Using SINGULARITY:
 
+**MacOS users**: it's strongly recommended to avoid Singularity and use **Docker** as containerization system.
+
 * Installation:
 
 

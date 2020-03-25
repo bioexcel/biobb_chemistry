@@ -244,11 +244,11 @@ acpype_params_gmx_docker:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_gro: ref_acpype.gmx.gro
-    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.container.gro
     output_path_itp: ref_acpype.gmx.itp
-    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.container.itp
     output_path_top: ref_acpype.gmx.top
-    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.container.top
   properties:
     basename: "BBB"
     charge: 0
@@ -262,11 +262,11 @@ acpype_params_gmx_singularity:
   paths:
     input_path: file:test_data_dir/acpype/acpype.params.mol2
     output_path_gro: ref_acpype.gmx.gro
-    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.gmx.container.gro
     output_path_itp: ref_acpype.gmx.itp
-    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.itp
+    ref_output_acpype_path_itp: file:test_reference_dir/acpype/ref_acpype.gmx.container.itp
     output_path_top: ref_acpype.gmx.top
-    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.gmx.container.top
   properties:
     basename: "BBB"
     charge: 0
