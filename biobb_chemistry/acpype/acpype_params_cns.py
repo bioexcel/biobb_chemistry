@@ -34,7 +34,8 @@ class AcpypeParamsCNS():
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
     """
 
-    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, properties=None, **kwargs):
+    def __init__(self, input_path, 
+                 output_path_par, output_path_inp, output_path_top, properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -106,7 +107,7 @@ class AcpypeParamsCNS():
         return instructions_list
 
     @launchlogger
-    def launch(self):
+    def launch(self) -> int:
         """Launches the execution of the Open Babel module."""
         
         # Get local loggers from launchlogger decorator

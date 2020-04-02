@@ -28,7 +28,8 @@ class ReduceRemoveHydrogens():
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
     """
 
-    def __init__(self, input_path, output_path, properties=None, **kwargs):
+    def __init__(self, input_path, 
+                 output_path, properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -74,7 +75,7 @@ class ReduceRemoveHydrogens():
 
         return instructions_list
 
-    def launch(self):
+    def launch(self) -> int:
         """Launches the execution of the Open Babel module."""
         
         # Get local loggers from launchlogger decorator
