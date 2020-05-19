@@ -6,7 +6,7 @@
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
     "docker" : "https://quay.io/repository/biocontainers/biobb_chemistry", 
     "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
-    "version" : "3.0.0",
+    "version" : "3.0.1",
     "tools" : [
         {
             "block" : "AcpypeParamsAC", 
@@ -76,8 +76,8 @@
     "dep_conda" : [
         "python ==3.7.*", 
         "biobb_common ==3.0.0", 
-        "openbabel ==3.0.0",
-        "ambertools ==19.10",
+        "openbabel ==2.4.1",
+        "ambertools ==20.0",
         "acpype ==2019.10.05.12.26"
     ],
     "keywords" : [

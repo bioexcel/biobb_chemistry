@@ -98,12 +98,15 @@ class BabelAddHydrogens():
 
         instructions_list.append(coordinates)
 
+        # checking pH
+        p = get_ph(self.ph, out_log)
+
+        # adding H
         hydrogens = '-h'
 
         instructions_list.append(hydrogens)
 
         # adding pH
-        p = get_ph(self.ph, out_log)
         ph = ''
         if p:
             ph = '-p ' + p

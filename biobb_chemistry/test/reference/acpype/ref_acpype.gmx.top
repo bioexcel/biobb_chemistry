@@ -1,4 +1,4 @@
-; BBB_GMX.top created by acpype (v: 2019-03-22T14:36:00UTC) on Wed Feb 26 10:51:07 2020
+; BBB_GMX.top created by acpype (v: 2019-11-07T23:16:00CET) on Tue May 19 12:48:52 2020
 
 [ defaults ]
 ; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ

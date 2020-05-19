@@ -7,11 +7,11 @@ ANGLE
 
 DIHE
 nd-cc-ss-cc   2    2.200       180.000           2.000      same as X -c2-ss-X , penalty score=232.0
+nd-cc-sy-n3   6    7.600       180.000           2.000      same as X -ce-sy-X , penalty score=136.0
+nd-cc-sy-o    6    7.600       180.000           2.000      same as X -ce-sy-X , penalty score=136.0
 n -cc-ss-cc   2    2.200       180.000           2.000      same as X -c2-ss-X , penalty score=232.0
 sy-cc-ss-cc   2    2.200       180.000           2.000      same as X -c2-ss-X , penalty score=232.0
-nd-cc-sy-n3   6    7.600       180.000           2.000      same as X -ce-sy-X , penalty score=136.0
 ss-cc-sy-n3   6    7.600       180.000           2.000      same as X -ce-sy-X , penalty score=136.0
-nd-cc-sy-o    6    7.600       180.000           2.000      same as X -ce-sy-X , penalty score=136.0
 ss-cc-sy-o    6    7.600       180.000           2.000      same as X -ce-sy-X , penalty score=136.0
 
 IMPROPER
