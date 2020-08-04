@@ -19,6 +19,9 @@ v3.0.1 2020.2
 
 ### Installation
 Using PIP:
+
+> **Important:** PIP only installs the package. All the dependencies must be installed separately. To perform a complete installation, please use ANACONDA, DOCKER or SINGULARITY.
+
 * Installation:
 
 
