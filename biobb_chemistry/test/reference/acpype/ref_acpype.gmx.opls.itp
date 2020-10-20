@@ -1,4 +1,4 @@
-; BBB_GMX_OPLS.itp created by acpype (v: 2019-11-07T23:16:00CET) on Tue May 19 12:49:51 2020
+; BBB_GMX_OPLS.itp created by acpype (v: 2019-11-07T23:16:00CET) on Tue Oct 20 10:16:24 2020
 
 ; For OPLS atomtypes manual fine tuning
 ; AC_at:OPLS_at:OPLScode: Possible_Aternatives (see ffoplsaa.atp and ffoplsaanb.itp)
