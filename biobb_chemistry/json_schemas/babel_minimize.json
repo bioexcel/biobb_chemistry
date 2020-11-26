@@ -1,8 +1,21 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/babel_minimize",
-    "title": "Energetically minimize small molecules.",
+    "name": "biobb_chemistry BabelMinimize",
+    "title": "This class is a wrapper of the Open Babel tool.",
+    "description": "Energetically minimizes small molecules. Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, biochemistry, or related areas. Visit the official page.",
     "type": "object",
+    "info": {
+        "wrapped_software": {
+            "name": "Open Babel",
+            "version": "2.4.1",
+            "license": "GNU"
+        },
+        "ontology": {
+            "name": "EDAM",
+            "schema": "http://edamontology.org/EDAM.owl"
+        }
+    },
     "required": [
         "input_path",
         "output_path"
@@ -16,6 +29,18 @@
             "enum": [
                 ".*\\.pdb$",
                 ".*\\.mol2$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.pdb$",
+                    "description": "Path to the input file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.mol2$",
+                    "description": "Path to the input file",
+                    "edam": "format_3816"
+                }
             ]
         },
         "output_path": {
@@ -26,110 +51,184 @@
             "enum": [
                 ".*\\.pdb$",
                 ".*\\.mol2$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.pdb$",
+                    "description": "Path to the output file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.mol2$",
+                    "description": "Path to the output file",
+                    "edam": "format_3816"
+                }
             ]
         },
         "properties": {
             "type": "object",
             "properties": {
                 "criteria": {
-                    "type": "float",
-                    "default": "1e-6",
+                    "type": "number",
+                    "default": 1e-06,
+                    "wf_prop": false,
                     "description": "Convergence criteria"
                 },
                 "method": {
                     "type": "string",
                     "default": "cg",
-                    "description": "Method.",
+                    "wf_prop": false,
+                    "description": "Method. ",
                     "enum": [
-                        "cg (conjugate gradients algorithm)",
-                        "sd (steepest descent algorithm)"
+                        "cg",
+                        "sd"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "cg",
+                            "description": "conjugate gradients algorithm"
+                        },
+                        {
+                            "name": "sd",
+                            "description": "steepest descent algorithm"
+                        }
                     ]
                 },
                 "force_field": {
                     "type": "string",
                     "default": null,
-                    "description": "Force field.",
+                    "wf_prop": false,
+                    "description": "Force field. ",
                     "enum": [
-                        "GAFF (General Amber Force Field)",
-                        "Ghemical (Ghemical force field)",
-                        "MMFF94 (MMFF94 force field)",
-                        "MMFF94s (MMFF94s force field)",
-                        "UFF (Universal Force Field)"
+                        "GAFF",
+                        "Ghemical",
+                        "MMFF94",
+                        "MMFF94s",
+                        "UFF"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "GAFF",
+                            "description": "General Amber Force Field"
+                        },
+                        {
+                            "name": "Ghemical",
+                            "description": "Ghemical force field"
+                        },
+                        {
+                            "name": "MMFF94",
+                            "description": "MMFF94 force field"
+                        },
+                        {
+                            "name": "MMFF94s",
+                            "description": "MMFF94s force field"
+                        },
+                        {
+                            "name": "UFF",
+                            "description": "Universal Force Field"
+                        }
                     ]
                 },
                 "hydrogens": {
                     "type": "boolean",
                     "default": false,
+                    "wf_prop": false,
                     "description": "Add hydrogen atoms."
                 },
                 "steps": {
-                    "type": "number",
+                    "type": "integer",
                     "default": 2500,
-                    "description": "Maximum number of steps."
+                    "wf_prop": false,
+                    "description": "Maximum number of steps.",
+                    "min": 0,
+                    "max": 5000,
+                    "step": 1
                 },
                 "cutoff": {
                     "type": "boolean",
                     "default": false,
+                    "wf_prop": false,
                     "description": "Use cut-off."
                 },
                 "rvdw": {
-                    "type": "float",
+                    "type": "number",
                     "default": 6.0,
-                    "description": "VDW cut-off distance."
+                    "wf_prop": false,
+                    "description": "VDW cut-off distance.",
+                    "min": 0.0,
+                    "max": 50.0,
+                    "step": 1.0
                 },
                 "rele": {
-                    "type": "float",
+                    "type": "number",
                     "default": 10.0,
-                    "description": "Electrostatic cut-off distance."
+                    "wf_prop": false,
+                    "description": "Electrostatic cut-off distance.",
+                    "min": 0.0,
+                    "max": 50.0,
+                    "step": 1.0
                 },
                 "frequency": {
-                    "type": "number",
+                    "type": "integer",
                     "default": 10,
-                    "description": "Frequency to update the non-bonded pairs."
+                    "wf_prop": false,
+                    "description": "Frequency to update the non-bonded pairs.",
+                    "min": 0,
+                    "max": 50,
+                    "step": 1
                 },
                 "obminimize_path": {
                     "type": "string",
                     "default": "obminimize",
+                    "wf_prop": false,
                     "description": "Path to the obminimize executable binary."
                 },
                 "remove_tmp": {
                     "type": "boolean",
                     "default": true,
-                    "description": "[WF property] Remove temporal files."
+                    "wf_prop": true,
+                    "description": "Remove temporal files."
                 },
                 "restart": {
                     "type": "boolean",
                     "default": false,
-                    "description": "[WF property] Do not execute if output files exist."
+                    "wf_prop": true,
+                    "description": "Do not execute if output files exist."
                 },
                 "container_path": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container path definition."
                 },
                 "container_image": {
                     "type": "string",
-                    "default": "'informaticsmatters/obabel:latest'",
+                    "default": "informaticsmatters/obabel:latest",
+                    "wf_prop": false,
                     "description": "Container image definition."
                 },
                 "container_volume_path": {
                     "type": "string",
-                    "default": "'/tmp'",
+                    "default": "/tmp",
+                    "wf_prop": false,
                     "description": "Container volume path definition."
                 },
                 "container_working_dir": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container working directory definition."
                 },
                 "container_user_id": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container user_id definition."
                 },
                 "container_shell_path": {
                     "type": "string",
-                    "default": "'/bin/bash'",
+                    "default": "/bin/bash",
+                    "wf_prop": false,
                     "description": "Path to default shell inside the container."
                 }
             }

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Module containing the Open Babel class and the command line interface."""
+"""Module containing the BabelMinimize class and the command line interface."""
 import argparse
 from biobb_common.configuration import  settings
 from biobb_common.tools import file_utils as fu
@@ -9,25 +9,24 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.babelm.common import *
 
 class BabelMinimize():
-    """Energetically minimize small molecules.
-    Wrapper of the Open Babel module. Structure minimization.
-    Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project 
-    allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, 
-    biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
+    """
+    | biobb_chemistry BabelMinimize
+    | This class is a wrapper of the `Open Babel <http://openbabel.org/wiki/Main_Page>`_ tool.
+    | Energetically minimizes small molecules. Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
 
     Args:
-        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.minimize.pdb>`_. Accepted formats: pdb, mol2.
-        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.minimize.pdb>`_. Accepted formats: pdb, mol2.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
+        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
         properties (dic):
             * **criteria** (*float*) - (1e-6) Convergence criteria
             * **method** (*str*) - ("cg") Method. Values: cg (conjugate gradients algorithm), sd (steepest descent algorithm).
             * **force_field** (*str*) - (None) Force field. Values: GAFF (General Amber Force Field), Ghemical (Ghemical force field), MMFF94 (MMFF94 force field), MMFF94s (MMFF94s force field), UFF (Universal Force Field).
             * **hydrogens** (*bool*) - (False) Add hydrogen atoms.
-            * **steps** (*int*) - (2500) Maximum number of steps.
+            * **steps** (*int*) - (2500) [0~5000|1] Maximum number of steps.
             * **cutoff** (*bool*) - (False) Use cut-off.
-            * **rvdw** (*float*) - (6.0) VDW cut-off distance.
-            * **rele** (*float*) - (10.0) Electrostatic cut-off distance.
-            * **frequency** (*int*) - (10) Frequency to update the non-bonded pairs.
+            * **rvdw** (*float*) - (6.0) [0~50|1.0] VDW cut-off distance.
+            * **rele** (*float*) - (10.0) [0~50|1.0] Electrostatic cut-off distance.
+            * **frequency** (*int*) - (10) [0~50|1] Frequency to update the non-bonded pairs.
             * **obminimize_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -37,6 +36,16 @@ class BabelMinimize():
             * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
+
+    Info:
+        * wrapped_software:
+            * name: Open Babel
+            * version: 2.4.1
+            * license: GNU
+        * ontology:
+            * name: EDAM
+            * schema: http://edamontology.org/EDAM.owl
+
     """
 
     def __init__(self, input_path, 

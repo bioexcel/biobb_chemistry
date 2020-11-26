@@ -1,8 +1,21 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/acpype_params_cns",
-    "title": "Small molecule parameterization for CNS/XPLOR MD package.",
+    "name": "biobb_chemistry AcpypeParamsCNS",
+    "title": "This class is a wrapper of Acpype tool for small molecule parameterization for CNS/XPLOR MD package.",
+    "description": "Generation of topologies for CNS/XPLOR. Acpype is a tool based in Python to use Antechamber to generate topologies for chemical compounds and to interface with others python applications like CCPN or ARIA. Visit the official page.",
     "type": "object",
+    "info": {
+        "wrapped_software": {
+            "name": "Acpype",
+            "version": "2019.10.05.12.26",
+            "license": "GNU"
+        },
+        "ontology": {
+            "name": "EDAM",
+            "schema": "http://edamontology.org/EDAM.owl"
+        }
+    },
     "required": [
         "input_path",
         "output_path_par",
@@ -19,6 +32,23 @@
                 ".*\\.pdb$",
                 ".*\\.mdl$",
                 ".*\\.mol2$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.pdb$",
+                    "description": "Path to the input file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.mdl$",
+                    "description": "Path to the input file",
+                    "edam": "format_3815"
+                },
+                {
+                    "extension": ".*\\.mol2$",
+                    "description": "Path to the input file",
+                    "edam": "format_3816"
+                }
             ]
         },
         "output_path_par": {
@@ -28,6 +58,13 @@
             "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.par",
             "enum": [
                 ".*\\.par$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.par$",
+                    "description": "Path to the PAR output file",
+                    "edam": "format_3881"
+                }
             ]
         },
         "output_path_inp": {
@@ -37,6 +74,13 @@
             "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.inp",
             "enum": [
                 ".*\\.inp$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.inp$",
+                    "description": "Path to the INP output file",
+                    "edam": "format_3878"
+                }
             ]
         },
         "output_path_top": {
@@ -46,6 +90,13 @@
             "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.top",
             "enum": [
                 ".*\\.top$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.top$",
+                    "description": "Path to the TOP output file",
+                    "edam": "format_3881"
+                }
             ]
         },
         "properties": {
@@ -54,56 +105,70 @@
                 "basename": {
                     "type": "string",
                     "default": "BBB",
+                    "wf_prop": false,
                     "description": "A basename for the project (folder and output files)."
                 },
                 "charge": {
-                    "type": "number",
+                    "type": "integer",
                     "default": 0,
-                    "description": "Net molecular charge, for gas default is 0."
+                    "wf_prop": false,
+                    "description": "Net molecular charge, for gas default is 0.",
+                    "min": -20,
+                    "max": 20,
+                    "step": 1
                 },
                 "acpype_path": {
                     "type": "string",
                     "default": "acpype",
+                    "wf_prop": false,
                     "description": "Path to the acpype executable binary."
                 },
                 "remove_tmp": {
                     "type": "boolean",
                     "default": true,
-                    "description": "[WF property] Remove temporal files."
+                    "wf_prop": true,
+                    "description": "Remove temporal files."
                 },
                 "restart": {
                     "type": "boolean",
                     "default": false,
-                    "description": "[WF property] Do not execute if output files exist."
+                    "wf_prop": true,
+                    "description": "Do not execute if output files exist."
                 },
                 "container_path": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container path definition."
                 },
                 "container_image": {
                     "type": "string",
-                    "default": "'mmbirb/acpype:latest'",
+                    "default": "mmbirb/acpype:latest",
+                    "wf_prop": false,
                     "description": "Container image definition."
                 },
                 "container_volume_path": {
                     "type": "string",
-                    "default": "'/tmp'",
+                    "default": "/tmp",
+                    "wf_prop": false,
                     "description": "Container volume path definition."
                 },
                 "container_working_dir": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container working directory definition."
                 },
                 "container_user_id": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container user_id definition."
                 },
                 "container_shell_path": {
                     "type": "string",
-                    "default": "'/bin/bash'",
+                    "default": "/bin/bash",
+                    "wf_prop": false,
                     "description": "Path to default shell inside the container."
                 }
             }

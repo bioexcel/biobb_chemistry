@@ -1,8 +1,21 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/babel_remove_hydrogens",
-    "title": "Removes hydrogen atoms to small molecules.",
+    "name": "biobb_chemistry BabelRemoveHydrogens",
+    "title": "This class is a wrapper of the Open Babel tool.",
+    "description": "Removes hydrogens to a given structure or trajectory. Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, biochemistry, or related areas. Visit the official page.",
     "type": "object",
+    "info": {
+        "wrapped_software": {
+            "name": "Open Babel",
+            "version": "2.4.1",
+            "license": "GNU"
+        },
+        "ontology": {
+            "name": "EDAM",
+            "schema": "http://edamontology.org/EDAM.owl"
+        }
+    },
     "required": [
         "input_path",
         "output_path"
@@ -14,148 +27,140 @@
             "filetype": "input",
             "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.H.pdb",
             "enum": [
-                ".*\\.abinit$",
-                ".*\\.acesout$",
-                ".*\\.acr$",
-                ".*\\.adfout$",
-                ".*\\.alc$",
-                ".*\\.aoforce$",
-                ".*\\.arc$",
-                ".*\\.axsf$",
-                ".*\\.bgf$",
-                ".*\\.box$",
-                ".*\\.bs$",
-                ".*\\.c09out$",
-                ".*\\.c3d2$",
-                ".*\\.caccrt$",
-                ".*\\.can$",
-                ".*\\.car$",
-                ".*\\.castep$",
-                ".*\\.ccc$",
-                ".*\\.cdjson$",
-                ".*\\.cdx$",
-                ".*\\.cdxml$",
-                ".*\\.cif$",
-                ".*\\.ck$",
-                ".*\\.cml$",
-                ".*\\.cmlr$",
-                ".*\\.CONFIG$",
-                ".*\\.CONTCAR$",
-                ".*\\.CONTFF$",
-                ".*\\.crk2d$",
-                ".*\\.crk3d$",
-                ".*\\.ct$",
-                ".*\\.cub$",
-                ".*\\.cube$",
-                ".*\\.dallog$",
-                ".*\\.dalmol$",
                 ".*\\.dat$",
-                ".*\\.dmol$",
-                ".*\\.dx$",
                 ".*\\.ent$",
-                ".*\\.exyz$",
                 ".*\\.fa$",
                 ".*\\.fasta$",
-                ".*\\.fch$",
-                ".*\\.fchk$",
-                ".*\\.fck$",
-                ".*\\.feat$",
-                ".*\\.fhiaims$",
-                ".*\\.fract$",
-                ".*\\.fs$",
-                ".*\\.fsa$",
-                ".*\\.g03$",
-                ".*\\.g09$",
-                ".*\\.g92$",
-                ".*\\.g94$",
-                ".*\\.g98$",
-                ".*\\.gal$",
-                ".*\\.gam$",
-                ".*\\.gamess$",
-                ".*\\.gamin$",
-                ".*\\.gamout$",
-                ".*\\.got$",
-                ".*\\.gpr$",
                 ".*\\.gro$",
-                ".*\\.gukin$",
-                ".*\\.gukout$",
-                ".*\\.gzmat$",
-                ".*\\.hin$",
-                ".*\\.HISTORY$",
-                ".*\\.inchi$",
                 ".*\\.inp$",
-                ".*\\.ins$",
-                ".*\\.jin$",
-                ".*\\.jout$",
                 ".*\\.log$",
-                ".*\\.lpmd$",
-                ".*\\.mcdl$",
                 ".*\\.mcif$",
-                ".*\\.MDFF$",
                 ".*\\.mdl$",
-                ".*\\.ml2$",
                 ".*\\.mmcif$",
-                ".*\\.mmd$",
-                ".*\\.mmod$",
                 ".*\\.mol$",
                 ".*\\.mol2$",
-                ".*\\.mold$",
-                ".*\\.molden$",
-                ".*\\.molf$",
-                ".*\\.moo$",
-                ".*\\.mop$",
-                ".*\\.mopcrt$",
-                ".*\\.mopin$",
-                ".*\\.mopout$",
-                ".*\\.mpc$",
-                ".*\\.mpo$",
-                ".*\\.mpqc$",
-                ".*\\.mrv$",
-                ".*\\.msi$",
-                ".*\\.nwo$",
-                ".*\\.orca$",
-                ".*\\.out$",
-                ".*\\.outmol$",
-                ".*\\.output$",
-                ".*\\.pc$",
-                ".*\\.pcjson$",
-                ".*\\.pcm$",
                 ".*\\.pdb$",
                 ".*\\.pdbqt$",
                 ".*\\.png$",
-                ".*\\.pos$",
-                ".*\\.POSCAR$",
-                ".*\\.POSFF$",
-                ".*\\.pqr$",
-                ".*\\.pqs$",
-                ".*\\.prep$",
-                ".*\\.pwscf$",
-                ".*\\.qcout$",
-                ".*\\.res$",
-                ".*\\.rsmi$",
-                ".*\\.rxn$",
-                ".*\\.sd$",
                 ".*\\.sdf$",
-                ".*\\.siesta$",
                 ".*\\.smi$",
                 ".*\\.smiles$",
-                ".*\\.smy$",
-                ".*\\.sy2$",
-                ".*\\.t41$",
-                ".*\\.tdd$",
-                ".*\\.text$",
-                ".*\\.therm$",
-                ".*\\.tmol$",
                 ".*\\.txt$",
-                ".*\\.txyz$",
-                ".*\\.unixyz$",
-                ".*\\.VASP$",
-                ".*\\.vmol$",
                 ".*\\.xml$",
-                ".*\\.xsf$",
                 ".*\\.xtc$",
-                ".*\\.xyz$",
-                ".*\\.yob$"
+                ".*\\.xyz$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.dat$",
+                    "description": "Path to the input file",
+                    "edam": "data_0006"
+                },
+                {
+                    "extension": ".*\\.ent$",
+                    "description": "Path to the input file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.fa$",
+                    "description": "Path to the input file",
+                    "edam": "format_1929"
+                },
+                {
+                    "extension": ".*\\.fasta$",
+                    "description": "Path to the input file",
+                    "edam": "format_1929"
+                },
+                {
+                    "extension": ".*\\.gro$",
+                    "description": "Path to the input file",
+                    "edam": "format_2033"
+                },
+                {
+                    "extension": ".*\\.inp$",
+                    "description": "Path to the input file",
+                    "edam": "format_3878"
+                },
+                {
+                    "extension": ".*\\.log$",
+                    "description": "Path to the input file",
+                    "edam": "format_2033"
+                },
+                {
+                    "extension": ".*\\.mcif$",
+                    "description": "Path to the input file",
+                    "edam": "format_1477"
+                },
+                {
+                    "extension": ".*\\.mdl$",
+                    "description": "Path to the input file",
+                    "edam": "format_3815"
+                },
+                {
+                    "extension": ".*\\.mmcif$",
+                    "description": "Path to the input file",
+                    "edam": "format_1477"
+                },
+                {
+                    "extension": ".*\\.mol$",
+                    "description": "Path to the input file",
+                    "edam": "format_3815"
+                },
+                {
+                    "extension": ".*\\.mol2$",
+                    "description": "Path to the input file",
+                    "edam": "format_3816"
+                },
+                {
+                    "extension": ".*\\.pdb$",
+                    "description": "Path to the input file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.pdbqt$",
+                    "description": "Path to the input file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.png$",
+                    "description": "Path to the input file",
+                    "edam": "format_3603"
+                },
+                {
+                    "extension": ".*\\.sdf$",
+                    "description": "Path to the input file",
+                    "edam": "format_3814"
+                },
+                {
+                    "extension": ".*\\.smi$",
+                    "description": "Path to the input file",
+                    "edam": "format_1196"
+                },
+                {
+                    "extension": ".*\\.smiles$",
+                    "description": "Path to the input file",
+                    "edam": "format_1196"
+                },
+                {
+                    "extension": ".*\\.txt$",
+                    "description": "Path to the input file",
+                    "edam": "format_2033"
+                },
+                {
+                    "extension": ".*\\.xml$",
+                    "description": "Path to the input file",
+                    "edam": "format_2332"
+                },
+                {
+                    "extension": ".*\\.xtc$",
+                    "description": "Path to the input file",
+                    "edam": "format_3875"
+                },
+                {
+                    "extension": ".*\\.xyz$",
+                    "description": "Path to the input file",
+                    "edam": "format_3877"
+                }
             ]
         },
         "output_path": {
@@ -164,138 +169,116 @@
             "filetype": "output",
             "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.nohydrogens.pdb",
             "enum": [
-                ".*\\.acesin$",
-                ".*\\.adf$",
-                ".*\\.alc$",
-                ".*\\.ascii$",
-                ".*\\.bgf$",
-                ".*\\.box$",
-                ".*\\.bs$",
-                ".*\\.c3d1$",
-                ".*\\.c3d2$",
-                ".*\\.cac$",
-                ".*\\.caccrt$",
-                ".*\\.cache$",
-                ".*\\.cacint$",
-                ".*\\.can$",
-                ".*\\.cdjson$",
-                ".*\\.cdxml$",
-                ".*\\.cht$",
-                ".*\\.cif$",
-                ".*\\.ck$",
-                ".*\\.cml$",
-                ".*\\.cmlr$",
-                ".*\\.com$",
-                ".*\\.confabreport$",
-                ".*\\.CONFIG$",
-                ".*\\.CONTCAR$",
-                ".*\\.CONTFF$",
-                ".*\\.copy$",
-                ".*\\.crk2d$",
-                ".*\\.crk3d$",
-                ".*\\.csr$",
-                ".*\\.cssr$",
-                ".*\\.ct$",
-                ".*\\.cub$",
-                ".*\\.cube$",
-                ".*\\.dalmol$",
-                ".*\\.dmol$",
-                ".*\\.dx$",
                 ".*\\.ent$",
-                ".*\\.exyz$",
                 ".*\\.fa$",
                 ".*\\.fasta$",
-                ".*\\.feat$",
-                ".*\\.fh$",
-                ".*\\.fhiaims$",
-                ".*\\.fix$",
-                ".*\\.fps$",
-                ".*\\.fpt$",
-                ".*\\.fract$",
-                ".*\\.fs$",
-                ".*\\.fsa$",
-                ".*\\.gamin$",
-                ".*\\.gau$",
-                ".*\\.gjc$",
-                ".*\\.gjf$",
-                ".*\\.gpr$",
-                ".*\\.gr96$",
                 ".*\\.gro$",
-                ".*\\.gukin$",
-                ".*\\.gukout$",
-                ".*\\.gzmat$",
-                ".*\\.hin$",
-                ".*\\.inchi$",
-                ".*\\.inchikey$",
                 ".*\\.inp$",
-                ".*\\.jin$",
-                ".*\\.k$",
-                ".*\\.lmpdat$",
-                ".*\\.lpmd$",
-                ".*\\.mcdl$",
                 ".*\\.mcif$",
-                ".*\\.MDFF$",
                 ".*\\.mdl$",
-                ".*\\.ml2$",
                 ".*\\.mmcif$",
-                ".*\\.mmd$",
-                ".*\\.mmod$",
-                ".*\\.mna$",
                 ".*\\.mol$",
                 ".*\\.mol2$",
-                ".*\\.mold$",
-                ".*\\.molden$",
-                ".*\\.molf$",
-                ".*\\.molreport$",
-                ".*\\.mop$",
-                ".*\\.mopcrt$",
-                ".*\\.mopin$",
-                ".*\\.mp$",
-                ".*\\.mpc$",
-                ".*\\.mpd$",
-                ".*\\.mpqcin$",
-                ".*\\.mrv$",
-                ".*\\.msms$",
-                ".*\\.nul$",
-                ".*\\.nw$",
-                ".*\\.orcainp$",
-                ".*\\.outmol$",
-                ".*\\.paint$",
-                ".*\\.pcjson$",
-                ".*\\.pcm$",
                 ".*\\.pdb$",
                 ".*\\.pdbqt$",
                 ".*\\.png$",
-                ".*\\.pointcloud$",
-                ".*\\.POSCAR$",
-                ".*\\.POSFF$",
-                ".*\\.pov$",
-                ".*\\.pqr$",
-                ".*\\.pqs$",
-                ".*\\.qcin$",
-                ".*\\.report$",
-                ".*\\.rsmi$",
-                ".*\\.rxn$",
-                ".*\\.sd$",
                 ".*\\.sdf$",
                 ".*\\.smi$",
                 ".*\\.smiles$",
-                ".*\\.stl$",
-                ".*\\.svg$",
-                ".*\\.sy2$",
-                ".*\\.tdd$",
-                ".*\\.text$",
-                ".*\\.therm$",
-                ".*\\.tmol$",
                 ".*\\.txt$",
-                ".*\\.txyz$",
-                ".*\\.unixyz$",
-                ".*\\.VASP$",
-                ".*\\.vmol$",
-                ".*\\.xed$",
-                ".*\\.xyz$",
-                ".*\\.yob$",
-                ".*\\.zin$"
+                ".*\\.xyz$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.ent$",
+                    "description": "Path to the output file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.fa$",
+                    "description": "Path to the output file",
+                    "edam": "format_1929"
+                },
+                {
+                    "extension": ".*\\.fasta$",
+                    "description": "Path to the output file",
+                    "edam": "format_1929"
+                },
+                {
+                    "extension": ".*\\.gro$",
+                    "description": "Path to the output file",
+                    "edam": "format_2033"
+                },
+                {
+                    "extension": ".*\\.inp$",
+                    "description": "Path to the output file",
+                    "edam": "format_3878"
+                },
+                {
+                    "extension": ".*\\.mcif$",
+                    "description": "Path to the output file",
+                    "edam": "format_1477"
+                },
+                {
+                    "extension": ".*\\.mdl$",
+                    "description": "Path to the output file",
+                    "edam": "format_3815"
+                },
+                {
+                    "extension": ".*\\.mmcif$",
+                    "description": "Path to the output file",
+                    "edam": "format_1477"
+                },
+                {
+                    "extension": ".*\\.mol$",
+                    "description": "Path to the output file",
+                    "edam": "format_3815"
+                },
+                {
+                    "extension": ".*\\.mol2$",
+                    "description": "Path to the output file",
+                    "edam": "format_3816"
+                },
+                {
+                    "extension": ".*\\.pdb$",
+                    "description": "Path to the output file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.pdbqt$",
+                    "description": "Path to the output file",
+                    "edam": "format_1476"
+                },
+                {
+                    "extension": ".*\\.png$",
+                    "description": "Path to the output file",
+                    "edam": "format_3603"
+                },
+                {
+                    "extension": ".*\\.sdf$",
+                    "description": "Path to the output file",
+                    "edam": "format_3814"
+                },
+                {
+                    "extension": ".*\\.smi$",
+                    "description": "Path to the output file",
+                    "edam": "format_1196"
+                },
+                {
+                    "extension": ".*\\.smiles$",
+                    "description": "Path to the output file",
+                    "edam": "format_1196"
+                },
+                {
+                    "extension": ".*\\.txt$",
+                    "description": "Path to the output file",
+                    "edam": "format_2033"
+                },
+                {
+                    "extension": ".*\\.xyz$",
+                    "description": "Path to the output file",
+                    "edam": "format_3877"
+                }
             ]
         },
         "properties": {
@@ -304,348 +287,304 @@
                 "input_format": {
                     "type": "string",
                     "default": null,
-                    "description": "Format of input file. If not provided, file extension will be taken.",
+                    "wf_prop": false,
+                    "description": "Format of input file. If not provided, input_path extension will be taken. ",
                     "enum": [
-                        "abinit",
-                        "acesout",
-                        "acr",
-                        "adfout",
-                        "alc",
-                        "aoforce",
-                        "arc",
-                        "axsf",
-                        "bgf",
-                        "box",
-                        "bs",
-                        "c09out",
-                        "c3d2",
-                        "caccrt",
-                        "can",
-                        "car",
-                        "castep",
-                        "ccc",
-                        "cdjson",
-                        "cdx",
-                        "cdxml",
-                        "cif",
-                        "ck",
-                        "cml",
-                        "cmlr",
-                        "CONFIG",
-                        "CONTCAR",
-                        "CONTFF",
-                        "crk2d",
-                        "crk3d",
-                        "ct",
-                        "cub",
-                        "cube",
-                        "dallog",
-                        "dalmol",
                         "dat",
-                        "dmol",
-                        "dx",
                         "ent",
-                        "exyz",
                         "fa",
                         "fasta",
-                        "fch",
-                        "fchk",
-                        "fck",
-                        "feat",
-                        "fhiaims",
-                        "fract",
-                        "fs",
-                        "fsa",
-                        "g03",
-                        "g09",
-                        "g92",
-                        "g94",
-                        "g98",
-                        "gal",
-                        "gam",
-                        "gamess",
-                        "gamin",
-                        "gamout",
-                        "got",
-                        "gpr",
                         "gro",
-                        "gukin",
-                        "gukout",
-                        "gzmat",
-                        "hin",
-                        "HISTORY",
-                        "inchi",
                         "inp",
-                        "ins",
-                        "jin",
-                        "jout",
                         "log",
-                        "lpmd",
-                        "mcdl",
                         "mcif",
-                        "MDFF",
                         "mdl",
-                        "ml2",
                         "mmcif",
-                        "mmd",
-                        "mmod",
                         "mol",
                         "mol2",
-                        "mold",
-                        "molden",
-                        "molf",
-                        "moo",
-                        "mop",
-                        "mopcrt",
-                        "mopin",
-                        "mopout",
-                        "mpc",
-                        "mpo",
-                        "mpqc",
-                        "mrv",
-                        "msi",
-                        "nwo",
-                        "orca",
-                        "out",
-                        "outmol",
-                        "output",
-                        "pc",
-                        "pcjson",
-                        "pcm",
                         "pdb",
                         "pdbqt",
                         "png",
-                        "pos",
-                        "POSCAR",
-                        "POSFF",
-                        "pqr",
-                        "pqs",
-                        "prep",
-                        "pwscf",
-                        "qcout",
-                        "res",
-                        "rsmi",
-                        "rxn",
-                        "sd",
                         "sdf",
-                        "siesta",
                         "smi",
                         "smiles",
-                        "smy",
-                        "sy2",
-                        "t41",
-                        "tdd",
-                        "text",
-                        "therm",
-                        "tmol",
                         "txt",
-                        "txyz",
-                        "unixyz",
-                        "VASP",
-                        "vmol",
                         "xml",
-                        "xsf",
                         "xtc",
-                        "xyz",
-                        "yob"
+                        "xyz"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "dat",
+                            "description": null
+                        },
+                        {
+                            "name": "ent",
+                            "description": null
+                        },
+                        {
+                            "name": "fa",
+                            "description": null
+                        },
+                        {
+                            "name": "fasta",
+                            "description": null
+                        },
+                        {
+                            "name": "gro",
+                            "description": null
+                        },
+                        {
+                            "name": "inp",
+                            "description": null
+                        },
+                        {
+                            "name": "log",
+                            "description": null
+                        },
+                        {
+                            "name": "mcif",
+                            "description": null
+                        },
+                        {
+                            "name": "mdl",
+                            "description": null
+                        },
+                        {
+                            "name": "mmcif",
+                            "description": null
+                        },
+                        {
+                            "name": "mol",
+                            "description": null
+                        },
+                        {
+                            "name": "mol2",
+                            "description": null
+                        },
+                        {
+                            "name": "pdb",
+                            "description": null
+                        },
+                        {
+                            "name": "pdbqt",
+                            "description": null
+                        },
+                        {
+                            "name": "png",
+                            "description": null
+                        },
+                        {
+                            "name": "sdf",
+                            "description": null
+                        },
+                        {
+                            "name": "smi",
+                            "description": null
+                        },
+                        {
+                            "name": "smiles",
+                            "description": null
+                        },
+                        {
+                            "name": "txt",
+                            "description": null
+                        },
+                        {
+                            "name": "xml",
+                            "description": null
+                        },
+                        {
+                            "name": "xtc",
+                            "description": null
+                        },
+                        {
+                            "name": "xyz",
+                            "description": null
+                        }
                     ]
                 },
                 "output_format": {
                     "type": "string",
                     "default": null,
-                    "description": "Format of output file. If not provided, file extension will be taken.",
+                    "wf_prop": false,
+                    "description": "Format of output file. If not provided, output_path extension will be taken. ",
                     "enum": [
-                        "acesin",
-                        "adf",
-                        "alc",
-                        "ascii",
-                        "bgf",
-                        "box",
-                        "bs",
-                        "c3d1",
-                        "c3d2",
-                        "cac",
-                        "caccrt",
-                        "cache",
-                        "cacint",
-                        "can",
-                        "cdjson",
-                        "cdxml",
-                        "cht",
-                        "cif",
-                        "ck",
-                        "cml",
-                        "cmlr",
-                        "com",
-                        "confabreport",
-                        "CONFIG",
-                        "CONTCAR",
-                        "CONTFF",
-                        "copy",
-                        "crk2d",
-                        "crk3d",
-                        "csr",
-                        "cssr",
-                        "ct",
-                        "cub",
-                        "cube",
-                        "dalmol",
-                        "dmol",
-                        "dx",
                         "ent",
-                        "exyz",
                         "fa",
                         "fasta",
-                        "feat",
-                        "fh",
-                        "fhiaims",
-                        "fix",
-                        "fps",
-                        "fpt",
-                        "fract",
-                        "fs",
-                        "fsa",
-                        "gamin",
-                        "gau",
-                        "gjc",
-                        "gjf",
-                        "gpr",
-                        "gr96",
                         "gro",
-                        "gukin",
-                        "gukout",
-                        "gzmat",
-                        "hin",
-                        "inchi",
-                        "inchikey",
                         "inp",
-                        "jin",
-                        "k",
-                        "lmpdat",
-                        "lpmd",
-                        "mcdl",
                         "mcif",
-                        "MDFF",
                         "mdl",
-                        "ml2",
                         "mmcif",
-                        "mmd",
-                        "mmod",
-                        "mna",
                         "mol",
                         "mol2",
-                        "mold",
-                        "molden",
-                        "molf",
-                        "molreport",
-                        "mop",
-                        "mopcrt",
-                        "mopin",
-                        "mp",
-                        "mpc",
-                        "mpd",
-                        "mpqcin",
-                        "mrv",
-                        "msms",
-                        "nul",
-                        "nw",
-                        "orcainp",
-                        "outmol",
-                        "paint",
-                        "pcjson",
-                        "pcm",
                         "pdb",
                         "pdbqt",
                         "png",
-                        "pointcloud",
-                        "POSCAR",
-                        "POSFF",
-                        "pov",
-                        "pqr",
-                        "pqs",
-                        "qcin",
-                        "report",
-                        "rsmi",
-                        "rxn",
-                        "sd",
                         "sdf",
                         "smi",
                         "smiles",
-                        "stl",
-                        "svg",
-                        "sy2",
-                        "tdd",
-                        "text",
-                        "therm",
-                        "tmol",
                         "txt",
-                        "txyz",
-                        "unixyz",
-                        "VASP",
-                        "vmol",
-                        "xed",
-                        "xyz",
-                        "yob",
-                        "zin"
+                        "xyz"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "ent",
+                            "description": null
+                        },
+                        {
+                            "name": "fa",
+                            "description": null
+                        },
+                        {
+                            "name": "fasta",
+                            "description": null
+                        },
+                        {
+                            "name": "gro",
+                            "description": null
+                        },
+                        {
+                            "name": "inp",
+                            "description": null
+                        },
+                        {
+                            "name": "mcif",
+                            "description": null
+                        },
+                        {
+                            "name": "mdl",
+                            "description": null
+                        },
+                        {
+                            "name": "mmcif",
+                            "description": null
+                        },
+                        {
+                            "name": "mol",
+                            "description": null
+                        },
+                        {
+                            "name": "mol2",
+                            "description": null
+                        },
+                        {
+                            "name": "pdb",
+                            "description": null
+                        },
+                        {
+                            "name": "pdbqt",
+                            "description": null
+                        },
+                        {
+                            "name": "png",
+                            "description": null
+                        },
+                        {
+                            "name": "sdf",
+                            "description": null
+                        },
+                        {
+                            "name": "smi",
+                            "description": null
+                        },
+                        {
+                            "name": "smiles",
+                            "description": null
+                        },
+                        {
+                            "name": "txt",
+                            "description": null
+                        },
+                        {
+                            "name": "xyz",
+                            "description": null
+                        }
                     ]
                 },
                 "coordinates": {
-                    "type": "number",
+                    "type": "integer",
                     "default": null,
-                    "description": "Type of coordinates: 2D or 3D.",
+                    "wf_prop": false,
+                    "description": "Type of coordinates: 2D or 3D. ",
                     "enum": [
-                        "2",
-                        "3"
+                        2,
+                        3
+                    ],
+                    "property_formats": [
+                        {
+                            "name": 2,
+                            "description": "2D coordinates"
+                        },
+                        {
+                            "name": 3,
+                            "description": "3D coordinates"
+                        }
                     ]
                 },
                 "ph": {
-                    "type": "float",
+                    "type": "number",
                     "default": null,
-                    "description": "Add hydrogens appropriate for pH."
+                    "wf_prop": false,
+                    "description": "Add hydrogens appropriate for pH.",
+                    "min": -10.0,
+                    "max": 20.0,
+                    "step": 1.0
                 },
                 "obabel_path": {
                     "type": "string",
                     "default": "obabel",
+                    "wf_prop": false,
                     "description": "Path to the obabel executable binary."
                 },
                 "remove_tmp": {
                     "type": "boolean",
                     "default": true,
-                    "description": "[WF property] Remove temporal files."
+                    "wf_prop": true,
+                    "description": "Remove temporal files."
                 },
                 "restart": {
                     "type": "boolean",
                     "default": false,
-                    "description": "[WF property] Do not execute if output files exist."
+                    "wf_prop": true,
+                    "description": "Do not execute if output files exist."
                 },
                 "container_path": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container path definition."
                 },
                 "container_image": {
                     "type": "string",
-                    "default": "'informaticsmatters/obabel:latest'",
+                    "default": "informaticsmatters/obabel:latest",
+                    "wf_prop": false,
                     "description": "Container image definition."
                 },
                 "container_volume_path": {
                     "type": "string",
-                    "default": "'/tmp'",
+                    "default": "/tmp",
+                    "wf_prop": false,
                     "description": "Container volume path definition."
                 },
                 "container_working_dir": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container working directory definition."
                 },
                 "container_user_id": {
                     "type": "string",
                     "default": null,
+                    "wf_prop": false,
                     "description": "Container user_id definition."
                 },
                 "container_shell_path": {
                     "type": "string",
-                    "default": "'/bin/bash'",
+                    "default": "/bin/bash",
+                    "wf_prop": false,
                     "description": "Path to default shell inside the container."
                 }
             }

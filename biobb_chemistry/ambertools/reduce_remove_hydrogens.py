@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Module containing the Open Babel class and the command line interface."""
+"""Module containing the ReduceRemoveHydrogens class and the command line interface."""
 import argparse
 from biobb_common.configuration import settings
 from biobb_common.tools import file_utils as fu
@@ -9,13 +9,14 @@ from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.ambertools.common import *
 
 class ReduceRemoveHydrogens():
-    """Removes hydrogen atoms to small molecules.
-    Wrapper of the Ambertools reduce module. Removes hydrogens from a given structure.
-    Reduce is a program for `adding hydrogens to a Protein DataBank (PDB) molecular structure file <http://ambermd.org/doc12/AmberTools12.pdf>`_.
+    """
+    | biobb_chemistry ReduceRemoveHydrogens
+    | This class is a wrapper of the `Ambertools <http://ambermd.org/doc12/AmberTools12.pdf>`_ reduce module for removing hydrogens from a given structure.
+    | Reduce is a program for `adding or removing hydrogens to a Protein DataBank (PDB) molecular structure file <http://ambermd.org/doc12/AmberTools12.pdf>`_.
 
     Args:
-        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/ambertools/reduce.H.pdb>`_. Accepted formats: pdb.
-        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/ambertools/ref_reduce.remove.pdb>`_. Accepted formats: pdb.
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/ambertools/reduce.H.pdb>`_. Accepted formats: pdb (edam:format_1476).
+        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/ambertools/ref_reduce.remove.pdb>`_. Accepted formats: pdb (edam:format_1476).
         properties (dic):
             * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
@@ -26,6 +27,16 @@ class ReduceRemoveHydrogens():
             * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
+
+    Info:
+        * wrapped_software:
+            * name: AmberTools
+            * version: >=20.0
+            * license: GNU
+        * ontology:
+            * name: EDAM
+            * schema: http://edamontology.org/EDAM.owl
+
     """
 
     def __init__(self, input_path, 
