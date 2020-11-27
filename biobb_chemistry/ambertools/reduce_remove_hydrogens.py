@@ -30,7 +30,7 @@ class ReduceRemoveHydrogens():
 
     Info:
         * wrapped_software:
-            * name: AmberTools
+            * name: AmberTools Reduce
             * version: >=20.0
             * license: GNU
         * ontology:
