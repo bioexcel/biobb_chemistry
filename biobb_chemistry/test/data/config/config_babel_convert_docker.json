@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "input_format": "smi",
+    "output_format": "mol2",
+    "coordinates": 2,
+    "ph": 7.4,
+    "container_path": "docker",
+    "container_image": "informaticsmatters/obabel:latest",
+    "container_volume_path": "/tmp"
+  }
+}

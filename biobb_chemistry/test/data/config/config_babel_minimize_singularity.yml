@@ -1,0 +1,13 @@
+properties:
+  container_image: shub://bioexcel/obabel_singularity
+  container_path: singularity
+  container_volume_path: /tmp
+  criteria: 1e-6
+  cutoff: true
+  force_field: GAFF
+  frequency: 10
+  hydrogens: true
+  method: cg
+  rele: 10.0
+  rvdw: 6.0
+  steps: 2500

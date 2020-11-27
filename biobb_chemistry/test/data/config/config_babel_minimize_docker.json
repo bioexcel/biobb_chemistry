@@ -8,6 +8,9 @@
     "cutoff": true,
     "rvdw": 6.0,
     "rele": 10.0,
-    "frequency": 10
+    "frequency": 10,
+    "container_path": "docker",
+    "container_image": "informaticsmatters/obabel:latest",
+    "container_volume_path": "/tmp"
   }
 }

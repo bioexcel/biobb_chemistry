@@ -1,0 +1,5 @@
+properties:
+  coordinates: 3
+  input_format: pdb
+  output_format: pdb
+  ph: 7.4

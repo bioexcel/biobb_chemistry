@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "input_format": "pdb",
+    "output_format": "pdb",
+    "coordinates": 3,
+    "ph": 7.4,
+    "container_path": "singularity",
+    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_volume_path": "/tmp"
+  }
+}

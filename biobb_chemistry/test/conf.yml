@@ -206,6 +206,8 @@ reduce_remove_hydrogens:
     input_path: file:test_data_dir/ambertools/reduce.H.pdb
     output_path: output.pdb
     ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.pdb
+  properties:
+    remove_tmp: false
 
 reduce_remove_hydrogens_docker:
   paths:

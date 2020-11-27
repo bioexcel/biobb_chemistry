@@ -1,0 +1,4 @@
+properties:
+  container_image: shub://bioexcel/ambertools_singularity
+  container_path: singularity
+  container_volume_path: /tmp

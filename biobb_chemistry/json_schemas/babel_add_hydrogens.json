@@ -47,14 +47,13 @@
                 ".*\\.smiles$",
                 ".*\\.txt$",
                 ".*\\.xml$",
-                ".*\\.xtc$",
-                ".*\\.xyz$"
+                ".*\\.xtc$"
             ],
             "file_formats": [
                 {
                     "extension": ".*\\.dat$",
                     "description": "Path to the input file",
-                    "edam": "data_0006"
+                    "edam": "format_1637"
                 },
                 {
                     "extension": ".*\\.ent$",
@@ -155,11 +154,6 @@
                     "extension": ".*\\.xtc$",
                     "description": "Path to the input file",
                     "edam": "format_3875"
-                },
-                {
-                    "extension": ".*\\.xyz$",
-                    "description": "Path to the input file",
-                    "edam": "format_3877"
                 }
             ]
         },
@@ -185,8 +179,7 @@
                 ".*\\.sdf$",
                 ".*\\.smi$",
                 ".*\\.smiles$",
-                ".*\\.txt$",
-                ".*\\.xyz$"
+                ".*\\.txt$"
             ],
             "file_formats": [
                 {
@@ -273,11 +266,6 @@
                     "extension": ".*\\.txt$",
                     "description": "Path to the output file",
                     "edam": "format_2033"
-                },
-                {
-                    "extension": ".*\\.xyz$",
-                    "description": "Path to the output file",
-                    "edam": "format_3877"
                 }
             ]
         },
@@ -310,97 +298,92 @@
                         "smiles",
                         "txt",
                         "xml",
-                        "xtc",
-                        "xyz"
+                        "xtc"
                     ],
                     "property_formats": [
                         {
                             "name": "dat",
-                            "description": null
+                            "description": "Information represented in a data record"
                         },
                         {
                             "name": "ent",
-                            "description": null
+                            "description": "Protein Data Bank format"
                         },
                         {
                             "name": "fa",
-                            "description": null
+                            "description": "FASTA sequence format"
                         },
                         {
                             "name": "fasta",
-                            "description": null
+                            "description": "FASTA sequence format"
                         },
                         {
                             "name": "gro",
-                            "description": null
+                            "description": "GROMACS structure"
                         },
                         {
                             "name": "inp",
-                            "description": null
+                            "description": "AMBER trajectory format"
                         },
                         {
                             "name": "log",
-                            "description": null
+                            "description": "Events file"
                         },
                         {
                             "name": "mcif",
-                            "description": null
+                            "description": "Entry format of PDB database in mmCIF format"
                         },
                         {
                             "name": "mdl",
-                            "description": null
+                            "description": "file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule"
                         },
                         {
                             "name": "mmcif",
-                            "description": null
+                            "description": "Entry format of PDB database in mmCIF format"
                         },
                         {
                             "name": "mol",
-                            "description": null
+                            "description": "file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule"
                         },
                         {
                             "name": "mol2",
-                            "description": null
+                            "description": "Complete and portable representation of a SYBYL molecule"
                         },
                         {
                             "name": "pdb",
-                            "description": null
+                            "description": "Protein Data Bank format"
                         },
                         {
                             "name": "pdbqt",
-                            "description": null
+                            "description": "Protein Data Bank format with charges"
                         },
                         {
                             "name": "png",
-                            "description": null
+                            "description": "File format for image compression"
                         },
                         {
                             "name": "sdf",
-                            "description": null
+                            "description": "One of a family of chemical-data file formats developed by MDL Information Systems"
                         },
                         {
                             "name": "smi",
-                            "description": null
+                            "description": "Chemical structure specified in Simplified Molecular Input Line Entry System line notation."
                         },
                         {
                             "name": "smiles",
-                            "description": null
+                            "description": "Chemical structure specified in Simplified Molecular Input Line Entry System line notation."
                         },
                         {
                             "name": "txt",
-                            "description": null
+                            "description": "Textual format"
                         },
                         {
                             "name": "xml",
-                            "description": null
+                            "description": "eXtensible Markup Language"
                         },
                         {
                             "name": "xtc",
-                            "description": null
-                        },
-                        {
-                            "name": "xyz",
-                            "description": null
+                            "description": "Portable binary format for trajectories produced by GROMACS package"
                         }
                     ]
                 },
@@ -427,80 +410,80 @@
                         "smi",
                         "smiles",
                         "txt",
-                        "xyz"
+                        "xtc"
                     ],
                     "property_formats": [
                         {
                             "name": "ent",
-                            "description": null
+                            "description": "Protein Data Bank format"
                         },
                         {
                             "name": "fa",
-                            "description": null
+                            "description": "FASTA sequence format"
                         },
                         {
                             "name": "fasta",
-                            "description": null
+                            "description": "FASTA sequence format"
                         },
                         {
                             "name": "gro",
-                            "description": null
+                            "description": "GROMACS structure"
                         },
                         {
                             "name": "inp",
-                            "description": null
+                            "description": "AMBER trajectory format"
                         },
                         {
                             "name": "mcif",
-                            "description": null
+                            "description": "Entry format of PDB database in mmCIF format"
                         },
                         {
                             "name": "mdl",
-                            "description": null
+                            "description": "file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule"
                         },
                         {
                             "name": "mmcif",
-                            "description": null
+                            "description": "Entry format of PDB database in mmCIF format"
                         },
                         {
                             "name": "mol",
-                            "description": null
+                            "description": "file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule"
                         },
                         {
                             "name": "mol2",
-                            "description": null
+                            "description": "Complete and portable representation of a SYBYL molecule"
                         },
                         {
                             "name": "pdb",
-                            "description": null
+                            "description": "Protein Data Bank format"
                         },
                         {
                             "name": "pdbqt",
-                            "description": null
+                            "description": "Protein Data Bank format with charges"
                         },
                         {
                             "name": "png",
-                            "description": null
+                            "description": "File format for image compression"
                         },
                         {
                             "name": "sdf",
-                            "description": null
+                            "description": "One of a family of chemical-data file formats developed by MDL Information Systems"
                         },
                         {
                             "name": "smi",
-                            "description": null
+                            "description": "Chemical structure specified in Simplified Molecular Input Line Entry System line notation."
                         },
                         {
                             "name": "smiles",
-                            "description": null
+                            "description": "Chemical structure specified in Simplified Molecular Input Line Entry System line notation."
                         },
                         {
                             "name": "txt",
-                            "description": null
+                            "description": "Textual format"
                         },
                         {
-                            "name": "xyz",
-                            "description": null
+                            "name": "xtc",
+                            "description": "Portable binary format for trajectories produced by GROMACS package"
                         }
                     ]
                 },

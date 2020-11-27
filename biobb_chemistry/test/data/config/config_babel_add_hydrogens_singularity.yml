@@ -1,0 +1,8 @@
+properties:
+  container_image: shub://bioexcel/obabel_singularity
+  container_path: singularity
+  container_volume_path: /tmp
+  coordinates: 3
+  input_format: pdb
+  output_format: pdb
+  ph: 7.4

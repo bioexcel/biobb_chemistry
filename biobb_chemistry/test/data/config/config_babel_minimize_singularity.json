@@ -8,6 +8,9 @@
     "cutoff": true,
     "rvdw": 6.0,
     "rele": 10.0,
-    "frequency": 10
+    "frequency": 10,
+    "container_path": "singularity",
+    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_volume_path": "/tmp"
   }
 }
