@@ -11,7 +11,7 @@ from biobb_chemistry.babelm.common import *
 class BabelConvert():
     """
     | biobb_chemistry BabelConvert
-    | This class is a wrapper of the `Open Babel <http://openbabel.org/wiki/Main_Page>`_ tool.
+    | This class is a wrapper of the Open Babel tool.
     | Small molecule format conversion for structures or trajectories. Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
 
     Args:
