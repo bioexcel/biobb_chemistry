@@ -20,7 +20,7 @@ class AcpypeParamsAC():
         output_path_inpcrd (str): Path to the INPCRD output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.inpcrd>`_. Accepted formats: inpcrd (edam:format_3878).
         output_path_lib (str): Path to the LIB output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.lib>`_. Accepted formats: lib (edam:format_3889).
         output_path_prmtop (str): Path to the PRMTOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.prmtop>`_. Accepted formats: prmtop (edam:format_3881).
-        properties (dic):
+        properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0.
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.

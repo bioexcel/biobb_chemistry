@@ -17,7 +17,7 @@ class ReduceAddHydrogens():
     Args:
         input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/ambertools/reduce.no.H.pdb>`_. Accepted formats: pdb (edam:format_1476).
         output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/ambertools/ref_reduce.add.pdb>`_. Accepted formats: pdb (edam:format_1476).
-        properties (dic):
+        properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **flip** (*bool*) - (False) add H and rotate and flip NQH groups
             * **noflip** (*bool*) - (False) add H and rotate groups with no NQH flips
             * **nuclear** (*bool*) - (False) use nuclear X-H distances rather than default electron cloud distances
