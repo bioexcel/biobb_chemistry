@@ -1,6 +1,6 @@
 # Biobb Chemistry changelog
 
-## What's new in version [3.0.3](https://github.com/bioexcel/biobb_io/releases/tag/v3.0.3)?
+## What's new in version [3.0.3](https://github.com/bioexcel/biobb_chemistry/releases/tag/v3.0.3)?
 In version 3.0.3 there have been implemented the new version of docstrings, therefore the JSON Schemas have been modified.
 
 ### New features
