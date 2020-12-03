@@ -117,7 +117,16 @@ class AcpypeParamsCNS():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the Open Babel module."""
+        """Launches the execution of the AcpypeParamsCNS module.
+
+        Examples:
+            This is a use example of how to use the AcpypeParamsCNS module from Python
+
+            >>> from biobb_chemistry.acpype.acpype_params_cns import AcpypeParamsCNS
+            >>> prop = { 'basename': 'BBB', 'charge': 0 }
+            >>> AcpypeParamsCNS(input_path='/path/to/myStructure.mol2', output_path_par='/path/to/newPAR.par', output_path_inp='/path/to/newINP.inp', output_path_top='/path/to/newTOP.top', properties=prop).launch()
+
+        """
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)

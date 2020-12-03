@@ -83,7 +83,7 @@
                 {
                     "extension": ".*\\.log$",
                     "description": "Path to the input file",
-                    "edam": "format_2033"
+                    "edam": "format_2030"
                 },
                 {
                     "extension": ".*\\.mcif$",

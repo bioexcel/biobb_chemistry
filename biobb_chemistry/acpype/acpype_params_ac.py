@@ -120,7 +120,16 @@ class AcpypeParamsAC():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the Open Babel module."""
+        """Launches the execution of the AcpypeParamsAC module.
+
+        Examples:
+            This is a use example of how to use the AcpypeParamsAC module from Python
+
+            >>> from biobb_chemistry.acpype.acpype_params_ac import AcpypeParamsAC
+            >>> prop = { 'basename': 'BBB', 'charge': 0 }
+            >>> AcpypeParamsAC(input_path='/path/to/myStructure.mol2', output_path_frcmod='/path/to/newFRCMOD.frcmod', output_path_inpcrd='/path/to/newINPCRD.inpcrd', output_path_lib='/path/to/newLIB.lib', output_path_prmtop='/path/to/newPRMTOP.prmtop', properties=prop).launch()
+
+        """
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)

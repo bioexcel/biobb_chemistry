@@ -137,7 +137,16 @@ class ReduceAddHydrogens():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the Open Babel module."""
+        """Launches the execution of the ReduceAddHydrogens module.
+
+        Examples:
+            This is a use example of how to use the ReduceAddHydrogens module from Python
+
+            >>> from biobb_chemistry.ambertools.reduce_add_hydrogens import ReduceAddHydrogens
+            >>> prop = { 'flip': False, 'charges': True, 'build': False }
+            >>> ReduceAddHydrogens(input_path='/path/to/myStructure.pdb', output_path='/path/to/newStructure.pdb', properties=prop).launch()
+
+        """
        
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)

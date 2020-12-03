@@ -15,7 +15,7 @@ class BabelAddHydrogens():
     | Adds hydrogens to a given structure or trajectory. Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
 
     Args:
-        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.no.H.pdb>`_. Accepted formats: dat (edam:format_1637), ent (edam:format_1476), fa (edam:format_1929), fasta (edam:format_1929), gro (edam:format_2033), inp (edam:format_3878), log (edam:format_2033), mcif (edam:format_1477), mdl (edam:format_3815), mmcif (edam:format_1477), mol (edam:format_3815), mol2 (edam:format_3816), pdb (edam:format_1476), pdbqt (edam:format_1476), png (edam:format_3603), sdf (edam:format_3814), smi (edam:format_1196), smiles (edam:format_1196), txt (edam:format_2033), xml (edam:format_2332), xtc (edam:format_3875).
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.no.H.pdb>`_. Accepted formats: dat (edam:format_1637), ent (edam:format_1476), fa (edam:format_1929), fasta (edam:format_1929), gro (edam:format_2033), inp (edam:format_3878), log (edam:format_2030), mcif (edam:format_1477), mdl (edam:format_3815), mmcif (edam:format_1477), mol (edam:format_3815), mol2 (edam:format_3816), pdb (edam:format_1476), pdbqt (edam:format_1476), png (edam:format_3603), sdf (edam:format_3814), smi (edam:format_1196), smiles (edam:format_1196), txt (edam:format_2033), xml (edam:format_2332), xtc (edam:format_3875).
         output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.hydrogens.pdb>`_. Accepted formats: ent (edam:format_1476), fa (edam:format_1929), fasta (edam:format_1929), gro (edam:format_2033), inp (edam:format_3878), mcif (edam:format_1477), mdl (edam:format_3815), mmcif (edam:format_1477), mol (edam:format_3815), mol2 (edam:format_3816), pdb (edam:format_1476), pdbqt (edam:format_1476), png (edam:format_3603), sdf (edam:format_3814), smi (edam:format_1196), smiles (edam:format_1196), txt (edam:format_2033).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **input_format** (*str*) - (None) Format of input file. If not provided, input_path extension will be taken. Values: dat (Information represented in a data record), ent (Protein Data Bank format), fa (FASTA sequence format), fasta (FASTA sequence format), gro (GROMACS structure), inp (AMBER trajectory format), log (Events file), mcif (Entry format of PDB database in mmCIF format), mdl (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mmcif (Entry format of PDB database in mmCIF format), mol (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mol2 (Complete and portable representation of a SYBYL molecule), pdb (Protein Data Bank format), pdbqt (Protein Data Bank format with charges), png (File format for image compression), sdf (One of a family of chemical-data file formats developed by MDL Information Systems), smi (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), smiles (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), txt (Textual format), xml (eXtensible Markup Language), xtc (Portable binary format for trajectories produced by GROMACS package).
@@ -126,7 +126,16 @@ class BabelAddHydrogens():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the Open Babel module."""
+        """Launches the execution of the BabelAddHydrogens module.
+
+        Examples:
+            This is a use example of how to use the BabelAddHydrogens module from Python
+
+            >>> from biobb_chemistry.babelm.babel_add_hydrogens import BabelAddHydrogens
+            >>> prop = { 'input_format': 'pdb', 'output_format': 'pdb', 'coordinates': 3, 'ph': 7.4 }
+            >>> BabelAddHydrogens(input_path='/path/to/myStructure.pdb', output_path='/path/to/newStructure.pdb', properties=prop).launch()
+    
+        """
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -172,8 +181,8 @@ def main():
 
     # Specific args of each building block
     required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc, xyz.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xyz.')
+    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.')
+    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"

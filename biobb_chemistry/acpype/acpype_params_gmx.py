@@ -117,7 +117,16 @@ class AcpypeParamsGMX():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the Open Babel module."""
+        """Launches the execution of the AcpypeParamsGMX module.
+
+        Examples:
+            This is a use example of how to use the AcpypeParamsGMX module from Python
+
+            >>> from biobb_chemistry.acpype.acpype_params_gmx import AcpypeParamsGMX
+            >>> prop = { 'basename': 'BBB', 'charge': 0 }
+            >>> AcpypeParamsGMX(input_path='/path/to/myStructure.mol2', output_path_gro='/path/to/newGRO.gro', output_path_itp='/path/to/newITP.itp', output_path_top='/path/to/newTOP.top', properties=prop).launch()
+
+        """
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)

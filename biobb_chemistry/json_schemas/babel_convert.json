@@ -47,8 +47,7 @@
                 ".*\\.smiles$",
                 ".*\\.txt$",
                 ".*\\.xml$",
-                ".*\\.xtc$",
-                ".*\\.xyz$"
+                ".*\\.xtc$"
             ],
             "file_formats": [
                 {
@@ -84,7 +83,7 @@
                 {
                     "extension": ".*\\.log$",
                     "description": "Path to the input file",
-                    "edam": "format_2033"
+                    "edam": "format_2030"
                 },
                 {
                     "extension": ".*\\.mcif$",
@@ -155,11 +154,6 @@
                     "extension": ".*\\.xtc$",
                     "description": "Path to the input file",
                     "edam": "format_3875"
-                },
-                {
-                    "extension": ".*\\.xyz$",
-                    "description": "Path to the input file",
-                    "edam": "format_3877"
                 }
             ]
         },
@@ -185,8 +179,7 @@
                 ".*\\.sdf$",
                 ".*\\.smi$",
                 ".*\\.smiles$",
-                ".*\\.txt$",
-                ".*\\.xyz$"
+                ".*\\.txt$"
             ],
             "file_formats": [
                 {
@@ -273,11 +266,6 @@
                     "extension": ".*\\.txt$",
                     "description": "Path to the output file",
                     "edam": "format_2033"
-                },
-                {
-                    "extension": ".*\\.xyz$",
-                    "description": "Path to the output file",
-                    "edam": "format_3877"
                 }
             ]
         },

@@ -169,12 +169,12 @@ def get_default_value(key):
 
 def is_valid_input(ext):
 	""" Checks if input file format is compatible with Open Babel """
-	formats = ["dat", "ent", "fa", "fasta", "gro", "inp", "log", "mcif", "mdl", "mmcif", "mol", "mol2", "pdb", "pdbqt", "png", "sdf", "smi", "smiles", "txt", "xml", "xtc", "xyz"]
+	formats = ["dat", "ent", "fa", "fasta", "gro", "inp", "log", "mcif", "mdl", "mmcif", "mol", "mol2", "pdb", "pdbqt", "png", "sdf", "smi", "smiles", "txt", "xml", "xtc"]
 	return ext in formats
 
 def is_valid_output(ext):
 	""" Checks if output file format is compatible with Open Babel """
-	formats = ["ent", "fa", "fasta", "gro", "inp", "mcif", "mdl", "mmcif", "mol", "mol2", "pdb", "pdbqt", "png", "sdf", "smi", "smiles", "txt", "xyz"]
+	formats = ["ent", "fa", "fasta", "gro", "inp", "mcif", "mdl", "mmcif", "mol", "mol2", "pdb", "pdbqt", "png", "sdf", "smi", "smiles", "txt"]
 	return ext in formats
 
 def is_valid_input_minimize(ext):

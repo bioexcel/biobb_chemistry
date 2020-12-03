@@ -129,7 +129,16 @@ class BabelMinimize():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the Open Babel module."""
+        """Launches the execution of the BabelMinimize module.
+
+        Examples:
+            This is a use example of how to use the BabelMinimize module from Python
+
+            >>> from biobb_chemistry.babelm.babel_minimize import BabelMinimize
+            >>> prop = { 'criteria': 1e-6, 'method': 'cg', 'force_field': 'GAFF' }
+            >>> BabelMinimize(input_path='/path/to/myStructure.mol2', output_path='/path/to/newStructure.mol2', properties=prop).launch()
+
+        """
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
