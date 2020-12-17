@@ -32,6 +32,20 @@ class AcpypeParamsCNS():
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
+    Examples:
+        This is a use example of how to use the building block from Python::
+
+            from biobb_chemistry.acpype.acpype_params_cns import acpype_params_cns
+            prop = { 
+                'basename': 'BBB', 
+                'charge': 0 
+            }
+            acpype_params_cns(input_path='/path/to/myStructure.mol2', 
+                            output_path_par='/path/to/newPAR.par', 
+                            output_path_inp='/path/to/newINP.inp', 
+                            output_path_top='/path/to/newTOP.top', 
+                            properties=prop)
+
     Info:
         * wrapped_software:
             * name: Acpype
@@ -43,8 +57,8 @@ class AcpypeParamsCNS():
 
     """
 
-    def __init__(self, input_path, 
-                 output_path_par, output_path_inp, output_path_top, properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, 
+                properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -117,16 +131,7 @@ class AcpypeParamsCNS():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the AcpypeParamsCNS module.
-
-        Examples:
-            This is a use example of how to use the AcpypeParamsCNS module from Python
-
-            >>> from biobb_chemistry.acpype.acpype_params_cns import AcpypeParamsCNS
-            >>> prop = { 'basename': 'BBB', 'charge': 0 }
-            >>> AcpypeParamsCNS(input_path='/path/to/myStructure.mol2', output_path_par='/path/to/newPAR.par', output_path_inp='/path/to/newINP.inp', output_path_top='/path/to/newTOP.top', properties=prop).launch()
-
-        """
+        """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` acpype.acpype_params_cns.AcpypeParamsCNS object."""
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -185,7 +190,18 @@ class AcpypeParamsCNS():
 
         return returncode
 
+def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, properties: dict = None, **kwargs) -> None:
+    """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
+    execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch> method."""
+
+    return AcpypeParamsCNS(input_path=input_path, 
+                    output_path_par=output_path_par, 
+                    output_path_inp=output_path_inp,
+                    output_path_top=output_path_top,
+                    properties=properties).launch()
+
 def main():
+    """Command line execution of this building block. Please check the command line documentation."""
     parser = argparse.ArgumentParser(description="Small molecule parameterization for CNS/XPLOR MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
 
@@ -201,7 +217,8 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    AcpypeParamsCNS(input_path=args.input_path, output_path_par=args.output_path_par, 
+    AcpypeParamsCNS(input_path=args.input_path, 
+                    output_path_par=args.output_path_par, 
                     output_path_inp=args.output_path_inp, 
                     output_path_top=args.output_path_top, 
                     properties=properties).launch()

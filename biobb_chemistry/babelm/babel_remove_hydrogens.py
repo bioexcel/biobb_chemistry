@@ -32,6 +32,20 @@ class BabelRemoveHydrogens():
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
+    Examples:
+        This is a use example of how to use the building block from Python::
+
+            from biobb_chemistry.babelm.babel_remove_hydrogens import babel_remove_hydrogens
+            prop = { 
+                'input_format': 'pdb', 
+                'output_format': 'pdb', 
+                'coordinates': 3, 
+                'ph': 7.4 
+            }
+            babel_remove_hydrogens(input_path='/path/to/myStructure.pdb',   
+                                    output_path='/path/to/newStructure.pdb', 
+                                    properties=prop)
+
     Info:
         * wrapped_software:
             * name: Open Babel
@@ -43,8 +57,8 @@ class BabelRemoveHydrogens():
 
     """
 
-    def __init__(self, input_path, 
-                 output_path, properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path, 
+                properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -123,16 +137,7 @@ class BabelRemoveHydrogens():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the BabelRemoveHydrogens module.
-
-        Examples:
-            This is a use example of how to use the BabelRemoveHydrogens module from Python
-
-            >>> from biobb_chemistry.babelm.babel_remove_hydrogens import BabelRemoveHydrogens
-            >>> prop = { 'input_format': 'pdb', 'output_format': 'pdb', 'coordinates': 3, 'ph': 7.4 }
-            >>> BabelRemoveHydrogens(input_path='/path/to/myStructure.pdb', output_path='/path/to/newStructure.pdb', properties=prop).launch()
-
-        """
+        """Execute the :class:`BabelRemoveHydrogens <babelm.babel_remove_hydrogens.BabelRemoveHydrogens>` babelm.babel_remove_hydrogens.BabelRemoveHydrogens object."""
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -172,7 +177,16 @@ class BabelRemoveHydrogens():
 
         return returncode
 
+def babel_remove_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
+    """Execute the :class:`BabelRemoveHydrogens <babelm.babel_remove_hydrogens.BabelRemoveHydrogens>` class and
+    execute the :meth:`launch() <babelm.babel_remove_hydrogens.BabelRemoveHydrogens.launch> method."""
+
+    return BabelRemoveHydrogens(input_path=input_path, 
+                                output_path=output_path,
+                                properties=properties).launch()
+
 def main():
+    """Command line execution of this building block. Please check the command line documentation."""
     parser = argparse.ArgumentParser(description="Removes hydrogen atoms to small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
 
@@ -186,8 +200,9 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    BabelRemoveHydrogens(input_path=args.input_path, output_path=args.output_path, 
-                         properties=properties).launch()
+    BabelRemoveHydrogens(input_path=args.input_path, 
+                        output_path=args.output_path, 
+                        properties=properties).launch()
 
 if __name__ == '__main__':
     main()

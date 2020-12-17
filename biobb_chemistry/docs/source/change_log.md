@@ -1,10 +1,11 @@
 # Biobb Chemistry changelog
 
 ## What's new in version [3.0.3](https://github.com/bioexcel/biobb_chemistry/releases/tag/v3.0.3)?
-In version 3.0.3 there have been implemented the new version of docstrings, therefore the JSON Schemas have been modified.
+In version 3.0.3 the dependency biobb_common has been updated to 3.5.1 version. Also, there has been implemented the new version of docstrings, therefore the JSON Schemas have been modified.
 
 ### New features
 
+* Update to biobb_common 3.5.1
 * New extended and improved JSON schemas (Galaxy and CWL-compliant)
 
 ### Other changes

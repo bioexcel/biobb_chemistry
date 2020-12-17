@@ -33,6 +33,21 @@ class AcpypeParamsAC():
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
+    Examples:
+        This is a use example of how to use the building block from Python::
+
+            from biobb_chemistry.acpype.acpype_params_ac import acpype_params_ac
+            prop = { 
+                'basename': 'BBB', 
+                'charge': 0 
+            }
+            acpype_params_ac(input_path='/path/to/myStructure.mol2', 
+                            output_path_frcmod='/path/to/newFRCMOD.frcmod', 
+                            output_path_inpcrd='/path/to/newINPCRD.inpcrd', 
+                            output_path_lib='/path/to/newLIB.lib', 
+                            output_path_prmtop='/path/to/newPRMTOP.prmtop', 
+                            properties=prop)
+
     Info:
         * wrapped_software:
             * name: Acpype
@@ -44,8 +59,8 @@ class AcpypeParamsAC():
 
     """
     
-    def __init__(self, input_path, 
-                 output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop, properties=None, **kwargs) -> None:
+    def __init__(self, input_path,  output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop, 
+                properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -120,16 +135,7 @@ class AcpypeParamsAC():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the AcpypeParamsAC module.
-
-        Examples:
-            This is a use example of how to use the AcpypeParamsAC module from Python
-
-            >>> from biobb_chemistry.acpype.acpype_params_ac import AcpypeParamsAC
-            >>> prop = { 'basename': 'BBB', 'charge': 0 }
-            >>> AcpypeParamsAC(input_path='/path/to/myStructure.mol2', output_path_frcmod='/path/to/newFRCMOD.frcmod', output_path_inpcrd='/path/to/newINPCRD.inpcrd', output_path_lib='/path/to/newLIB.lib', output_path_prmtop='/path/to/newPRMTOP.prmtop', properties=prop).launch()
-
-        """
+        """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` acpype.acpype_params_ac.AcpypeParamsAC object."""
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -189,7 +195,19 @@ class AcpypeParamsAC():
         
         return returncode
 
+def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: dict = None, **kwargs) -> None:
+    """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
+    execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch> method."""
+
+    return AcpypeParamsAC(input_path=input_path, 
+                    output_path_frcmod=output_path_frcmod, 
+                    output_path_inpcrd=output_path_inpcrd,
+                    output_path_lib=output_path_lib,
+                    output_path_prmtop=output_path_prmtop,
+                    properties=properties).launch()
+
 def main():
+    """Command line execution of this building block. Please check the command line documentation."""
     parser = argparse.ArgumentParser(description="Small molecule parameterization for AMBER MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
 
@@ -206,10 +224,12 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    AcpypeParamsAC(input_path=args.input_path, output_path_frcmod=args.output_path_frcmod, 
-                   output_path_inpcrd=args.output_path_inpcrd, output_path_lib=args.output_path_lib, 
-                   output_path_prmtop=args.output_path_prmtop, 
-                   properties=properties).launch()
+    AcpypeParamsAC(input_path=args.input_path, 
+                    output_path_frcmod=args.output_path_frcmod, 
+                    output_path_inpcrd=args.output_path_inpcrd, 
+                    output_path_lib=args.output_path_lib, 
+                    output_path_prmtop=args.output_path_prmtop, 
+                    properties=properties).launch()
 
 if __name__ == '__main__':
     main()

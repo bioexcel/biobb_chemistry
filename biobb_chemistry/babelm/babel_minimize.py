@@ -37,6 +37,19 @@ class BabelMinimize():
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
+    Examples:
+        This is a use example of how to use the building block from Python::
+
+            from biobb_chemistry.babelm.babel_minimize import babel_minimize
+            prop = { 
+                'criteria': 1e-6, 
+                'method': 'cg', 
+                'force_field': 'GAFF' 
+            }
+            babel_minimize(input_path='/path/to/myStructure.mol2', 
+                            output_path='/path/to/newStructure.mol2', 
+                            properties=prop)
+
     Info:
         * wrapped_software:
             * name: Open Babel
@@ -48,8 +61,8 @@ class BabelMinimize():
 
     """
 
-    def __init__(self, input_path, 
-                 output_path, properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path, 
+                properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -129,16 +142,7 @@ class BabelMinimize():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the BabelMinimize module.
-
-        Examples:
-            This is a use example of how to use the BabelMinimize module from Python
-
-            >>> from biobb_chemistry.babelm.babel_minimize import BabelMinimize
-            >>> prop = { 'criteria': 1e-6, 'method': 'cg', 'force_field': 'GAFF' }
-            >>> BabelMinimize(input_path='/path/to/myStructure.mol2', output_path='/path/to/newStructure.mol2', properties=prop).launch()
-
-        """
+        """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` babelm.babel_minimize.BabelMinimize object."""
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -178,7 +182,16 @@ class BabelMinimize():
 
         return returncode
 
+def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
+    """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
+    execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch> method."""
+
+    return BabelMinimize(input_path=input_path, 
+                    output_path=output_path,
+                    properties=properties).launch()
+
 def main():
+    """Command line execution of this building block. Please check the command line documentation."""
     parser = argparse.ArgumentParser(description="Energetically minimize small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
 
@@ -192,8 +205,9 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    BabelMinimize(input_path=args.input_path, output_path=args.output_path, 
-                  properties=properties).launch()
+    BabelMinimize(input_path=args.input_path, 
+                    output_path=args.output_path, 
+                    properties=properties).launch()
 
 if __name__ == '__main__':
     main()

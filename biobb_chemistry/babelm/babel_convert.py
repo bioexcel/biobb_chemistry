@@ -32,6 +32,20 @@ class BabelConvert():
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
+    Examples:
+        This is a use example of how to use the building block from Python::
+
+            from biobb_chemistry.babelm.babel_convert import babel_convert
+            prop = { 
+                'input_format': 'smi', 
+                'output_format': 'mol2', 
+                'coordinates': 3, 
+                'ph': 7.4 
+            }
+            babel_convert(input_path='/path/to/my2DMolecule.smi', 
+                        output_path='/path/to/new3DMolecule.mol2', 
+                        properties=prop)
+
     Info:
         * wrapped_software:
             * name: Open Babel
@@ -43,8 +57,8 @@ class BabelConvert():
 
     """
 
-    def __init__(self, input_path, 
-                 output_path, properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path, 
+                properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -119,16 +133,7 @@ class BabelConvert():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the BabelConvert module.
-
-        Examples:
-            This is a use example of how to use the BabelConvert module from Python
-
-            >>> from biobb_chemistry.babelm.babel_convert import BabelConvert
-            >>> prop = { 'input_format': 'smi', 'output_format': 'mol2', 'coordinates': 3, 'ph': 7.4 }
-            >>> BabelConvert(input_path='/path/to/my2DMolecule.smi', output_path='/path/to/new3DMolecule.mol2', properties=prop).launch()
-
-        """
+        """Execute the :class:`BabelConvert <babelm.babel_convert.BabelConvert>` babelm.babel_convert.BabelConvert object."""
         
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -168,7 +173,16 @@ class BabelConvert():
 
         return returncode
 
+def babel_convert(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
+    """Execute the :class:`BabelConvert <babelm.babel_convert.BabelConvert>` class and
+    execute the :meth:`launch() <babelm.babel_convert.BabelConvert.launch> method."""
+
+    return BabelConvert(input_path=input_path, 
+                    output_path=output_path,
+                    properties=properties).launch()
+
 def main():
+    """Command line execution of this building block. Please check the command line documentation."""
     parser = argparse.ArgumentParser(description="Small molecule format conversion.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
 
@@ -182,8 +196,9 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    BabelConvert(input_path=args.input_path, output_path=args.output_path, 
-                 properties=properties).launch()
+    BabelConvert(input_path=args.input_path, 
+                output_path=args.output_path, 
+                properties=properties).launch()
 
 if __name__ == '__main__':
     main()

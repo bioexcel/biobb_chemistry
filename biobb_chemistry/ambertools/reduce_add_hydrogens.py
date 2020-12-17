@@ -45,6 +45,19 @@ class ReduceAddHydrogens():
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
+    Examples:
+        This is a use example of how to use the building block from Python::
+
+            from biobb_chemistry.ambertools.reduce_add_hydrogens import reduce_add_hydrogens
+            prop = { 
+                'flip': False, 
+                'charges': True, 
+                'build': False 
+            }
+            reduce_add_hydrogens(input_path='/path/to/myStructure.pdb', 
+                                output_path='/path/to/newStructure.pdb', 
+                                properties=prop)
+
     Info:
         * wrapped_software:
             * name: AmberTools Reduce
@@ -56,8 +69,8 @@ class ReduceAddHydrogens():
 
     """
 
-    def __init__(self, input_path, 
-                 output_path, properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path, 
+                properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Input/Output files
@@ -137,16 +150,7 @@ class ReduceAddHydrogens():
 
     @launchlogger
     def launch(self) -> int:
-        """Launches the execution of the ReduceAddHydrogens module.
-
-        Examples:
-            This is a use example of how to use the ReduceAddHydrogens module from Python
-
-            >>> from biobb_chemistry.ambertools.reduce_add_hydrogens import ReduceAddHydrogens
-            >>> prop = { 'flip': False, 'charges': True, 'build': False }
-            >>> ReduceAddHydrogens(input_path='/path/to/myStructure.pdb', output_path='/path/to/newStructure.pdb', properties=prop).launch()
-
-        """
+        """Execute the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` ambertools.reduce_add_hydrogens.ReduceAddHydrogens object."""
        
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
@@ -186,7 +190,16 @@ class ReduceAddHydrogens():
 
         return returncode
 
+def reduce_add_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
+    """Execute the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` class and
+    execute the :meth:`launch() <ambertools.reduce_add_hydrogens.ReduceAddHydrogens.launch> method."""
+
+    return ReduceAddHydrogens(input_path=input_path, 
+                    output_path=output_path,
+                    properties=properties).launch()
+
 def main():
+    """Command line execution of this building block. Please check the command line documentation."""
     parser = argparse.ArgumentParser(description="Adds hydrogen atoms to small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
     parser.add_argument('--config', required=False, help='Configuration file')
 
@@ -200,8 +213,9 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    ReduceAddHydrogens(input_path=args.input_path, output_path=args.output_path, 
-                       properties=properties).launch()
+    ReduceAddHydrogens(input_path=args.input_path, 
+                        output_path=args.output_path, 
+                        properties=properties).launch()
 
 if __name__ == '__main__':
     main()
