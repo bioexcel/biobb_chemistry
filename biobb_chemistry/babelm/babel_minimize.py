@@ -184,7 +184,7 @@ class BabelMinimize():
 
 def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
-    execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch> method."""
+    execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
 
     return BabelMinimize(input_path=input_path, 
                     output_path=output_path,

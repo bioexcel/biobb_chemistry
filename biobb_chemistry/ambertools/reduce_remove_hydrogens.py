@@ -138,7 +138,7 @@ class ReduceRemoveHydrogens():
 
 def reduce_remove_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` class and
-    execute the :meth:`launch() <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens.launch> method."""
+    execute the :meth:`launch() <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens.launch>` method."""
 
     return ReduceRemoveHydrogens(input_path=input_path, 
                     output_path=output_path,

@@ -179,7 +179,7 @@ class BabelRemoveHydrogens():
 
 def babel_remove_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`BabelRemoveHydrogens <babelm.babel_remove_hydrogens.BabelRemoveHydrogens>` class and
-    execute the :meth:`launch() <babelm.babel_remove_hydrogens.BabelRemoveHydrogens.launch> method."""
+    execute the :meth:`launch() <babelm.babel_remove_hydrogens.BabelRemoveHydrogens.launch>` method."""
 
     return BabelRemoveHydrogens(input_path=input_path, 
                                 output_path=output_path,

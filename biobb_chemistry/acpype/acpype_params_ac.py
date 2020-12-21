@@ -197,7 +197,7 @@ class AcpypeParamsAC():
 
 def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
-    execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch> method."""
+    execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch>` method."""
 
     return AcpypeParamsAC(input_path=input_path, 
                     output_path_frcmod=output_path_frcmod, 

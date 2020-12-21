@@ -186,7 +186,7 @@ class AcpypeParamsGMXOPLS():
 
 def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` class and
-    execute the :meth:`launch() <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS.launch> method."""
+    execute the :meth:`launch() <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS.launch>` method."""
 
     return AcpypeParamsGMXOPLS(input_path=input_path, 
                     output_path_itp=output_path_itp,

@@ -182,7 +182,7 @@ class BabelAddHydrogens():
 
 def babel_add_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` class and
-    execute the :meth:`launch() <babelm.babel_add_hydrogens.BabelAddHydrogens.launch> method."""
+    execute the :meth:`launch() <babelm.babel_add_hydrogens.BabelAddHydrogens.launch>` method."""
 
     return BabelAddHydrogens(input_path=input_path, 
                     output_path=output_path,

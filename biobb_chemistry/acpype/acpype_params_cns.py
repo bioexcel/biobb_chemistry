@@ -192,7 +192,7 @@ class AcpypeParamsCNS():
 
 def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
-    execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch> method."""
+    execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch>` method."""
 
     return AcpypeParamsCNS(input_path=input_path, 
                     output_path_par=output_path_par, 

@@ -175,7 +175,7 @@ class BabelConvert():
 
 def babel_convert(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
     """Execute the :class:`BabelConvert <babelm.babel_convert.BabelConvert>` class and
-    execute the :meth:`launch() <babelm.babel_convert.BabelConvert.launch> method."""
+    execute the :meth:`launch() <babelm.babel_convert.BabelConvert.launch>` method."""
 
     return BabelConvert(input_path=input_path, 
                     output_path=output_path,
