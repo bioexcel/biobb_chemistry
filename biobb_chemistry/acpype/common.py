@@ -49,11 +49,7 @@ def get_basename(basename, out_log):
 def get_charge(charge, out_log):
 	""" Checks if provided charge value is correct """
 	ch = charge
-	if ch == '':
-		fu.log('No charge provided, default value %s assigned' % get_default_value('charge'), out_log)
-		ch = get_default_value('charge')
-
-	if ch is None:
+	if ch is None or ch == '':
 		fu.log('Charge will be guessed by acpype.', out_log)
 		return ch
 
