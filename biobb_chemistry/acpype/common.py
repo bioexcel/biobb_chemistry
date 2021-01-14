@@ -53,7 +53,11 @@ def get_charge(charge, out_log):
 		fu.log('No charge provided, default value %s assigned' % get_default_value('charge'), out_log)
 		ch = get_default_value('charge')
 
-	if not isinstance(ch, int):
+	if ch is None:
+		fu.log('Charge will be guessed by acpype.', out_log)
+		return ch
+
+	if not isinstance(ch, (int,None) ):
 		fu.log('Value %s is not compatible as a charge value, default value %d assigned' % (ch, get_default_value('charge')), out_log)
 		ch = get_default_value('charge')
 

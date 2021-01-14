@@ -22,7 +22,7 @@ class AcpypeParamsAC():
         output_path_prmtop (str): Path to the PRMTOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.ac.prmtop>`_. Accepted formats: prmtop (edam:format_3881).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
-            * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0.
+            * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
             * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -127,9 +127,11 @@ class AcpypeParamsAC():
         basename = '-b ' + out_pth
         instructions_list.append(basename)
 
-        # adding charge
-        charge = '-n ' + get_charge(self.charge, out_log)
-        instructions_list.append(charge)
+        # adding charge if not none
+        charge = get_charge(self.charge, out_log)
+        if charge:
+            charge = '-n ' + charge
+            instructions_list.append(charge)
 
         return instructions_list
 
