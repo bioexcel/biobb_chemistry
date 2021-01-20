@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.acpype.acpype_params_gmx import AcpypeParamsGMX
+from biobb_chemistry.acpype.acpype_params_gmx import acpype_params_gmx
 
 
 class TestAcpypeParamsGMX():
@@ -11,7 +11,7 @@ class TestAcpypeParamsGMX():
         pass
 
     def test_params_gmx(self):
-        AcpypeParamsGMX(properties=self.properties, **self.paths).launch()
+        acpype_params_gmx(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_gro'])
         assert fx.not_empty(self.paths['output_path_itp'])
         assert fx.not_empty(self.paths['output_path_top'])

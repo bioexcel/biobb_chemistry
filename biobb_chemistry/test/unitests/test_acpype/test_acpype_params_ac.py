@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.acpype.acpype_params_ac import AcpypeParamsAC
+from biobb_chemistry.acpype.acpype_params_ac import acpype_params_ac
 
 
 class TestAcpypeParamsAC():
@@ -11,7 +11,7 @@ class TestAcpypeParamsAC():
         pass
 
     def test_params_ac(self):
-        AcpypeParamsAC(properties=self.properties, **self.paths).launch()
+        acpype_params_ac(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_frcmod'])
         assert fx.not_empty(self.paths['output_path_inpcrd'])
         assert fx.not_empty(self.paths['output_path_lib'])

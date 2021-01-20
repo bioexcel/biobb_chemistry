@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.ambertools.reduce_remove_hydrogens import ReduceRemoveHydrogens
+from biobb_chemistry.ambertools.reduce_remove_hydrogens import reduce_remove_hydrogens
 
 
 class TestReduceRemoveHydrogensDocker():
@@ -11,7 +11,7 @@ class TestReduceRemoveHydrogensDocker():
         pass
 
     def test_remove_hydrogens_docker(self):
-        ReduceRemoveHydrogens(properties=self.properties, **self.paths).launch()
+        reduce_remove_hydrogens(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path'])
 
 class TestReduceRemoveHydrogensSingularity():
@@ -23,5 +23,5 @@ class TestReduceRemoveHydrogensSingularity():
         pass
 
     def test_remove_hydrogens_singularity(self):
-        ReduceRemoveHydrogens(properties=self.properties, **self.paths).launch()
+        reduce_remove_hydrogens(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path'])

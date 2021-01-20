@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.babelm.babel_minimize import BabelMinimize
+from biobb_chemistry.babelm.babel_minimize import babel_minimize
 
 
 class TestBabelMinimizeDocker():
@@ -11,7 +11,7 @@ class TestBabelMinimizeDocker():
         pass
 
     def test_minimize_docker(self):
-        BabelMinimize(properties=self.properties, **self.paths).launch()
+        babel_minimize(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path'])
         assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])
 
@@ -24,6 +24,6 @@ class TestBabelMinimizeSingularity():
         pass
 
     def test_minimize_singularity(self):
-        BabelMinimize(properties=self.properties, **self.paths).launch()
+        babel_minimize(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path'])
-        #assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])
+        assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])

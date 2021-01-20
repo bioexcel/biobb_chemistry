@@ -186,14 +186,14 @@ class AcpypeParamsGMXOPLS():
 
         return returncode
 
-def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: dict = None, **kwargs) -> None:
+def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` class and
     execute the :meth:`launch() <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS.launch>` method."""
 
     return AcpypeParamsGMXOPLS(input_path=input_path, 
                     output_path_itp=output_path_itp,
                     output_path_top=output_path_top,
-                    properties=properties).launch()
+                    properties=properties, **kwargs).launch()
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -211,10 +211,10 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    AcpypeParamsGMXOPLS(input_path=args.input_path, 
+    acpype_params_gmx_opls(input_path=args.input_path, 
                         output_path_itp=args.output_path_itp, 
                         output_path_top=args.output_path_top, 
-                        properties=properties).launch()
+                        properties=properties)
 
 if __name__ == '__main__':
     main()

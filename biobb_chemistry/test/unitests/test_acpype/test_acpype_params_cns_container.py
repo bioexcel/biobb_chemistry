@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.acpype.acpype_params_cns import AcpypeParamsCNS
+from biobb_chemistry.acpype.acpype_params_cns import acpype_params_cns
 
 
 class TestAcpypeParamsCNSDocker():
@@ -7,11 +7,11 @@ class TestAcpypeParamsCNSDocker():
         fx.test_setup(self,'acpype_params_cns_docker')
 
     def tearDown(self):
-        #fx.test_teardown(self)
+        fx.test_teardown(self)
         pass
 
     def test_params_cns_docker(self):
-        AcpypeParamsCNS(properties=self.properties, **self.paths).launch()
+        acpype_params_cns(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_par'])
         assert fx.not_empty(self.paths['output_path_inp'])
         assert fx.not_empty(self.paths['output_path_top'])
@@ -23,11 +23,11 @@ class TestAcpypeParamsCNSSingularity():
         fx.test_setup(self,'acpype_params_cns_singularity')
 
     def tearDown(self):
-        #fx.test_teardown(self)
+        fx.test_teardown(self)
         pass
 
     def test_params_cns_singularity(self):
-        AcpypeParamsCNS(properties=self.properties, **self.paths).launch()
+        acpype_params_cns(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_par'])
         assert fx.not_empty(self.paths['output_path_inp'])
         assert fx.not_empty(self.paths['output_path_top'])

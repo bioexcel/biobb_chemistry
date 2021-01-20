@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.acpype.acpype_params_cns import AcpypeParamsCNS
+from biobb_chemistry.acpype.acpype_params_cns import acpype_params_cns
 
 
 class TestAcpypeParamsCNS():
@@ -11,7 +11,7 @@ class TestAcpypeParamsCNS():
         pass
 
     def test_params_cns(self):
-        AcpypeParamsCNS(properties=self.properties, **self.paths).launch()
+        acpype_params_cns(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_par'])
         assert fx.not_empty(self.paths['output_path_inp'])
         assert fx.not_empty(self.paths['output_path_top'])

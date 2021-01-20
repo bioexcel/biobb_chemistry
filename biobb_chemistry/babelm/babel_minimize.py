@@ -182,13 +182,13 @@ class BabelMinimize():
 
         return returncode
 
-def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> None:
+def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
     execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
 
     return BabelMinimize(input_path=input_path, 
                     output_path=output_path,
-                    properties=properties).launch()
+                    properties=properties, **kwargs).launch()
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -205,9 +205,9 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    BabelMinimize(input_path=args.input_path, 
+    babel_minimize(input_path=args.input_path, 
                     output_path=args.output_path, 
-                    properties=properties).launch()
+                    properties=properties)
 
 if __name__ == '__main__':
     main()

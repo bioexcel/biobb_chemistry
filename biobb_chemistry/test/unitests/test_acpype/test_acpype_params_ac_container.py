@@ -1,5 +1,5 @@
 from biobb_common.tools import test_fixtures as fx
-from biobb_chemistry.acpype.acpype_params_ac import AcpypeParamsAC
+from biobb_chemistry.acpype.acpype_params_ac import acpype_params_ac
 
 
 class TestAcpypeParamsACDocker():
@@ -7,11 +7,11 @@ class TestAcpypeParamsACDocker():
         fx.test_setup(self,'acpype_params_ac_docker')
 
     def tearDown(self):
-        #fx.test_teardown(self)
+        fx.test_teardown(self)
         pass
 
     def test_params_ac_docker(self):
-        AcpypeParamsAC(properties=self.properties, **self.paths).launch()
+        acpype_params_ac(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_frcmod'])
         assert fx.not_empty(self.paths['output_path_inpcrd'])
         assert fx.not_empty(self.paths['output_path_lib'])
@@ -26,11 +26,11 @@ class TestAcpypeParamsACSingularity():
         fx.test_setup(self,'acpype_params_ac_singularity')
 
     def tearDown(self):
-        #fx.test_teardown(self)
+        fx.test_teardown(self)
         pass
 
     def test_params_ac_singularity(self):
-        AcpypeParamsAC(properties=self.properties, **self.paths).launch()
+        acpype_params_ac(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path_frcmod'])
         assert fx.not_empty(self.paths['output_path_inpcrd'])
         assert fx.not_empty(self.paths['output_path_lib'])

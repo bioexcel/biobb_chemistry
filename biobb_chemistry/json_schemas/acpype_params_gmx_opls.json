@@ -95,7 +95,7 @@
                     "type": "integer",
                     "default": 0,
                     "wf_prop": false,
-                    "description": "Net molecular charge, for gas default is 0.",
+                    "description": "Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.",
                     "min": -20,
                     "max": 20,
                     "step": 1

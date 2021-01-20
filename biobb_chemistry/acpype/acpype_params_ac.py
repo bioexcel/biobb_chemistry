@@ -197,7 +197,7 @@ class AcpypeParamsAC():
         
         return returncode
 
-def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: dict = None, **kwargs) -> None:
+def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
     execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch>` method."""
 
@@ -206,7 +206,7 @@ def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcr
                     output_path_inpcrd=output_path_inpcrd,
                     output_path_lib=output_path_lib,
                     output_path_prmtop=output_path_prmtop,
-                    properties=properties).launch()
+                    properties=properties, **kwargs).launch()
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -226,12 +226,12 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    AcpypeParamsAC(input_path=args.input_path, 
+    acpype_params_ac(input_path=args.input_path, 
                     output_path_frcmod=args.output_path_frcmod, 
                     output_path_inpcrd=args.output_path_inpcrd, 
                     output_path_lib=args.output_path_lib, 
                     output_path_prmtop=args.output_path_prmtop, 
-                    properties=properties).launch()
+                    properties=properties)
 
 if __name__ == '__main__':
     main()
