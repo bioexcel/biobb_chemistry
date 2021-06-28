@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="biobb_chemistry",
-    version="3.5.0",
+    version="3.6.0",
     author="Biobb developers",
     author_email="genis.bayarri@irbbarcelona.org",
     description="Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.",
@@ -17,8 +17,8 @@ setuptools.setup(
         "Documentation": "https://biobb-chemistry.readthedocs.io/en/latest/",
         "Bioexcel": "https://bioexcel.eu/"
     },
-    packages=setuptools.find_packages(exclude=['docs', 'test',]),
-    install_requires=['biobb_common==3.5.0'],
+    packages=setuptools.find_packages(exclude=['docs', 'test']),
+    install_requires=['biobb_common==3.6.0'],
     python_requires='==3.7.*',
     classifiers=(
         "Development Status :: 3 - Alpha",

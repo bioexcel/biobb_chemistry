@@ -1,4 +1,4 @@
-Remarks BBB_CNS.top created by acpype (v: 2019-11-07T23:16:00CET) on Wed Jan 20 10:56:52 2021
+Remarks BBB_CNS.top created by acpype (v: 2019-11-07T23:16:00CET) on Mon Jun 28 16:32:10 2021
 
 set echo=false end
 
@@ -22,25 +22,25 @@ RESIdue AZM
 GROUP
 
 { atomName  atomType  Charge }
-ATOM C1    TYPE= cc_   CHARGE=   0.3093 END
-ATOM C2    TYPE= cc_   CHARGE=   0.4753 END
-ATOM C3    TYPE= c_    CHARGE=   0.7531 END
-ATOM C4    TYPE= c3_   CHARGE=  -0.8571 END
-ATOM N1    TYPE= n3_   CHARGE=  -1.4757 END
-ATOM N2    TYPE= nd_   CHARGE=  -0.3730 END
-ATOM N3    TYPE= nd_   CHARGE=  -0.2510 END
-ATOM N4    TYPE= n_    CHARGE=  -0.5324 END
-ATOM O1    TYPE= o_    CHARGE=  -0.7213 END
-ATOM O2    TYPE= o_    CHARGE=  -0.7213 END
-ATOM O3    TYPE= o_    CHARGE=  -0.5071 END
-ATOM S1    TYPE= sy_   CHARGE=   1.5818 END
-ATOM S2    TYPE= ss_   CHARGE=   0.8102 END
-ATOM H     TYPE= hc_   CHARGE=   0.0480 END
-ATOM H1    TYPE= hc_   CHARGE=   0.0480 END
-ATOM H2    TYPE= hc_   CHARGE=   0.0480 END
-ATOM H3    TYPE= hn_   CHARGE=   0.5048 END
-ATOM H4    TYPE= hn_   CHARGE=   0.5048 END
-ATOM H5    TYPE= hn_   CHARGE=   0.3555 END
+ATOM C1    TYPE= cc_   CHARGE=   0.4613 END
+ATOM C2    TYPE= cc_   CHARGE=   0.5023 END
+ATOM C3    TYPE= c_    CHARGE=   0.6671 END
+ATOM C4    TYPE= c3_   CHARGE=  -0.1911 END
+ATOM N1    TYPE= n3_   CHARGE=  -1.4587 END
+ATOM N2    TYPE= nd_   CHARGE=  -0.3610 END
+ATOM N3    TYPE= nd_   CHARGE=  -0.3130 END
+ATOM N4    TYPE= n_    CHARGE=  -0.5334 END
+ATOM O1    TYPE= o_    CHARGE=  -0.7218 END
+ATOM O2    TYPE= o_    CHARGE=  -0.7218 END
+ATOM O3    TYPE= o_    CHARGE=  -0.5411 END
+ATOM S1    TYPE= sy_   CHARGE=   1.5778 END
+ATOM S2    TYPE= ss_   CHARGE=  -0.0408 END
+ATOM H     TYPE= hc_   CHARGE=   0.0884 END
+ATOM H1    TYPE= hc_   CHARGE=   0.0884 END
+ATOM H2    TYPE= hc_   CHARGE=   0.0884 END
+ATOM H3    TYPE= hn_   CHARGE=   0.5263 END
+ATOM H4    TYPE= hn_   CHARGE=   0.5263 END
+ATOM H5    TYPE= hn_   CHARGE=   0.3565 END
 
 { Bonds: atomName1  atomName2 }
 BOND C4    H    
