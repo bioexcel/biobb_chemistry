@@ -4,7 +4,7 @@
     "github" : "https://github.com/bioexcel/biobb_chemistry", 
     "readthedocs" : "https://biobb-chemistry.readthedocs.io/en/latest/", 
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
-    "docker" : "https://quay.io/biocontainers/biobb_chemistry:3.6.0--py_0", 
+    "docker" : "https://quay.io/biocontainers/biobb_chemistry:3.6.0--pyhdfd78af_0", 
     "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
     "version" : "3.6.0",
     "tools" : [
