@@ -63,8 +63,8 @@ class BabelAddHydrogens():
 
         # Input/Output files
         self.io_dict = { 
-            "in": { "input_path": check_input_path(input_path, self.__class__.__name__) }, 
-            "out": { "output_path": check_output_path(output_path, self.__class__.__name__) } 
+            "in": { "input_path": input_path }, 
+            "out": { "output_path": output_path } 
         }
 
         # Properties specific for BB
@@ -91,6 +91,11 @@ class BabelAddHydrogens():
         self.path = properties.get('path', '')
         self.remove_tmp = properties.get('remove_tmp', True)
         self.restart = properties.get('restart', False)
+
+    def check_data_params(self, out_log, err_log):
+        """ Checks all the input/output paths and parameters """
+        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
+        self.io_dict["out"]["output_path"] = check_output_path(self.io_dict["out"]["output_path"], out_log, self.__class__.__name__)
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
@@ -145,6 +150,9 @@ class BabelAddHydrogens():
         # Get local loggers from launchlogger decorator
         out_log = getattr(self, 'out_log', None)
         err_log = getattr(self, 'err_log', None)
+
+        # check input/output paths and parameters
+        self.check_data_params(out_log, err_log)
 
         # Check the properties
         fu.check_properties(self, self.properties)
