@@ -2,13 +2,12 @@
 
 """Module containing the BabelMinimize class and the command line interface."""
 import argparse
+from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import  settings
-from biobb_common.tools import file_utils as fu
 from biobb_common.tools.file_utils import launchlogger
-from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.babelm.common import *
 
-class BabelMinimize():
+class BabelMinimize(BiobbObject):
     """
     | biobb_chemistry BabelMinimize
     | This class is a wrapper of the Open Babel tool.
@@ -65,6 +64,9 @@ class BabelMinimize():
                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
+        # Call parent class constructor
+        super().__init__(properties)
+
         # Input/Output files
         self.io_dict = { 
             "in": { "input_path": input_path }, 
@@ -84,22 +86,8 @@ class BabelMinimize():
         self.obminimize_path = get_binary_path(properties, 'obminimize_path')
         self.properties = properties
 
-        # container Specific
-        self.container_path = properties.get('container_path')
-        self.container_image = properties.get('container_image', 'informaticsmatters/obabel:latest')
-        self.container_volume_path = properties.get('container_volume_path', '/tmp')
-        self.container_working_dir = properties.get('container_working_dir')
-        self.container_user_id = properties.get('container_user_id')
-        self.container_shell_path = properties.get('container_shell_path', '/bin/bash')
-
-        # Properties common in all BB
-        self.can_write_console_log = properties.get('can_write_console_log', True)
-        self.global_log = properties.get('global_log', None)
-        self.prefix = properties.get('prefix', None)
-        self.step = properties.get('step', None)
-        self.path = properties.get('path', '')
-        self.remove_tmp = properties.get('remove_tmp', True)
-        self.restart = properties.get('restart', False)
+        # Check the properties
+        self.check_properties(properties)
 
     def check_data_params(self, out_log, err_log):
         """ Checks all the input/output paths and parameters """
@@ -149,46 +137,28 @@ class BabelMinimize():
     def launch(self) -> int:
         """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` babelm.babel_minimize.BabelMinimize object."""
         
-        # Get local loggers from launchlogger decorator
-        out_log = getattr(self, 'out_log', None)
-        err_log = getattr(self, 'err_log', None)
-
         # check input/output paths and parameters
-        self.check_data_params(out_log, err_log)
+        self.check_data_params(self.out_log, self.err_log)
 
-        # Check the properties
-        fu.check_properties(self, self.properties)
+        # Setup Biobb
+        if self.check_restart(): return 0
+        self.stage_files()
 
-        if self.restart:
-            output_file_list = [self.io_dict["out"]["output_path"]]
-            if fu.check_complete_files(output_file_list):
-                fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
-                return 0
+        # create command line instruction
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
 
-        # copy inputs to container
-        container_io_dict = fu.copy_to_container(self.container_path, self.container_volume_path, self.io_dict)
+        # Run Biobb block
+        self.run_biobb()
 
-        # create and execute command line instruction
-        cmd = self.create_cmd(container_io_dict, out_log, err_log) 
-        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, 
-                                 host_volume=container_io_dict.get("unique_dir"), 
-                                 container_volume=self.container_volume_path, 
-                                 container_working_dir=self.container_working_dir, 
-                                 container_user_uid=self.container_user_id, 
-                                 container_image=self.container_image, 
-                                 container_shell_path=self.container_shell_path, 
-                                 out_log=out_log, global_log=self.global_log)
-        returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
-
-        # copy output(s) to output(s) path(s) in case of container execution
-        fu.copy_to_host(self.container_path, container_io_dict, self.io_dict)
+        # Copy files to host
+        self.copy_to_host()
 
         # remove temporary folder(s)
         if self.container_path and self.remove_tmp: 
-            fu.rm(container_io_dict['unique_dir'])
-            fu.log('Removed: %s' % str(container_io_dict['unique_dir']), out_log)
+            self.tmp_files.append(self.stage_io_dict.get("unique_dir"))
+            self.remove_tmp_files()
 
-        return returncode
+        return self.return_code
 
 def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and

@@ -2,13 +2,13 @@
 
 """Module containing the AcpypeParamsGMXOPLS class and the command line interface."""
 import argparse
+from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import  settings
-from biobb_common.tools import file_utils as fu
 from biobb_common.tools.file_utils import launchlogger
-from biobb_common.command_wrapper import cmd_wrapper
 from biobb_chemistry.acpype.common import *
 
-class AcpypeParamsGMXOPLS():
+
+class AcpypeParamsGMXOPLS(BiobbObject):
     """
     | biobb_chemistry AcpypeParamsGMXOPLS
     | This class is a wrapper of `Acpype <https://github.com/alanwilter/acpype>`_ tool for generation of topologies for OPLS/AA.
@@ -59,6 +59,9 @@ class AcpypeParamsGMXOPLS():
                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
+        # Call parent class constructor
+        super().__init__(properties)
+
         # Input/Output files
         self.io_dict = { 
             "in": { "input_path": input_path }, 
@@ -71,22 +74,8 @@ class AcpypeParamsGMXOPLS():
         self.acpype_path = get_binary_path(properties, 'acpype_path')
         self.properties = properties
 
-        # container Specific
-        self.container_path = properties.get('container_path')
-        self.container_image = properties.get('container_image', 'mmbirb/acpype:latest')
-        self.container_volume_path = properties.get('container_volume_path', '/tmp')
-        self.container_working_dir = properties.get('container_working_dir')
-        self.container_user_id = properties.get('container_user_id')
-        self.container_shell_path = properties.get('container_shell_path', '/bin/bash')
-
-        # Properties common in all BB
-        self.can_write_console_log = properties.get('can_write_console_log', True)
-        self.global_log = properties.get('global_log', None)
-        self.prefix = properties.get('prefix', None)
-        self.step = properties.get('step', None)
-        self.path = properties.get('path', '')
-        self.remove_tmp = properties.get('remove_tmp', True)
-        self.restart = properties.get('restart', False)
+        # Check the properties
+        self.check_properties(properties)
 
     def check_data_params(self, out_log, err_log):
         """ Checks all the input/output paths and parameters """
@@ -131,60 +120,42 @@ class AcpypeParamsGMXOPLS():
     def launch(self) -> int:
         """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS object."""
         
-        # Get local loggers from launchlogger decorator
-        out_log = getattr(self, 'out_log', None)
-        err_log = getattr(self, 'err_log', None)
-
         # check input/output paths and parameters
-        self.check_data_params(out_log, err_log)
+        self.check_data_params(self.out_log, self.err_log)
 
-        # Check the properties
-        fu.check_properties(self, self.properties)
-
-        if self.restart:
-            output_file_list = [container_io_dict["out"]["output_path_itp"], container_io_dict["out"]["output_path_top"]]
-            if fu.check_complete_files(output_file_list):
-                fu.log('Restart is enabled, this step: %s will the skipped' % self.step, out_log, self.global_log)
-                return 0
-
-        # copy inputs to container
-        container_io_dict = fu.copy_to_container(self.container_path, self.container_volume_path, self.io_dict)
+        # Setup Biobb
+        if self.check_restart(): return 0
+        self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)
 
         # create command line instruction
-        cmd = self.create_cmd(container_io_dict, out_log, err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
 
-        # execute cmd
-        fu.log('Running %s, this execution can take a while' % self.acpype_path, out_log)
-        cmd = fu.create_cmd_line(cmd, container_path=self.container_path, 
-                                 host_volume=container_io_dict.get("unique_dir"), 
-                                 container_volume=self.container_volume_path, 
-                                 container_working_dir=self.container_working_dir, 
-                                 container_user_uid=self.container_user_id, 
-                                 container_image=self.container_image, 
-                                 container_shell_path=self.container_shell_path, 
-                                 out_log=out_log, global_log=self.global_log)
-        returncode = cmd_wrapper.CmdWrapper(cmd, out_log, err_log, self.global_log).launch()
+        # Run Biobb block
+        self.run_biobb()
+
+        # Copy files to host
+        self.copy_to_host()
 
         # move files to output_path and removes temporary folder
         if self.container_path:
             process_output_gmx(self.unique_name, 
-                               container_io_dict['unique_dir'], 
+                               self.stage_io_dict['unique_dir'], 
                                self.remove_tmp, 
                                self.basename, 
                                get_default_value(self.__class__.__name__), 
-                               self.output_files, out_log)
+                               self.output_files, self.out_log)
         else:
             process_output_gmx(self.unique_name, 
                                self.basename + "." + self.unique_name + ".acpype", 
                                self.remove_tmp, 
                                self.basename, 
                                get_default_value(self.__class__.__name__), 
-                               self.output_files, out_log)
+                               self.output_files, self.out_log)
 
-        return returncode
+        return self.return_code
 
 def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` class and

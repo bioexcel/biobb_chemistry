@@ -259,6 +259,7 @@ acpype_params_gmx_docker:
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
+    container_user_id: "10151"
 
 acpype_params_gmx_singularity:
   paths:
@@ -312,6 +313,7 @@ acpype_params_ac_docker:
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
+    container_user_id: "10151"
 
 acpype_params_ac_singularity:
   paths:
@@ -359,6 +361,7 @@ acpype_params_gmx_opls_docker:
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
+    container_user_id: "10151"
 
 acpype_params_gmx_opls_singularity:
   paths:
@@ -406,6 +409,7 @@ acpype_params_cns_docker:
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
+    container_user_id: "10151"
 
 acpype_params_cns_singularity:
   paths:
