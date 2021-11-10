@@ -7,76 +7,87 @@
     "docker" : "https://quay.io/biocontainers/biobb_chemistry:3.7.0--pyhdfd78af_0", 
     "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
     "version" : "3.7.0",
+    "rest": true,
     "tools" : [
         {
             "block" : "AcpypeParamsAC", 
             "tool" : "ACPype", 
             "desc" : "Small molecule parameterization for AMBER MD package.",
             "exec" : "acpype_params_ac",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_ac"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_ac",
+            "rest": true
         }, 
         {
             "block" : "AcpypeParamsCNS", 
             "tool" : "ACPype", 
             "desc" : "Small molecule parameterization for CNS/XPLOR MD package.",
             "exec" : "acpype_params_cns",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_cns"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_cns",
+            "rest": true
         },
         {
             "block" : "AcpypeParamsGMX", 
             "tool" : "ACPype", 
             "desc" : "Small molecule parameterization for GROMACS MD package.",
             "exec" : "acpype_params_gmx",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_gmx"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_gmx",
+            "rest": true
         }, 
         {
             "block" : "AcpypeParamsGMXOPLS", 
             "tool" : "ACPype", 
             "desc" : "Small molecule parameterization for OPLS/AA MD package.",
             "exec" : "acpype_params_gmx_opls",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_gmx_opls"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_gmx_opls",
+            "rest": true
         }, 
         {
             "block" : "BabelConvert", 
             "tool" : "OpenBabel", 
             "desc" : "Small molecule format conversion.",
             "exec" : "babel_convert",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_convert"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_convert",
+            "rest": true
         }, 
         {
             "block" : "BabelAddHydrogens", 
             "tool" : "OpenBabel", 
             "desc" : "Adds hydrogen atoms to small molecules.",
             "exec" : "babel_add_hydrogens",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_add_hydrogens"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_add_hydrogens",
+            "rest": true
         }, 
         {
             "block" : "BabelRemoveHydrogens", 
             "tool" : "OpenBabel", 
             "desc" : "Removes hydrogen atoms to small molecules.",
             "exec" : "babel_remove_hydrogens",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_remove_hydrogens"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_remove_hydrogens",
+            "rest": true
         },
         {
             "block" : "BabelMinimize", 
             "tool" : "OpenBabel", 
             "desc" : "Energetically minimize small molecules.",
             "exec" : "babel_minimize",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_minimize"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/babelm.html#module-babelm.babel_minimize",
+            "rest": true
         }, 
         {
             "block" : "ReduceAddHydrogens", 
             "tool" : "AmberTools Reduce", 
             "desc" : "Adds hydrogen atoms to small molecules.",
             "exec" : "reduce_add_hydrogens",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/ambertools.html#module-ambertools.reduce_add_hydrogens"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/ambertools.html#module-ambertools.reduce_add_hydrogens",
+            "rest": true
         },
         {
             "block" : "ReduceRemoveHydrogens", 
             "tool" : "AmberTools Reduce", 
             "desc" : "Removes hydrogen atoms to small molecules.",
             "exec" : "reduce_remove_hydrogens",
-            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/ambertools.html#module-ambertools.reduce_remove_hydrogens"
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/ambertools.html#module-ambertools.reduce_remove_hydrogens",
+            "rest": true
         }
     ],
     "dep_pypi" : [
