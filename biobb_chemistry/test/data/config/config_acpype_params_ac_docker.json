@@ -6,6 +6,7 @@
     "container_image": "mmbirb/acpype:latest",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh"
+    "container_shell_path": "/bin/sh",
+    "container_user_id": "10151"
   }
 }

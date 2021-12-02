@@ -4,5 +4,6 @@ properties:
   container_image: mmbirb/acpype:latest
   container_path: docker
   container_shell_path: /bin/sh
+  container_user_id: '10151'
   container_volume_path: /tmp
   container_working_dir: /tmp
