@@ -22,6 +22,7 @@ class BabelConvert(BiobbObject):
             * **output_format** (*str*) - (None) Format of output file. If not provided, output_path extension will be taken. Values: ent (Protein Data Bank format), fa (FASTA sequence format), fasta (FASTA sequence format), gro (GROMACS structure), inp (AMBER trajectory format), mcif (Entry format of PDB database in mmCIF format), mdl (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mmcif (Entry format of PDB database in mmCIF format), mol (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mol2 (Complete and portable representation of a SYBYL molecule), pdb (Protein Data Bank format), pdbqt (Protein Data Bank format with charges), png (File format for image compression), sdf (One of a family of chemical-data file formats developed by MDL Information Systems), smi (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), smiles (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), txt (Textual format), xtc (Portable binary format for trajectories produced by GROMACS package).
             * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2 (2D coordinates), 3 (3D coordinates).
             * **ph** (*float*) - (7.4) [0~14|0.1] Add hydrogens appropriate for pH.
+            * **flex** (*bool*) - (False) Remove all but the largest contiguous fragment (strip salts).
             * **obabel_path** (*str*) - ("obabel") Path to the obabel executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -75,6 +76,7 @@ class BabelConvert(BiobbObject):
         self.output_format = properties.get('output_format', '')
         self.coordinates = properties.get('coordinates', '')
         self.ph = properties.get('ph', '')
+        self.flex = properties.get('flex', False)
         self.obabel_path = get_binary_path(properties, 'obabel_path')
         self.properties = properties
 
@@ -122,6 +124,13 @@ class BabelConvert(BiobbObject):
             ph = '-p ' + p
 
         instructions_list.append(ph)
+
+        # flex
+        flex = ''
+        if not self.flex:
+            flex = '-r'
+
+        instructions_list.append(flex)
 
         return instructions_list
 
