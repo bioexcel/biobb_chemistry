@@ -34,8 +34,8 @@ class ReduceAddHydrogens(BiobbObject):
             * **charges** (*bool*) - (False) output charge state for appropriate hydrogen records
             * **dorotmet** (*bool*) - (False) allow methionine methyl groups to rotate (not recommended)
             * **noadjust** (*bool*) - (False) do not process any rot or flip adjustments
-            * **metal_bump** (*float*) - (0.865) [0~5|0.005] H 'bumps' metals at radius plus this
-            * **non_metal_bump** (*float*) - (0.125) [0~5|0.005] 'bumps' nonmetal at radius plus this
+            * **metal_bump** (*float*) - (None) [0~5|0.005] H 'bumps' metals at radius plus this
+            * **non_metal_bump** (*float*) - (None) [0~5|0.005] 'bumps' nonmetal at radius plus this
             * **build** (*bool*) - (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)
             * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
@@ -102,8 +102,8 @@ class ReduceAddHydrogens(BiobbObject):
         self.dorotmet = properties.get('dorotmet', False)
         self.noadjust = properties.get('noadjust', False)
         self.build = properties.get('build', False)
-        self.metal_bump = properties.get('metal_bump', 0.865)
-        self.non_metal_bump = properties.get('non_metal_bump', 0.125)
+        self.metal_bump = properties.get('metal_bump', None)
+        self.non_metal_bump = properties.get('non_metal_bump', None)
         self.reduce_path = get_binary_path(properties, 'reduce_path')
         self.properties = properties
 
