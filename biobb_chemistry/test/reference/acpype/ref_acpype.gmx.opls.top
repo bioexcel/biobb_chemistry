@@ -1,4 +1,4 @@
-; BBB_GMX_OPLS.top created by acpype (v: 2019-11-07T23:16:00CET) on Fri Oct  8 15:00:21 2021
+; BBB_GMX_OPLS.top created by acpype (v: 2019-11-07T23:16:00CET) on Tue Aug 30 10:30:25 2022
 
 ; Include forcefield parameters
 #include "ffoplsaa.itp"
