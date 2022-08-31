@@ -1,11 +1,16 @@
-; BBB_GMX.top created by acpype (v: 2019-11-07T23:16:00CET) on Tue Aug 30 10:27:21 2022
+; BBB_GMX.top created by acpype (v: 2022.6.6) on Wed Aug 31 12:03:37 2022
 
 [ defaults ]
 ; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
-1               2               yes             0.5     0.8333
+1               2               yes             0.5     0.8333333333
 
 ; Include ref_acpype.gmx.itp topology
 #include "ref_acpype.gmx.itp"
+
+; Ligand position restraints
+#ifdef POSRES_LIG
+#include "posre_BBB.itp"
+#endif
 
 [ system ]
  BBB

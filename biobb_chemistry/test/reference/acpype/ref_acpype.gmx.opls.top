@@ -1,10 +1,15 @@
-; BBB_GMX_OPLS.top created by acpype (v: 2019-11-07T23:16:00CET) on Tue Aug 30 10:30:25 2022
+; BBB_GMX_OPLS.top created by acpype (v: 2022.6.6) on Wed Aug 31 12:07:12 2022
 
 ; Include forcefield parameters
 #include "ffoplsaa.itp"
 
 ; Include ref_acpype.gmx.opls.itp topology
 #include "ref_acpype.gmx.opls.itp"
+
+; Ligand position restraints
+#ifdef POSRES_LIG
+#include "posre_BBB.itp"
+#endif
 
 [ system ]
  BBB
