@@ -75,7 +75,7 @@ def check_minimize_property(type, value, out_log):
 
 	if type == "criteria":
 
-		if re.match('(\d+(\.\d+)?)', value) or re.match('[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?', value):
+		if re.match(r'(\d+(\.\d+)?)', value) or re.match(r'[+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?', value):
 			return True
 		else:
 			fu.log('Criteria %s is not correct, assigned default value: %s' % (value, get_default_value('criteria')), out_log)
@@ -101,7 +101,7 @@ def check_minimize_property(type, value, out_log):
 			fu.log('Hydrogens %s is not correct, assigned default value: %s' % (value, get_default_value('hydrogens')), out_log)
 
 	if type == "steps":
-		if re.match('^\d+$', value):
+		if re.match(r'^\d+$', value):
 			return True
 		else:
 			fu.log('Steps %s is not correct, assigned default value: %s' % (value, get_default_value('steps')), out_log)
@@ -115,19 +115,19 @@ def check_minimize_property(type, value, out_log):
 			fu.log('Cut-off %s is not correct, assigned default value: %s' % (value, get_default_value('cutoff')), out_log)
 
 	if type == "rvdw":
-		if re.match('(\d+(\.\d+)?)', value):
+		if re.match(r'(\d+(\.\d+)?)', value):
 			return True
 		else:
 			fu.log('Rvdw %s is not correct, assigned default value: %s' % (value, get_default_value('rvdw')), out_log)
 
 	if type == "rele":
-		if re.match('(\d+(\.\d+)?)', value):
+		if re.match(r'(\d+(\.\d+)?)', value):
 			return True
 		else:
 			fu.log('Rele %s is not correct, assigned default value: %s' % (value, get_default_value('rele')), out_log)
 
 	if type == "frequency":
-		if re.match('^\d+$', value):
+		if re.match(r'^\d+$', value):
 			return True
 		else:
 			fu.log('Frequency %s is not correct, assigned default value: %s' % (value, get_default_value('frequency')), out_log)

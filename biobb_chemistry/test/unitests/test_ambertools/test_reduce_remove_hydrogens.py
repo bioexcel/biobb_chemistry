@@ -3,10 +3,10 @@ from biobb_chemistry.ambertools.reduce_remove_hydrogens import reduce_remove_hyd
 
 
 class TestReduceRemoveHydrogens():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'reduce_remove_hydrogens')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

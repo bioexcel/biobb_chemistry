@@ -3,10 +3,10 @@ from biobb_chemistry.babelm.babel_minimize import babel_minimize
 
 
 class TestBabelMinimize():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'babel_minimize')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

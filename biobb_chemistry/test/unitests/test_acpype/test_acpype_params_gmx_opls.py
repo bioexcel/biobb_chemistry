@@ -3,10 +3,10 @@ from biobb_chemistry.acpype.acpype_params_gmx_opls import acpype_params_gmx_opls
 
 
 class TestAcpypeParamsGMXOPLS():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'acpype_params_gmx_opls')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

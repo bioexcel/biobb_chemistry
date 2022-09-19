@@ -3,10 +3,10 @@ from biobb_chemistry.babelm.babel_add_hydrogens import babel_add_hydrogens
 
 
 class TestBabelAddHydrogens():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'babel_add_hydrogens')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

@@ -38,7 +38,7 @@ def get_binary_path(properties, type):
 def get_default_value(key):
 	""" Gives default values according to the given key """
 	default_values = {
-		"reduce_path": "reduce",
+		"binary_path": "reduce",
 	}
 
 	return default_values[key]

@@ -37,7 +37,7 @@ class ReduceAddHydrogens(BiobbObject):
             * **metal_bump** (*float*) - (None) [0~5|0.005] H 'bumps' metals at radius plus this
             * **non_metal_bump** (*float*) - (None) [0~5|0.005] 'bumps' nonmetal at radius plus this
             * **build** (*bool*) - (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)
-            * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
+            * **binary_path** (*str*) - ("reduce") Path to the reduce executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
             * **container_path** (*str*) - (None) Container path definition.
@@ -104,7 +104,7 @@ class ReduceAddHydrogens(BiobbObject):
         self.build = properties.get('build', False)
         self.metal_bump = properties.get('metal_bump', None)
         self.non_metal_bump = properties.get('non_metal_bump', None)
-        self.reduce_path = get_binary_path(properties, 'reduce_path')
+        self.binary_path = get_binary_path(properties, 'binary_path')
         self.properties = properties
 
         # Check the properties
@@ -120,7 +120,7 @@ class ReduceAddHydrogens(BiobbObject):
         instructions_list = []
 
         # executable path
-        instructions_list.append(self.reduce_path)
+        instructions_list.append(self.binary_path)
 
         if self.flip: instructions_list.append('-FLIP')
         if self.noflip: instructions_list.append('-NOFLIP')

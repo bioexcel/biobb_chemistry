@@ -3,10 +3,10 @@ from biobb_chemistry.babelm.babel_remove_hydrogens import babel_remove_hydrogens
 
 
 class TestBabelRemoveHydrogens():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'babel_remove_hydrogens')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

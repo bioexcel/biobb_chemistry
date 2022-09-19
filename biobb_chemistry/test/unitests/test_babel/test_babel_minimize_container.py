@@ -3,10 +3,10 @@ from biobb_chemistry.babelm.babel_minimize import babel_minimize
 
 
 class TestBabelMinimizeDocker():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'babel_minimize_docker')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 
@@ -15,11 +15,13 @@ class TestBabelMinimizeDocker():
         assert fx.not_empty(self.paths['output_path'])
         assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])
 
+import pytest
+@pytest.mark.skip(reason="singularity currently not available")
 class TestBabelMinimizeSingularity():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'babel_minimize_singularity')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

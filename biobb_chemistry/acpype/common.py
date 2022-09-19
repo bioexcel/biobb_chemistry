@@ -69,7 +69,7 @@ def get_default_value(key):
 	default_values = {
 		"charge": 0,
 		"basename": "BBB",
-		"acpype_path": "acpype",
+		"binary_path": "acpype",
 		"AcpypeParamsGMX": {
 			"topology": "GROMACS",
 			"suffix": "_GMX."

@@ -3,10 +3,10 @@ from biobb_chemistry.acpype.acpype_params_gmx_opls import acpype_params_gmx_opls
 
 
 class TestAcpypeParamsGMXOPLSDocker():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'acpype_params_gmx_opls_docker')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 
@@ -17,11 +17,13 @@ class TestAcpypeParamsGMXOPLSDocker():
         #assert fx.equal(self.paths['output_path_itp'], self.paths['ref_output_acpype_path_itp'])
         #assert fx.equal(self.paths['output_path_top'], self.paths['ref_output_acpype_path_top'])
 
+import pytest
+@pytest.mark.skip(reason="singularity currently not available")
 class TestAcpypeParamsGMXOPLSSingularity():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'acpype_params_gmx_opls_singularity')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

@@ -18,7 +18,7 @@ class ReduceRemoveHydrogens(BiobbObject):
         input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/ambertools/reduce.H.pdb>`_. Accepted formats: pdb (edam:format_1476).
         output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/ambertools/ref_reduce.remove.pdb>`_. Accepted formats: pdb (edam:format_1476).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
-            * **reduce_path** (*str*) - ("reduce") Path to the reduce executable binary.
+            * **binary_path** (*str*) - ("reduce") Path to the reduce executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
             * **container_path** (*str*) - (None) Container path definition.
@@ -62,7 +62,7 @@ class ReduceRemoveHydrogens(BiobbObject):
         }
 
         # Properties specific for BB
-        self.reduce_path = get_binary_path(properties, 'reduce_path')
+        self.binary_path = get_binary_path(properties, 'binary_path')
         self.properties = properties
 
         # Check the properties
@@ -78,7 +78,7 @@ class ReduceRemoveHydrogens(BiobbObject):
         instructions_list = []
 
         # executable path
-        instructions_list.append(self.reduce_path)
+        instructions_list.append(self.binary_path)
 
         instructions_list.append('-Trim')
 

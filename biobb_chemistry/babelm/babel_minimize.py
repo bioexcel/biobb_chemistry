@@ -26,7 +26,7 @@ class BabelMinimize(BiobbObject):
             * **rvdw** (*float*) - (6.0) [0~50|1.0] VDW cut-off distance.
             * **rele** (*float*) - (10.0) [0~50|1.0] Electrostatic cut-off distance.
             * **frequency** (*int*) - (10) [0~50|1] Frequency to update the non-bonded pairs.
-            * **obminimize_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
+            * **binary_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
             * **container_path** (*str*) - (None) Container path definition.
@@ -83,7 +83,8 @@ class BabelMinimize(BiobbObject):
         self.rvdw = properties.get('rvdw', '')
         self.rele = properties.get('rele', '')
         self.frequency = properties.get('frequency', '')
-        self.obminimize_path = get_binary_path(properties, 'obminimize_path')
+        #self.binary_path = get_binary_path(properties, 'binary_path')
+        self.binary_path = properties.get('binary_path', 'obminimize')
         self.properties = properties
 
         # Check the properties
@@ -99,7 +100,7 @@ class BabelMinimize(BiobbObject):
         instructions_list = []
 
         # executable path
-        instructions_list.append(self.obminimize_path)
+        instructions_list.append(self.binary_path)
 
         # check all properties
         if check_minimize_property("criteria", self.criteria, out_log): instructions_list.append('-c ' + str(self.criteria))

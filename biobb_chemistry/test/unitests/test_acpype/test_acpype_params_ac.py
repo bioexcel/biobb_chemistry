@@ -3,10 +3,10 @@ from biobb_chemistry.acpype.acpype_params_ac import acpype_params_ac
 
 
 class TestAcpypeParamsAC():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'acpype_params_ac')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 

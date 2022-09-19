@@ -23,7 +23,7 @@ class BabelConvert(BiobbObject):
             * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2 (2D coordinates), 3 (3D coordinates).
             * **ph** (*float*) - (7.4) [0~14|0.1] Add hydrogens appropriate for pH.
             * **flex** (*bool*) - (False) Remove all but the largest contiguous fragment (strip salts).
-            * **obabel_path** (*str*) - ("obabel") Path to the obabel executable binary.
+            * **binary_path** (*str*) - ("obabel") Path to the obabel executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
             * **container_path** (*str*) - (None) Container path definition.
@@ -77,7 +77,8 @@ class BabelConvert(BiobbObject):
         self.coordinates = properties.get('coordinates', '')
         self.ph = properties.get('ph', '')
         self.flex = properties.get('flex', False)
-        self.obabel_path = get_binary_path(properties, 'obabel_path')
+        #self.binary_path = get_binary_path(properties, 'binary_path')
+        self.binary_path = properties.get('binary_path', 'obabel')
         self.properties = properties
 
         # Check the properties
@@ -93,7 +94,7 @@ class BabelConvert(BiobbObject):
         instructions_list = []
 
         # executable path
-        instructions_list.append(self.obabel_path)
+        instructions_list.append(self.binary_path)
 
         # generating input 
         infr = get_input_format(self.input_format, container_io_dict["in"]["input_path"], out_log)

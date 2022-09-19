@@ -21,7 +21,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
-            * **acpype_path** (*str*) - ("acpype") Path to the acpype executable binary.
+            * **binary_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
             * **container_path** (*str*) - (None) Container path definition.
@@ -71,7 +71,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         # Properties specific for BB
         self.basename = properties.get('basename', 'BBB')
         self.charge = properties.get('charge', '')
-        self.acpype_path = get_binary_path(properties, 'acpype_path')
+        self.binary_path = get_binary_path(properties, 'binary_path')
         self.properties = properties
 
         # Check the properties
@@ -98,7 +98,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
             out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
 
         # executable path
-        instructions_list.append(self.acpype_path)
+        instructions_list.append(self.binary_path)
 
         # generating input 
         ipath = '-i ' + container_io_dict["in"]["input_path"]

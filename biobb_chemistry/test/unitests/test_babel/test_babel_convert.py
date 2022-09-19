@@ -3,10 +3,10 @@ from biobb_chemistry.babelm.babel_convert import babel_convert
 
 
 class TestBabelConvert():
-    def setUp(self):
+    def setup_class(self):
         fx.test_setup(self,'babel_convert')
 
-    def tearDown(self):
+    def teardown_class(self):
         fx.test_teardown(self)
         pass
 
