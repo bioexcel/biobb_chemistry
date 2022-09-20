@@ -516,7 +516,7 @@
                     "max": 14.0,
                     "step": 0.1
                 },
-                "obabel_path": {
+                "binary_path": {
                     "type": "string",
                     "default": "obabel",
                     "wf_prop": false,

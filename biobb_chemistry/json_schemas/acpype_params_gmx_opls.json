@@ -100,7 +100,7 @@
                     "max": 20,
                     "step": 1
                 },
-                "acpype_path": {
+                "binary_path": {
                     "type": "string",
                     "default": "acpype",
                     "wf_prop": false,

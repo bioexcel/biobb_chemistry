@@ -516,7 +516,13 @@
                     "max": 14.0,
                     "step": 0.1
                 },
-                "obabel_path": {
+                "flex": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Remove all but the largest contiguous fragment (strip salts)."
+                },
+                "binary_path": {
                     "type": "string",
                     "default": "obabel",
                     "wf_prop": false,

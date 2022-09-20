@@ -152,13 +152,31 @@
                     "wf_prop": false,
                     "description": "do not process any rot or flip adjustments"
                 },
+                "metal_bump": {
+                    "type": "number",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "H 'bumps' metals at radius plus this",
+                    "min": 0.0,
+                    "max": 5.0,
+                    "step": 0.005
+                },
+                "non_metal_bump": {
+                    "type": "number",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "'bumps' nonmetal at radius plus this",
+                    "min": 0.0,
+                    "max": 5.0,
+                    "step": 0.005
+                },
                 "build": {
                     "type": "boolean",
                     "default": false,
                     "wf_prop": false,
                     "description": "add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)"
                 },
-                "reduce_path": {
+                "binary_path": {
                     "type": "string",
                     "default": "reduce",
                     "wf_prop": false,

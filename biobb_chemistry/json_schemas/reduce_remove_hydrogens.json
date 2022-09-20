@@ -56,7 +56,7 @@
         "properties": {
             "type": "object",
             "properties": {
-                "reduce_path": {
+                "binary_path": {
                     "type": "string",
                     "default": "reduce",
                     "wf_prop": false,
