@@ -13,7 +13,19 @@ Command:
 ```python
 babel_minimize -h
 ```
-    /bin/sh: babel_minimize: command not found
+    usage: babel_minimize [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    
+    Energetically minimize small molecules.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_path INPUT_PATH
+                            Path to the input file. Accepted formats: pdb, mol2.
+      --output_path OUTPUT_PATH
+                            Path to the output file. Accepted formats: pdb, mol2.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
@@ -293,7 +305,19 @@ Command:
 ```python
 babel_remove_hydrogens -h
 ```
-    /bin/sh: babel_remove_hydrogens: command not found
+    usage: babel_remove_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    
+    Removes hydrogen atoms to small molecules.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_path INPUT_PATH
+                            Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.
+      --output_path OUTPUT_PATH
+                            Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
@@ -407,7 +431,19 @@ Command:
 ```python
 babel_add_hydrogens -h
 ```
-    /bin/sh: babel_add_hydrogens: command not found
+    usage: babel_add_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    
+    Adds hydrogen atoms to small molecules.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_path INPUT_PATH
+                            Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.
+      --output_path OUTPUT_PATH
+                            Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
@@ -774,7 +810,19 @@ Command:
 ```python
 reduce_add_hydrogens -h
 ```
-    /bin/sh: reduce_add_hydrogens: command not found
+    usage: reduce_add_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    
+    Adds hydrogen atoms to small molecules.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_path INPUT_PATH
+                            Path to the input file. Accepted formats: pdb.
+      --output_path OUTPUT_PATH
+                            Path to the output file. Accepted formats: pdb.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
@@ -885,7 +933,19 @@ Command:
 ```python
 reduce_remove_hydrogens -h
 ```
-    /bin/sh: reduce_remove_hydrogens: command not found
+    usage: reduce_remove_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    
+    Removes hydrogen atoms to small molecules.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_path INPUT_PATH
+                            Path to the input file. Accepted formats: pdb.
+      --output_path OUTPUT_PATH
+                            Path to the output file. Accepted formats: pdb.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
@@ -1101,7 +1161,19 @@ Command:
 ```python
 babel_convert -h
 ```
-    /bin/sh: babel_convert: command not found
+    usage: babel_convert [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    
+    Small molecule format conversion.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_path INPUT_PATH
+                            Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.
+      --output_path OUTPUT_PATH
+                            Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
