@@ -212,7 +212,7 @@ Config parameters for this building block:
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
 * **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (mmbirb/acpype:latest) Container image definition..
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
 * **container_working_dir** (*string*): (None) Container working directory definition..
 * **container_user_id** (*string*): (None) Container user_id definition..
@@ -230,7 +230,7 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: mmbirb/acpype:latest
+  container_image: acpype/acpype:2022.7.21
   container_path: docker
   container_shell_path: /bin/sh
   container_user_id: '10151'
@@ -271,7 +271,7 @@ acpype_params_ac --config config_acpype_params_ac.yml --input_path acpype.params
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "mmbirb/acpype:latest",
+    "container_image": "acpype/acpype:2022.7.21",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh",
@@ -589,7 +589,7 @@ Config parameters for this building block:
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
 * **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (mmbirb/acpype:latest) Container image definition..
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
 * **container_working_dir** (*string*): (None) Container working directory definition..
 * **container_user_id** (*string*): (None) Container user_id definition..
@@ -607,7 +607,7 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: mmbirb/acpype:latest
+  container_image: acpype/acpype:2022.7.21
   container_path: docker
   container_shell_path: /bin/sh
   container_user_id: '10151'
@@ -648,7 +648,7 @@ acpype_params_gmx_opls --config config_acpype_params_gmx_opls.yml --input_path a
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "mmbirb/acpype:latest",
+    "container_image": "acpype/acpype:2022.7.21",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh",
@@ -717,7 +717,7 @@ Config parameters for this building block:
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
 * **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (mmbirb/acpype:latest) Container image definition..
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
 * **container_working_dir** (*string*): (None) Container working directory definition..
 * **container_user_id** (*string*): (None) Container user_id definition..
@@ -735,7 +735,7 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: mmbirb/acpype:latest
+  container_image: acpype/acpype:2022.7.21
   container_path: docker
   container_shell_path: /bin/sh
   container_user_id: '10151'
@@ -776,7 +776,7 @@ acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "mmbirb/acpype:latest",
+    "container_image": "acpype/acpype:2022.7.21",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh",
@@ -1068,7 +1068,7 @@ Config parameters for this building block:
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
 * **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (mmbirb/acpype:latest) Container image definition..
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
 * **container_working_dir** (*string*): (None) Container working directory definition..
 * **container_user_id** (*string*): (None) Container user_id definition..
@@ -1086,7 +1086,7 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: mmbirb/acpype:latest
+  container_image: acpype/acpype:2022.7.21
   container_path: docker
   container_shell_path: /bin/sh
   container_user_id: '10151'
@@ -1127,7 +1127,7 @@ acpype_params_gmx --config config_acpype_params_gmx.yml --input_path acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "mmbirb/acpype:latest",
+    "container_image": "acpype/acpype:2022.7.21",
     "container_volume_path": "/tmp",
     "container_working_dir": "/tmp",
     "container_shell_path": "/bin/sh",

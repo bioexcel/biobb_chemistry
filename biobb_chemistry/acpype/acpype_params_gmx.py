@@ -26,7 +26,7 @@ class AcpypeParamsGMX(BiobbObject):
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
             * **container_path** (*str*) - (None) Container path definition.
-            * **container_image** (*str*) - ('mmbirb/acpype:latest') Container image definition.
+            * **container_image** (*str*) - ('acpype/acpype:2022.7.21') Container image definition.
             * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
             * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.

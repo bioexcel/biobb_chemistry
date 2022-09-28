@@ -255,11 +255,8 @@ acpype_params_gmx_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: mmbirb/acpype:latest
+    container_image: acpype/acpype:2022.7.21
     container_volume_path: /tmp
-    container_working_dir: /tmp
-    container_shell_path: /bin/sh
-    container_user_id: "10151"
 
 acpype_params_gmx_singularity:
   paths:
@@ -309,11 +306,8 @@ acpype_params_ac_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: mmbirb/acpype:latest
+    container_image: acpype/acpype:2022.7.21
     container_volume_path: /tmp
-    container_working_dir: /tmp
-    container_shell_path: /bin/sh
-    container_user_id: "10151"
 
 acpype_params_ac_singularity:
   paths:
@@ -357,11 +351,8 @@ acpype_params_gmx_opls_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: mmbirb/acpype:latest
+    container_image: acpype/acpype:2022.7.21
     container_volume_path: /tmp
-    container_working_dir: /tmp
-    container_shell_path: /bin/sh
-    container_user_id: "10151"
 
 acpype_params_gmx_opls_singularity:
   paths:
@@ -405,11 +396,8 @@ acpype_params_cns_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: mmbirb/acpype:latest
+    container_image: acpype/acpype:2022.7.21
     container_volume_path: /tmp
-    container_working_dir: /tmp
-    container_shell_path: /bin/sh
-    container_user_id: "10151"
 
 acpype_params_cns_singularity:
   paths:

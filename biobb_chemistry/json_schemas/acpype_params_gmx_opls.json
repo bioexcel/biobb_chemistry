@@ -126,7 +126,7 @@
                 },
                 "container_image": {
                     "type": "string",
-                    "default": "mmbirb/acpype:latest",
+                    "default": "acpype/acpype:2022.7.21",
                     "wf_prop": false,
                     "description": "Container image definition."
                 },

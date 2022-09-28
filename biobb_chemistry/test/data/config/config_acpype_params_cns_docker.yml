@@ -1,7 +1,7 @@
 properties:
   basename: BBB
   charge: 0
-  container_image: mmbirb/acpype:latest
+  container_image: acpype/acpype:2022.7.21
   container_path: docker
   container_shell_path: /bin/sh
   container_user_id: '10151'
