@@ -5,7 +5,7 @@
     "readthedocs" : "https://biobb-chemistry.readthedocs.io/en/latest/", 
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
     "docker" : "https://quay.io/biocontainers/biobb_chemistry:3.8.0--pyhdfd78af_1", 
-    "singularity" : "https://www.singularity-hub.org/collections/2886/usage", 
+    "singularity" : "https://depot.galaxyproject.org/singularity/biobb_chemistry:3.8.0--pyhdfd78af_1", 
     "version" : "3.8.0",
     "rest": true,
     "tools" : [
