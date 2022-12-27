@@ -66,6 +66,7 @@ class BabelMinimize(BiobbObject):
 
         # Call parent class constructor
         super().__init__(properties)
+        self.locals_var_dict = locals().copy()
 
         # Input/Output files
         self.io_dict = { 
@@ -83,12 +84,12 @@ class BabelMinimize(BiobbObject):
         self.rvdw = properties.get('rvdw', '')
         self.rele = properties.get('rele', '')
         self.frequency = properties.get('frequency', '')
-        #self.binary_path = get_binary_path(properties, 'binary_path')
         self.binary_path = properties.get('binary_path', 'obminimize')
         self.properties = properties
 
         # Check the properties
         self.check_properties(properties)
+        self.check_arguments()
 
     def check_data_params(self, out_log, err_log):
         """ Checks all the input/output paths and parameters """
@@ -155,9 +156,12 @@ class BabelMinimize(BiobbObject):
         self.copy_to_host()
 
         # remove temporary folder(s)
-        if self.container_path and self.remove_tmp: 
-            self.tmp_files.append(self.stage_io_dict.get("unique_dir"))
-            self.remove_tmp_files()
+        self.tmp_files.extend([
+            self.stage_io_dict.get("unique_dir")
+        ])
+        self.remove_tmp_files()
+
+        self.check_arguments(output_files_created=True, raise_exception=False)
 
         return self.return_code
 

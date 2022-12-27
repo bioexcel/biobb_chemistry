@@ -63,6 +63,7 @@ class AcpypeParamsGMX(BiobbObject):
 
          # Call parent class constructor
         super().__init__(properties)
+        self.locals_var_dict = locals().copy()
 
         # Input/Output files
         self.io_dict = { 
@@ -78,6 +79,7 @@ class AcpypeParamsGMX(BiobbObject):
 
         # Check the properties
         self.check_properties(properties)
+        self.check_arguments()
 
     def check_data_params(self, out_log, err_log):
         """ Checks all the input/output paths and parameters """
@@ -158,6 +160,8 @@ class AcpypeParamsGMX(BiobbObject):
                                self.basename, 
                                get_default_value(self.__class__.__name__), 
                                self.output_files, self.out_log)
+
+        self.check_arguments(output_files_created=True, raise_exception=False)
 
         return self.return_code
 
