@@ -232,10 +232,7 @@ properties:
   charge: 0
   container_image: acpype/acpype:2022.7.21
   container_path: docker
-  container_shell_path: /bin/sh
-  container_user_id: '10151'
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_ac_singularity.yml)
@@ -272,10 +269,7 @@ acpype_params_ac --config config_acpype_params_ac.yml --input_path acpype.params
     "charge": 0,
     "container_path": "docker",
     "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh",
-    "container_user_id": "10151"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -609,10 +603,7 @@ properties:
   charge: 0
   container_image: acpype/acpype:2022.7.21
   container_path: docker
-  container_shell_path: /bin/sh
-  container_user_id: '10151'
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_gmx_opls_singularity.yml)
@@ -649,10 +640,7 @@ acpype_params_gmx_opls --config config_acpype_params_gmx_opls.yml --input_path a
     "charge": 0,
     "container_path": "docker",
     "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh",
-    "container_user_id": "10151"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -737,10 +725,7 @@ properties:
   charge: 0
   container_image: acpype/acpype:2022.7.21
   container_path: docker
-  container_shell_path: /bin/sh
-  container_user_id: '10151'
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_cns_singularity.yml)
@@ -777,10 +762,7 @@ acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.para
     "charge": 0,
     "container_path": "docker",
     "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh",
-    "container_user_id": "10151"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -1088,10 +1070,7 @@ properties:
   charge: 0
   container_image: acpype/acpype:2022.7.21
   container_path: docker
-  container_shell_path: /bin/sh
-  container_user_id: '10151'
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_gmx_singularity.yml)
@@ -1128,10 +1107,7 @@ acpype_params_gmx --config config_acpype_params_gmx.yml --input_path acpype.para
     "charge": 0,
     "container_path": "docker",
     "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh",
-    "container_user_id": "10151"
+    "container_volume_path": "/tmp"
   }
 }
 ```
