@@ -1,7 +1,11 @@
+[![](https://github.com/bioexcel/biobb_chemistry/actions/workflows/linting_and_testing.yml/badge.svg)](https://github.com/bioexcel/biobb_chemistry/actions/workflows/linting_and_testing.yml)
+[![](https://codecov.io/gh/bioexcel/biobb_chemistry/graph/badge.svg?token=82NIM2DCNG)](https://codecov.io/gh/bioexcel/biobb_chemistry)
 [![](https://readthedocs.org/projects/biobb-chemistry/badge/?version=latest)](https://biobb-chemistry.readthedocs.io/en/latest/?badge=latest)
+
 [![](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](https://anaconda.org/bioconda/biobb_chemistry)
 [![](https://img.shields.io/badge/docker-Quay.io-blue)](https://quay.io/repository/biocontainers/biobb_chemistry?tab=tags)
 [![](https://img.shields.io/badge/singularity-GalaxyProject-blue)](https://depot.galaxyproject.org/singularity/biobb_chemistry:3.9.0--pyhdfd78af_0)
+
 [![](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # biobb_chemistry
