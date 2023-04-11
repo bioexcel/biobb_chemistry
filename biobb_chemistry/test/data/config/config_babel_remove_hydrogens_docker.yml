@@ -1,8 +1,0 @@
-properties:
-  container_image: informaticsmatters/obabel:latest
-  container_path: docker
-  container_volume_path: /tmp
-  coordinates: 3
-  input_format: pdb
-  output_format: pdb
-  ph: 7.4

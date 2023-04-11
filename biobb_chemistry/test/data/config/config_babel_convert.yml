@@ -1,5 +1,0 @@
-properties:
-  coordinates: 2
-  input_format: smi
-  output_format: mol2
-  ph: 7.4

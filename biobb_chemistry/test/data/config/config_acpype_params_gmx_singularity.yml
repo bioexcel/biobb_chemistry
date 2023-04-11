@@ -1,8 +1,0 @@
-properties:
-  basename: BBB
-  charge: 0
-  container_image: shub://bioexcel/acpype_container
-  container_path: singularity
-  container_shell_path: /bin/sh
-  container_volume_path: /tmp
-  container_working_dir: /tmp

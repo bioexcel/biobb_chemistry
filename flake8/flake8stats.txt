@@ -1,0 +1,26 @@
+10    E101 indentation contains mixed spaces and tabs
+1     E114 indentation is not a multiple of 4 (comment)
+1     E116 unexpected indentation (comment)
+4     E127 continuation line over-indented for visual indent
+58    E128 continuation line under-indented for visual indent
+21    E201 whitespace after '{'
+22    E202 whitespace before '}'
+31    E231 missing whitespace after ','
+2     E241 multiple spaces after ','
+4     E251 unexpected spaces around keyword / parameter equals
+35    E265 block comment should start with '# '
+8     E271 multiple spaces after keyword
+5     E275 missing whitespace after keyword
+58    E302 expected 2 blank lines, found 1
+20    E305 expected 2 blank lines after class or function definition, found 1
+10    E402 module level import not at top of file
+6     E501 line too long (1278 > 999 characters)
+36    E701 multiple statements on one line (colon)
+2     F401 'glob' imported but unused
+10    F403 'from biobb_chemistry.acpype.common import *' used; unable to detect undefined names
+89    F405 'get_binary_path' may be undefined, or defined from star imports: biobb_chemistry.acpype.common
+283   W191 indentation contains tabs
+216   W291 trailing whitespace
+5     W292 no newline at end of file
+13    W293 blank line contains whitespace
+2     W504 line break after binary operator

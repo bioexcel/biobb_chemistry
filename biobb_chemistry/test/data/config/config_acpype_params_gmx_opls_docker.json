@@ -1,9 +1,0 @@
-{
-  "properties": {
-    "basename": "BBB",
-    "charge": 0,
-    "container_path": "docker",
-    "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp"
-  }
-}
