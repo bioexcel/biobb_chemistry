@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
-      <div id="masthead" class="sev-1"></div>
+      <div id="masthead" class="sev-2"></div>
       <div id="page">
          <h1>
             <a href="biobb_chemistry.babelm.babel_add_hydrogens.report.html">
@@ -32,31 +32,13 @@
                class="code sev- "><tt><i>5</i> <span class="kn">from</span> <span class="nn">biobb_common.generic.biobb_object</span> <span class="kn">import</span> <span class="n">BiobbObject</span></tt>
             </div>
             <div id="l6"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E271
-                     </span>
-                     Multiple spaces after keyword</li>
-               
-               </ul><tt><i>6</i> <span class="kn">from</span> <span class="nn">biobb_common.configuration</span> <span class="kn">import</span>  <span class="n">settings</span></tt>
+               class="code sev- "><tt><i>6</i> <span class="kn">from</span> <span class="nn">biobb_common.configuration</span> <span class="kn">import</span> <span class="n">settings</span></tt>
             </div>
             <div id="l7"
                class="code sev- "><tt><i>7</i> <span class="kn">from</span> <span class="nn">biobb_common.tools.file_utils</span> <span class="kn">import</span> <span class="n">launchlogger</span></tt>
             </div>
             <div id="l8"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F403
-                     </span>
-                     'from biobb_chemistry.babelm.common import *' used; unable to detect undefined names</li>
-               
-               </ul><tt><i>8</i> <span class="kn">from</span> <span class="nn">biobb_chemistry.babelm.common</span> <span class="kn">import</span> <span class="o">*</span></tt>
+               class="code sev- "><tt><i>8</i> <span class="kn">from</span> <span class="nn">biobb_chemistry.babelm.common</span> <span class="kn">import</span> <span class="n">check_input_path</span><span class="p">,</span> <span class="n">check_output_path</span><span class="p">,</span> <span class="n">get_input_format</span><span class="p">,</span> <span class="n">get_output_format</span><span class="p">,</span> <span class="n">get_coordinates</span><span class="p">,</span> <span class="n">get_ph</span></tt>
             </div>
             <div id="l9"
                class="code sev- "><tt><i>9</i> &nbsp;</tt>
@@ -167,91 +149,28 @@
                class="code sev- "><tt><i>38</i> <span class="sd">            from biobb_chemistry.babelm.babel_add_hydrogens import babel_add_hydrogens</span></tt>
             </div>
             <div id="l39"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>39</i> <span class="sd">            prop = { </span></tt>
+               class="code sev- "><tt><i>39</i> <span class="sd">            prop = {</span></tt>
             </div>
             <div id="l40"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>40</i> <span class="sd">                &#39;input_format&#39;: &#39;pdb&#39;, </span></tt>
+               class="code sev- "><tt><i>40</i> <span class="sd">                &#39;input_format&#39;: &#39;pdb&#39;,</span></tt>
             </div>
             <div id="l41"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>41</i> <span class="sd">                &#39;output_format&#39;: &#39;pdb&#39;, </span></tt>
+               class="code sev- "><tt><i>41</i> <span class="sd">                &#39;output_format&#39;: &#39;pdb&#39;,</span></tt>
             </div>
             <div id="l42"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>42</i> <span class="sd">                &#39;coordinates&#39;: 3, </span></tt>
+               class="code sev- "><tt><i>42</i> <span class="sd">                &#39;coordinates&#39;: 3,</span></tt>
             </div>
             <div id="l43"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>43</i> <span class="sd">                &#39;ph&#39;: 7.4 </span></tt>
+               class="code sev- "><tt><i>43</i> <span class="sd">                &#39;ph&#39;: 7.4</span></tt>
             </div>
             <div id="l44"
                class="code sev- "><tt><i>44</i> <span class="sd">            }</span></tt>
             </div>
             <div id="l45"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>45</i> <span class="sd">            babel_add_hydrogens(input_path=&#39;/path/to/myStructure.pdb&#39;, </span></tt>
+               class="code sev- "><tt><i>45</i> <span class="sd">            babel_add_hydrogens(input_path=&#39;/path/to/myStructure.pdb&#39;,</span></tt>
             </div>
             <div id="l46"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>46</i> <span class="sd">                                output_path=&#39;/path/to/newStructure.pdb&#39;, </span></tt>
+               class="code sev- "><tt><i>46</i> <span class="sd">                                output_path=&#39;/path/to/newStructure.pdb&#39;,</span></tt>
             </div>
             <div id="l47"
                class="code sev- "><tt><i>47</i> <span class="sd">                                properties=prop)</span></tt>
@@ -293,34 +212,10 @@
                class="code sev- "><tt><i>59</i> &nbsp;</tt>
             </div>
             <div id="l60"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E241
-                     </span>
-                     Multiple spaces after ','</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>60</i>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path</span><span class="p">,</span>  <span class="n">output_path</span><span class="p">,</span> </tt>
+               class="code sev- "><tt><i>60</i>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span></tt>
             </div>
             <div id="l61"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E128
-                     </span>
-                     Continuation line under-indented for visual indent</li>
-               
-               </ul><tt><i>61</i>                 <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>61</i>                  <span class="n">properties</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span></tt>
             </div>
             <div id="l62"
                class="code sev- "><tt><i>62</i>         <span class="n">properties</span> <span class="o">=</span> <span class="n">properties</span> <span class="ow">or</span> <span class="p">{}</span></tt>
@@ -344,64 +239,13 @@
                class="code sev- "><tt><i>68</i>         <span class="c1"># Input/Output files</span></tt>
             </div>
             <div id="l69"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>69</i>         <span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span> <span class="o">=</span> <span class="p">{</span> </tt>
+               class="code sev- "><tt><i>69</i>         <span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span> <span class="o">=</span> <span class="p">{</span></tt>
             </div>
             <div id="l70"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E201
-                     </span>
-                     Whitespace after '{'</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        E202
-                     </span>
-                     Whitespace before '}'</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>70</i>             <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;input_path&quot;</span><span class="p">:</span> <span class="n">input_path</span> <span class="p">},</span> </tt>
+               class="code sev- "><tt><i>70</i>             <span class="s2">&quot;in&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;input_path&quot;</span><span class="p">:</span> <span class="n">input_path</span><span class="p">},</span></tt>
             </div>
             <div id="l71"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E201
-                     </span>
-                     Whitespace after '{'</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        E202
-                     </span>
-                     Whitespace before '}'</li>
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>71</i>             <span class="s2">&quot;out&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;output_path&quot;</span><span class="p">:</span> <span class="n">output_path</span> <span class="p">}</span> </tt>
+               class="code sev- "><tt><i>71</i>             <span class="s2">&quot;out&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;output_path&quot;</span><span class="p">:</span> <span class="n">output_path</span><span class="p">}</span></tt>
             </div>
             <div id="l72"
                class="code sev- "><tt><i>72</i>         <span class="p">}</span></tt>
@@ -452,28 +296,10 @@
                class="code sev- "><tt><i>87</i> <span class="w">        </span><span class="sd">&quot;&quot;&quot; Checks all the input/output paths and parameters &quot;&quot;&quot;</span></tt>
             </div>
             <div id="l88"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F405
-                     </span>
-                     'check_input_path' may be undefined, or defined from star imports: biobb_chemistry.babelm.common</li>
-               
-               </ul><tt><i>88</i>         <span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="s2">&quot;input_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_input_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="s2">&quot;input_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>88</i>         <span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="s2">&quot;input_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_input_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="s2">&quot;input_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></tt>
             </div>
             <div id="l89"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F405
-                     </span>
-                     'check_output_path' may be undefined, or defined from star imports: biobb_chemistry.babelm.common</li>
-               
-               </ul><tt><i>89</i>         <span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;output_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_output_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;output_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>89</i>         <span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;output_path&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">check_output_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io_dict</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;output_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span></tt>
             </div>
             <div id="l90"
                class="code sev- "><tt><i>90</i> &nbsp;</tt>
@@ -500,28 +326,10 @@
                class="code sev- "><tt><i>97</i> &nbsp;</tt>
             </div>
             <div id="l98"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>98</i>         <span class="c1"># generating input </span></tt>
+               class="code sev- "><tt><i>98</i>         <span class="c1"># generating input</span></tt>
             </div>
             <div id="l99"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F405
-                     </span>
-                     'get_input_format' may be undefined, or defined from star imports: biobb_chemistry.babelm.common</li>
-               
-               </ul><tt><i>99</i>         <span class="n">infr</span> <span class="o">=</span> <span class="n">get_input_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_format</span><span class="p">,</span> <span class="n">container_io_dict</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="s2">&quot;input_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>99</i>         <span class="n">infr</span> <span class="o">=</span> <span class="n">get_input_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_format</span><span class="p">,</span> <span class="n">container_io_dict</span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">][</span><span class="s2">&quot;input_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">)</span></tt>
             </div>
             <div id="l100"
                class="code sev- "><tt><i>100</i>         <span class="n">iformat</span> <span class="o">=</span> <span class="s1">&#39;-i&#39;</span> <span class="o">+</span> <span class="n">infr</span></tt>
@@ -539,28 +347,10 @@
                class="code sev- "><tt><i>104</i> &nbsp;</tt>
             </div>
             <div id="l105"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>105</i>         <span class="c1"># generating output </span></tt>
+               class="code sev- "><tt><i>105</i>         <span class="c1"># generating output</span></tt>
             </div>
             <div id="l106"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F405
-                     </span>
-                     'get_output_format' may be undefined, or defined from star imports: biobb_chemistry.babelm.common</li>
-               
-               </ul><tt><i>106</i>         <span class="n">oufr</span> <span class="o">=</span> <span class="n">get_output_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_format</span><span class="p">,</span> <span class="n">container_io_dict</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;output_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>106</i>         <span class="n">oufr</span> <span class="o">=</span> <span class="n">get_output_format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_format</span><span class="p">,</span> <span class="n">container_io_dict</span><span class="p">[</span><span class="s2">&quot;out&quot;</span><span class="p">][</span><span class="s2">&quot;output_path&quot;</span><span class="p">],</span> <span class="n">out_log</span><span class="p">)</span></tt>
             </div>
             <div id="l107"
                class="code sev- "><tt><i>107</i>         <span class="n">oformat</span> <span class="o">=</span> <span class="s1">&#39;-o&#39;</span> <span class="o">+</span> <span class="n">oufr</span></tt>
@@ -581,16 +371,7 @@
                class="code sev- "><tt><i>112</i>         <span class="c1"># adding coordinates</span></tt>
             </div>
             <div id="l113"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F405
-                     </span>
-                     'get_coordinates' may be undefined, or defined from star imports: biobb_chemistry.babelm.common</li>
-               
-               </ul><tt><i>113</i>         <span class="n">crd</span> <span class="o">=</span> <span class="n">get_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">out_log</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>113</i>         <span class="n">crd</span> <span class="o">=</span> <span class="n">get_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">out_log</span><span class="p">)</span></tt>
             </div>
             <div id="l114"
                class="code sev- "><tt><i>114</i>         <span class="n">coordinates</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></tt>
@@ -614,16 +395,7 @@
                class="code sev- "><tt><i>120</i>         <span class="c1"># checking pH</span></tt>
             </div>
             <div id="l121"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F405
-                     </span>
-                     'get_ph' may be undefined, or defined from star imports: biobb_chemistry.babelm.common</li>
-               
-               </ul><tt><i>121</i>         <span class="n">p</span> <span class="o">=</span> <span class="n">get_ph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ph</span><span class="p">,</span> <span class="n">out_log</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>121</i>         <span class="n">p</span> <span class="o">=</span> <span class="n">get_ph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ph</span><span class="p">,</span> <span class="n">out_log</span><span class="p">)</span></tt>
             </div>
             <div id="l122"
                class="code sev- "><tt><i>122</i> &nbsp;</tt>
@@ -680,16 +452,7 @@
                class="code sev- "><tt><i>139</i> <span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute the :class:`BabelAddHydrogens &lt;babelm.babel_add_hydrogens.BabelAddHydrogens&gt;` babelm.babel_add_hydrogens.BabelAddHydrogens object.&quot;&quot;&quot;</span></tt>
             </div>
             <div id="l140"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W293
-                     </span>
-                     Blank line contains whitespace</li>
-               
-               </ul><tt><i>140</i>         </tt>
+               class="code sev- "><tt><i>140</i> &nbsp;</tt>
             </div>
             <div id="l141"
                class="code sev- "><tt><i>141</i>         <span class="c1"># check input/output paths and parameters</span></tt>
@@ -704,256 +467,169 @@
                class="code sev- "><tt><i>144</i>         <span class="c1"># Setup Biobb</span></tt>
             </div>
             <div id="l145"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E701
-                     </span>
-                     Multiple statements on one line (colon)</li>
-               
-               </ul><tt><i>145</i>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_restart</span><span class="p">():</span> <span class="k">return</span> <span class="mi">0</span></tt>
+               class="code sev- "><tt><i>145</i>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_restart</span><span class="p">():</span></tt>
             </div>
             <div id="l146"
-               class="code sev- "><tt><i>146</i>         <span class="bp">self</span><span class="o">.</span><span class="n">stage_files</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>146</i>             <span class="k">return</span> <span class="mi">0</span></tt>
             </div>
             <div id="l147"
-               class="code sev- "><tt><i>147</i> &nbsp;</tt>
+               class="code sev- "><tt><i>147</i>         <span class="bp">self</span><span class="o">.</span><span class="n">stage_files</span><span class="p">()</span></tt>
             </div>
             <div id="l148"
-               class="code sev- "><tt><i>148</i>         <span class="c1"># create command line instruction</span></tt>
+               class="code sev- "><tt><i>148</i> &nbsp;</tt>
             </div>
             <div id="l149"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>149</i>         <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_cmd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_io_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">err_log</span><span class="p">)</span> </tt>
+               class="code sev- "><tt><i>149</i>         <span class="c1"># create command line instruction</span></tt>
             </div>
             <div id="l150"
-               class="code sev- "><tt><i>150</i> &nbsp;</tt>
+               class="code sev- "><tt><i>150</i>         <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_cmd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage_io_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">err_log</span><span class="p">)</span></tt>
             </div>
             <div id="l151"
-               class="code sev- "><tt><i>151</i>         <span class="c1"># Run Biobb block</span></tt>
+               class="code sev- "><tt><i>151</i> &nbsp;</tt>
             </div>
             <div id="l152"
-               class="code sev- "><tt><i>152</i>         <span class="bp">self</span><span class="o">.</span><span class="n">run_biobb</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>152</i>         <span class="c1"># Run Biobb block</span></tt>
             </div>
             <div id="l153"
-               class="code sev- "><tt><i>153</i> &nbsp;</tt>
+               class="code sev- "><tt><i>153</i>         <span class="bp">self</span><span class="o">.</span><span class="n">run_biobb</span><span class="p">()</span></tt>
             </div>
             <div id="l154"
-               class="code sev- "><tt><i>154</i>         <span class="c1"># Copy files to host</span></tt>
+               class="code sev- "><tt><i>154</i> &nbsp;</tt>
             </div>
             <div id="l155"
-               class="code sev- "><tt><i>155</i>         <span class="bp">self</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>155</i>         <span class="c1"># Copy files to host</span></tt>
             </div>
             <div id="l156"
-               class="code sev- "><tt><i>156</i> &nbsp;</tt>
+               class="code sev- "><tt><i>156</i>         <span class="bp">self</span><span class="o">.</span><span class="n">copy_to_host</span><span class="p">()</span></tt>
             </div>
             <div id="l157"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>157</i>         <span class="c1"># remove temporary folder(s)     </span></tt>
+               class="code sev- "><tt><i>157</i> &nbsp;</tt>
             </div>
             <div id="l158"
-               class="code sev- "><tt><i>158</i>         <span class="bp">self</span><span class="o">.</span><span class="n">tmp_files</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span></tt>
+               class="code sev- "><tt><i>158</i>         <span class="c1"># remove temporary folder(s)</span></tt>
             </div>
             <div id="l159"
-               class="code sev- "><tt><i>159</i>             <span class="bp">self</span><span class="o">.</span><span class="n">stage_io_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unique_dir&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>159</i>         <span class="bp">self</span><span class="o">.</span><span class="n">tmp_files</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span></tt>
             </div>
             <div id="l160"
-               class="code sev- "><tt><i>160</i>         <span class="p">])</span></tt>
+               class="code sev- "><tt><i>160</i>             <span class="bp">self</span><span class="o">.</span><span class="n">stage_io_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;unique_dir&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l161"
-               class="code sev- "><tt><i>161</i>         <span class="bp">self</span><span class="o">.</span><span class="n">remove_tmp_files</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>161</i>         <span class="p">])</span></tt>
             </div>
             <div id="l162"
-               class="code sev- "><tt><i>162</i> &nbsp;</tt>
+               class="code sev- "><tt><i>162</i>         <span class="bp">self</span><span class="o">.</span><span class="n">remove_tmp_files</span><span class="p">()</span></tt>
             </div>
             <div id="l163"
-               class="code sev- "><tt><i>163</i>         <span class="bp">self</span><span class="o">.</span><span class="n">check_arguments</span><span class="p">(</span><span class="n">output_files_created</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>163</i> &nbsp;</tt>
             </div>
             <div id="l164"
-               class="code sev- "><tt><i>164</i> &nbsp;</tt>
+               class="code sev- "><tt><i>164</i>         <span class="bp">self</span><span class="o">.</span><span class="n">check_arguments</span><span class="p">(</span><span class="n">output_files_created</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">raise_exception</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></tt>
             </div>
             <div id="l165"
-               class="code sev- "><tt><i>165</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_code</span></tt>
+               class="code sev- "><tt><i>165</i> &nbsp;</tt>
             </div>
             <div id="l166"
-               class="code sev- "><tt><i>166</i> &nbsp;</tt>
+               class="code sev- "><tt><i>166</i>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_code</span></tt>
             </div>
             <div id="l167"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>167</i> <span class="k">def</span> <span class="nf">babel_add_hydrogens</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">properties</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>167</i> &nbsp;</tt>
             </div>
             <div id="l168"
-               class="code sev- "><tt><i>168</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Execute the :class:`BabelAddHydrogens &lt;babelm.babel_add_hydrogens.BabelAddHydrogens&gt;` class and</span></tt>
+               class="code sev- "><tt><i>168</i> &nbsp;</tt>
             </div>
             <div id="l169"
-               class="code sev- "><tt><i>169</i> <span class="sd">    execute the :meth:`launch() &lt;babelm.babel_add_hydrogens.BabelAddHydrogens.launch&gt;` method.&quot;&quot;&quot;</span></tt>
+               class="code sev- "><tt><i>169</i> <span class="k">def</span> <span class="nf">babel_add_hydrogens</span><span class="p">(</span><span class="n">input_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">properties</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span></tt>
             </div>
             <div id="l170"
-               class="code sev- "><tt><i>170</i> &nbsp;</tt>
+               class="code sev- "><tt><i>170</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Execute the :class:`BabelAddHydrogens &lt;babelm.babel_add_hydrogens.BabelAddHydrogens&gt;` class and</span></tt>
             </div>
             <div id="l171"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>171</i>     <span class="k">return</span> <span class="n">BabelAddHydrogens</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="n">input_path</span><span class="p">,</span> </tt>
+               class="code sev- "><tt><i>171</i> <span class="sd">    execute the :meth:`launch() &lt;babelm.babel_add_hydrogens.BabelAddHydrogens.launch&gt;` method.&quot;&quot;&quot;</span></tt>
             </div>
             <div id="l172"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E128
-                     </span>
-                     Continuation line under-indented for visual indent</li>
-               
-               </ul><tt><i>172</i>                     <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span></tt>
+               class="code sev- "><tt><i>172</i> &nbsp;</tt>
             </div>
             <div id="l173"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E128
-                     </span>
-                     Continuation line under-indented for visual indent</li>
-               
-               </ul><tt><i>173</i>                     <span class="n">properties</span><span class="o">=</span><span class="n">properties</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>173</i>     <span class="k">return</span> <span class="n">BabelAddHydrogens</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="n">input_path</span><span class="p">,</span></tt>
             </div>
             <div id="l174"
-               class="code sev- "><tt><i>174</i> &nbsp;</tt>
+               class="code sev- "><tt><i>174</i>                              <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="p">,</span></tt>
             </div>
             <div id="l175"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>175</i> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span></tt>
+               class="code sev- "><tt><i>175</i>                              <span class="n">properties</span><span class="o">=</span><span class="n">properties</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">launch</span><span class="p">()</span></tt>
             </div>
             <div id="l176"
-               class="code sev- "><tt><i>176</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Command line execution of this building block. Please check the command line documentation.&quot;&quot;&quot;</span></tt>
+               class="code sev- "><tt><i>176</i> &nbsp;</tt>
             </div>
             <div id="l177"
-               class="code sev- "><tt><i>177</i>     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Adds hydrogen atoms to small molecules.&quot;</span><span class="p">,</span> <span class="n">formatter_class</span><span class="o">=</span><span class="k">lambda</span> <span class="n">prog</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span><span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">99999</span><span class="p">))</span></tt>
+               class="code sev- "><tt><i>177</i> &nbsp;</tt>
             </div>
             <div id="l178"
-               class="code sev- "><tt><i>178</i>     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--config&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Configuration file&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>178</i> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span></tt>
             </div>
             <div id="l179"
-               class="code sev- "><tt><i>179</i> &nbsp;</tt>
+               class="code sev- "><tt><i>179</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;Command line execution of this building block. Please check the command line documentation.&quot;&quot;&quot;</span></tt>
             </div>
             <div id="l180"
-               class="code sev- "><tt><i>180</i>     <span class="c1"># Specific args of each building block</span></tt>
+               class="code sev- "><tt><i>180</i>     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Adds hydrogen atoms to small molecules.&quot;</span><span class="p">,</span> <span class="n">formatter_class</span><span class="o">=</span><span class="k">lambda</span> <span class="n">prog</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span><span class="p">(</span><span class="n">prog</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">99999</span><span class="p">))</span></tt>
             </div>
             <div id="l181"
-               class="code sev- "><tt><i>181</i>     <span class="n">required_args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s1">&#39;required arguments&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>181</i>     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--config&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Configuration file&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l182"
-               class="code sev- "><tt><i>182</i>     <span class="n">required_args</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--input_path&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>182</i> &nbsp;</tt>
             </div>
             <div id="l183"
-               class="code sev- "><tt><i>183</i>     <span class="n">required_args</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--output_path&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>183</i>     <span class="c1"># Specific args of each building block</span></tt>
             </div>
             <div id="l184"
-               class="code sev- "><tt><i>184</i> &nbsp;</tt>
+               class="code sev- "><tt><i>184</i>     <span class="n">required_args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s1">&#39;required arguments&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l185"
-               class="code sev- "><tt><i>185</i>     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>185</i>     <span class="n">required_args</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--input_path&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l186"
-               class="code sev- "><tt><i>186</i>     <span class="n">args</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">config</span> <span class="ow">or</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>186</i>     <span class="n">required_args</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--output_path&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l187"
-               class="code sev- "><tt><i>187</i>     <span class="n">properties</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">ConfReader</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">get_prop_dic</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>187</i> &nbsp;</tt>
             </div>
             <div id="l188"
-               class="code sev- "><tt><i>188</i> &nbsp;</tt>
+               class="code sev- "><tt><i>188</i>     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span></tt>
             </div>
             <div id="l189"
-               class="code sev- "><tt><i>189</i>     <span class="c1"># Specific call of each building block</span></tt>
+               class="code sev- "><tt><i>189</i>     <span class="n">args</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">config</span> <span class="ow">or</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l190"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>190</i>     <span class="n">babel_add_hydrogens</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">input_path</span><span class="p">,</span> </tt>
+               class="code sev- "><tt><i>190</i>     <span class="n">properties</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">ConfReader</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">config</span><span class="p">)</span><span class="o">.</span><span class="n">get_prop_dic</span><span class="p">()</span></tt>
             </div>
             <div id="l191"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>191</i>                         <span class="n">output_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span> </tt>
+               class="code sev- "><tt><i>191</i> &nbsp;</tt>
             </div>
             <div id="l192"
-               class="code sev- "><tt><i>192</i>                         <span class="n">properties</span><span class="o">=</span><span class="n">properties</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>192</i>     <span class="c1"># Specific call of each building block</span></tt>
             </div>
             <div id="l193"
-               class="code sev- "><tt><i>193</i> &nbsp;</tt>
+               class="code sev- "><tt><i>193</i>     <span class="n">babel_add_hydrogens</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">input_path</span><span class="p">,</span></tt>
             </div>
             <div id="l194"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E305
-                     </span>
-                     Expected 2 blank lines after class or function definition, found 1</li>
-               
-               </ul><tt><i>194</i> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>194</i>                         <span class="n">output_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span></tt>
             </div>
             <div id="l195"
-               class="code sev- "><tt><i>195</i>     <span class="n">main</span><span class="p">()</span></tt>
+               class="code sev- "><tt><i>195</i>                         <span class="n">properties</span><span class="o">=</span><span class="n">properties</span><span class="p">)</span></tt>
+            </div>
+            <div id="l196"
+               class="code sev- "><tt><i>196</i> &nbsp;</tt>
+            </div>
+            <div id="l197"
+               class="code sev- "><tt><i>197</i> &nbsp;</tt>
+            </div>
+            <div id="l198"
+               class="code sev- "><tt><i>198</i> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span></tt>
+            </div>
+            <div id="l199"
+               class="code sev- "><tt><i>199</i>     <span class="n">main</span><span class="p">()</span></tt>
             </div>
             
          </div>
