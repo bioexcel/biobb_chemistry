@@ -5,7 +5,7 @@ import argparse
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.ambertools.common import *
+from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
 
 class ReduceRemoveHydrogens(BiobbObject):
@@ -33,8 +33,8 @@ class ReduceRemoveHydrogens(BiobbObject):
 
             from biobb_chemistry.ambertools.reduce_remove_hydrogens import reduce_remove_hydrogens
             prop = { }
-            reduce_remove_hydrogens(input_path='/path/to/myStructure.pdb', 
-                                    output_path='/path/to/newStructure.pdb', 
+            reduce_remove_hydrogens(input_path='/path/to/myStructure.pdb',
+                                    output_path='/path/to/newStructure.pdb',
                                     properties=prop)
 
     Info:
@@ -48,8 +48,8 @@ class ReduceRemoveHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path, 
-                properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path,
+                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -57,9 +57,9 @@ class ReduceRemoveHydrogens(BiobbObject):
         self.locals_var_dict = locals().copy()
 
         # Input/Output files
-        self.io_dict = { 
-            "in": { "input_path": input_path }, 
-            "out": { "output_path": output_path } 
+        self.io_dict = {
+            "in": {"input_path": input_path},
+            "out": {"output_path": output_path}
         }
 
         # Properties specific for BB
@@ -93,16 +93,17 @@ class ReduceRemoveHydrogens(BiobbObject):
     @launchlogger
     def launch(self) -> int:
         """Execute the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens object."""
-        
+
         # check input/output paths and parameters
         self.check_data_params(self.out_log, self.err_log)
 
         # Setup Biobb
-        if self.check_restart(): return 0
+        if self.check_restart():
+            return 0
         self.stage_files()
 
         # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
 
         # Run Biobb block
         self.run_biobb()
@@ -120,13 +121,15 @@ class ReduceRemoveHydrogens(BiobbObject):
 
         return self.return_code
 
+
 def reduce_remove_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` class and
     execute the :meth:`launch() <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens.launch>` method."""
 
-    return ReduceRemoveHydrogens(input_path=input_path, 
-                    output_path=output_path,
-                    properties=properties, **kwargs).launch()
+    return ReduceRemoveHydrogens(input_path=input_path,
+                                 output_path=output_path,
+                                 properties=properties, **kwargs).launch()
+
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -143,9 +146,10 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    reduce_remove_hydrogens(input_path=args.input_path, 
-                            output_path=args.output_path, 
+    reduce_remove_hydrogens(input_path=args.input_path,
+                            output_path=args.output_path,
                             properties=properties)
+
 
 if __name__ == '__main__':
     main()

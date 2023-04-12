@@ -5,7 +5,7 @@ import argparse
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.ambertools.common import *
+from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
 
 class ReduceAddHydrogens(BiobbObject):
@@ -51,13 +51,13 @@ class ReduceAddHydrogens(BiobbObject):
         This is a use example of how to use the building block from Python::
 
             from biobb_chemistry.ambertools.reduce_add_hydrogens import reduce_add_hydrogens
-            prop = { 
-                'flip': False, 
-                'charges': True, 
-                'build': False 
+            prop = {
+                'flip': False,
+                'charges': True,
+                'build': False
             }
-            reduce_add_hydrogens(input_path='/path/to/myStructure.pdb', 
-                                output_path='/path/to/newStructure.pdb', 
+            reduce_add_hydrogens(input_path='/path/to/myStructure.pdb',
+                                output_path='/path/to/newStructure.pdb',
                                 properties=prop)
 
     Info:
@@ -71,8 +71,8 @@ class ReduceAddHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path, 
-                properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path,
+                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -80,9 +80,9 @@ class ReduceAddHydrogens(BiobbObject):
         self.locals_var_dict = locals().copy()
 
         # Input/Output files
-        self.io_dict = { 
-            "in": { "input_path": input_path }, 
-            "out": { "output_path": output_path } 
+        self.io_dict = {
+            "in": {"input_path": input_path},
+            "out": {"output_path": output_path}
         }
 
         # Properties specific for BB
@@ -124,23 +124,40 @@ class ReduceAddHydrogens(BiobbObject):
         # executable path
         instructions_list.append(self.binary_path)
 
-        if self.flip: instructions_list.append('-FLIP')
-        if self.noflip: instructions_list.append('-NOFLIP')
-        if self.nuclear: instructions_list.append('-NUClear')
-        if self.nooh: instructions_list.append('-NOOH')
-        if self.oh: instructions_list.append('-OH')
-        if self.his: instructions_list.append('-HIS')
-        if self.noheth: instructions_list.append('-NOHETh')
-        if self.rotnh3: instructions_list.append('-ROTNH3')
-        if self.norotnh3: instructions_list.append('-NOROTNH3')
-        if self.rotexist: instructions_list.append('-ROTEXist')
-        if self.rotexoh: instructions_list.append('-ROTEXOH')
-        if self.allalt: instructions_list.append('-ALLALT')
-        if self.onlya: instructions_list.append('-ONLYA')
-        if self.charges: instructions_list.append('-CHARGEs')
-        if self.dorotmet: instructions_list.append('-DOROTMET')
-        if self.noadjust: instructions_list.append('-NOADJust')
-        if self.build: instructions_list.append('-BUILD')
+        if self.flip:
+            instructions_list.append('-FLIP')
+        if self.noflip:
+            instructions_list.append('-NOFLIP')
+        if self.nuclear:
+            instructions_list.append('-NUClear')
+        if self.nooh:
+            instructions_list.append('-NOOH')
+        if self.oh:
+            instructions_list.append('-OH')
+        if self.his:
+            instructions_list.append('-HIS')
+        if self.noheth:
+            instructions_list.append('-NOHETh')
+        if self.rotnh3:
+            instructions_list.append('-ROTNH3')
+        if self.norotnh3:
+            instructions_list.append('-NOROTNH3')
+        if self.rotexist:
+            instructions_list.append('-ROTEXist')
+        if self.rotexoh:
+            instructions_list.append('-ROTEXOH')
+        if self.allalt:
+            instructions_list.append('-ALLALT')
+        if self.onlya:
+            instructions_list.append('-ONLYA')
+        if self.charges:
+            instructions_list.append('-CHARGEs')
+        if self.dorotmet:
+            instructions_list.append('-DOROTMET')
+        if self.noadjust:
+            instructions_list.append('-NOADJust')
+        if self.build:
+            instructions_list.append('-BUILD')
 
         if self.metal_bump:
             instructions_list.append('-METALBump ' + str(self.metal_bump))
@@ -157,16 +174,17 @@ class ReduceAddHydrogens(BiobbObject):
     @launchlogger
     def launch(self) -> int:
         """Execute the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` ambertools.reduce_add_hydrogens.ReduceAddHydrogens object."""
-       
+
         # check input/output paths and parameters
         self.check_data_params(self.out_log, self.err_log)
 
         # Setup Biobb
-        if self.check_restart(): return 0
+        if self.check_restart():
+            return 0
         self.stage_files()
 
         # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
 
         # Run Biobb block
         self.run_biobb()
@@ -184,13 +202,15 @@ class ReduceAddHydrogens(BiobbObject):
 
         return self.return_code
 
+
 def reduce_add_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` class and
     execute the :meth:`launch() <ambertools.reduce_add_hydrogens.ReduceAddHydrogens.launch>` method."""
 
-    return ReduceAddHydrogens(input_path=input_path, 
-                    output_path=output_path,
-                    properties=properties, **kwargs).launch()
+    return ReduceAddHydrogens(input_path=input_path,
+                              output_path=output_path,
+                              properties=properties, **kwargs).launch()
+
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -207,9 +227,10 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    reduce_add_hydrogens(input_path=args.input_path, 
-                        output_path=args.output_path, 
-                        properties=properties)
+    reduce_add_hydrogens(input_path=args.input_path,
+                         output_path=args.output_path,
+                         properties=properties)
+
 
 if __name__ == '__main__':
     main()

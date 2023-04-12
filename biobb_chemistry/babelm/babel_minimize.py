@@ -2,10 +2,12 @@
 
 """Module containing the BabelMinimize class and the command line interface."""
 import argparse
+from pathlib import PurePath
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import  settings
+from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.babelm.common import *
+from biobb_chemistry.babelm.common import check_minimize_property, check_input_path_minimize, check_output_path_minimize
+
 
 class BabelMinimize(BiobbObject):
     """
@@ -40,13 +42,13 @@ class BabelMinimize(BiobbObject):
         This is a use example of how to use the building block from Python::
 
             from biobb_chemistry.babelm.babel_minimize import babel_minimize
-            prop = { 
-                'criteria': 1e-6, 
-                'method': 'cg', 
-                'force_field': 'GAFF' 
+            prop = {
+                'criteria': 1e-6,
+                'method': 'cg',
+                'force_field': 'GAFF'
             }
-            babel_minimize(input_path='/path/to/myStructure.mol2', 
-                            output_path='/path/to/newStructure.mol2', 
+            babel_minimize(input_path='/path/to/myStructure.mol2',
+                            output_path='/path/to/newStructure.mol2',
                             properties=prop)
 
     Info:
@@ -60,8 +62,8 @@ class BabelMinimize(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path, 
-                properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path,
+                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -69,9 +71,9 @@ class BabelMinimize(BiobbObject):
         self.locals_var_dict = locals().copy()
 
         # Input/Output files
-        self.io_dict = { 
-            "in": { "input_path": input_path }, 
-            "out": { "output_path": output_path } 
+        self.io_dict = {
+            "in": {"input_path": input_path},
+            "out": {"output_path": output_path}
         }
 
         # Properties specific for BB
@@ -104,23 +106,32 @@ class BabelMinimize(BiobbObject):
         instructions_list.append(self.binary_path)
 
         # check all properties
-        if check_minimize_property("criteria", self.criteria, out_log): instructions_list.append('-c ' + str(self.criteria))
+        if check_minimize_property("criteria", self.criteria, out_log):
+            instructions_list.append('-c ' + str(self.criteria))
 
-        if check_minimize_property("method", self.method, out_log): instructions_list.append('-' + self.method)
+        if check_minimize_property("method", self.method, out_log):
+            instructions_list.append('-' + self.method)
 
-        if check_minimize_property("force_field", self.force_field, out_log): instructions_list.append('-ff ' + self.force_field)
+        if check_minimize_property("force_field", self.force_field, out_log):
+            instructions_list.append('-ff ' + self.force_field)
 
-        if check_minimize_property("hydrogens", self.hydrogens, out_log): instructions_list.append('-h')
+        if check_minimize_property("hydrogens", self.hydrogens, out_log):
+            instructions_list.append('-h')
 
-        if check_minimize_property("steps", self.steps, out_log): instructions_list.append('-n ' + str(self.steps))
+        if check_minimize_property("steps", self.steps, out_log):
+            instructions_list.append('-n ' + str(self.steps))
 
-        if check_minimize_property("cutoff", self.cutoff, out_log): instructions_list.append('-cut')
+        if check_minimize_property("cutoff", self.cutoff, out_log):
+            instructions_list.append('-cut')
 
-        if check_minimize_property("rvdw", self.rvdw, out_log): instructions_list.append('-rvdw ' + str(self.rvdw))
+        if check_minimize_property("rvdw", self.rvdw, out_log):
+            instructions_list.append('-rvdw ' + str(self.rvdw))
 
-        if check_minimize_property("rele", self.rele, out_log): instructions_list.append('-rele ' + str(self.rele))
+        if check_minimize_property("rele", self.rele, out_log):
+            instructions_list.append('-rele ' + str(self.rele))
 
-        if check_minimize_property("frequency", self.frequency, out_log): instructions_list.append('-pf ' + str(self.frequency))
+        if check_minimize_property("frequency", self.frequency, out_log):
+            instructions_list.append('-pf ' + str(self.frequency))
 
         iextension = PurePath(container_io_dict["in"]["input_path"]).suffix
         oextension = PurePath(container_io_dict["out"]["output_path"]).suffix
@@ -138,16 +149,17 @@ class BabelMinimize(BiobbObject):
     @launchlogger
     def launch(self) -> int:
         """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` babelm.babel_minimize.BabelMinimize object."""
-        
+
         # check input/output paths and parameters
         self.check_data_params(self.out_log, self.err_log)
 
         # Setup Biobb
-        if self.check_restart(): return 0
+        if self.check_restart():
+            return 0
         self.stage_files()
 
         # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
 
         # Run Biobb block
         self.run_biobb()
@@ -165,13 +177,15 @@ class BabelMinimize(BiobbObject):
 
         return self.return_code
 
+
 def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
     execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
 
-    return BabelMinimize(input_path=input_path, 
-                    output_path=output_path,
-                    properties=properties, **kwargs).launch()
+    return BabelMinimize(input_path=input_path,
+                         output_path=output_path,
+                         properties=properties, **kwargs).launch()
+
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -188,9 +202,10 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    babel_minimize(input_path=args.input_path, 
-                    output_path=args.output_path, 
-                    properties=properties)
+    babel_minimize(input_path=args.input_path,
+                   output_path=args.output_path,
+                   properties=properties)
+
 
 if __name__ == '__main__':
     main()

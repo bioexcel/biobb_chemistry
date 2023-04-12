@@ -3,9 +3,9 @@
 """Module containing the AcpypeParamsCNS class and the command line interface."""
 import argparse
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import  settings
+from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import *
+from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output
 
 
 class AcpypeParamsCNS(BiobbObject):
@@ -36,14 +36,14 @@ class AcpypeParamsCNS(BiobbObject):
         This is a use example of how to use the building block from Python::
 
             from biobb_chemistry.acpype.acpype_params_cns import acpype_params_cns
-            prop = { 
-                'basename': 'BBB', 
-                'charge': 0 
+            prop = {
+                'basename': 'BBB',
+                'charge': 0
             }
-            acpype_params_cns(input_path='/path/to/myStructure.mol2', 
-                            output_path_par='/path/to/newPAR.par', 
-                            output_path_inp='/path/to/newINP.inp', 
-                            output_path_top='/path/to/newTOP.top', 
+            acpype_params_cns(input_path='/path/to/myStructure.mol2',
+                            output_path_par='/path/to/newPAR.par',
+                            output_path_inp='/path/to/newINP.inp',
+                            output_path_top='/path/to/newTOP.top',
                             properties=prop)
 
     Info:
@@ -57,8 +57,8 @@ class AcpypeParamsCNS(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, 
-                properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top,
+                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -66,9 +66,9 @@ class AcpypeParamsCNS(BiobbObject):
         self.locals_var_dict = locals().copy()
 
         # Input/Output files
-        self.io_dict = { 
-            "in": { "input_path": input_path }, 
-            "out": { "output_path_par": output_path_par, "output_path_inp": output_path_inp, "output_path_top": output_path_top } 
+        self.io_dict = {
+            "in": {"input_path": input_path},
+            "out": {"output_path_par": output_path_par, "output_path_inp": output_path_inp, "output_path_top": output_path_top}
         }
 
         # Properties specific for BB
@@ -106,11 +106,11 @@ class AcpypeParamsCNS(BiobbObject):
         # executable path
         instructions_list.append(self.binary_path)
 
-        # generating input 
+        # generating input
         ipath = '-i ' + container_io_dict["in"]["input_path"]
         instructions_list.append(ipath)
 
-        # generating output 
+        # generating output
         basename = '-b ' + out_pth
         instructions_list.append(basename)
 
@@ -125,19 +125,20 @@ class AcpypeParamsCNS(BiobbObject):
     @launchlogger
     def launch(self) -> int:
         """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` acpype.acpype_params_cns.AcpypeParamsCNS object."""
-        
+
         # check input/output paths and parameters
         self.check_data_params(self.out_log, self.err_log)
 
         # Setup Biobb
-        if self.check_restart(): return 0
+        if self.check_restart():
+            return 0
         self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)
 
         # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
 
         # Run Biobb block
         self.run_biobb()
@@ -147,33 +148,35 @@ class AcpypeParamsCNS(BiobbObject):
 
         # move files to output_path and removes temporary folder
         if self.container_path:
-            process_output(self.unique_name, 
-                           self.stage_io_dict['unique_dir'], 
-                           self.remove_tmp, 
-                           self.basename, 
-                           get_default_value(self.__class__.__name__), 
+            process_output(self.unique_name,
+                           self.stage_io_dict['unique_dir'],
+                           self.remove_tmp,
+                           self.basename,
+                           get_default_value(self.__class__.__name__),
                            self.output_files, self.out_log)
         else:
-            process_output(self.unique_name, 
-                           self.basename + "." + self.unique_name + ".acpype", 
-                           self.remove_tmp, 
-                           self.basename, 
-                           get_default_value(self.__class__.__name__), 
+            process_output(self.unique_name,
+                           self.basename + "." + self.unique_name + ".acpype",
+                           self.remove_tmp,
+                           self.basename,
+                           get_default_value(self.__class__.__name__),
                            self.output_files, self.out_log)
 
         self.check_arguments(output_files_created=True, raise_exception=False)
 
         return self.return_code
 
+
 def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
     execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch>` method."""
 
-    return AcpypeParamsCNS(input_path=input_path, 
-                    output_path_par=output_path_par, 
-                    output_path_inp=output_path_inp,
-                    output_path_top=output_path_top,
-                    properties=properties, **kwargs).launch()
+    return AcpypeParamsCNS(input_path=input_path,
+                           output_path_par=output_path_par,
+                           output_path_inp=output_path_inp,
+                           output_path_top=output_path_top,
+                           properties=properties, **kwargs).launch()
+
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -192,11 +195,12 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    acpype_params_cns(input_path=args.input_path, 
-                    output_path_par=args.output_path_par, 
-                    output_path_inp=args.output_path_inp, 
-                    output_path_top=args.output_path_top, 
-                    properties=properties)
+    acpype_params_cns(input_path=args.input_path,
+                      output_path_par=args.output_path_par,
+                      output_path_inp=args.output_path_inp,
+                      output_path_top=args.output_path_top,
+                      properties=properties)
+
 
 if __name__ == '__main__':
     main()

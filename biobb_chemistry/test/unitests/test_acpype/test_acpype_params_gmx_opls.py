@@ -2,9 +2,10 @@ from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.acpype.acpype_params_gmx_opls import acpype_params_gmx_opls
 import platform
 
+
 class TestAcpypeParamsGMXOPLS():
     def setup_class(self):
-        fx.test_setup(self,'acpype_params_gmx_opls')
+        fx.test_setup(self, 'acpype_params_gmx_opls')
 
     def teardown_class(self):
         fx.test_teardown(self)

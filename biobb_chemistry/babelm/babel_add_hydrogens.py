@@ -3,9 +3,9 @@
 """Module containing the BabelAddHydrogens class and the command line interface."""
 import argparse
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import  settings
+from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.babelm.common import *
+from biobb_chemistry.babelm.common import check_input_path, check_output_path, get_input_format, get_output_format, get_coordinates, get_ph
 
 
 class BabelAddHydrogens(BiobbObject):
@@ -36,14 +36,14 @@ class BabelAddHydrogens(BiobbObject):
         This is a use example of how to use the building block from Python::
 
             from biobb_chemistry.babelm.babel_add_hydrogens import babel_add_hydrogens
-            prop = { 
-                'input_format': 'pdb', 
-                'output_format': 'pdb', 
-                'coordinates': 3, 
-                'ph': 7.4 
+            prop = {
+                'input_format': 'pdb',
+                'output_format': 'pdb',
+                'coordinates': 3,
+                'ph': 7.4
             }
-            babel_add_hydrogens(input_path='/path/to/myStructure.pdb', 
-                                output_path='/path/to/newStructure.pdb', 
+            babel_add_hydrogens(input_path='/path/to/myStructure.pdb',
+                                output_path='/path/to/newStructure.pdb',
                                 properties=prop)
 
     Info:
@@ -57,8 +57,8 @@ class BabelAddHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path,  output_path, 
-                properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path,
+                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -66,9 +66,9 @@ class BabelAddHydrogens(BiobbObject):
         self.locals_var_dict = locals().copy()
 
         # Input/Output files
-        self.io_dict = { 
-            "in": { "input_path": input_path }, 
-            "out": { "output_path": output_path } 
+        self.io_dict = {
+            "in": {"input_path": input_path},
+            "out": {"output_path": output_path}
         }
 
         # Properties specific for BB
@@ -95,14 +95,14 @@ class BabelAddHydrogens(BiobbObject):
         # executable path
         instructions_list.append(self.binary_path)
 
-        # generating input 
+        # generating input
         infr = get_input_format(self.input_format, container_io_dict["in"]["input_path"], out_log)
         iformat = '-i' + infr
         instructions_list.append(iformat)
         ipath = container_io_dict["in"]["input_path"]
         instructions_list.append(ipath)
 
-        # generating output 
+        # generating output
         oufr = get_output_format(self.output_format, container_io_dict["out"]["output_path"], out_log)
         oformat = '-o' + oufr
         instructions_list.append(oformat)
@@ -137,16 +137,17 @@ class BabelAddHydrogens(BiobbObject):
     @launchlogger
     def launch(self) -> int:
         """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` babelm.babel_add_hydrogens.BabelAddHydrogens object."""
-        
+
         # check input/output paths and parameters
         self.check_data_params(self.out_log, self.err_log)
 
         # Setup Biobb
-        if self.check_restart(): return 0
+        if self.check_restart():
+            return 0
         self.stage_files()
 
         # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
 
         # Run Biobb block
         self.run_biobb()
@@ -154,7 +155,7 @@ class BabelAddHydrogens(BiobbObject):
         # Copy files to host
         self.copy_to_host()
 
-        # remove temporary folder(s)     
+        # remove temporary folder(s)
         self.tmp_files.extend([
             self.stage_io_dict.get("unique_dir")
         ])
@@ -164,13 +165,15 @@ class BabelAddHydrogens(BiobbObject):
 
         return self.return_code
 
+
 def babel_add_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` class and
     execute the :meth:`launch() <babelm.babel_add_hydrogens.BabelAddHydrogens.launch>` method."""
 
-    return BabelAddHydrogens(input_path=input_path, 
-                    output_path=output_path,
-                    properties=properties, **kwargs).launch()
+    return BabelAddHydrogens(input_path=input_path,
+                             output_path=output_path,
+                             properties=properties, **kwargs).launch()
+
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -187,9 +190,10 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    babel_add_hydrogens(input_path=args.input_path, 
-                        output_path=args.output_path, 
+    babel_add_hydrogens(input_path=args.input_path,
+                        output_path=args.output_path,
                         properties=properties)
+
 
 if __name__ == '__main__':
     main()

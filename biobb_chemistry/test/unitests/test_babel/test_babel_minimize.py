@@ -4,7 +4,7 @@ from biobb_chemistry.babelm.babel_minimize import babel_minimize
 
 class TestBabelMinimize():
     def setup_class(self):
-        fx.test_setup(self,'babel_minimize')
+        fx.test_setup(self, 'babel_minimize')
 
     def teardown_class(self):
         fx.test_teardown(self)

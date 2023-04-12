@@ -3,9 +3,9 @@
 """Module containing the AcpypeParamsAC class and the command line interface."""
 import argparse
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import  settings
+from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import *
+from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output
 
 
 class AcpypeParamsAC(BiobbObject):
@@ -37,15 +37,15 @@ class AcpypeParamsAC(BiobbObject):
         This is a use example of how to use the building block from Python::
 
             from biobb_chemistry.acpype.acpype_params_ac import acpype_params_ac
-            prop = { 
-                'basename': 'BBB', 
-                'charge': 0 
+            prop = {
+                'basename': 'BBB',
+                'charge': 0
             }
-            acpype_params_ac(input_path='/path/to/myStructure.mol2', 
-                            output_path_frcmod='/path/to/newFRCMOD.frcmod', 
-                            output_path_inpcrd='/path/to/newINPCRD.inpcrd', 
-                            output_path_lib='/path/to/newLIB.lib', 
-                            output_path_prmtop='/path/to/newPRMTOP.prmtop', 
+            acpype_params_ac(input_path='/path/to/myStructure.mol2',
+                            output_path_frcmod='/path/to/newFRCMOD.frcmod',
+                            output_path_inpcrd='/path/to/newINPCRD.inpcrd',
+                            output_path_lib='/path/to/newLIB.lib',
+                            output_path_prmtop='/path/to/newPRMTOP.prmtop',
                             properties=prop)
 
     Info:
@@ -58,9 +58,9 @@ class AcpypeParamsAC(BiobbObject):
             * schema: http://edamontology.org/EDAM.owl
 
     """
-    
-    def __init__(self, input_path,  output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop, 
-                properties=None, **kwargs) -> None:
+
+    def __init__(self, input_path, output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop,
+                 properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -68,9 +68,9 @@ class AcpypeParamsAC(BiobbObject):
         self.locals_var_dict = locals().copy()
 
         # Input/Output files
-        self.io_dict = { 
-            "in": { "input_path": input_path }, 
-            "out": { "output_path_frcmod": output_path_frcmod, "output_path_inpcrd": output_path_inpcrd, "output_path_lib": output_path_lib, "output_path_prmtop": output_path_prmtop } 
+        self.io_dict = {
+            "in": {"input_path": input_path},
+            "out": {"output_path_frcmod": output_path_frcmod, "output_path_inpcrd": output_path_inpcrd, "output_path_lib": output_path_lib, "output_path_prmtop": output_path_prmtop}
         }
 
         # Properties specific for BB
@@ -103,7 +103,7 @@ class AcpypeParamsAC(BiobbObject):
 
         # generating output path
         if self.container_path:
-            #instructions_list.append('cd ' + self.container_volume_path + ';')
+            # instructions_list.append('cd ' + self.container_volume_path + ';')
             out_pth = self.container_volume_path + '/' + get_basename(self.basename, out_log) + '.' + self.unique_name
         else:
             out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
@@ -111,10 +111,10 @@ class AcpypeParamsAC(BiobbObject):
         # executable path
         instructions_list.append(self.binary_path)
 
-        # generating input 
+        # generating input
         ipath = '-i ' + container_io_dict["in"]["input_path"]
         instructions_list.append(ipath)
-        
+
         basename = '-b ' + out_pth
         instructions_list.append(basename)
 
@@ -129,19 +129,20 @@ class AcpypeParamsAC(BiobbObject):
     @launchlogger
     def launch(self) -> int:
         """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` acpype.acpype_params_ac.AcpypeParamsAC object."""
-        
+
         # check input/output paths and parameters
         self.check_data_params(self.out_log, self.err_log)
 
         # Setup Biobb
-        if self.check_restart(): return 0
+        if self.check_restart():
+            return 0
         self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)
 
         # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log) 
+        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
 
         # Run Biobb block
         self.run_biobb()
@@ -151,34 +152,36 @@ class AcpypeParamsAC(BiobbObject):
 
         # move files to output_path and removes temporary folder
         if self.container_path:
-            process_output(self.unique_name, 
-                           self.stage_io_dict['unique_dir'], 
-                           self.remove_tmp, 
-                           self.basename, 
-                           get_default_value(self.__class__.__name__), 
+            process_output(self.unique_name,
+                           self.stage_io_dict['unique_dir'],
+                           self.remove_tmp,
+                           self.basename,
+                           get_default_value(self.__class__.__name__),
                            self.output_files, self.out_log)
         else:
-            process_output(self.unique_name, 
-                           self.basename + "." + self.unique_name + ".acpype", 
-                           self.remove_tmp, 
-                           self.basename, 
-                           get_default_value(self.__class__.__name__), 
+            process_output(self.unique_name,
+                           self.basename + "." + self.unique_name + ".acpype",
+                           self.remove_tmp,
+                           self.basename,
+                           get_default_value(self.__class__.__name__),
                            self.output_files, self.out_log)
 
         self.check_arguments(output_files_created=True, raise_exception=False)
-        
+
         return self.return_code
+
 
 def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
     execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch>` method."""
 
-    return AcpypeParamsAC(input_path=input_path, 
-                    output_path_frcmod=output_path_frcmod, 
-                    output_path_inpcrd=output_path_inpcrd,
-                    output_path_lib=output_path_lib,
-                    output_path_prmtop=output_path_prmtop,
-                    properties=properties, **kwargs).launch()
+    return AcpypeParamsAC(input_path=input_path,
+                          output_path_frcmod=output_path_frcmod,
+                          output_path_inpcrd=output_path_inpcrd,
+                          output_path_lib=output_path_lib,
+                          output_path_prmtop=output_path_prmtop,
+                          properties=properties, **kwargs).launch()
+
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
@@ -198,12 +201,13 @@ def main():
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    acpype_params_ac(input_path=args.input_path, 
-                    output_path_frcmod=args.output_path_frcmod, 
-                    output_path_inpcrd=args.output_path_inpcrd, 
-                    output_path_lib=args.output_path_lib, 
-                    output_path_prmtop=args.output_path_prmtop, 
-                    properties=properties)
+    acpype_params_ac(input_path=args.input_path,
+                     output_path_frcmod=args.output_path_frcmod,
+                     output_path_inpcrd=args.output_path_inpcrd,
+                     output_path_lib=args.output_path_lib,
+                     output_path_prmtop=args.output_path_prmtop,
+                     properties=properties)
+
 
 if __name__ == '__main__':
     main()
