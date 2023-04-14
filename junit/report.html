@@ -253,7 +253,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 12-Apr-2023 at 10:44:22 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 14-Apr-2023 at 14:29:30 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -261,18 +261,18 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>true</td></tr>
       <tr>
         <td>Packages</td>
-        <td>{"pluggy": "1.0.0", "pytest": "7.3.0"}</td></tr>
+        <td>{"pluggy": "1.0.0", "pytest": "7.2.0"}</td></tr>
       <tr>
         <td>Platform</td>
-        <td>Linux-5.4.0-139-generic-x86_64-with-glibc2.31</td></tr>
+        <td>Linux-5.4.0-139-generic-x86_64-with-debian-bullseye-sid</td></tr>
       <tr>
         <td>Plugins</td>
         <td>{"cov": "4.0.0", "html": "3.2.0", "metadata": "2.0.4"}</td></tr>
       <tr>
         <td>Python</td>
-        <td>3.9.16</td></tr></table>
+        <td>3.7.12</td></tr></table>
     <h2>Summary</h2>
-    <p>10 tests ran in 308.70 seconds. </p>
+    <p>10 tests ran in 652.00 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">10 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -288,17 +288,17 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_acpype/test_acpype_params_ac.py::TestAcpypeParamsAC::test_params_ac</td>
-          <td class="col-duration">77.18</td>
+          <td class="col-duration">164.10</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:39:14,642 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_ac Version: 4.0.0
-2023-04-12 10:39:14,643 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_ac/cb180770-42cd-4a2e-819d-6b329225af39
-2023-04-12 10:39:14,643 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_34/acpype_params_ac/cb180770-42cd-4a2e-819d-6b329225af39/acpype.params.pdb -b BBB.7angeR -n 0
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:18:39,384 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_ac Version: 4.0.0
+2023-04-14 14:18:39,384 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_ac/ef7be43e-b2a2-471d-90e6-984d41b73538
+2023-04-14 14:18:39,384 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_46/acpype_params_ac/ef7be43e-b2a2-471d-90e6-984d41b73538/acpype.params.pdb -b BBB.jpOlPd -n 0
 
-2023-04-12 10:40:31,745 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:21:23,416 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:40:31,746 [MainThread  ] [INFO ]  ==========================================================================
+2023-04-14 14:21:23,417 [MainThread  ] [INFO ]  ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -324,36 +324,36 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.7angeR.pkl
+==&gt; Writing pickle file BBB.jpOlPd.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 17s
+Total time of execution: 2m 44s
 
-2023-04-12 10:40:31,748 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_ac/output.prmtop succesfully created
-2023-04-12 10:40:31,749 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_ac/output.inpcrd succesfully created
-2023-04-12 10:40:31,749 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_ac/output.lib succesfully created
-2023-04-12 10:40:31,750 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_ac/output.frcmod succesfully created
-2023-04-12 10:40:31,751 [MainThread  ] [INFO ]  Removed temporary folder: BBB.7angeR.acpype
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_ac/output.frcmod
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_ac/output.inpcrd
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_ac/output.lib
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_ac/output.prmtop
+2023-04-14 14:21:23,419 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_ac/output.frcmod succesfully created
+2023-04-14 14:21:23,420 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_ac/output.prmtop succesfully created
+2023-04-14 14:21:23,420 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_ac/output.inpcrd succesfully created
+2023-04-14 14:21:23,421 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_ac/output.lib succesfully created
+2023-04-14 14:21:23,422 [MainThread  ] [INFO ]  Removed temporary folder: BBB.jpOlPd.acpype
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_ac/output.frcmod
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_ac/output.inpcrd
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_ac/output.lib
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_ac/output.prmtop
 Comparing: 
-        File_A: /tmp/biobb/unitests_34/acpype_params_ac/output.frcmod
+        File_A: /tmp/biobb/unitests_46/acpype_params_ac/output.frcmod
         File_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/acpype/ref_acpype.ac.frcmod
         File_A hash: b&#x27;\xbe\xe9\xc1\x07\xbcxN\x01\\H.\x93)\xf8j\x031\x04\x94$\x93\x03\xac\xa3\xf1\x1cMc\xf1\x82G\xdf&#x27;
         File_B hash: b&#x27;\xbe\xe9\xc1\x07\xbcxN\x01\\H.\x93)\xf8j\x031\x04\x94$\x93\x03\xac\xa3\xf1\x1cMc\xf1\x82G\xdf&#x27;
 Comparing: 
-        File_A: /tmp/biobb/unitests_34/acpype_params_ac/output.inpcrd
+        File_A: /tmp/biobb/unitests_46/acpype_params_ac/output.inpcrd
         File_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/acpype/ref_acpype.ac.inpcrd
         File_A hash: b&#x27;\r\xeb\x17\x04\xb4\xb1\xe8\xd6\xef\x0c[\xc19[\x16kXm\xeceQ\xba,,\x12$\x03\xa0\xb5=\xd2\xa3&#x27;
         File_B hash: b&#x27;\r\xeb\x17\x04\xb4\xb1\xe8\xd6\xef\x0c[\xc19[\x16kXm\xeceQ\xba,,\x12$\x03\xa0\xb5=\xd2\xa3&#x27;
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_ac Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_ac/cb180770-42cd-4a2e-819d-6b329225af39
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_34/acpype_params_ac/cb180770-42cd-4a2e-819d-6b329225af39/acpype.params.pdb -b BBB.7angeR -n 0
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_ac Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_ac/ef7be43e-b2a2-471d-90e6-984d41b73538
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_46/acpype_params_ac/ef7be43e-b2a2-471d-90e6-984d41b73538/acpype.params.pdb -b BBB.jpOlPd -n 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:cmd_wrapper.py:51 ==========================================================================
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:cmd_wrapper.py:51 ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -379,32 +379,32 @@ INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:cmd_wr
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.7angeR.pkl
+==&gt; Writing pickle file BBB.jpOlPd.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 17s
+Total time of execution: 2m 44s
 
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_ac/output.prmtop succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_ac/output.inpcrd succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_ac/output.lib succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_ac/output.frcmod succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 Removed temporary folder: BBB.7angeR.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_ac/output.frcmod succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_ac/output.prmtop succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_ac/output.inpcrd succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_ac/output.lib succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_ac/acpype_params_ac_log.out:file_utils.py:346 Removed temporary folder: BBB.jpOlPd.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_acpype/test_acpype_params_cns.py::TestAcpypeParamsCNS::test_params_cns</td>
-          <td class="col-duration">76.50</td>
+          <td class="col-duration">161.95</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:40:31,851 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_cns Version: 4.0.0
-2023-04-12 10:40:31,851 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_cns/737a5ec8-f797-4d19-bb92-53e3ac6220df
-2023-04-12 10:40:31,852 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_34/acpype_params_cns/737a5ec8-f797-4d19-bb92-53e3ac6220df/acpype.params.pdb -b BBB.7OWlji -n 0
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:21:23,501 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_cns Version: 4.0.0
+2023-04-14 14:21:23,501 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_cns/6f3f8ad7-3ecc-4aeb-8c07-ff102d31acec
+2023-04-14 14:21:23,502 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_46/acpype_params_cns/6f3f8ad7-3ecc-4aeb-8c07-ff102d31acec/acpype.params.pdb -b BBB.8WdInf -n 0
 
-2023-04-12 10:41:48,278 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:24:05,396 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:41:48,279 [MainThread  ] [INFO ]  ==========================================================================
+2023-04-14 14:24:05,397 [MainThread  ] [INFO ]  ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -430,26 +430,26 @@ Removing: /tmp/biobb/unitests_34
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.7OWlji.pkl
+==&gt; Writing pickle file BBB.8WdInf.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 16s
+Total time of execution: 2m 42s
 
-2023-04-12 10:41:48,280 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_cns/output.inp succesfully created
-2023-04-12 10:41:48,281 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_cns/output.top succesfully created
-2023-04-12 10:41:48,282 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_cns/output.par succesfully created
-2023-04-12 10:41:48,283 [MainThread  ] [INFO ]  Removed temporary folder: BBB.7OWlji.acpype
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_cns/output.par
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_cns/output.inp
+2023-04-14 14:24:05,399 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_cns/output.par succesfully created
+2023-04-14 14:24:05,399 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_cns/output.inp succesfully created
+2023-04-14 14:24:05,400 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_cns/output.top succesfully created
+2023-04-14 14:24:05,401 [MainThread  ] [INFO ]  Removed temporary folder: BBB.8WdInf.acpype
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_cns/output.par
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_cns/output.inp
 Comparing ignoring first line of both files:
-     FILE_A: /tmp/biobb/unitests_34/acpype_params_cns/output.inp
+     FILE_A: /tmp/biobb/unitests_46/acpype_params_cns/output.inp
      FILE_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/acpype/ref_acpype.cns.inp
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_cns Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_cns/737a5ec8-f797-4d19-bb92-53e3ac6220df
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_34/acpype_params_cns/737a5ec8-f797-4d19-bb92-53e3ac6220df/acpype.params.pdb -b BBB.7OWlji -n 0
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_cns Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_cns/6f3f8ad7-3ecc-4aeb-8c07-ff102d31acec
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_46/acpype_params_cns/6f3f8ad7-3ecc-4aeb-8c07-ff102d31acec/acpype.params.pdb -b BBB.8WdInf -n 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:cmd_wrapper.py:51 ==========================================================================
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:cmd_wrapper.py:51 ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -475,31 +475,31 @@ INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:cmd_
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.7OWlji.pkl
+==&gt; Writing pickle file BBB.8WdInf.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 16s
+Total time of execution: 2m 42s
 
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_cns/output.inp succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_cns/output.top succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_cns/output.par succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 Removed temporary folder: BBB.7OWlji.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_cns/output.par succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_cns/output.inp succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_cns/output.top succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_cns/acpype_params_cns_log.out:file_utils.py:346 Removed temporary folder: BBB.8WdInf.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_acpype/test_acpype_params_gmx.py::TestAcpypeParamsGMX::test_params_gmx</td>
-          <td class="col-duration">76.75</td>
+          <td class="col-duration">162.15</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:41:48,357 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_gmx Version: 4.0.0
-2023-04-12 10:41:48,358 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_gmx/59c3612b-73fc-44db-90bf-20276d70c1a5
-2023-04-12 10:41:48,358 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_34/acpype_params_gmx/59c3612b-73fc-44db-90bf-20276d70c1a5/acpype.params.pdb -b BBB.4arNNt -n 0
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:24:05,462 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_gmx Version: 4.0.0
+2023-04-14 14:24:05,462 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_gmx/1fcc21bf-cd15-48e2-80c4-7e21ef6d893d
+2023-04-14 14:24:05,462 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_46/acpype_params_gmx/1fcc21bf-cd15-48e2-80c4-7e21ef6d893d/acpype.params.pdb -b BBB.pldHi9 -n 0
 
-2023-04-12 10:43:05,031 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:26:47,515 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:43:05,031 [MainThread  ] [INFO ]  ==========================================================================
+2023-04-14 14:26:47,515 [MainThread  ] [INFO ]  ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -525,30 +525,30 @@ Removing: /tmp/biobb/unitests_34
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.4arNNt.pkl
+==&gt; Writing pickle file BBB.pldHi9.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 17s
+Total time of execution: 2m 42s
 
-2023-04-12 10:43:05,033 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.top succesfully created
-2023-04-12 10:43:05,035 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.itp succesfully created
-2023-04-12 10:43:05,035 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.gro succesfully created
-2023-04-12 10:43:05,036 [MainThread  ] [INFO ]  Removed temporary folder: BBB.4arNNt.acpype
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.gro
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.itp
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.top
+2023-04-14 14:26:47,517 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.gro succesfully created
+2023-04-14 14:26:47,518 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.itp succesfully created
+2023-04-14 14:26:47,519 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.top succesfully created
+2023-04-14 14:26:47,559 [MainThread  ] [INFO ]  Removed temporary folder: BBB.pldHi9.acpype
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.gro
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.itp
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.top
 Comparing ignoring first line of both files:
-     FILE_A: /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.gro
+     FILE_A: /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.gro
      FILE_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.gro
 Comparing TOP/ITP:
-     FILE_A: /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.top
+     FILE_A: /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.top
      FILE_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.top
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_gmx Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_gmx/59c3612b-73fc-44db-90bf-20276d70c1a5
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_34/acpype_params_gmx/59c3612b-73fc-44db-90bf-20276d70c1a5/acpype.params.pdb -b BBB.4arNNt -n 0
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_gmx Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_gmx/1fcc21bf-cd15-48e2-80c4-7e21ef6d893d
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_46/acpype_params_gmx/1fcc21bf-cd15-48e2-80c4-7e21ef6d893d/acpype.params.pdb -b BBB.pldHi9 -n 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:cmd_wrapper.py:51 ==========================================================================
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:cmd_wrapper.py:51 ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -574,31 +574,31 @@ INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:cmd_
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.4arNNt.pkl
+==&gt; Writing pickle file BBB.pldHi9.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 17s
+Total time of execution: 2m 42s
 
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.top succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.itp succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_gmx/ref_acpype.gmx.gro succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 Removed temporary folder: BBB.4arNNt.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.gro succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.itp succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_gmx/ref_acpype.gmx.top succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx/acpype_params_gmx_log.out:file_utils.py:346 Removed temporary folder: BBB.pldHi9.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_acpype/test_acpype_params_gmx_opls.py::TestAcpypeParamsGMXOPLS::test_params_gmx_opls</td>
-          <td class="col-duration">76.70</td>
+          <td class="col-duration">162.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:43:05,112 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_gmx_opls Version: 4.0.0
-2023-04-12 10:43:05,113 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_gmx_opls/aec6b461-18b5-4e69-a780-80c73f47dd31
-2023-04-12 10:43:05,113 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_34/acpype_params_gmx_opls/aec6b461-18b5-4e69-a780-80c73f47dd31/acpype.params.pdb -b BBB.idaTun -n 0
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:26:47,622 [MainThread  ] [INFO ]  Executing biobb_chemistry.acpype.acpype_params_gmx_opls Version: 4.0.0
+2023-04-14 14:26:47,622 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_gmx_opls/3af10655-ad27-41a8-9936-02fa4fa59382
+2023-04-14 14:26:47,622 [MainThread  ] [INFO ]  acpype -i /tmp/biobb/unitests_46/acpype_params_gmx_opls/3af10655-ad27-41a8-9936-02fa4fa59382/acpype.params.pdb -b BBB.BRRPuN -n 0
 
-2023-04-12 10:44:21,737 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:29,786 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:21,738 [MainThread  ] [INFO ]  ==========================================================================
+2023-04-14 14:29:29,786 [MainThread  ] [INFO ]  ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -624,25 +624,25 @@ Removing: /tmp/biobb/unitests_34
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.idaTun.pkl
+==&gt; Writing pickle file BBB.BRRPuN.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 17s
+Total time of execution: 2m 42s
 
-2023-04-12 10:44:21,740 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.itp succesfully created
-2023-04-12 10:44:21,741 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.top succesfully created
-2023-04-12 10:44:21,742 [MainThread  ] [INFO ]  Removed temporary folder: BBB.idaTun.acpype
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.itp
-Checking if empty file: /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.top
+2023-04-14 14:29:29,789 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.itp succesfully created
+2023-04-14 14:29:29,789 [MainThread  ] [INFO ]  File /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.top succesfully created
+2023-04-14 14:29:29,802 [MainThread  ] [INFO ]  Removed temporary folder: BBB.BRRPuN.acpype
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.itp
+Checking if empty file: /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.top
 Comparing TOP/ITP:
-     FILE_A: /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.top
+     FILE_A: /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.top
      FILE_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/acpype/ref_acpype.gmx.opls.top
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_gmx_opls Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_34/acpype_params_gmx_opls/aec6b461-18b5-4e69-a780-80c73f47dd31
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_34/acpype_params_gmx_opls/aec6b461-18b5-4e69-a780-80c73f47dd31/acpype.params.pdb -b BBB.idaTun -n 0
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 Executing biobb_chemistry.acpype.acpype_params_gmx_opls Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/acpype/acpype.params.pdb to /tmp/biobb/unitests_46/acpype_params_gmx_opls/3af10655-ad27-41a8-9936-02fa4fa59382
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:cmd_wrapper.py:32 acpype -i /tmp/biobb/unitests_46/acpype_params_gmx_opls/3af10655-ad27-41a8-9936-02fa4fa59382/acpype.params.pdb -b BBB.BRRPuN -n 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:cmd_wrapper.py:51 ==========================================================================
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:cmd_wrapper.py:51 ==========================================================================
 | ACPYPE: AnteChamber PYthon Parser interfacE v. 2022.6.6 (c) 2023 AWSdS |
 ==========================================================================
 ==&gt; ... charge set to 0
@@ -668,14 +668,14 @@ INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_lo
 
 ==&gt; Writing CHARMM files
 
-==&gt; Writing pickle file BBB.idaTun.pkl
+==&gt; Writing pickle file BBB.BRRPuN.pkl
 ==&gt; Removing temporary files...
-Total time of execution: 1m 17s
+Total time of execution: 2m 42s
 
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.itp succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 File /tmp/biobb/unitests_34/acpype_params_gmx_opls/ref_acpype.gmx.opls.top succesfully created
-INFO     /tmp/biobb/unitests_34/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 Removed temporary folder: BBB.idaTun.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.itp succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 File /tmp/biobb/unitests_46/acpype_params_gmx_opls/ref_acpype.gmx.opls.top succesfully created
+INFO     /tmp/biobb/unitests_46/acpype_params_gmx_opls/acpype_params_gmx_opls_log.out:file_utils.py:346 Removed temporary folder: BBB.BRRPuN.acpype<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
@@ -685,15 +685,15 @@ Removing: /tmp/biobb/unitests_34
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:44:21,819 [MainThread  ] [INFO ]  Executing biobb_chemistry.ambertools.reduce_add_hydrogens Version: 4.0.0
-2023-04-12 10:44:21,819 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.no.H.pdb to /tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02
-2023-04-12 10:44:21,819 [MainThread  ] [INFO ]  reduce -NOOH -OH -ROTNH3 -ALLALT /tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02/reduce.no.H.pdb &gt; /tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02/output.pdb
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:29:29,864 [MainThread  ] [INFO ]  Executing biobb_chemistry.ambertools.reduce_add_hydrogens Version: 4.0.0
+2023-04-14 14:29:29,865 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.no.H.pdb to /tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f
+2023-04-14 14:29:29,865 [MainThread  ] [INFO ]  reduce -NOOH -OH -ROTNH3 -ALLALT /tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f/reduce.no.H.pdb &gt; /tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f/output.pdb
 
-2023-04-12 10:44:21,900 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:29,956 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:21,901 [MainThread  ] [INFO ]  reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
-Processing file: &quot;/tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02/reduce.no.H.pdb&quot;
-Database of HETATM connections: &quot;/home/user/micromamba/envs/test_environment//dat/reduce_wwPDB_het_dict.txt&quot;
+2023-04-14 14:29:29,956 [MainThread  ] [INFO ]  reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
+Processing file: &quot;/tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f/reduce.no.H.pdb&quot;
+Database of HETATM connections: &quot;/home/user/micromamba/envs/test_environment/dat/reduce_wwPDB_het_dict.txt&quot;
 VDW dot density = 16/A^2
 Orientation penalty scale = 1 (100%)
 Eliminate contacts within 3 bonds.
@@ -783,17 +783,17 @@ If you publish work which uses reduce, please cite:
 Word, et. al. (1999) J. Mol. Biol. 285, 1735-1747.
 For more information see http://kinemage.biochem.duke.edu
 
-2023-04-12 10:44:21,901 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02&#x27;]
-Checking if empty file: /tmp/biobb/unitests_34/reduce_add_hydrogens/output.pdb
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/reduce_add_hydrogens/reduce_add_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.ambertools.reduce_add_hydrogens Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/reduce_add_hydrogens/reduce_add_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.no.H.pdb to /tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02
-INFO     /tmp/biobb/unitests_34/reduce_add_hydrogens/reduce_add_hydrogens_log.out:cmd_wrapper.py:32 reduce -NOOH -OH -ROTNH3 -ALLALT /tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02/reduce.no.H.pdb &gt; /tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02/output.pdb
+2023-04-14 14:29:29,957 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f&#x27;]
+Checking if empty file: /tmp/biobb/unitests_46/reduce_add_hydrogens/output.pdb
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/reduce_add_hydrogens/reduce_add_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.ambertools.reduce_add_hydrogens Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/reduce_add_hydrogens/reduce_add_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.no.H.pdb to /tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f
+INFO     /tmp/biobb/unitests_46/reduce_add_hydrogens/reduce_add_hydrogens_log.out:cmd_wrapper.py:32 reduce -NOOH -OH -ROTNH3 -ALLALT /tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f/reduce.no.H.pdb &gt; /tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f/output.pdb
 
-INFO     /tmp/biobb/unitests_34/reduce_add_hydrogens/reduce_add_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/reduce_add_hydrogens/reduce_add_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/reduce_add_hydrogens/reduce_add_hydrogens_log.err:cmd_wrapper.py:59 reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
-Processing file: &quot;/tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02/reduce.no.H.pdb&quot;
-Database of HETATM connections: &quot;/home/user/micromamba/envs/test_environment//dat/reduce_wwPDB_het_dict.txt&quot;
+INFO     /tmp/biobb/unitests_46/reduce_add_hydrogens/reduce_add_hydrogens_log.err:cmd_wrapper.py:59 reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
+Processing file: &quot;/tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f/reduce.no.H.pdb&quot;
+Database of HETATM connections: &quot;/home/user/micromamba/envs/test_environment/dat/reduce_wwPDB_het_dict.txt&quot;
 VDW dot density = 16/A^2
 Orientation penalty scale = 1 (100%)
 Eliminate contacts within 3 bonds.
@@ -883,25 +883,25 @@ If you publish work which uses reduce, please cite:
 Word, et. al. (1999) J. Mol. Biol. 285, 1735-1747.
 For more information see http://kinemage.biochem.duke.edu
 
-INFO     /tmp/biobb/unitests_34/reduce_add_hydrogens/reduce_add_hydrogens_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_34/reduce_add_hydrogens/5c7ed257-3df0-40e6-99e1-f67852248a02&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/reduce_add_hydrogens/reduce_add_hydrogens_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_46/reduce_add_hydrogens/9607510c-b272-4231-accb-ddacb03cb79f&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_ambertools/test_reduce_remove_hydrogens.py::TestReduceRemoveHydrogens::test_remove_hydrogens</td>
-          <td class="col-duration">0.08</td>
+          <td class="col-duration">0.07</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:44:21,977 [MainThread  ] [INFO ]  Executing biobb_chemistry.ambertools.reduce_remove_hydrogens Version: 4.0.0
-2023-04-12 10:44:21,977 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.H.pdb to /tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95
-2023-04-12 10:44:21,977 [MainThread  ] [INFO ]  reduce -Trim /tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95/reduce.H.pdb &gt; /tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95/output.pdb
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:29:30,017 [MainThread  ] [INFO ]  Executing biobb_chemistry.ambertools.reduce_remove_hydrogens Version: 4.0.0
+2023-04-14 14:29:30,018 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.H.pdb to /tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c
+2023-04-14 14:29:30,018 [MainThread  ] [INFO ]  reduce -Trim /tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c/reduce.H.pdb &gt; /tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c/output.pdb
 
-2023-04-12 10:44:21,988 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:30,028 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:21,988 [MainThread  ] [INFO ]  reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
-Processing file: &quot;/tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95/reduce.H.pdb&quot;
+2023-04-14 14:29:30,028 [MainThread  ] [INFO ]  reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
+Processing file: &quot;/tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c/reduce.H.pdb&quot;
 WARNING: atom H192 from ZEN will be treated as hydrogen
 WARNING: atom H191 from ZEN will be treated as hydrogen
 WARNING: atom H182 from ZEN will be treated as hydrogen
@@ -919,15 +919,15 @@ If you publish work which uses reduce, please cite:
 Word, et. al. (1999) J. Mol. Biol. 285, 1735-1747.
 For more information see http://kinemage.biochem.duke.edu
 
-Checking if empty file: /tmp/biobb/unitests_34/reduce_remove_hydrogens/output.pdb
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.ambertools.reduce_remove_hydrogens Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.H.pdb to /tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95
-INFO     /tmp/biobb/unitests_34/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:cmd_wrapper.py:32 reduce -Trim /tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95/reduce.H.pdb &gt; /tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95/output.pdb
+Checking if empty file: /tmp/biobb/unitests_46/reduce_remove_hydrogens/output.pdb
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.ambertools.reduce_remove_hydrogens Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/ambertools/reduce.H.pdb to /tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c
+INFO     /tmp/biobb/unitests_46/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:cmd_wrapper.py:32 reduce -Trim /tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c/reduce.H.pdb &gt; /tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c/output.pdb
 
-INFO     /tmp/biobb/unitests_34/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/reduce_remove_hydrogens/reduce_remove_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/reduce_remove_hydrogens/reduce_remove_hydrogens_log.err:cmd_wrapper.py:59 reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
-Processing file: &quot;/tmp/biobb/unitests_34/reduce_remove_hydrogens/bc327727-fdde-4a06-bd3c-5d63d7c5eb95/reduce.H.pdb&quot;
+INFO     /tmp/biobb/unitests_46/reduce_remove_hydrogens/reduce_remove_hydrogens_log.err:cmd_wrapper.py:59 reduce: version 3.3 06/02/2016, Copyright 1997-2016, J. Michael Word
+Processing file: &quot;/tmp/biobb/unitests_46/reduce_remove_hydrogens/95d13584-5713-4544-b8e3-82485508441c/reduce.H.pdb&quot;
 WARNING: atom H192 from ZEN will be treated as hydrogen
 WARNING: atom H191 from ZEN will be treated as hydrogen
 WARNING: atom H182 from ZEN will be treated as hydrogen
@@ -944,44 +944,44 @@ Trimming: removed 27 hydrogens (27 hets)
 If you publish work which uses reduce, please cite:
 Word, et. al. (1999) J. Mol. Biol. 285, 1735-1747.
 For more information see http://kinemage.biochem.duke.edu<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_babel/test_babel_add_hydrogens.py::TestBabelAddHydrogens::test_add_hydrogens</td>
-          <td class="col-duration">0.25</td>
+          <td class="col-duration">0.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:44:22,068 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_add_hydrogens Version: 4.0.0
-2023-04-12 10:44:22,069 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.no.H.pdb to /tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad
-2023-04-12 10:44:22,069 [MainThread  ] [INFO ]  obabel -ipdb /tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad/babel.no.H.pdb -opdb -O/tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad/output.pdb --gen3d -h -p 7.4
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:29:30,091 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_add_hydrogens Version: 4.0.0
+2023-04-14 14:29:30,092 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.no.H.pdb to /tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762
+2023-04-14 14:29:30,092 [MainThread  ] [INFO ]  obabel -ipdb /tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762/babel.no.H.pdb -opdb -O/tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762/output.pdb --gen3d -h -p 7.4
 
-2023-04-12 10:44:22,240 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:30,271 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:22,241 [MainThread  ] [INFO ]  ==============================
+2023-04-14 14:29:30,272 [MainThread  ] [INFO ]  ==============================
 *** Open Babel Warning  in DoTransformations
   Both -p and -h options are set. All implicit hydrogens (-h) will be added without considering pH.
 
 1 molecule converted
 
-2023-04-12 10:44:22,241 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad&#x27;]
-Checking if empty file: /tmp/biobb/unitests_34/babel_add_hydrogens/output.pdb
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/babel_add_hydrogens/babel_add_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_add_hydrogens Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/babel_add_hydrogens/babel_add_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.no.H.pdb to /tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad
-INFO     /tmp/biobb/unitests_34/babel_add_hydrogens/babel_add_hydrogens_log.out:cmd_wrapper.py:32 obabel -ipdb /tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad/babel.no.H.pdb -opdb -O/tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad/output.pdb --gen3d -h -p 7.4
+2023-04-14 14:29:30,272 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762&#x27;]
+Checking if empty file: /tmp/biobb/unitests_46/babel_add_hydrogens/output.pdb
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/babel_add_hydrogens/babel_add_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_add_hydrogens Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/babel_add_hydrogens/babel_add_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.no.H.pdb to /tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762
+INFO     /tmp/biobb/unitests_46/babel_add_hydrogens/babel_add_hydrogens_log.out:cmd_wrapper.py:32 obabel -ipdb /tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762/babel.no.H.pdb -opdb -O/tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762/output.pdb --gen3d -h -p 7.4
 
-INFO     /tmp/biobb/unitests_34/babel_add_hydrogens/babel_add_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/babel_add_hydrogens/babel_add_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/babel_add_hydrogens/babel_add_hydrogens_log.err:cmd_wrapper.py:59 ==============================
+INFO     /tmp/biobb/unitests_46/babel_add_hydrogens/babel_add_hydrogens_log.err:cmd_wrapper.py:59 ==============================
 *** Open Babel Warning  in DoTransformations
   Both -p and -h options are set. All implicit hydrogens (-h) will be added without considering pH.
 
 1 molecule converted
 
-INFO     /tmp/biobb/unitests_34/babel_add_hydrogens/babel_add_hydrogens_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_34/babel_add_hydrogens/eaca8d54-d3f4-4e43-ab74-e4bc2b0448ad&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/babel_add_hydrogens/babel_add_hydrogens_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_46/babel_add_hydrogens/51fee8c5-6957-43aa-96f9-47b82a35a762&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
@@ -991,42 +991,42 @@ Removing: /tmp/biobb/unitests_34
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:44:22,317 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_convert Version: 4.0.0
-2023-04-12 10:44:22,318 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.smi to /tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772
-2023-04-12 10:44:22,318 [MainThread  ] [INFO ]  obabel -ismi /tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772/babel.smi -omol2 -O/tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772/output.mol2 --gen2d -p 7.4 -r
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:29:30,343 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_convert Version: 4.0.0
+2023-04-14 14:29:30,344 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.smi to /tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047
+2023-04-14 14:29:30,344 [MainThread  ] [INFO ]  obabel -ismi /tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047/babel.smi -omol2 -O/tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047/output.mol2 --gen2d -p 7.4 -r
 
-2023-04-12 10:44:22,350 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:30,376 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:22,350 [MainThread  ] [INFO ]  1 molecule converted
+2023-04-14 14:29:30,376 [MainThread  ] [INFO ]  1 molecule converted
 
-2023-04-12 10:44:22,351 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772&#x27;]
-Checking if empty file: /tmp/biobb/unitests_34/babel_convert/output.mol2
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/babel_convert/babel_convert_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_convert Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/babel_convert/babel_convert_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.smi to /tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772
-INFO     /tmp/biobb/unitests_34/babel_convert/babel_convert_log.out:cmd_wrapper.py:32 obabel -ismi /tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772/babel.smi -omol2 -O/tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772/output.mol2 --gen2d -p 7.4 -r
+2023-04-14 14:29:30,377 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047&#x27;]
+Checking if empty file: /tmp/biobb/unitests_46/babel_convert/output.mol2
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/babel_convert/babel_convert_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_convert Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/babel_convert/babel_convert_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.smi to /tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047
+INFO     /tmp/biobb/unitests_46/babel_convert/babel_convert_log.out:cmd_wrapper.py:32 obabel -ismi /tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047/babel.smi -omol2 -O/tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047/output.mol2 --gen2d -p 7.4 -r
 
-INFO     /tmp/biobb/unitests_34/babel_convert/babel_convert_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/babel_convert/babel_convert_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/babel_convert/babel_convert_log.err:cmd_wrapper.py:59 1 molecule converted
+INFO     /tmp/biobb/unitests_46/babel_convert/babel_convert_log.err:cmd_wrapper.py:59 1 molecule converted
 
-INFO     /tmp/biobb/unitests_34/babel_convert/babel_convert_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_34/babel_convert/cac708f9-8ed0-4830-a204-305ffb9e9772&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/babel_convert/babel_convert_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_46/babel_convert/7f472247-e721-4fc4-a12b-e01e94088047&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_babel/test_babel_minimize.py::TestBabelMinimize::test_minimize</td>
-          <td class="col-duration">0.16</td>
+          <td class="col-duration">0.19</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:44:22,426 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_minimize Version: 4.0.0
-2023-04-12 10:44:22,426 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.minimize.pdb to /tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059
-2023-04-12 10:44:22,427 [MainThread  ] [INFO ]  obminimize -c 1e-6 -cg -ff GAFF -h -n 2500 -cut -rvdw 6.0 -rele 10.0 -pf 10 -ipdb /tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059/babel.minimize.pdb -opdb &gt; /tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059/output.pdb
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:29:30,438 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_minimize Version: 4.0.0
+2023-04-14 14:29:30,438 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.minimize.pdb to /tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11
+2023-04-14 14:29:30,439 [MainThread  ] [INFO ]  obminimize -c 1e-6 -cg -ff GAFF -h -n 2500 -cut -rvdw 6.0 -rele 10.0 -pf 10 -ipdb /tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11/babel.minimize.pdb -opdb &gt; /tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11/output.pdb
 
-2023-04-12 10:44:22,511 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:30,563 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:22,512 [MainThread  ] [INFO ]  
+2023-04-14 14:29:30,563 [MainThread  ] [INFO ]  
 A T O M   T Y P E S
 
 IDX	TYPE	RING
@@ -1164,26 +1164,26 @@ STEP n     E(n)       E(n-1)
   150      68.456      68.460
   153      68.419      68.419
     CONJUGATE GRADIENTS HAS CONVERGED
-Time: 0.049399seconds. Iterations per second: 3117.47
+Time: 0.072944seconds. Iterations per second: 2111.21
 
-2023-04-12 10:44:22,512 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059&#x27;]
-Checking if empty file: /tmp/biobb/unitests_34/babel_minimize/output.pdb
+2023-04-14 14:29:30,564 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11&#x27;]
+Checking if empty file: /tmp/biobb/unitests_46/babel_minimize/output.pdb
 Checking RMSD between:
-     PDB_A: /tmp/biobb/unitests_34/babel_minimize/output.pdb
+     PDB_A: /tmp/biobb/unitests_46/babel_minimize/output.pdb
      PDB_B: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/reference/babel/ref_babel.minimize.pdb
      Ignoring HETAMT in RMSD
      Ignoring Hydrogen atoms in RMSD
      Atoms ALIGNED in PDB_A: 3
      Atoms ALIGNED in PDB_B: 3
-     RMS: 0.0021526397693644767
+     RMS: 0.0021526397693639046
      RMS_CUTOFF: 1
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/babel_minimize/babel_minimize_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_minimize Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/babel_minimize/babel_minimize_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.minimize.pdb to /tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059
-INFO     /tmp/biobb/unitests_34/babel_minimize/babel_minimize_log.out:cmd_wrapper.py:32 obminimize -c 1e-6 -cg -ff GAFF -h -n 2500 -cut -rvdw 6.0 -rele 10.0 -pf 10 -ipdb /tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059/babel.minimize.pdb -opdb &gt; /tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059/output.pdb
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/babel_minimize/babel_minimize_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_minimize Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/babel_minimize/babel_minimize_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.minimize.pdb to /tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11
+INFO     /tmp/biobb/unitests_46/babel_minimize/babel_minimize_log.out:cmd_wrapper.py:32 obminimize -c 1e-6 -cg -ff GAFF -h -n 2500 -cut -rvdw 6.0 -rele 10.0 -pf 10 -ipdb /tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11/babel.minimize.pdb -opdb &gt; /tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11/output.pdb
 
-INFO     /tmp/biobb/unitests_34/babel_minimize/babel_minimize_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/babel_minimize/babel_minimize_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/babel_minimize/babel_minimize_log.err:cmd_wrapper.py:59 
+INFO     /tmp/biobb/unitests_46/babel_minimize/babel_minimize_log.err:cmd_wrapper.py:59 
 A T O M   T Y P E S
 
 IDX	TYPE	RING
@@ -1321,37 +1321,37 @@ STEP n     E(n)       E(n-1)
   150      68.456      68.460
   153      68.419      68.419
     CONJUGATE GRADIENTS HAS CONVERGED
-Time: 0.049399seconds. Iterations per second: 3117.47
+Time: 0.072944seconds. Iterations per second: 2111.21
 
-INFO     /tmp/biobb/unitests_34/babel_minimize/babel_minimize_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_34/babel_minimize/a96630e2-3f7d-4416-8d2a-706854870059&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/babel_minimize/babel_minimize_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_46/babel_minimize/8a18460f-414b-4d15-969e-c7faf5359b11&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">biobb_chemistry/test/unitests/test_babel/test_babel_remove_hydrogens.py::TestBabelRemoveHydrogens::test_remove_hydrogens</td>
-          <td class="col-duration">0.20</td>
+          <td class="col-duration">0.24</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-12 10:44:22,592 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_remove_hydrogens Version: 4.0.0
-2023-04-12 10:44:22,592 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.H.pdb to /tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91
-2023-04-12 10:44:22,592 [MainThread  ] [INFO ]  obabel -ipdb /tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91/babel.H.pdb -opdb -O/tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91/output.pdb --gen3d -d -p 7.4
+            <div class="log"> ------------------------------Captured stdout call------------------------------ <br/>2023-04-14 14:29:30,638 [MainThread  ] [INFO ]  Executing biobb_chemistry.babelm.babel_remove_hydrogens Version: 4.0.0
+2023-04-14 14:29:30,639 [MainThread  ] [INFO ]  Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.H.pdb to /tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674
+2023-04-14 14:29:30,639 [MainThread  ] [INFO ]  obabel -ipdb /tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674/babel.H.pdb -opdb -O/tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674/output.pdb --gen3d -d -p 7.4
 
-2023-04-12 10:44:22,721 [MainThread  ] [INFO ]  Exit code 0
+2023-04-14 14:29:30,821 [MainThread  ] [INFO ]  Exit code 0
 
-2023-04-12 10:44:22,721 [MainThread  ] [INFO ]  1 molecule converted
+2023-04-14 14:29:30,822 [MainThread  ] [INFO ]  1 molecule converted
 
-2023-04-12 10:44:22,721 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91&#x27;]
-Checking if empty file: /tmp/biobb/unitests_34/babel_remove_hydrogens/output.pdb
-<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_34/babel_remove_hydrogens/babel_remove_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_remove_hydrogens Version: 4.0.0
-INFO     /tmp/biobb/unitests_34/babel_remove_hydrogens/babel_remove_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.H.pdb to /tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91
-INFO     /tmp/biobb/unitests_34/babel_remove_hydrogens/babel_remove_hydrogens_log.out:cmd_wrapper.py:32 obabel -ipdb /tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91/babel.H.pdb -opdb -O/tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91/output.pdb --gen3d -d -p 7.4
+2023-04-14 14:29:30,822 [MainThread  ] [INFO ]  Removed: [&#x27;/tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674&#x27;]
+Checking if empty file: /tmp/biobb/unitests_46/babel_remove_hydrogens/output.pdb
+<br/> -------------------------------Captured log call-------------------------------- <br/>INFO     /tmp/biobb/unitests_46/babel_remove_hydrogens/babel_remove_hydrogens_log.out:file_utils.py:346 Executing biobb_chemistry.babelm.babel_remove_hydrogens Version: 4.0.0
+INFO     /tmp/biobb/unitests_46/babel_remove_hydrogens/babel_remove_hydrogens_log.out:file_utils.py:346 Copy: /home/user/actions-runner/_work/biobb_chemistry/biobb_chemistry/biobb_chemistry/test/data/babel/babel.H.pdb to /tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674
+INFO     /tmp/biobb/unitests_46/babel_remove_hydrogens/babel_remove_hydrogens_log.out:cmd_wrapper.py:32 obabel -ipdb /tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674/babel.H.pdb -opdb -O/tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674/output.pdb --gen3d -d -p 7.4
 
-INFO     /tmp/biobb/unitests_34/babel_remove_hydrogens/babel_remove_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
+INFO     /tmp/biobb/unitests_46/babel_remove_hydrogens/babel_remove_hydrogens_log.out:cmd_wrapper.py:49 Exit code 0
 
-INFO     /tmp/biobb/unitests_34/babel_remove_hydrogens/babel_remove_hydrogens_log.err:cmd_wrapper.py:59 1 molecule converted
+INFO     /tmp/biobb/unitests_46/babel_remove_hydrogens/babel_remove_hydrogens_log.err:cmd_wrapper.py:59 1 molecule converted
 
-INFO     /tmp/biobb/unitests_34/babel_remove_hydrogens/babel_remove_hydrogens_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_34/babel_remove_hydrogens/6c5abf67-6d4b-473e-b553-eb740607aa91&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
-Removing: /tmp/biobb/unitests_34
+INFO     /tmp/biobb/unitests_46/babel_remove_hydrogens/babel_remove_hydrogens_log.out:file_utils.py:346 Removed: [&#x27;/tmp/biobb/unitests_46/babel_remove_hydrogens/318648e4-c43a-41c4-b049-2e90fbacc674&#x27;]<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+Removing: /tmp/biobb/unitests_46
 <br/></div></td></tr></tbody></table></body></html>
