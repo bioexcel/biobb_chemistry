@@ -6,7 +6,7 @@
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
     "docker" : "https://quay.io/biocontainers/biobb_chemistry:4.1.0--pyhdfd78af_0", 
     "singularity" : "https://depot.galaxyproject.org/singularity/biobb_chemistry:4.1.0--pyhdfd78af_0", 
-    "version" : "4.0.0",
+    "version" : "4.1.0",
     "rest": true,
     "tools" : [
         {
@@ -98,7 +98,7 @@
         "python >=3.8", 
         "biobb_common ==4.1.0", 
         "openbabel ==3.1.1",
-        "ambertools ==22.0",
+        "ambertools >=22.0",
         "acpype ==2022.7.21"
     ],
     "keywords" : [
