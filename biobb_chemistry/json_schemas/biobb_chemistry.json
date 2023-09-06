@@ -4,8 +4,8 @@
     "github" : "https://github.com/bioexcel/biobb_chemistry", 
     "readthedocs" : "https://biobb-chemistry.readthedocs.io/en/latest/", 
     "conda" : "https://anaconda.org/bioconda/biobb_chemistry", 
-    "docker" : "https://quay.io/biocontainers/biobb_chemistry:4.0.0--pyhdfd78af_1", 
-    "singularity" : "https://depot.galaxyproject.org/singularity/biobb_chemistry:4.0.0--pyhdfd78af_1", 
+    "docker" : "https://quay.io/biocontainers/biobb_chemistry:4.1.0--pyhdfd78af_0", 
+    "singularity" : "https://depot.galaxyproject.org/singularity/biobb_chemistry:4.1.0--pyhdfd78af_0", 
     "version" : "4.0.0",
     "rest": true,
     "tools" : [
@@ -91,12 +91,12 @@
         }
     ],
     "dep_pypi" : [
-        "install_requires=['biobb_common==4.0.0']", 
-        "python_requires='>=3.7,<3.10'"
+        "install_requires=['biobb_common==4.1.0']", 
+        "python_requires='>=3.8'"
     ], 
     "dep_conda" : [
-        "python >=3.7,<3.10", 
-        "biobb_common ==4.0.0", 
+        "python >=3.8", 
+        "biobb_common ==4.1.0", 
         "openbabel ==3.1.1",
         "ambertools ==22.0",
         "acpype ==2022.7.21"
