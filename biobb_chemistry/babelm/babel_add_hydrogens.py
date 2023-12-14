@@ -122,7 +122,7 @@ class BabelAddHydrogens(BiobbObject):
 
         # adding H
         hydrogens = '-h'
-        
+
         # adding pH
         ph = ''
         if p:
@@ -130,7 +130,7 @@ class BabelAddHydrogens(BiobbObject):
             instructions_list.append(ph)
         else:
             instructions_list.append(hydrogens)
-            
+
         return instructions_list
 
     @launchlogger
