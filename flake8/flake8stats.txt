@@ -1,3 +1,1 @@
-10    E128 continuation line under-indented for visual indent
-1     E302 expected 2 blank lines, found 1
 2     W293 blank line contains whitespace
