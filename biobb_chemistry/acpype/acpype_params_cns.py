@@ -5,7 +5,7 @@ import argparse
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output
+from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns
 
 
 class AcpypeParamsCNS(BiobbObject):
@@ -19,6 +19,7 @@ class AcpypeParamsCNS(BiobbObject):
         output_path_par (str): Path to the PAR output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.par>`_. Accepted formats: par (edam:format_3881).
         output_path_inp (str): Path to the INP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.inp>`_. Accepted formats: inp (edam:format_3878).
         output_path_top (str): Path to the TOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.top>`_. Accepted formats: top (edam:format_3881).
+        output_path_pdb (str): Path to the PDB output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.pdb>`_. Accepted formats: pdb (edam:format_1476).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
@@ -44,6 +45,7 @@ class AcpypeParamsCNS(BiobbObject):
                             output_path_par='/path/to/newPAR.par',
                             output_path_inp='/path/to/newINP.inp',
                             output_path_top='/path/to/newTOP.top',
+                            output_path_top='/path/to/newPDB.pdb',
                             properties=prop)
 
     Info:
@@ -57,7 +59,7 @@ class AcpypeParamsCNS(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top,
+    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, output_path_pdb,
                  properties=None, **kwargs) -> None:
         properties = properties or {}
 
@@ -68,7 +70,7 @@ class AcpypeParamsCNS(BiobbObject):
         # Input/Output files
         self.io_dict = {
             "in": {"input_path": input_path},
-            "out": {"output_path_par": output_path_par, "output_path_inp": output_path_inp, "output_path_top": output_path_top}
+            "out": {"output_path_par": output_path_par, "output_path_inp": output_path_inp, "output_path_top": output_path_top, "output_path_pdb": output_path_pdb}
         }
 
         # Properties specific for BB
@@ -87,10 +89,12 @@ class AcpypeParamsCNS(BiobbObject):
         self.io_dict["out"]["output_path_par"] = check_output_path(self.io_dict["out"]["output_path_par"], 'par', out_log, self.__class__.__name__)
         self.io_dict["out"]["output_path_inp"] = check_output_path(self.io_dict["out"]["output_path_inp"], 'inp', out_log, self.__class__.__name__)
         self.io_dict["out"]["output_path_top"] = check_output_path(self.io_dict["out"]["output_path_top"], 'top', out_log, self.__class__.__name__)
+        self.io_dict["out"]["output_path_pdb"] = check_output_path(self.io_dict["out"]["output_path_pdb"], 'pdb', out_log, self.__class__.__name__)
         self.output_files = {
             'par': self.io_dict["out"]["output_path_par"],
             'inp': self.io_dict["out"]["output_path_inp"],
             'top': self.io_dict["out"]["output_path_top"],
+            'pdb': self.io_dict["out"]["output_path_pdb"],
         }
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -148,26 +152,28 @@ class AcpypeParamsCNS(BiobbObject):
 
         # move files to output_path and removes temporary folder
         if self.container_path:
-            process_output(self.unique_name,
-                           self.stage_io_dict['unique_dir'],
-                           self.remove_tmp,
-                           self.basename,
-                           get_default_value(self.__class__.__name__),
-                           self.output_files, self.out_log)
+            process_output_cns(
+                self.unique_name,
+                self.stage_io_dict['unique_dir'],
+                self.remove_tmp,
+                self.basename,
+                get_default_value(self.__class__.__name__),
+                self.output_files, self.out_log)
         else:
-            process_output(self.unique_name,
-                           self.basename + "." + self.unique_name + ".acpype",
-                           self.remove_tmp,
-                           self.basename,
-                           get_default_value(self.__class__.__name__),
-                           self.output_files, self.out_log)
+            process_output_cns(
+                self.unique_name,
+                self.basename + "." + self.unique_name + ".acpype",
+                self.remove_tmp,
+                self.basename,
+                get_default_value(self.__class__.__name__),
+                self.output_files, self.out_log)
 
         self.check_arguments(output_files_created=True, raise_exception=False)
 
         return self.return_code
 
 
-def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, properties: dict = None, **kwargs) -> int:
+def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str, properties: dict = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
     execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch>` method."""
 
@@ -175,6 +181,7 @@ def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: st
                            output_path_par=output_path_par,
                            output_path_inp=output_path_inp,
                            output_path_top=output_path_top,
+                           output_path_pdb=output_path_pdb,
                            properties=properties, **kwargs).launch()
 
 
@@ -189,6 +196,7 @@ def main():
     required_args.add_argument('--output_path_par', required=True, help='Path to the PAR output file. Accepted formats: par.')
     required_args.add_argument('--output_path_inp', required=True, help='Path to the INP output file. Accepted formats: inp.')
     required_args.add_argument('--output_path_top', required=True, help='Path to the TOP output file. Accepted formats: top.')
+    required_args.add_argument('--output_path_pdb', required=True, help='Path to the PDB output file. Accepted formats: pdb.')
 
     args = parser.parse_args()
     args.config = args.config or "{}"
@@ -199,6 +207,7 @@ def main():
                       output_path_par=args.output_path_par,
                       output_path_inp=args.output_path_inp,
                       output_path_top=args.output_path_top,
+                      output_path_pdb=args.output_path_pdb,
                       properties=properties)
 
 
