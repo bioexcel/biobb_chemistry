@@ -1,5 +1,13 @@
 # Biobb Chemistry changelog
 
+## What's new in version [4.2.0](https://github.com/bioexcel/biobb_chemistry/releases/tag/v4.2.0)?
+In version 4.2.0 the dependency biobb_common has been updated to 4.2.0 version.
+
+### New features
+
+* Update to biobb_common 4.2.0 (general)
+* Minor bug fixes in BabelAddHydrogens (babel)
+
 ## What's new in version [4.1.0](https://github.com/bioexcel/biobb_chemistry/releases/tag/v4.1.0)?
 In version 4.1.0 the dependency biobb_common has been updated to 4.1.0 version.
 
