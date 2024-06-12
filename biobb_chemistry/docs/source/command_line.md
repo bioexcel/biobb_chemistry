@@ -670,7 +670,7 @@ Command:
 ```python
 acpype_params_cns -h
 ```
-    usage: acpype_params_cns [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP
+    usage: acpype_params_cns [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP --output_path_pdb OUTPUT_PATH_PDB
     
     Small molecule parameterization for CNS/XPLOR MD package.
     
@@ -687,6 +687,8 @@ acpype_params_cns -h
                             Path to the INP output file. Accepted formats: inp.
       --output_path_top OUTPUT_PATH_TOP
                             Path to the TOP output file. Accepted formats: top.
+      --output_path_pdb OUTPUT_PATH_PDB
+                            Path to the PDB output file. Accepted formats: pdb.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
 
@@ -695,6 +697,7 @@ Config input / output arguments for this building block:
 * **output_path_par** (*string*): Path to the PAR output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.par). Accepted formats: PAR
 * **output_path_inp** (*string*): Path to the INP output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.inp). Accepted formats: INP
 * **output_path_top** (*string*): Path to the TOP output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.top). Accepted formats: TOP
+* **output_path_pdb** (*string*): Path to the PDB output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.pdb). Accepted formats: PDB
 ### Config
 Syntax: input_parameter (datatype) - (default_value) Definition
 
@@ -742,7 +745,7 @@ properties:
 ```
 #### Command line
 ```python
-acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.params.mol2 --output_path_par ref_acpype.cns.par --output_path_inp ref_acpype.cns.inp --output_path_top ref_acpype.cns.top
+acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.params.mol2 --output_path_par ref_acpype.cns.par --output_path_inp ref_acpype.cns.inp --output_path_top ref_acpype.cns.top --output_path_pdb ref_acpype.cns.pdb
 ```
 ### JSON
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_cns.json)
@@ -782,7 +785,7 @@ acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.para
 ```
 #### Command line
 ```python
-acpype_params_cns --config config_acpype_params_cns.json --input_path acpype.params.mol2 --output_path_par ref_acpype.cns.par --output_path_inp ref_acpype.cns.inp --output_path_top ref_acpype.cns.top
+acpype_params_cns --config config_acpype_params_cns.json --input_path acpype.params.mol2 --output_path_par ref_acpype.cns.par --output_path_inp ref_acpype.cns.inp --output_path_top ref_acpype.cns.top --output_path_pdb ref_acpype.cns.pdb
 ```
 
 ## Reduce_add_hydrogens

@@ -20,7 +20,8 @@
         "input_path",
         "output_path_par",
         "output_path_inp",
-        "output_path_top"
+        "output_path_top",
+        "output_path_pdb"
     ],
     "properties": {
         "input_path": {
@@ -96,6 +97,22 @@
                     "extension": ".*\\.top$",
                     "description": "Path to the TOP output file",
                     "edam": "format_3881"
+                }
+            ]
+        },
+        "output_path_pdb": {
+            "type": "string",
+            "description": "Path to the PDB output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.pdb",
+            "enum": [
+                ".*\\.pdb$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.pdb$",
+                    "description": "Path to the PDB output file",
+                    "edam": "format_1476"
                 }
             ]
         },
