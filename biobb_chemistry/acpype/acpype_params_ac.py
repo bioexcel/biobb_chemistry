@@ -26,6 +26,7 @@ class AcpypeParamsAC(BiobbObject):
             * **binary_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
+            * **sandbox_path** (*str*) - ("./") [WF property] Parent path to the sandbox directory.
             * **container_path** (*str*) - (None) Container path definition.
             * **container_image** (*str*) - ('acpype/acpype:2022.7.21') Container image definition.
             * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
