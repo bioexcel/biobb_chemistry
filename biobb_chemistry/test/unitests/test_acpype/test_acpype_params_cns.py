@@ -7,7 +7,7 @@ class TestAcpypeParamsCNS():
         fx.test_setup(self, 'acpype_params_cns')
 
     def teardown_class(self):
-        fx.test_teardown(self)
+        # fx.test_teardown(self)
         pass
 
     def test_params_cns(self):
