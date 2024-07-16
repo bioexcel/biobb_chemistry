@@ -487,6 +487,71 @@
                         }
                     ]
                 },
+                "fs_input": {
+                    "type": "array",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "Format-specific input options. ",
+                    "enum": [
+                        "b",
+                        "d"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "b",
+                            "description": "disable automatic bonding"
+                        },
+                        {
+                            "name": "d",
+                            "description": "input file is in dlg -AutoDock docking log- format"
+                        }
+                    ]
+                },
+                "fs_output": {
+                    "type": "array",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "Format-specific output options. ",
+                    "enum": [
+                        "b",
+                        "r",
+                        "c",
+                        "s",
+                        "p",
+                        "h",
+                        "n"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "b",
+                            "description": "enable automatic bonding"
+                        },
+                        {
+                            "name": "r",
+                            "description": "output as a rigid molecule"
+                        },
+                        {
+                            "name": "c",
+                            "description": "combine separate molecular pieces of input into a single rigid molecule"
+                        },
+                        {
+                            "name": "s",
+                            "description": "output as a flexible residue"
+                        },
+                        {
+                            "name": "p",
+                            "description": "preserve atom indices from input file"
+                        },
+                        {
+                            "name": "h",
+                            "description": "preserve hydrogens"
+                        },
+                        {
+                            "name": "n",
+                            "description": "preserve atom names"
+                        }
+                    ]
+                },
                 "coordinates": {
                     "type": "integer",
                     "default": null,
@@ -504,6 +569,46 @@
                         {
                             "name": 3,
                             "description": "3D coordinates"
+                        }
+                    ]
+                },
+                "effort": {
+                    "type": "string",
+                    "default": "medium",
+                    "wf_prop": false,
+                    "description": "Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. ",
+                    "enum": [
+                        "fastest",
+                        "no force field or conformer search",
+                        "fast",
+                        "medium",
+                        "better",
+                        "best"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "fastest",
+                            "description": null
+                        },
+                        {
+                            "name": "no force field or conformer search",
+                            "description": null
+                        },
+                        {
+                            "name": "fast",
+                            "description": "perform quick forcefield optimization"
+                        },
+                        {
+                            "name": "medium",
+                            "description": "forcefield optimization + fast conformer search"
+                        },
+                        {
+                            "name": "better",
+                            "description": "more optimization + fast conformer search"
+                        },
+                        {
+                            "name": "best",
+                            "description": "more optimization + significant conformer search"
                         }
                     ]
                 },
@@ -539,6 +644,12 @@
                     "default": false,
                     "wf_prop": true,
                     "description": "Do not execute if output files exist."
+                },
+                "sandbox_path": {
+                    "type": "string",
+                    "default": "./",
+                    "wf_prop": true,
+                    "description": "Parent path to the sandbox directory."
                 },
                 "container_path": {
                     "type": "string",

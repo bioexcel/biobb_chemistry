@@ -48,6 +48,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (obminimize) Path to the obminimize executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -211,6 +212,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -324,11 +326,15 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. .
 * **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. .
+* **fs_input** (*array*): (None) Format-specific input options. .
+* **fs_output** (*array*): (None) Format-specific output options. .
 * **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. .
+* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. .
 * **ph** (*number*): (7.4) Add hydrogens appropriate for pH..
 * **binary_path** (*string*): (obabel) Path to the obabel executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -450,11 +456,15 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. .
 * **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. .
+* **fs_input** (*array*): (None) Format-specific input options. .
+* **fs_output** (*array*): ([h]) Format-specific output options. .
 * **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. .
+* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. .
 * **ph** (*number*): (7.4) Add hydrogens appropriate for pH..
 * **binary_path** (*string*): (obabel) Path to the obabel executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -582,6 +592,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -707,6 +718,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -840,6 +852,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (reduce) Path to the reduce executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -944,6 +957,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (reduce) Path to the reduce executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -1052,6 +1066,7 @@ Config parameters for this building block:
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..
@@ -1165,12 +1180,16 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. .
 * **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. .
+* **fs_input** (*array*): (None) Format-specific input options. .
+* **fs_output** (*array*): (None) Format-specific output options. .
 * **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. .
+* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. .
 * **ph** (*number*): (7.4) Add hydrogens appropriate for pH..
 * **flex** (*boolean*): (False) Remove all but the largest contiguous fragment (strip salts)..
 * **binary_path** (*string*): (obabel) Path to the obabel executable binary..
 * **remove_tmp** (*boolean*): (True) Remove temporal files..
 * **restart** (*boolean*): (False) Do not execute if output files exist..
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
 * **container_path** (*string*): (None) Container path definition..
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
 * **container_volume_path** (*string*): (/tmp) Container volume path definition..

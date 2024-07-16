@@ -20,7 +20,10 @@ class BabelRemoveHydrogens(BiobbObject):
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **input_format** (*str*) - (None) Format of input file. If not provided, input_path extension will be taken. Values: dat (Information represented in a data record), ent (Protein Data Bank format), fa (FASTA sequence format), fasta (FASTA sequence format), gro (GROMACS structure), inp (AMBER trajectory format), log (Events file), mcif (Entry format of PDB database in mmCIF format), mdl (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mmcif (Entry format of PDB database in mmCIF format), mol (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mol2 (Complete and portable representation of a SYBYL molecule), pdb (Protein Data Bank format), pdbqt (Protein Data Bank format with charges), png (File format for image compression), sdf (One of a family of chemical-data file formats developed by MDL Information Systems), smi (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), smiles (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), txt (Textual format), xml (eXtensible Markup Language), xtc (Portable binary format for trajectories produced by GROMACS package).
             * **output_format** (*str*) - (None) Format of output file. If not provided, output_path extension will be taken. Values: ent (Protein Data Bank format), fa (FASTA sequence format), fasta (FASTA sequence format), gro (GROMACS structure), inp (AMBER trajectory format), mcif (Entry format of PDB database in mmCIF format), mdl (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mmcif (Entry format of PDB database in mmCIF format), mol (file format for holding information about the atoms; bonds; connectivity and coordinates of a molecule), mol2 (Complete and portable representation of a SYBYL molecule), pdb (Protein Data Bank format), pdbqt (Protein Data Bank format with charges), png (File format for image compression), sdf (One of a family of chemical-data file formats developed by MDL Information Systems), smi (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), smiles (Chemical structure specified in Simplified Molecular Input Line Entry System line notation.), txt (Textual format), xtc (Portable binary format for trajectories produced by GROMACS package).
+            * **fs_input** (*list*) - (None) Format-specific input options. Values: b (disable automatic bonding), d (input file is in dlg -AutoDock docking log- format).
+            * **fs_output** (*list*) - (None) Format-specific output options. Values: b (enable automatic bonding), r (output as a rigid molecule), c (combine separate molecular pieces of input into a single rigid molecule), s (output as a flexible residue), p (preserve atom indices from input file), h (preserve hydrogens), n (preserve atom names).
             * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2 (2D coordinates), 3 (3D coordinates).
+            * **effort** (*str*) - ("medium") Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. Values: fastest (only generate coordinates, no force field or conformer search), fast (perform quick forcefield optimization), medium (forcefield optimization + fast conformer search), better (more optimization + fast conformer search), best (more optimization + significant conformer search).
             * **ph** (*float*) - (7.4) [0~14|0.1] Add hydrogens appropriate for pH.
             * **binary_path** (*str*) - ("obabel") Path to the obabel executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
@@ -75,7 +78,10 @@ class BabelRemoveHydrogens(BiobbObject):
         # Properties specific for BB
         self.input_format = properties.get('input_format', '')
         self.output_format = properties.get('output_format', '')
+        self.fs_input = properties.get('fs_input', None)
+        self.fs_output = properties.get('fs_output', None)
         self.coordinates = properties.get('coordinates', '')
+        self.effort = properties.get('effort', 'medium')
         self.ph = properties.get('ph', '')
         self.binary_path = properties.get('binary_path', 'obabel')
         self.properties = properties
@@ -115,8 +121,7 @@ class BabelRemoveHydrogens(BiobbObject):
         coordinates = ''
         if crd:
             coordinates = '--gen' + crd + 'd'
-
-        instructions_list.append(coordinates)
+            instructions_list.append(coordinates)
 
         hydrogens = '-d'
 
@@ -127,8 +132,21 @@ class BabelRemoveHydrogens(BiobbObject):
         ph = ''
         if p:
             ph = '-p ' + p
+            instructions_list.append(ph)
 
-        instructions_list.append(ph)
+        # fs_input
+        if self.fs_input is not None:
+            for fsi in self.fs_input:
+                instructions_list.append('-a' + fsi)
+
+        # fs_output
+        if self.fs_output is not None:
+            for fso in self.fs_output:
+                instructions_list.append('-x' + fso)
+
+        # adding effort (only for 3D coordinates)
+        if crd == '3':
+            instructions_list.append('--' + self.effort)
 
         return instructions_list
 
