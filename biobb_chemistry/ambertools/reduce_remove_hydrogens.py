@@ -4,6 +4,7 @@
 import argparse
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
+import biobb_common.tools.file_utils as fu
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
