@@ -2,9 +2,9 @@
 
 """Module containing the ReduceRemoveHydrogens class and the command line interface."""
 import argparse
+from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
-import biobb_common.tools.file_utils as fu
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
@@ -115,7 +115,7 @@ class ReduceRemoveHydrogens(BiobbObject):
 
         # remove temporary folder(s)
         self.tmp_files.extend([
-            self.stage_io_dict.get("unique_dir")
+            self.stage_io_dict.get("unique_dir", "")
         ])
         self.remove_tmp_files()
 
@@ -124,7 +124,7 @@ class ReduceRemoveHydrogens(BiobbObject):
         return self.return_code
 
 
-def reduce_remove_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
+def reduce_remove_hydrogens(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` class and
     execute the :meth:`launch() <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens.launch>` method."""
 
