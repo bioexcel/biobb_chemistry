@@ -1,3 +1,4 @@
+# type: ignore
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.babelm.babel_remove_hydrogens import babel_remove_hydrogens

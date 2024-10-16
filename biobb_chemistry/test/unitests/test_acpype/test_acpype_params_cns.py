@@ -1,3 +1,4 @@
+# type: ignore
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.acpype.acpype_params_cns import acpype_params_cns
 

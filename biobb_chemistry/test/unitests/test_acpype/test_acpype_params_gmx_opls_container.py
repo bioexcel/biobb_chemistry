@@ -1,3 +1,4 @@
+# type: ignore
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.acpype.acpype_params_gmx_opls import acpype_params_gmx_opls

@@ -1,3 +1,4 @@
+# type: ignore
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.ambertools.reduce_add_hydrogens import reduce_add_hydrogens
