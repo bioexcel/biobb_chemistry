@@ -9,7 +9,7 @@ class TestAcpypeParamsAC():
 
     def teardown_class(self):
         fx.test_teardown(self)
-        pass
+        # pass
 
     def test_params_ac(self):
         acpype_params_ac(properties=self.properties, **self.paths)

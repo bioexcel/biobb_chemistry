@@ -10,7 +10,7 @@ class TestAcpypeParamsGMXOPLS():
 
     def teardown_class(self):
         fx.test_teardown(self)
-        pass
+        # pass
 
     def test_params_gmx_opls(self):
         acpype_params_gmx_opls(properties=self.properties, **self.paths)
