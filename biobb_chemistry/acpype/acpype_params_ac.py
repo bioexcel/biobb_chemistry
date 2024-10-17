@@ -2,6 +2,7 @@
 
 """Module containing the AcpypeParamsAC class and the command line interface."""
 import argparse
+from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
@@ -172,7 +173,7 @@ class AcpypeParamsAC(BiobbObject):
         return self.return_code
 
 
-def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: dict = None, **kwargs) -> int:
+def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
     execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch>` method."""
 

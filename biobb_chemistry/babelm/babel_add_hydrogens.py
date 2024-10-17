@@ -2,6 +2,7 @@
 
 """Module containing the BabelAddHydrogens class and the command line interface."""
 import argparse
+from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
@@ -176,7 +177,7 @@ class BabelAddHydrogens(BiobbObject):
 
         # remove temporary folder(s)
         self.tmp_files.extend([
-            self.stage_io_dict.get("unique_dir")
+            self.stage_io_dict.get("unique_dir", "")
         ])
         self.remove_tmp_files()
 
@@ -185,7 +186,7 @@ class BabelAddHydrogens(BiobbObject):
         return self.return_code
 
 
-def babel_add_hydrogens(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
+def babel_add_hydrogens(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` class and
     execute the :meth:`launch() <babelm.babel_add_hydrogens.BabelAddHydrogens.launch>` method."""
 

@@ -2,6 +2,8 @@
 
 """Module containing the AcpypeParamsCNS class and the command line interface."""
 import argparse
+from typing import Optional
+from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
@@ -174,7 +176,7 @@ class AcpypeParamsCNS(BiobbObject):
         return self.return_code
 
 
-def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str, properties: dict = None, **kwargs) -> int:
+def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
     execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch>` method."""
 

@@ -2,6 +2,7 @@
 
 """Module containing the BabelMinimize class and the command line interface."""
 import argparse
+from typing import Optional
 from pathlib import PurePath
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
@@ -170,7 +171,7 @@ class BabelMinimize(BiobbObject):
 
         # remove temporary folder(s)
         self.tmp_files.extend([
-            self.stage_io_dict.get("unique_dir")
+            self.stage_io_dict.get("unique_dir", "")
         ])
         self.remove_tmp_files()
 
@@ -179,7 +180,7 @@ class BabelMinimize(BiobbObject):
         return self.return_code
 
 
-def babel_minimize(input_path: str, output_path: str, properties: dict = None, **kwargs) -> int:
+def babel_minimize(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
     execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
 

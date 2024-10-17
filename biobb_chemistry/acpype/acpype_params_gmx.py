@@ -2,6 +2,8 @@
 
 """Module containing the AcpypeParamsGMX class and the command line interface."""
 import argparse
+from typing import Optional
+from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
@@ -168,7 +170,7 @@ class AcpypeParamsGMX(BiobbObject):
         return self.return_code
 
 
-def acpype_params_gmx(input_path: str, output_path_gro: str, output_path_itp: str, output_path_top: str, properties: dict = None, **kwargs) -> int:
+def acpype_params_gmx(input_path: str, output_path_gro: str, output_path_itp: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`AcpypeParamsGMX <acpype.acpype_params_gmx.AcpypeParamsGMX>` class and
     execute the :meth:`launch() <acpype.acpype_params_gmx.AcpypeParamsGMX.launch>` method."""
 
