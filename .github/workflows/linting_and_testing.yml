@@ -42,11 +42,13 @@ jobs:
           rm -rf /home/user/.bash_profile /home/user/.conda /home/user/micromamba /home/user/micromamba-bin 2>/dev/null
           touch /home/user/.bash_profile
 
-      - name: provision-with-micromamba
-        uses: mamba-org/setup-micromamba@v1
+      - name: setup-micromamba
+        uses: mamba-org/setup-micromamba@v2.0.0
         with:
           generate-run-shell: true
-          post-cleanup: all
+          micromamba-version: '2.0.2-2'
+          post-cleanup: 'all'
+          init-shell: bash
           environment-file: .github/env.yaml
           create-args: >-
             python=${{ matrix.python-version }}
@@ -57,15 +59,15 @@ jobs:
             pip
 
       - name: Install genbadge from pip
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: pip install genbadge[all]
 
       - name: List installed package versions
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: micromamba list
 
       - name: Lint with flake8
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: |
           # F Codes: https://flake8.pycqa.org/en/latest/user/error-codes.html
           # E Code: https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
@@ -80,7 +82,7 @@ jobs:
           flake8 . --exclude=docs --ignore=C901,E226 --count --exit-zero --max-complexity=10 --max-line-length=9999 --statistics --format=html --htmldir=./reports/flake8/ --tee --output-file=./reports/flake8/flake8stats.txt
 
       - name: Generate Flake8 badge
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: |
           genbadge flake8 --name "Flake8" --input-file ./reports/flake8/flake8stats.txt  --output-file ./reports/flake8/flake8badge.svg
 
@@ -91,7 +93,7 @@ jobs:
           path: './biobb_common'
 
       - name: Run tests
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: |
           # Ignoring docker and singularity tests
           export PYTHONPATH=.:./biobb_common:$PYTHONPATH
@@ -103,12 +105,12 @@ jobs:
           pytest biobb_chemistry/test/unitests/ --cov=biobb_chemistry/ --cov-report=xml --ignore-glob=*container.py --junit-xml=./reports/junit/junit.xml --html=./reports/junit/report.html
 
       - name: Generate Tests badge
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: |
           genbadge tests --name "Tests" --input-file ./reports/junit/junit.xml  --output-file ./reports/junit/testsbadge.svg
 
       - name: Generate Coverage badge
-        shell: micromamba-shell {0}  # necessary for conda env to be active
+        shell: bash -l {0}
         run: |
           # Create directory for flake8 reports
           mkdir -p ./reports/coverage
@@ -123,7 +125,6 @@ jobs:
         with:
           folder: ./reports
 
-      # - name: Restore .bash_profile
-      #   run: cp ~/.bash_profile_orig ~/.bash_profile
+
 
 
