@@ -6,6 +6,7 @@ from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.acpype.common import get_binary_path, check_output_path, get_basename, create_unique_name, get_default_value, process_output_gmx
+from typing import Optional
 
 
 class AcpypeConvertAMBERtoGMX(BiobbObject):
@@ -158,15 +159,15 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         return self.return_code
 
 
-def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str, properties: dict = None, **kwargs) -> int:
+def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
     """Execute the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` class and
     execute the :meth:`launch() <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX.launch>` method."""
 
     return AcpypeConvertAMBERtoGMX(input_crd_path=input_crd_path,
-                           input_top_path=input_top_path,
-                           output_path_gro=output_path_gro,
-                           output_path_top=output_path_top,
-                           properties=properties, **kwargs).launch()
+                                   input_top_path=input_top_path,
+                                   output_path_gro=output_path_gro,
+                                   output_path_top=output_path_top,
+                                   properties=properties, **kwargs).launch()
 
 
 def main():
@@ -187,10 +188,10 @@ def main():
 
     # Specific call of each building block
     acpype_convert_amber_to_gmx(input_crd_path=args.input_crd_path,
-                      input_top_path=args.input_top_path,
-                      output_path_gro=args.output_path_gro,
-                      output_path_top=args.output_path_top,
-                      properties=properties)
+                                input_top_path=args.input_top_path,
+                                output_path_gro=args.output_path_gro,
+                                output_path_top=args.output_path_top,
+                                properties=properties)
 
 
 if __name__ == '__main__':
