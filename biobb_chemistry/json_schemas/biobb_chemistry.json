@@ -42,6 +42,14 @@
             "rest": true
         },
         {
+            "block": "AcpypeConvertAMBERtoGMX",
+            "tool": "ACPype",
+            "desc": "Conversion of AMBER topologies to GROMACS.",
+            "exec": "acpype_convert_amber_to_gmx",
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_convert_amber_to_gmx",
+            "rest": true
+        },
+        {
             "block": "BabelConvert",
             "tool": "OpenBabel",
             "desc": "Small molecule format conversion.",
