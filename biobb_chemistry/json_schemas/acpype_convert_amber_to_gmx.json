@@ -1,0 +1,169 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://bioexcel.eu/biobb_chemistry/json_schemas/1.0/acpype_convert_amber_to_gmx",
+    "name": "biobb_chemistry AcpypeConvertAMBERtoGMX",
+    "title": "This class is a wrapper of Acpype tool for the conversion of AMBER topologies to GROMACS.",
+    "description": "Acpype is a tool based in Python to use Antechamber to generate topologies for chemical compounds and to interface with others python applications like CCPN or ARIA. Visit the official page.",
+    "type": "object",
+    "info": {
+        "wrapped_software": {
+            "name": "Acpype",
+            "version": "2019.10.05.12.26",
+            "license": "GNU"
+        },
+        "ontology": {
+            "name": "EDAM",
+            "schema": "http://edamontology.org/EDAM.owl"
+        }
+    },
+    "required": [
+        "input_crd_path",
+        "input_top_path",
+        "output_path_gro",
+        "output_path_top"
+    ],
+    "properties": {
+        "input_crd_path": {
+            "type": "string",
+            "description": "Path to the input coordinates file (AMBER crd)",
+            "filetype": "input",
+            "sample": "https://raw.githubusercontent.com/bioexcel/biobb_chemistry/master/biobb_chemistry/test/data/acpype/acpype.coords.inpcrd",
+            "enum": [
+                ".*\\.inpcrd$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.inpcrd$",
+                    "description": "Path to the input coordinates file (AMBER crd)",
+                    "edam": "format_3878"
+                }
+            ]
+        },
+        "input_top_path": {
+            "type": "string",
+            "description": "Path to the input topology file (AMBER ParmTop)",
+            "filetype": "input",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.top.prmtop",
+            "enum": [
+                ".*\\.top$",
+                ".*\\.parmtop$",
+                ".*\\.prmtop$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.top$",
+                    "description": "Path to the input topology file (AMBER ParmTop)",
+                    "edam": "format_3881"
+                },
+                {
+                    "extension": ".*\\.parmtop$",
+                    "description": "Path to the input topology file (AMBER ParmTop)",
+                    "edam": "format_3881"
+                },
+                {
+                    "extension": ".*\\.prmtop$",
+                    "description": "Path to the input topology file (AMBER ParmTop)",
+                    "edam": "format_3881"
+                }
+            ]
+        },
+        "output_path_gro": {
+            "type": "string",
+            "description": "Path to the GRO output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.gro",
+            "enum": [
+                ".*\\.gro$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.gro$",
+                    "description": "Path to the GRO output file",
+                    "edam": "format_2033"
+                }
+            ]
+        },
+        "output_path_top": {
+            "type": "string",
+            "description": "Path to the TOP output file",
+            "filetype": "output",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.top",
+            "enum": [
+                ".*\\.top$"
+            ],
+            "file_formats": [
+                {
+                    "extension": ".*\\.top$",
+                    "description": "Path to the TOP output file",
+                    "edam": "format_3880"
+                }
+            ]
+        },
+        "properties": {
+            "type": "object",
+            "properties": {
+                "basename": {
+                    "type": "string",
+                    "default": "BBB",
+                    "wf_prop": false,
+                    "description": "A basename for the project (folder and output files)."
+                },
+                "binary_path": {
+                    "type": "string",
+                    "default": "acpype",
+                    "wf_prop": false,
+                    "description": "Path to the acpype executable binary."
+                },
+                "remove_tmp": {
+                    "type": "boolean",
+                    "default": true,
+                    "wf_prop": true,
+                    "description": "Remove temporal files."
+                },
+                "restart": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": true,
+                    "description": "Do not execute if output files exist."
+                },
+                "container_path": {
+                    "type": "string",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "Container path definition."
+                },
+                "container_image": {
+                    "type": "string",
+                    "default": "acpype/acpype:2022.7.21",
+                    "wf_prop": false,
+                    "description": "Container image definition."
+                },
+                "container_volume_path": {
+                    "type": "string",
+                    "default": "/tmp",
+                    "wf_prop": false,
+                    "description": "Container volume path definition."
+                },
+                "container_working_dir": {
+                    "type": "string",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "Container working directory definition."
+                },
+                "container_user_id": {
+                    "type": "string",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "Container user_id definition."
+                },
+                "container_shell_path": {
+                    "type": "string",
+                    "default": "/bin/bash",
+                    "wf_prop": false,
+                    "description": "Path to default shell inside the container."
+                }
+            }
+        }
+    },
+    "additionalProperties": false
+}

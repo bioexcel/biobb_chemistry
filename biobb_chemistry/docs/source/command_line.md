@@ -1148,6 +1148,77 @@ acpype_params_gmx --config config_acpype_params_gmx.yml --input_path acpype.para
 acpype_params_gmx --config config_acpype_params_gmx.json --input_path acpype.params.mol2 --output_path_gro ref_acpype.gmx.gro --output_path_itp ref_acpype.gmx.itp --output_path_top ref_acpype.gmx.top
 ```
 
+## Acpype_convert_amber_to_gmx
+This class is a wrapper of Acpype tool for the conversion of AMBER topologies to GROMACS.
+### Get help
+Command:
+```python
+acpype_convert_amber_to_gmx -h
+```
+    usage: acpype_convert_amber_to_gmx [-h] [--config CONFIG] --input_crd_path INPUT_CRD_PATH --input_top_path INPUT_TOP_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_top OUTPUT_PATH_TOP
+    
+    Small molecule parameterization for GROMACS MD package.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --config CONFIG       Configuration file
+    
+    required arguments:
+      --input_crd_path INPUT_CRD_PATH
+                            Path to the input coordinates file (AMBER crd). Accepted formats: inpcrd.
+      --input_top_path INPUT_TOP_PATH
+                            Path to the input topology file (AMBER ParmTop). Accepted formats: top, parmtop, prmtop.
+      --output_path_gro OUTPUT_PATH_GRO
+                            Path to the GRO output file. Accepted formats: gro.
+      --output_path_top OUTPUT_PATH_TOP
+                            Path to the TOP output file. Accepted formats: top.
+### I / O Arguments
+Syntax: input_argument (datatype) : Definition
+
+Config input / output arguments for this building block:
+* **input_crd_path** (*string*): Path to the input coordinates file (AMBER crd). File type: input. [Sample file](https://raw.githubusercontent.com/bioexcel/biobb_chemistry/master/biobb_chemistry/test/data/acpype/acpype.coords.inpcrd). Accepted formats: INPCRD
+* **input_top_path** (*string*): Path to the input topology file (AMBER ParmTop). File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.top.prmtop). Accepted formats: TOP, PARMTOP, PRMTOP
+* **output_path_gro** (*string*): Path to the GRO output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.gro). Accepted formats: GRO
+* **output_path_top** (*string*): Path to the TOP output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.top). Accepted formats: TOP
+### Config
+Syntax: input_parameter (datatype) - (default_value) Definition
+
+Config parameters for this building block:
+* **basename** (*string*): (BBB) A basename for the project (folder and output files)..
+* **binary_path** (*string*): (acpype) Path to the acpype executable binary..
+* **remove_tmp** (*boolean*): (True) Remove temporal files..
+* **restart** (*boolean*): (False) Do not execute if output files exist..
+* **container_path** (*string*): (None) Container path definition..
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
+* **container_volume_path** (*string*): (/tmp) Container volume path definition..
+* **container_working_dir** (*string*): (None) Container working directory definition..
+* **container_user_id** (*string*): (None) Container user_id definition..
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+### YAML
+#### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx.yml)
+```python
+properties:
+  basename: BBB
+
+```
+#### Command line
+```python
+acpype_convert_amber_to_gmx --config config_acpype_convert_amber_to_gmx.yml --input_crd_path acpype.coords.inpcrd --input_top_path acpype.top.prmtop --output_path_gro ref_acpype.amber2gmx.gro --output_path_top ref_acpype.amber2gmx.top
+```
+### JSON
+#### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx.json)
+```python
+{
+  "properties": {
+    "basename": "BBB"
+  }
+}
+```
+#### Command line
+```python
+acpype_convert_amber_to_gmx --config config_acpype_convert_amber_to_gmx.json --input_crd_path acpype.coords.inpcrd --input_top_path acpype.top.prmtop --output_path_gro ref_acpype.amber2gmx.gro --output_path_top ref_acpype.amber2gmx.top
+```
+
 ## Babel_convert
 This class is a wrapper of the Open Babel tool.
 ### Get help

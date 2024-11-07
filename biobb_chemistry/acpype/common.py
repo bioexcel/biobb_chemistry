@@ -144,7 +144,7 @@ def process_output_gmx(unique_name, files_folder, remove_tmp, basename, class_pa
             for line in file:
                 print(line.replace(basename + '.' + unique_name, basename), end='')
 
-        if (Path(file_name).is_file()):  
+        if (Path(file_name).is_file()):
             file_extension = PurePath(file_name).suffix
             # in top files for gromacs, replace file.itp by name given by user
             if (file_extension[1:] == 'top') and ('itp' in output_files):

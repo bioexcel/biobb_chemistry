@@ -16,8 +16,8 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
     | Acpype is a tool based in Python to use Antechamber to generate topologies for chemical compounds and to interface with others python applications like CCPN or ARIA. `Visit the official page <https://github.com/alanwilter/acpype>`_.
 
     Args:
-        input_crd_path (str): Path to the input coordinates file (AMBER crd). File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/acpype.coords.inpcrd>`_. Accepted formats: inpcrd (edam:format_3878).
-        input_top_path (str): Path to the input topology file (AMBER ParmTop). File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/acpype.top.prmtop>`_. Accepted formats: top (edam:format_3881), parmtop (edam:format_3881), prmtop (edam:format_3881).
+        input_crd_path (str): Path to the input coordinates file (AMBER crd). File type: input. `Sample file <https://raw.githubusercontent.com/bioexcel/biobb_chemistry/master/biobb_chemistry/test/data/acpype/acpype.coords.inpcrd>`_. Accepted formats: inpcrd (edam:format_3878).
+        input_top_path (str): Path to the input topology file (AMBER ParmTop). File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/acpype/acpype.top.prmtop>`_. Accepted formats: top (edam:format_3881), parmtop (edam:format_3881), prmtop (edam:format_3881).
         output_path_gro (str): Path to the GRO output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.gro>`_. Accepted formats: gro (edam:format_2033).
         output_path_top (str): Path to the TOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.top>`_. Accepted formats: top (edam:format_3880).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
