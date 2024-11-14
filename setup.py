@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="biobb_chemistry",
-    version="5.0.1",
+    version="5.0.2",
     author="Biobb developers",
     author_email="genis.bayarri@irbbarcelona.org",
     description="Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.",
@@ -27,6 +27,7 @@ setuptools.setup(
             "acpype_params_cns = biobb_chemistry.acpype.acpype_params_cns:main",
             "acpype_params_gmx_opls = biobb_chemistry.acpype.acpype_params_gmx_opls:main",
             "acpype_params_gmx = biobb_chemistry.acpype.acpype_params_gmx:main",
+            "acpype_convert_amber_to_gmx = biobb_chemistry.acpype.acpype_convert_amber_to_gmx:main",
             "reduce_add_hydrogens = biobb_chemistry.ambertools.reduce_add_hydrogens:main",
             "reduce_remove_hydrogens = biobb_chemistry.ambertools.reduce_remove_hydrogens:main",
             "babel_add_hydrogens = biobb_chemistry.babelm.babel_add_hydrogens:main",

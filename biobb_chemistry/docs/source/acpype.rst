@@ -36,3 +36,11 @@ acpype.acpype_params_gmx_opls module
     :members:
     :undoc-members:
     :show-inheritance:
+
+acpype.acpype_convert_amber_to_gmx module
+------------------------------------------
+
+.. automodule:: acpype.acpype_convert_amber_to_gmx
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -4,9 +4,9 @@
     "github": "https://github.com/bioexcel/biobb_chemistry",
     "readthedocs": "https://biobb-chemistry.readthedocs.io/en/latest/",
     "conda": "https://anaconda.org/bioconda/biobb_chemistry",
-    "docker": "https://quay.io/biocontainers/biobb_chemistry:5.0.1--pyhdfd78af_0",
-    "singularity": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.0.1--pyhdfd78af_0",
-    "version": "5.0.1",
+    "docker": "https://quay.io/biocontainers/biobb_chemistry:5.0.2--pyhdfd78af_1",
+    "singularity": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.0.2--pyhdfd78af_1",
+    "version": "5.0.2",
     "rest": true,
     "tools": [
         {
@@ -39,6 +39,14 @@
             "desc": "Small molecule parameterization for OPLS/AA MD package.",
             "exec": "acpype_params_gmx_opls",
             "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_params_gmx_opls",
+            "rest": true
+        },
+        {
+            "block": "AcpypeConvertAMBERtoGMX",
+            "tool": "ACPype",
+            "desc": "Conversion of AMBER topologies to GROMACS.",
+            "exec": "acpype_convert_amber_to_gmx",
+            "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_convert_amber_to_gmx",
             "rest": true
         },
         {
@@ -98,7 +106,7 @@
         "python >=3.9",
         "biobb_common ==5.0.0",
         "openbabel ==3.1.1",
-        "ambertools <=22.5",
+        "ambertools ==22.5",
         "acpype >=2023.10.27"
     ],
     "keywords": [

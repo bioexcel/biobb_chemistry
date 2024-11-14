@@ -397,7 +397,6 @@ acpype_params_cns_docker:
     ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.cns.top
     output_path_pdb: output.pdb
     ref_output_acpype_path_pdb: file:test_reference_dir/acpype/ref_acpype.cns.pdb
-
   properties:
     basename: "BBB"
     charge: 0
@@ -422,3 +421,14 @@ acpype_params_cns_singularity:
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
+
+acpype_convert_amber_to_gmx:
+  paths:
+    input_crd_path: file:test_data_dir/acpype/acpype.coords.inpcrd
+    input_top_path: file:test_data_dir/acpype/acpype.top.prmtop
+    output_path_gro: ref_acpype.amber2gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.amber2gmx.gro
+    output_path_top: ref_acpype.amber2gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
+  properties:
+    basename: "BBB"
