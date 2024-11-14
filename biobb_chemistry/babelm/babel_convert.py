@@ -1,12 +1,23 @@
 #!/usr/bin/env python3
 
 """Module containing the BabelConvert class and the command line interface."""
+
 import argparse
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+
 from biobb_common.configuration import settings
+from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.babelm.common import check_input_path, check_output_path, get_input_format, get_output_format, get_coordinates, get_ph
+
+from biobb_chemistry.babelm.common import (
+    _from_string_to_list,
+    check_input_path,
+    check_output_path,
+    get_coordinates,
+    get_input_format,
+    get_output_format,
+    get_ph,
+)
 
 
 class BabelConvert(BiobbObject):
@@ -63,8 +74,7 @@ class BabelConvert(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path, output_path, properties=None, **kwargs) -> None:
         properties = properties or {}
 
         # Call parent class constructor
@@ -74,19 +84,19 @@ class BabelConvert(BiobbObject):
         # Input/Output files
         self.io_dict = {
             "in": {"input_path": input_path},
-            "out": {"output_path": output_path}
+            "out": {"output_path": output_path},
         }
 
         # Properties specific for BB
-        self.input_format = properties.get('input_format', '')
-        self.output_format = properties.get('output_format', '')
-        self.fs_input = properties.get('fs_input', None)
-        self.fs_output = properties.get('fs_output', None)
-        self.coordinates = properties.get('coordinates', '')
-        self.effort = properties.get('effort', 'medium')
-        self.ph = properties.get('ph', '')
-        self.flex = properties.get('flex', False)
-        self.binary_path = properties.get('binary_path', 'obabel')
+        self.input_format = properties.get("input_format", "")
+        self.output_format = properties.get("output_format", "")
+        self.fs_input = _from_string_to_list(properties.get("fs_input", None))
+        self.fs_output = _from_string_to_list(properties.get("fs_output", None))
+        self.coordinates = properties.get("coordinates", "")
+        self.effort = properties.get("effort", "medium")
+        self.ph = properties.get("ph", "")
+        self.flex = properties.get("flex", False)
+        self.binary_path = properties.get("binary_path", "obabel")
         self.properties = properties
 
         # Check the properties
@@ -94,9 +104,13 @@ class BabelConvert(BiobbObject):
         self.check_arguments()
 
     def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path"] = check_output_path(self.io_dict["out"]["output_path"], out_log, self.__class__.__name__)
+        """Checks all the input/output paths and parameters"""
+        self.io_dict["in"]["input_path"] = check_input_path(
+            self.io_dict["in"]["input_path"], out_log, self.__class__.__name__
+        )
+        self.io_dict["out"]["output_path"] = check_output_path(
+            self.io_dict["out"]["output_path"], out_log, self.__class__.__name__
+        )
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
@@ -106,52 +120,56 @@ class BabelConvert(BiobbObject):
         instructions_list.append(self.binary_path)
 
         # generating input
-        infr = get_input_format(self.input_format, container_io_dict["in"]["input_path"], out_log)
-        iformat = '-i' + infr
+        infr = get_input_format(
+            self.input_format, container_io_dict["in"]["input_path"], out_log
+        )
+        iformat = "-i" + infr
         instructions_list.append(iformat)
         ipath = container_io_dict["in"]["input_path"]
         instructions_list.append(ipath)
 
         # generating output
-        oufr = get_output_format(self.output_format, container_io_dict["out"]["output_path"], out_log)
-        oformat = '-o' + oufr
+        oufr = get_output_format(
+            self.output_format, container_io_dict["out"]["output_path"], out_log
+        )
+        oformat = "-o" + oufr
         instructions_list.append(oformat)
-        opath = '-O' + container_io_dict["out"]["output_path"]
+        opath = "-O" + container_io_dict["out"]["output_path"]
         instructions_list.append(opath)
 
         # adding coordinates
         crd = get_coordinates(self.coordinates, out_log)
-        coordinates = ''
+        coordinates = ""
         if crd:
-            coordinates = '--gen' + crd + 'd'
+            coordinates = "--gen" + crd + "d"
             instructions_list.append(coordinates)
 
         # adding pH
         p = get_ph(self.ph, out_log)
-        ph = ''
+        ph = ""
         if p:
-            ph = '-p ' + p
+            ph = "-p " + p
             instructions_list.append(ph)
 
         # flex
-        flex = ''
+        flex = ""
         if not self.flex:
-            flex = '-r'
+            flex = "-r"
             instructions_list.append(flex)
 
         # fs_input
         if self.fs_input is not None:
             for fsi in self.fs_input:
-                instructions_list.append('-a' + fsi)
+                instructions_list.append("-a" + fsi)
 
         # fs_output
         if self.fs_output is not None:
             for fso in self.fs_output:
-                instructions_list.append('-x' + fso)
+                instructions_list.append("-x" + fso)
 
         # adding effort (only for 3D coordinates)
-        if crd == '3':
-            instructions_list.append('--' + self.effort)
+        if crd == "3":
+            instructions_list.append("--" + self.effort)
 
         return instructions_list
 
@@ -177,9 +195,7 @@ class BabelConvert(BiobbObject):
         self.copy_to_host()
 
         # remove temporary folder(s)
-        self.tmp_files.extend([
-            self.stage_io_dict.get("unique_dir", "")
-        ])
+        self.tmp_files.extend([self.stage_io_dict.get("unique_dir", "")])
         self.remove_tmp_files()
 
         self.check_arguments(output_files_created=True, raise_exception=False)
@@ -187,34 +203,47 @@ class BabelConvert(BiobbObject):
         return self.return_code
 
 
-def babel_convert(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
+def babel_convert(
+    input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs
+) -> int:
     """Execute the :class:`BabelConvert <babelm.babel_convert.BabelConvert>` class and
     execute the :meth:`launch() <babelm.babel_convert.BabelConvert.launch>` method."""
 
-    return BabelConvert(input_path=input_path,
-                        output_path=output_path,
-                        properties=properties, **kwargs).launch()
+    return BabelConvert(
+        input_path=input_path, output_path=output_path, properties=properties, **kwargs
+    ).launch()
 
 
 def main():
     """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(description="Small molecule format conversion.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
-    parser.add_argument('--config', required=False, help='Configuration file')
+    parser = argparse.ArgumentParser(
+        description="Small molecule format conversion.",
+        formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999),
+    )
+    parser.add_argument("--config", required=False, help="Configuration file")
 
     # Specific args of each building block
-    required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.')
+    required_args = parser.add_argument_group("required arguments")
+    required_args.add_argument(
+        "--input_path",
+        required=True,
+        help="Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.",
+    )
+    required_args.add_argument(
+        "--output_path",
+        required=True,
+        help="Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.",
+    )
 
     args = parser.parse_args()
     args.config = args.config or "{}"
     properties = settings.ConfReader(config=args.config).get_prop_dic()
 
     # Specific call of each building block
-    babel_convert(input_path=args.input_path,
-                  output_path=args.output_path,
-                  properties=properties)
+    babel_convert(
+        input_path=args.input_path, output_path=args.output_path, properties=properties
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
