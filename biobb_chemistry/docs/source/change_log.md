@@ -1,5 +1,11 @@
 # Biobb Chemistry changelog
 
+## What's new in version [5.0.3](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.0.3)?
+
+### Changes
+
+* [FIX](all): Accept lists in different formats on input properties.
+
 ## What's new in version [5.0.2](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.0.2)?
 
 ### Changes

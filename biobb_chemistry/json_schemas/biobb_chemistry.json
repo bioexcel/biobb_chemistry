@@ -4,9 +4,9 @@
     "github": "https://github.com/bioexcel/biobb_chemistry",
     "readthedocs": "https://biobb-chemistry.readthedocs.io/en/latest/",
     "conda": "https://anaconda.org/bioconda/biobb_chemistry",
-    "docker": "https://quay.io/biocontainers/biobb_chemistry:5.0.2--pyhdfd78af_1",
-    "singularity": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.0.2--pyhdfd78af_1",
-    "version": "5.0.2",
+    "docker": "https://quay.io/biocontainers/biobb_chemistry:5.0.3--pyhdfd78af_1",
+    "singularity": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.0.3--pyhdfd78af_1",
+    "version": "5.0.3",
     "rest": true,
     "tools": [
         {
