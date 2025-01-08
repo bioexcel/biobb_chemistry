@@ -15,13 +15,11 @@ def check_input_path(path, out_log, classname):
     file_extension = PurePath(path).suffix
     if not is_valid_input(file_extension[1:]):
         fu.log(
-            classname
-            + ": Format %s in input file is not compatible" % file_extension[1:],
+            classname + ": Format %s in input file is not compatible" % file_extension[1:],
             out_log,
         )
         raise SystemExit(
-            classname
-            + ": Format %s in input file is not compatible" % file_extension[1:]
+            classname + ": Format %s in input file is not compatible" % file_extension[1:]
         )
     if PurePath(path).name == path or not PurePath(path).is_absolute():
         path = str(PurePath(Path.cwd()).joinpath(path))
@@ -39,13 +37,11 @@ def check_output_path(path, out_log, classname):
     file_extension = PurePath(path).suffix
     if not is_valid_input(file_extension[1:]):
         fu.log(
-            classname
-            + ": Format %s in input file is not compatible" % file_extension[1:],
+            classname + ": Format %s in input file is not compatible" % file_extension[1:],
             out_log,
         )
         raise SystemExit(
-            classname
-            + ": Format %s in output file is not compatible" % file_extension[1:]
+            classname + ": Format %s in output file is not compatible" % file_extension[1:]
         )
 
     return path
@@ -59,13 +55,11 @@ def check_input_path_minimize(path, out_log, classname):
     file_extension = PurePath(path).suffix
     if not is_valid_input_minimize(file_extension[1:]):
         fu.log(
-            classname
-            + ": Format %s in input file is not compatible" % file_extension[1:],
+            classname + ": Format %s in input file is not compatible" % file_extension[1:],
             out_log,
         )
         raise SystemExit(
-            classname
-            + ": Format %s in input file is not compatible" % file_extension[1:]
+            classname + ": Format %s in input file is not compatible" % file_extension[1:]
         )
     if PurePath(path).name == path or not PurePath(path).is_absolute():
         path = str(PurePath(Path.cwd()).joinpath(path))
@@ -83,13 +77,11 @@ def check_output_path_minimize(path, out_log, classname):
     file_extension = PurePath(path).suffix
     if not is_valid_input_minimize(file_extension[1:]):
         fu.log(
-            classname
-            + ": Format %s in input file is not compatible" % file_extension[1:],
+            classname + ": Format %s in input file is not compatible" % file_extension[1:],
             out_log,
         )
         raise SystemExit(
-            classname
-            + ": Format %s in output file is not compatible" % file_extension[1:]
+            classname + ": Format %s in output file is not compatible" % file_extension[1:]
         )
     return path
 
