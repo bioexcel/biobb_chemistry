@@ -157,6 +157,7 @@ class AcpypeParamsGMX(BiobbObject):
                                get_default_value(self.__class__.__name__),
                                self.output_files, self.out_log)
         else:
+            self.tmp_files.extend([self.basename + "." + self.unique_name + ".acpype"])
             process_output_gmx(self.unique_name,
                                self.basename + "." + self.unique_name + ".acpype",
                                self.remove_tmp,
@@ -164,6 +165,7 @@ class AcpypeParamsGMX(BiobbObject):
                                get_default_value(self.__class__.__name__),
                                self.output_files, self.out_log)
 
+        self.remove_tmp_files()
         self.check_arguments(output_files_created=True, raise_exception=False)
 
         return self.return_code
@@ -178,6 +180,8 @@ def acpype_params_gmx(input_path: str, output_path_gro: str, output_path_itp: st
                            output_path_itp=output_path_itp,
                            output_path_top=output_path_top,
                            properties=properties, **kwargs).launch()
+
+    acpype_params_gmx.__doc__ = AcpypeParamsGMX.__doc__
 
 
 def main():

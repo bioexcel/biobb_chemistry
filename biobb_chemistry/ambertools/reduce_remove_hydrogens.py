@@ -114,9 +114,9 @@ class ReduceRemoveHydrogens(BiobbObject):
         self.copy_to_host()
 
         # remove temporary folder(s)
-        self.tmp_files.extend([
+        '''self.tmp_files.extend([
             self.stage_io_dict.get("unique_dir", "")
-        ])
+        ])'''
         self.remove_tmp_files()
 
         self.check_arguments(output_files_created=True, raise_exception=False)
@@ -131,6 +131,8 @@ def reduce_remove_hydrogens(input_path: str, output_path: str, properties: Optio
     return ReduceRemoveHydrogens(input_path=input_path,
                                  output_path=output_path,
                                  properties=properties, **kwargs).launch()
+
+    reduce_remove_hydrogens.__doc__ = ReduceRemoveHydrogens.__doc__
 
 
 def main():

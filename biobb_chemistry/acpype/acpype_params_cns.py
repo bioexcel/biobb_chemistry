@@ -162,6 +162,7 @@ class AcpypeParamsCNS(BiobbObject):
                 get_default_value(self.__class__.__name__),
                 self.output_files, self.out_log)
         else:
+            self.tmp_files.extend([self.basename + "." + self.unique_name + ".acpype"])
             process_output_cns(
                 self.unique_name,
                 self.basename + "." + self.unique_name + ".acpype",
@@ -170,6 +171,7 @@ class AcpypeParamsCNS(BiobbObject):
                 get_default_value(self.__class__.__name__),
                 self.output_files, self.out_log)
 
+        self.remove_tmp_files()
         self.check_arguments(output_files_created=True, raise_exception=False)
 
         return self.return_code
@@ -185,6 +187,8 @@ def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: st
                            output_path_top=output_path_top,
                            output_path_pdb=output_path_pdb,
                            properties=properties, **kwargs).launch()
+
+    acpype_params_cns.__doc__ = AcpypeParamsCNS.__doc__
 
 
 def main():
