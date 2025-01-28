@@ -147,7 +147,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         # move files to output_path and removes temporary folder
         if self.container_path:
             process_output_gmx(self.unique_name,
-                               self.stage_io_dict['unique_dir'],
+                               # self.stage_io_dict['unique_dir'],
                                self.remove_tmp,
                                self.basename,
                                get_default_value(self.__class__.__name__),

@@ -156,7 +156,7 @@ class AcpypeParamsCNS(BiobbObject):
         if self.container_path:
             process_output_cns(
                 self.unique_name,
-                self.stage_io_dict['unique_dir'],
+                # self.stage_io_dict['unique_dir'],
                 self.remove_tmp,
                 self.basename,
                 get_default_value(self.__class__.__name__),

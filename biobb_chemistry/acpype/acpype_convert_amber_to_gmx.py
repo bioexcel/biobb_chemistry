@@ -141,12 +141,13 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         # move files to output_path and removes temporary folder
         if self.container_path:
             process_output_gmx(self.unique_name,
-                               self.stage_io_dict['unique_dir'],
+                               # self.stage_io_dict['unique_dir'],
                                self.remove_tmp,
                                self.basename,
                                get_default_value(self.__class__.__name__),
                                self.output_files, self.out_log)
         else:
+            self.tmp_files.extend([self.basename + "." + self.unique_name + ".acpype"])
             process_output_gmx(self.unique_name,
                                self.basename + "." + self.unique_name + ".amb2gmx",
                                self.remove_tmp,
@@ -168,6 +169,8 @@ def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output
                                    output_path_gro=output_path_gro,
                                    output_path_top=output_path_top,
                                    properties=properties, **kwargs).launch()
+
+    acpype_convert_amber_to_gmx.__doc__ = AcpypeConvertAMBERtoGMX.__doc__
 
 
 def main():
