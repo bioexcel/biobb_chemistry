@@ -25,7 +25,7 @@
             "type": "string",
             "description": "Path to the input file",
             "filetype": "input",
-            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.H.pdb",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.H.pdb",
             "enum": [
                 ".*\\.dat$",
                 ".*\\.ent$",
@@ -161,7 +161,7 @@
             "type": "string",
             "description": "Path to the output file",
             "filetype": "output",
-            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.nohydrogens.pdb",
+            "sample": "https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.nohydrogens.pdb",
             "enum": [
                 ".*\\.ent$",
                 ".*\\.fa$",

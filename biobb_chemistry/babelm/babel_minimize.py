@@ -17,8 +17,8 @@ class BabelMinimize(BiobbObject):
     | Energetically minimizes small molecules. Open Babel is a chemical toolbox designed to speak the many languages of chemical data. It's an open, collaborative project allowing anyone to search, convert, analyze, or store data from molecular modeling, chemistry, solid-state materials, biochemistry, or related areas. `Visit the official page <http://openbabel.org/wiki/Main_Page>`_.
 
     Args:
-        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
-        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
+        input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
+        output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **criteria** (*float*) - (1e-6) Convergence criteria
             * **method** (*str*) - ("cg") Method. Values: cg (conjugate gradients algorithm), sd (steepest descent algorithm).

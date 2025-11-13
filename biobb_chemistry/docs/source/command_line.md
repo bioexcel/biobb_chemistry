@@ -596,8 +596,8 @@ babel_add_hydrogens -h
 Syntax: input_argument (datatype) : Definition
 
 Config input / output arguments for this building block:
-* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.no.H.pdb). Accepted formats: DAT, ENT, FA, FASTA, GRO, INP, LOG, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT, XML, XTC
-* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.hydrogens.pdb). Accepted formats: ENT, FA, FASTA, GRO, INP, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT
+* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.no.H.pdb). Accepted formats: DAT, ENT, FA, FASTA, GRO, INP, LOG, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT, XML, XTC
+* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.hydrogens.pdb). Accepted formats: ENT, FA, FASTA, GRO, INP, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT
 ### Config
 Syntax: input_parameter (datatype) - (default_value) Definition
 
@@ -726,8 +726,8 @@ babel_convert -h
 Syntax: input_argument (datatype) : Definition
 
 Config input / output arguments for this building block:
-* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.smi). Accepted formats: DAT, ENT, FA, FASTA, GRO, INP, LOG, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT, XML, XTC
-* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.convert.mol2). Accepted formats: ENT, FA, FASTA, GRO, INP, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT
+* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.smi). Accepted formats: DAT, ENT, FA, FASTA, GRO, INP, LOG, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT, XML, XTC
+* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.convert.mol2). Accepted formats: ENT, FA, FASTA, GRO, INP, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT
 ### Config
 Syntax: input_parameter (datatype) - (default_value) Definition
 
@@ -857,8 +857,8 @@ babel_minimize -h
 Syntax: input_argument (datatype) : Definition
 
 Config input / output arguments for this building block:
-* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.minimize.pdb). Accepted formats: PDB, MOL2
-* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.minimize.pdb). Accepted formats: PDB, MOL2
+* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.minimize.pdb). Accepted formats: PDB, MOL2
+* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.minimize.pdb). Accepted formats: PDB, MOL2
 ### Config
 Syntax: input_parameter (datatype) - (default_value) Definition
 
@@ -1019,8 +1019,8 @@ babel_remove_hydrogens -h
 Syntax: input_argument (datatype) : Definition
 
 Config input / output arguments for this building block:
-* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babel/babel.H.pdb). Accepted formats: DAT, ENT, FA, FASTA, GRO, INP, LOG, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT, XML, XTC
-* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babel/ref_babel.nohydrogens.pdb). Accepted formats: ENT, FA, FASTA, GRO, INP, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT
+* **input_path** (*string*): Path to the input file. File type: input. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.H.pdb). Accepted formats: DAT, ENT, FA, FASTA, GRO, INP, LOG, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT, XML, XTC
+* **output_path** (*string*): Path to the output file. File type: output. [Sample file](https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.nohydrogens.pdb). Accepted formats: ENT, FA, FASTA, GRO, INP, MCIF, MDL, MMCIF, MOL, MOL2, PDB, PDBQT, PNG, SDF, SMI, SMILES, TXT
 ### Config
 Syntax: input_parameter (datatype) - (default_value) Definition
 
