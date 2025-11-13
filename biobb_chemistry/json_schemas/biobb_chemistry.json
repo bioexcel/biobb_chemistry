@@ -47,7 +47,7 @@
             "desc": "Conversion of AMBER topologies to GROMACS.",
             "exec": "acpype_convert_amber_to_gmx",
             "docs": "https://biobb-chemistry.readthedocs.io/en/latest/acpype.html#module-acpype.acpype_convert_amber_to_gmx",
-            "rest": true
+            "rest": false
         },
         {
             "block": "BabelConvert",
