@@ -13,13 +13,14 @@ Command:
 ```python
 acpype_convert_amber_to_gmx -h
 ```
-    usage: acpype_convert_amber_to_gmx [-h] [--config CONFIG] --input_crd_path INPUT_CRD_PATH --input_top_path INPUT_TOP_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_top OUTPUT_PATH_TOP
+    usage: acpype_convert_amber_to_gmx [-h] [-c CONFIG] --input_crd_path INPUT_CRD_PATH --input_top_path INPUT_TOP_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_top OUTPUT_PATH_TOP
     
     Small molecule parameterization for GROMACS MD package.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
       --input_crd_path INPUT_CRD_PATH
@@ -84,16 +85,17 @@ Command:
 ```python
 acpype_params_ac -h
 ```
-    usage: acpype_params_ac [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_frcmod OUTPUT_PATH_FRCMOD --output_path_inpcrd OUTPUT_PATH_INPCRD --output_path_lib OUTPUT_PATH_LIB --output_path_prmtop OUTPUT_PATH_PRMTOP
+    usage: acpype_params_ac [-h] [-c CONFIG] -i INPUT_PATH --output_path_frcmod OUTPUT_PATH_FRCMOD --output_path_inpcrd OUTPUT_PATH_INPCRD --output_path_lib OUTPUT_PATH_LIB --output_path_prmtop OUTPUT_PATH_PRMTOP
     
     Small molecule parameterization for AMBER MD package.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb, mdl, mol2.
       --output_path_frcmod OUTPUT_PATH_FRCMOD
                             Path to the FRCMOD output file. Accepted formats: frcmod.
@@ -210,16 +212,17 @@ Command:
 ```python
 acpype_params_cns -h
 ```
-    usage: acpype_params_cns [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP --output_path_pdb OUTPUT_PATH_PDB
+    usage: acpype_params_cns [-h] [-c CONFIG] -i INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP --output_path_pdb OUTPUT_PATH_PDB
     
     Small molecule parameterization for CNS/XPLOR MD package.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb, mdl, mol2.
       --output_path_par OUTPUT_PATH_PAR
                             Path to the PAR output file. Accepted formats: par.
@@ -336,16 +339,17 @@ Command:
 ```python
 acpype_params_gmx -h
 ```
-    usage: acpype_params_gmx [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
+    usage: acpype_params_gmx [-h] [-c CONFIG] -i INPUT_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
     
     Small molecule parameterization for GROMACS MD package.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb, mdl, mol2.
       --output_path_gro OUTPUT_PATH_GRO
                             Path to the GRO output file. Accepted formats: gro.
@@ -459,16 +463,17 @@ Command:
 ```python
 acpype_params_gmx_opls -h
 ```
-    usage: acpype_params_gmx_opls [-h] [--config CONFIG] --input_path INPUT_PATH --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
+    usage: acpype_params_gmx_opls [-h] [-c CONFIG] -i INPUT_PATH --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
     
     Small molecule parameterization for OPLS/AA MD package.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb, mdl, mol2.
       --output_path_itp OUTPUT_PATH_ITP
                             Path to the ITP output file. Accepted formats: itp.
@@ -579,18 +584,19 @@ Command:
 ```python
 babel_add_hydrogens -h
 ```
-    usage: babel_add_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    usage: babel_add_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Adds hydrogen atoms to small molecules.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.
-      --output_path OUTPUT_PATH
+      -o OUTPUT_PATH, --output_path OUTPUT_PATH
                             Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
@@ -709,18 +715,19 @@ Command:
 ```python
 babel_convert -h
 ```
-    usage: babel_convert [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    usage: babel_convert [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Small molecule format conversion.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.
-      --output_path OUTPUT_PATH
+      -o OUTPUT_PATH, --output_path OUTPUT_PATH
                             Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
@@ -840,18 +847,19 @@ Command:
 ```python
 babel_minimize -h
 ```
-    usage: babel_minimize [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    usage: babel_minimize [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Energetically minimize small molecules.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb, mol2.
-      --output_path OUTPUT_PATH
+      -o OUTPUT_PATH, --output_path OUTPUT_PATH
                             Path to the output file. Accepted formats: pdb, mol2.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
@@ -1002,18 +1010,19 @@ Command:
 ```python
 babel_remove_hydrogens -h
 ```
-    usage: babel_remove_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    usage: babel_remove_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Removes hydrogen atoms to small molecules.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.
-      --output_path OUTPUT_PATH
+      -o OUTPUT_PATH, --output_path OUTPUT_PATH
                             Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
@@ -1132,18 +1141,19 @@ Command:
 ```python
 reduce_add_hydrogens -h
 ```
-    usage: reduce_add_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    usage: reduce_add_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Adds hydrogen atoms to small molecules.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb.
-      --output_path OUTPUT_PATH
+      -o OUTPUT_PATH, --output_path OUTPUT_PATH
                             Path to the output file. Accepted formats: pdb.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition
@@ -1256,18 +1266,19 @@ Command:
 ```python
 reduce_remove_hydrogens -h
 ```
-    usage: reduce_remove_hydrogens [-h] [--config CONFIG] --input_path INPUT_PATH --output_path OUTPUT_PATH
+    usage: reduce_remove_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Removes hydrogen atoms to small molecules.
     
     options:
       -h, --help            show this help message and exit
-      --config CONFIG       Configuration file
+      -c CONFIG, --config CONFIG
+                            This file can be a YAML file, JSON file or JSON string
     
     required arguments:
-      --input_path INPUT_PATH
+      -i INPUT_PATH, --input_path INPUT_PATH
                             Path to the input file. Accepted formats: pdb.
-      --output_path OUTPUT_PATH
+      -o OUTPUT_PATH, --output_path OUTPUT_PATH
                             Path to the output file. Accepted formats: pdb.
 ### I / O Arguments
 Syntax: input_argument (datatype) : Definition

@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 """Module containing the AcpypeParamsAC class and the command line interface."""
-import argparse
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output
 
@@ -176,44 +174,13 @@ class AcpypeParamsAC(BiobbObject):
 
 
 def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
+    """Create the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
     execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch>` method."""
-
-    return AcpypeParamsAC(input_path=input_path,
-                          output_path_frcmod=output_path_frcmod,
-                          output_path_inpcrd=output_path_inpcrd,
-                          output_path_lib=output_path_lib,
-                          output_path_prmtop=output_path_prmtop,
-                          properties=properties, **kwargs).launch()
-
-    acpype_params_ac.__doc__ = AcpypeParamsAC.__doc__
+    return AcpypeParamsAC(**dict(locals())).launch()
 
 
-def main():
-    """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(description="Small molecule parameterization for AMBER MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
-    parser.add_argument('--config', required=False, help='Configuration file')
-
-    # Specific args of each building block
-    required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mdl, mol2.')
-    required_args.add_argument('--output_path_frcmod', required=True, help='Path to the FRCMOD output file. Accepted formats: frcmod.')
-    required_args.add_argument('--output_path_inpcrd', required=True, help='Path to the INPCRD output file. Accepted formats: inpcrd.')
-    required_args.add_argument('--output_path_lib', required=True, help='Path to the LIB output file. Accepted formats: lib.')
-    required_args.add_argument('--output_path_prmtop', required=True, help='Path to the PRMTOP output file. Accepted formats: prmtop.')
-
-    args = parser.parse_args()
-    args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config).get_prop_dic()
-
-    # Specific call of each building block
-    acpype_params_ac(input_path=args.input_path,
-                     output_path_frcmod=args.output_path_frcmod,
-                     output_path_inpcrd=args.output_path_inpcrd,
-                     output_path_lib=args.output_path_lib,
-                     output_path_prmtop=args.output_path_prmtop,
-                     properties=properties)
-
+acpype_params_ac.__doc__ = AcpypeParamsAC.__doc__
+main = AcpypeParamsAC.get_main(acpype_params_ac, "Small molecule parameterization for AMBER MD package.")
 
 if __name__ == '__main__':
     main()

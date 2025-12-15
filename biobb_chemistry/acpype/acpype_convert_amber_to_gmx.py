@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
-import argparse
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.acpype.common import get_binary_path, check_output_path, get_basename, create_unique_name, get_default_value, process_output_gmx
 from typing import Optional
@@ -161,41 +159,13 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
 
 def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Execute the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` class and
+    """Create the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` class and
     execute the :meth:`launch() <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX.launch>` method."""
-
-    return AcpypeConvertAMBERtoGMX(input_crd_path=input_crd_path,
-                                   input_top_path=input_top_path,
-                                   output_path_gro=output_path_gro,
-                                   output_path_top=output_path_top,
-                                   properties=properties, **kwargs).launch()
-
-    acpype_convert_amber_to_gmx.__doc__ = AcpypeConvertAMBERtoGMX.__doc__
+    return AcpypeConvertAMBERtoGMX(**dict(locals())).launch()
 
 
-def main():
-    """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(description="Small molecule parameterization for GROMACS MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
-    parser.add_argument('--config', required=False, help='Configuration file')
-
-    # Specific args of each building block
-    required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_crd_path', required=True, help='Path to the input coordinates file (AMBER crd). Accepted formats: inpcrd.')
-    required_args.add_argument('--input_top_path', required=True, help='Path to the input topology file (AMBER ParmTop). Accepted formats: top, parmtop, prmtop.')
-    required_args.add_argument('--output_path_gro', required=True, help='Path to the GRO output file. Accepted formats: gro.')
-    required_args.add_argument('--output_path_top', required=True, help='Path to the TOP output file. Accepted formats: top.')
-
-    args = parser.parse_args()
-    args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config).get_prop_dic()
-
-    # Specific call of each building block
-    acpype_convert_amber_to_gmx(input_crd_path=args.input_crd_path,
-                                input_top_path=args.input_top_path,
-                                output_path_gro=args.output_path_gro,
-                                output_path_top=args.output_path_top,
-                                properties=properties)
-
+acpype_convert_amber_to_gmx.__doc__ = AcpypeConvertAMBERtoGMX.__doc__
+main = AcpypeConvertAMBERtoGMX.get_main(acpype_convert_amber_to_gmx, "Small molecule parameterization for GROMACS MD package.")
 
 if __name__ == '__main__':
     main()

@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 """Module containing the AcpypeParamsGMXOPLS class and the command line interface."""
-import argparse
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx
 
@@ -168,38 +166,13 @@ class AcpypeParamsGMXOPLS(BiobbObject):
 
 
 def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` class and
+    """Create the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` class and
     execute the :meth:`launch() <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS.launch>` method."""
-
-    return AcpypeParamsGMXOPLS(input_path=input_path,
-                               output_path_itp=output_path_itp,
-                               output_path_top=output_path_top,
-                               properties=properties, **kwargs).launch()
-
-    acpype_params_gmx_opls.__doc__ = AcpypeParamsGMXOPLS.__doc__
+    return AcpypeParamsGMXOPLS(**dict(locals())).launch()
 
 
-def main():
-    """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(description="Small molecule parameterization for OPLS/AA MD package.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
-    parser.add_argument('--config', required=False, help='Configuration file')
-
-    # Specific args of each building block
-    required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mdl, mol2.')
-    required_args.add_argument('--output_path_itp', required=True, help='Path to the ITP output file. Accepted formats: itp.')
-    required_args.add_argument('--output_path_top', required=True, help='Path to the TOP output file. Accepted formats: top.')
-
-    args = parser.parse_args()
-    args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config).get_prop_dic()
-
-    # Specific call of each building block
-    acpype_params_gmx_opls(input_path=args.input_path,
-                           output_path_itp=args.output_path_itp,
-                           output_path_top=args.output_path_top,
-                           properties=properties)
-
+acpype_params_gmx_opls.__doc__ = AcpypeParamsGMXOPLS.__doc__
+main = AcpypeParamsGMXOPLS.get_main(acpype_params_gmx_opls, "Small molecule parameterization for OPLS/AA MD package.")
 
 if __name__ == '__main__':
     main()

@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 
 """Module containing the BabelMinimize class and the command line interface."""
-import argparse
 from typing import Optional
 from pathlib import PurePath
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.babelm.common import check_minimize_property, check_input_path_minimize, check_output_path_minimize
 
@@ -178,34 +176,13 @@ class BabelMinimize(BiobbObject):
 
 
 def babel_minimize(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
+    """Create the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
     execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
-
-    return BabelMinimize(input_path=input_path,
-                         output_path=output_path,
-                         properties=properties, **kwargs).launch()
-
-    babel_minimize.__doc__ = BabelMinimize.__doc__
+    return BabelMinimize(**dict(locals())).launch()
 
 
-def main():
-    """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(description="Energetically minimize small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
-    parser.add_argument('--config', required=False, help='Configuration file')
-
-    # Specific args of each building block
-    required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb, mol2.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: pdb, mol2.')
-
-    args = parser.parse_args()
-    args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config).get_prop_dic()
-
-    # Specific call of each building block
-    babel_minimize(input_path=args.input_path,
-                   output_path=args.output_path,
-                   properties=properties)
+babel_minimize.__doc__ = BabelMinimize.__doc__
+main = BabelMinimize.get_main(babel_minimize, "Energetically minimize small molecules.")
 
 
 if __name__ == '__main__':

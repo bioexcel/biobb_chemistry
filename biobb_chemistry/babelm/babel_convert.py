@@ -2,10 +2,8 @@
 
 """Module containing the BabelConvert class and the command line interface."""
 
-import argparse
 from typing import Optional
 
-from biobb_common.configuration import settings
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools.file_utils import launchlogger
 
@@ -205,45 +203,13 @@ class BabelConvert(BiobbObject):
 def babel_convert(
     input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs
 ) -> int:
-    """Execute the :class:`BabelConvert <babelm.babel_convert.BabelConvert>` class and
+    """Create the :class:`BabelConvert <babelm.babel_convert.BabelConvert>` class and
     execute the :meth:`launch() <babelm.babel_convert.BabelConvert.launch>` method."""
-
-    return BabelConvert(
-        input_path=input_path, output_path=output_path, properties=properties, **kwargs
-    ).launch()
-
-    babel_convert.__doc__ = BabelConvert.__doc__
+    return BabelConvert(**dict(locals())).launch()
 
 
-def main():
-    """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(
-        description="Small molecule format conversion.",
-        formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999),
-    )
-    parser.add_argument("--config", required=False, help="Configuration file")
-
-    # Specific args of each building block
-    required_args = parser.add_argument_group("required arguments")
-    required_args.add_argument(
-        "--input_path",
-        required=True,
-        help="Path to the input file. Accepted formats: dat, ent, fa, fasta, gro, inp, log, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt, xml, xtc.",
-    )
-    required_args.add_argument(
-        "--output_path",
-        required=True,
-        help="Path to the output file. Accepted formats: ent, fa, fasta, gro, inp, mcif, mdl, mmcif, mol, mol2, pdb, pdbqt, png, sdf, smi, smiles, txt.",
-    )
-
-    args = parser.parse_args()
-    args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config).get_prop_dic()
-
-    # Specific call of each building block
-    babel_convert(
-        input_path=args.input_path, output_path=args.output_path, properties=properties
-    )
+babel_convert.__doc__ = BabelConvert.__doc__
+main = BabelConvert.get_main(babel_convert, "Small molecule format conversion.")
 
 
 if __name__ == "__main__":

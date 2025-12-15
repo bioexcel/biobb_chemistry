@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 """Module containing the ReduceAddHydrogens class and the command line interface."""
-import argparse
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.configuration import settings
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
@@ -203,35 +201,13 @@ class ReduceAddHydrogens(BiobbObject):
 
 
 def reduce_add_hydrogens(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Execute the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` class and
+    """Create the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` class and
     execute the :meth:`launch() <ambertools.reduce_add_hydrogens.ReduceAddHydrogens.launch>` method."""
-
-    return ReduceAddHydrogens(input_path=input_path,
-                              output_path=output_path,
-                              properties=properties, **kwargs).launch()
-
-    reduce_add_hydrogens.__doc__ = ReduceAddHydrogens.__doc__
+    return ReduceAddHydrogens(**dict(locals())).launch()
 
 
-def main():
-    """Command line execution of this building block. Please check the command line documentation."""
-    parser = argparse.ArgumentParser(description="Adds hydrogen atoms to small molecules.", formatter_class=lambda prog: argparse.RawTextHelpFormatter(prog, width=99999))
-    parser.add_argument('--config', required=False, help='Configuration file')
-
-    # Specific args of each building block
-    required_args = parser.add_argument_group('required arguments')
-    required_args.add_argument('--input_path', required=True, help='Path to the input file. Accepted formats: pdb.')
-    required_args.add_argument('--output_path', required=True, help='Path to the output file. Accepted formats: pdb.')
-
-    args = parser.parse_args()
-    args.config = args.config or "{}"
-    properties = settings.ConfReader(config=args.config).get_prop_dic()
-
-    # Specific call of each building block
-    reduce_add_hydrogens(input_path=args.input_path,
-                         output_path=args.output_path,
-                         properties=properties)
-
+reduce_add_hydrogens.__doc__ = ReduceAddHydrogens.__doc__
+main = ReduceAddHydrogens.get_main(reduce_add_hydrogens, "Adds hydrogen atoms to small molecules.")
 
 if __name__ == '__main__':
     main()
