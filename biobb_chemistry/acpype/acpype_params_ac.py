@@ -159,7 +159,7 @@ class AcpypeParamsAC(BiobbObject):
                            get_default_value(self.__class__.__name__),
                            self.output_files, self.out_log)
         else:
-            self.tmp_files.extend([self.basename + "." + self.unique_name + ".acpype"])
+            self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
             process_output(self.unique_name,
                            self.basename + "." + self.unique_name + ".acpype",
                            self.remove_tmp,
