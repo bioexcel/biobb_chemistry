@@ -3,7 +3,7 @@
 [![](https://img.shields.io/conda/vn/bioconda/biobb_chemistry?label=Conda)](https://anaconda.org/bioconda/biobb_chemistry)
 [![](https://img.shields.io/conda/dn/bioconda/biobb_chemistry?label=Conda%20Downloads)](https://anaconda.org/bioconda/biobb_chemistry)
 [![](https://img.shields.io/badge/Docker-Quay.io-blue)](https://quay.io/repository/biocontainers/biobb_chemistry?tab=tags)
-[![](https://img.shields.io/badge/Singularity-GalaxyProject-blue)](https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.0--pyhdfd78af_1)
+[![](https://img.shields.io/badge/Singularity-GalaxyProject-blue)](https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_1)
 
 [![](https://img.shields.io/badge/OS-Unix%20%7C%20MacOS-blue)](https://github.com/bioexcel/biobb_chemistry)
 [![](https://img.shields.io/pypi/pyversions/biobb-chemistry.svg?label=Python%20Versions)](https://pypi.org/project/biobb-chemistry/)
@@ -40,7 +40,7 @@ The latest documentation of this package can be found in our readthedocs site:
 [latest API documentation](http://biobb-chemistry.readthedocs.io/en/latest/).
 
 ### Version
-v5.2.0 2025.2
+v5.2.1 2025.2
 
 ### Installation
 Using PIP:
@@ -50,7 +50,7 @@ Using PIP:
 * Installation:
 
 
-        pip install "biobb_chemistry>=5.2.0"
+        pip install "biobb_chemistry>=5.2.1"
 
 
 * Usage: [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html)
@@ -60,7 +60,7 @@ Using ANACONDA:
 * Installation:
 
 
-        conda install -c bioconda "biobb_chemistry>=5.2.0"
+        conda install -c bioconda "biobb_chemistry>=5.2.1"
 
 
 * Usage: With conda installation BioBBs can be used with the [Python API documentation](https://biobb-chemistry.readthedocs.io/en/latest/modules.html) and the [Command Line documentation](https://biobb-chemistry.readthedocs.io/en/latest/command_line.html)
@@ -70,13 +70,13 @@ Using DOCKER:
 * Installation:
 
 
-        docker pull quay.io/biocontainers/biobb_chemistry:5.2.0--pyhdfd78af_1
+        docker pull quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_1
 
 
 * Usage:
 
 
-        docker run quay.io/biocontainers/biobb_chemistry:5.2.0--pyhdfd78af_1 <command>
+        docker run quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_1 <command>
 
 Using SINGULARITY:
 
@@ -85,7 +85,7 @@ Using SINGULARITY:
 * Installation:
 
 
-        singularity pull --name biobb_chemistry.sif https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.0--pyhdfd78af_1
+        singularity pull --name biobb_chemistry.sif https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_1
 
 
 * Usage:
@@ -100,8 +100,8 @@ The command list and specification can be found at the [Command Line documentati
 ### Copyright & Licensing
 This software has been developed in the [MMB group](http://mmb.irbbarcelona.org) at the [BSC](http://www.bsc.es/) & [IRB](https://www.irbbarcelona.org/) for the [European BioExcel](http://bioexcel.eu/), funded by the European Commission (EU Horizon Europe [101093290](https://cordis.europa.eu/project/id/101093290), EU H2020 [823830](http://cordis.europa.eu/projects/823830), EU H2020 [675728](http://cordis.europa.eu/projects/675728)).
 
-* (c) 2015-2025 [Barcelona Supercomputing Center](https://www.bsc.es/)
-* (c) 2015-2025 [Institute for Research in Biomedicine](https://www.irbbarcelona.org/)
+* (c) 2015-2026 [Barcelona Supercomputing Center](https://www.bsc.es/)
+* (c) 2015-2026 [Institute for Research in Biomedicine](https://www.irbbarcelona.org/)
 
 Licensed under the
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0), see the file LICENSE for details.

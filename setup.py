@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="biobb_chemistry",
-    version="5.2.0",
+    version="5.2.1",
     author="Biobb developers",
     author_email="genis.bayarri@irbbarcelona.org",
     description="Biobb_chemistry is the Biobb module collection to perform chemistry over molecular dynamics simulations.",
@@ -19,7 +19,7 @@ setuptools.setup(
     },
     packages=setuptools.find_packages(exclude=["docs", "test"]),
     package_data={"biobb_chemistry": ["py.typed"]},
-    install_requires=["biobb_common==5.2.0"],
+    install_requires=["biobb_common==5.2.2"],
     python_requires=">=3.10",
     entry_points={
         "console_scripts": [
