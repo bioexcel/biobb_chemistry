@@ -43,16 +43,16 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **basename** (*string*): (BBB) A basename for the project (folder and output files)..
-* **binary_path** (*string*): (acpype) Path to the acpype executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **basename** (*string*): (BBB) A basename for the project (folder and output files).
+* **binary_path** (*string*): (acpype) Path to the acpype executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx.yml)
 ```python
@@ -118,18 +118,18 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **basename** (*string*): (BBB) A basename for the project (folder and output files)..
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype..
-* **binary_path** (*string*): (acpype) Path to the acpype executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **basename** (*string*): (BBB) A basename for the project (folder and output files).
+* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **binary_path** (*string*): (acpype) Path to the acpype executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_ac.yml)
 ```python
@@ -245,18 +245,18 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **basename** (*string*): (BBB) A basename for the project (folder and output files)..
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype..
-* **binary_path** (*string*): (acpype) Path to the acpype executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **basename** (*string*): (BBB) A basename for the project (folder and output files).
+* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **binary_path** (*string*): (acpype) Path to the acpype executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_cns.yml)
 ```python
@@ -369,18 +369,18 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **basename** (*string*): (BBB) A basename for the project (folder and output files)..
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype..
-* **binary_path** (*string*): (acpype) Path to the acpype executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **basename** (*string*): (BBB) A basename for the project (folder and output files).
+* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **binary_path** (*string*): (acpype) Path to the acpype executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_gmx.yml)
 ```python
@@ -490,18 +490,18 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **basename** (*string*): (BBB) A basename for the project (folder and output files)..
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype..
-* **binary_path** (*string*): (acpype) Path to the acpype executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **basename** (*string*): (BBB) A basename for the project (folder and output files).
+* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **binary_path** (*string*): (acpype) Path to the acpype executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_params_gmx_opls.yml)
 ```python
@@ -608,23 +608,23 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. .
-* **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. .
-* **fs_input** (*array*): (None) Format-specific input options. .
-* **fs_output** (*array*): ([h]) Format-specific output options. .
-* **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. .
-* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. .
-* **ph** (*number*): (7.4) Add hydrogens appropriate for pH..
-* **binary_path** (*string*): (obabel) Path to the obabel executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. 
+* **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. 
+* **fs_input** (*array*): (None) Format-specific input options. 
+* **fs_output** (*array*): ([h]) Format-specific output options. 
+* **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. 
+* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. 
+* **ph** (*number*): (7.4) Add hydrogens appropriate for pH.
+* **binary_path** (*string*): (obabel) Path to the obabel executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_add_hydrogens.yml)
 ```python
@@ -739,24 +739,24 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. .
-* **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. .
-* **fs_input** (*array*): (None) Format-specific input options. .
-* **fs_output** (*array*): (None) Format-specific output options. .
-* **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. .
-* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. .
-* **ph** (*number*): (7.4) Add hydrogens appropriate for pH..
-* **flex** (*boolean*): (False) Remove all but the largest contiguous fragment (strip salts)..
-* **binary_path** (*string*): (obabel) Path to the obabel executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. 
+* **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. 
+* **fs_input** (*array*): (None) Format-specific input options. 
+* **fs_output** (*array*): (None) Format-specific output options. 
+* **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. 
+* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. 
+* **ph** (*number*): (7.4) Add hydrogens appropriate for pH.
+* **flex** (*boolean*): (False) Remove all but the largest contiguous fragment (strip salts).
+* **binary_path** (*string*): (obabel) Path to the obabel executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_convert.yml)
 ```python
@@ -871,25 +871,25 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **criteria** (*number*): (1e-06) Convergence criteria.
-* **method** (*string*): (cg) Method. .
-* **force_field** (*string*): (None) Force field. .
-* **hydrogens** (*boolean*): (False) Add hydrogen atoms..
-* **steps** (*integer*): (2500) Maximum number of steps..
-* **cutoff** (*boolean*): (False) Use cut-off..
-* **rvdw** (*number*): (6.0) VDW cut-off distance..
-* **rele** (*number*): (10.0) Electrostatic cut-off distance..
-* **frequency** (*integer*): (10) Frequency to update the non-bonded pairs..
-* **binary_path** (*string*): (obminimize) Path to the obminimize executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **criteria** (*number*): (1e-06) Convergence criteria
+* **method** (*string*): (cg) Method. 
+* **force_field** (*string*): (None) Force field. 
+* **hydrogens** (*boolean*): (False) Add hydrogen atoms.
+* **steps** (*integer*): (2500) Maximum number of steps.
+* **cutoff** (*boolean*): (False) Use cut-off.
+* **rvdw** (*number*): (6.0) VDW cut-off distance.
+* **rele** (*number*): (10.0) Electrostatic cut-off distance.
+* **frequency** (*integer*): (10) Frequency to update the non-bonded pairs.
+* **binary_path** (*string*): (obminimize) Path to the obminimize executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_minimize.yml)
 ```python
@@ -1034,23 +1034,23 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. .
-* **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. .
-* **fs_input** (*array*): (None) Format-specific input options. .
-* **fs_output** (*array*): (None) Format-specific output options. .
-* **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. .
-* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. .
-* **ph** (*number*): (7.4) Add hydrogens appropriate for pH..
-* **binary_path** (*string*): (obabel) Path to the obabel executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **input_format** (*string*): (None) Format of input file. If not provided, input_path extension will be taken. 
+* **output_format** (*string*): (None) Format of output file. If not provided, output_path extension will be taken. 
+* **fs_input** (*array*): (None) Format-specific input options. 
+* **fs_output** (*array*): (None) Format-specific output options. 
+* **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. 
+* **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. 
+* **ph** (*number*): (7.4) Add hydrogens appropriate for pH.
+* **binary_path** (*string*): (obabel) Path to the obabel executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_remove_hydrogens.yml)
 ```python
@@ -1165,35 +1165,35 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **flip** (*boolean*): (False) add H and rotate and flip NQH groups.
-* **noflip** (*boolean*): (False) add H and rotate groups with no NQH flips.
-* **nuclear** (*boolean*): (False) use nuclear X-H distances rather than default electron cloud distances.
-* **nooh** (*boolean*): (False) remove hydrogens on OH and SH groups.
-* **oh** (*boolean*): (True) add hydrogens on OH and SH groups (default).
-* **his** (*boolean*): (False) create NH hydrogens on HIS rings (usually used with -HIS).
-* **noheth** (*boolean*): (False) do not attempt to add NH proton on Het groups.
-* **rotnh3** (*boolean*): (True) allow lysine NH3 to rotate (default).
-* **norotnh3** (*boolean*): (False) do not allow lysine NH3 to rotate.
-* **rotexist** (*boolean*): (False) allow existing rotatable groups (OH, SH, Met-CH3) to rotate.
-* **rotexoh** (*boolean*): (False) allow existing OH & SH groups to rotate.
-* **allalt** (*boolean*): (True) process adjustments for all conformations (default).
-* **onlya** (*boolean*): (False) only adjust 'A' conformations.
-* **charges** (*boolean*): (False) output charge state for appropriate hydrogen records.
-* **dorotmet** (*boolean*): (False) allow methionine methyl groups to rotate (not recommended).
-* **noadjust** (*boolean*): (False) do not process any rot or flip adjustments.
-* **metal_bump** (*number*): (None) H 'bumps' metals at radius plus this.
-* **non_metal_bump** (*number*): (None) 'bumps' nonmetal at radius plus this.
-* **build** (*boolean*): (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens).
-* **binary_path** (*string*): (reduce) Path to the reduce executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **flip** (*boolean*): (False) add H and rotate and flip NQH groups
+* **noflip** (*boolean*): (False) add H and rotate groups with no NQH flips
+* **nuclear** (*boolean*): (False) use nuclear X-H distances rather than default electron cloud distances
+* **nooh** (*boolean*): (False) remove hydrogens on OH and SH groups
+* **oh** (*boolean*): (True) add hydrogens on OH and SH groups (default)
+* **his** (*boolean*): (False) create NH hydrogens on HIS rings (usually used with -HIS)
+* **noheth** (*boolean*): (False) do not attempt to add NH proton on Het groups
+* **rotnh3** (*boolean*): (True) allow lysine NH3 to rotate (default)
+* **norotnh3** (*boolean*): (False) do not allow lysine NH3 to rotate
+* **rotexist** (*boolean*): (False) allow existing rotatable groups (OH, SH, Met-CH3) to rotate
+* **rotexoh** (*boolean*): (False) allow existing OH & SH groups to rotate
+* **allalt** (*boolean*): (True) process adjustments for all conformations (default)
+* **onlya** (*boolean*): (False) only adjust 'A' conformations
+* **charges** (*boolean*): (False) output charge state for appropriate hydrogen records
+* **dorotmet** (*boolean*): (False) allow methionine methyl groups to rotate (not recommended)
+* **noadjust** (*boolean*): (False) do not process any rot or flip adjustments
+* **metal_bump** (*number*): (None) H 'bumps' metals at radius plus this
+* **non_metal_bump** (*number*): (None) 'bumps' nonmetal at radius plus this
+* **build** (*boolean*): (False) add H, including His sc NH, then rotate and flip groups (except for pre-existing methionine methyl hydrogens)
+* **binary_path** (*string*): (reduce) Path to the reduce executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_reduce_add_hydrogens.yml)
 ```python
@@ -1290,16 +1290,16 @@ Config input / output arguments for this building block:
 Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
-* **binary_path** (*string*): (reduce) Path to the reduce executable binary..
-* **remove_tmp** (*boolean*): (True) Remove temporal files..
-* **restart** (*boolean*): (False) Do not execute if output files exist..
-* **sandbox_path** (*string*): (./) Parent path to the sandbox directory..
-* **container_path** (*string*): (None) Container path definition..
-* **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition..
-* **container_volume_path** (*string*): (/tmp) Container volume path definition..
-* **container_working_dir** (*string*): (None) Container working directory definition..
-* **container_user_id** (*string*): (None) Container user_id definition..
-* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container..
+* **binary_path** (*string*): (reduce) Path to the reduce executable binary.
+* **remove_tmp** (*boolean*): (True) Remove temporal files.
+* **restart** (*boolean*): (False) Do not execute if output files exist.
+* **sandbox_path** (*string*): (./) Parent path to the sandbox directory.
+* **container_path** (*string*): (None) Container path definition.
+* **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition.
+* **container_volume_path** (*string*): (/tmp) Container volume path definition.
+* **container_working_dir** (*string*): (None) Container working directory definition.
+* **container_user_id** (*string*): (None) Container user_id definition.
+* **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
 #### [Common config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_reduce_remove_hydrogens.yml)
 ```python
