@@ -258,7 +258,7 @@ acpype_params_gmx_docker:
     container_path: docker
     container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_user_id: "1000"
+    container_user_id: "1001"
 
 acpype_params_gmx_singularity:
   paths:
@@ -309,7 +309,7 @@ acpype_params_ac_docker:
     container_path: docker
     container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_user_id: "1000"
+    container_user_id: "1001"
 
 acpype_params_ac_singularity:
   paths:
@@ -354,7 +354,7 @@ acpype_params_gmx_opls_docker:
     container_path: docker
     container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_user_id: "1000"
+    container_user_id: "1001"
 
 acpype_params_gmx_opls_singularity:
   paths:
@@ -403,7 +403,7 @@ acpype_params_cns_docker:
     container_path: docker
     container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_user_id: "1000"
+    container_user_id: "1001"
 
 acpype_params_cns_singularity:
   paths:
@@ -446,7 +446,7 @@ acpype_convert_amber_to_gmx_docker:
     container_path: docker
     container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_user_id: "1000"
+    container_user_id: "1001"
 
 acpype_convert_amber_to_gmx_singularity:
   paths:
