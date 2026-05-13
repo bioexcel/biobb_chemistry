@@ -2,6 +2,7 @@
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.acpype.acpype_params_gmx_opls import acpype_params_gmx_opls
+import sys
 
 
 class TestAcpypeParamsGMXOPLSDocker():
@@ -20,7 +21,7 @@ class TestAcpypeParamsGMXOPLSDocker():
         # assert fx.equal(self.paths['output_path_top'], self.paths['ref_output_acpype_path_top'])
 
 
-@pytest.mark.skip(reason="singularity currently not available")
+@pytest.mark.skipif(sys.platform == 'darwin', reason="singularity not available on macOS")
 class TestAcpypeParamsGMXOPLSSingularity():
     def setup_class(self):
         fx.test_setup(self, 'acpype_params_gmx_opls_singularity')

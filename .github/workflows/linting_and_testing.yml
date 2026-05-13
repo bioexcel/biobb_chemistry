@@ -14,13 +14,14 @@ on:
       - 'references.jsonld'
       - '**/docs/**'
       - '**/json_schemas/**'
+      - '.github/workflows/test_containers.yml'
 
 jobs:
   # Name of the Job
   lint_and_test:
     strategy:
       matrix:
-        os: [self-hosted]
+        os: [mmbswarm]
         python-version: ["3.10", "3.11", "3.12"]
     runs-on: ${{ matrix.os }}
     steps:

@@ -2,6 +2,7 @@
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.acpype.acpype_params_ac import acpype_params_ac
+import sys
 
 
 class TestAcpypeParamsACDocker():
@@ -24,7 +25,7 @@ class TestAcpypeParamsACDocker():
         # assert fx.equal(self.paths['output_path_prmtop'], self.paths['ref_output_acpype_path_prmtop'])
 
 
-@pytest.mark.skip(reason="singularity currently not available")
+@pytest.mark.skipif(sys.platform == 'darwin', reason="singularity not available on macOS")
 class TestAcpypeParamsACSingularity():
     def setup_class(self):
         fx.test_setup(self, 'acpype_params_ac_singularity')

@@ -23,7 +23,7 @@ babel_convert_docker:
     coordinates: 2
     ph: 7.4
     container_path: docker
-    container_image: informaticsmatters/obabel:latest
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_convert_singularity:
@@ -37,7 +37,7 @@ babel_convert_singularity:
     coordinates: 2
     ph: 7.4
     container_path: singularity
-    container_image: shub://bioexcel/obabel_singularity
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_add_hydrogens:
@@ -62,7 +62,7 @@ babel_add_hydrogens_docker:
     coordinates: 3
     ph: 7.4
     container_path: docker
-    container_image: informaticsmatters/obabel:latest
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_add_hydrogens_singularity:
@@ -76,7 +76,7 @@ babel_add_hydrogens_singularity:
     coordinates: 3
     ph: 7.4
     container_path: singularity
-    container_image: shub://bioexcel/obabel_singularity
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_remove_hydrogens:
@@ -101,7 +101,7 @@ babel_remove_hydrogens_docker:
     coordinates: 3
     ph: 7.4
     container_path: docker
-    container_image: informaticsmatters/obabel:latest
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_remove_hydrogens_singularity:
@@ -115,7 +115,7 @@ babel_remove_hydrogens_singularity:
     coordinates: 3
     ph: 7.4
     container_path: singularity
-    container_image: shub://bioexcel/obabel_singularity
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_minimize:
@@ -150,7 +150,7 @@ babel_minimize_docker:
     rele: 10.0
     frequency: 10
     container_path: docker
-    container_image: informaticsmatters/obabel:latest
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 babel_minimize_singularity:
@@ -169,7 +169,7 @@ babel_minimize_singularity:
     rele: 10.0
     frequency: 10
     container_path: singularity
-    container_image:  shub://bioexcel/obabel_singularity
+    container_image:  https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 reduce_add_hydrogens:
@@ -188,7 +188,7 @@ reduce_add_hydrogens_docker:
   properties:
     nooh: True
     container_path: docker
-    container_image: afandiadib/ambertools:serial
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 reduce_add_hydrogens_singularity:
@@ -199,7 +199,7 @@ reduce_add_hydrogens_singularity:
   properties:
     nooh: True
     container_path: singularity
-    container_image: shub://bioexcel/ambertools_singularity
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 reduce_remove_hydrogens:
@@ -217,7 +217,7 @@ reduce_remove_hydrogens_docker:
     ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.container.pdb
   properties:
     container_path: docker
-    container_image: afandiadib/ambertools:serial
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 reduce_remove_hydrogens_singularity:
@@ -227,7 +227,7 @@ reduce_remove_hydrogens_singularity:
     ref_output_reduce_path: file:test_reference_dir/ambertools/ref_reduce.remove.container.pdb
   properties:
     container_path: singularity
-    container_image: shub://bioexcel/ambertools_singularity
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 acpype_params_gmx:
@@ -256,7 +256,7 @@ acpype_params_gmx_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: acpype/acpype:2022.7.21
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 acpype_params_gmx_singularity:
@@ -272,7 +272,7 @@ acpype_params_gmx_singularity:
     basename: "BBB"
     charge: 0
     container_path: singularity
-    container_image: shub://bioexcel/acpype_container
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
@@ -307,7 +307,7 @@ acpype_params_ac_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: acpype/acpype:2022.7.21
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 acpype_params_ac_singularity:
@@ -325,7 +325,7 @@ acpype_params_ac_singularity:
     basename: "BBB"
     charge: 0
     container_path: singularity
-    container_image: shub://bioexcel/acpype_container
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
@@ -352,7 +352,7 @@ acpype_params_gmx_opls_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: acpype/acpype:2022.7.21
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 acpype_params_gmx_opls_singularity:
@@ -366,7 +366,7 @@ acpype_params_gmx_opls_singularity:
     basename: "BBB"
     charge: 0
     container_path: singularity
-    container_image: shub://bioexcel/acpype_container
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
@@ -401,7 +401,7 @@ acpype_params_cns_docker:
     basename: "BBB"
     charge: 0
     container_path: docker
-    container_image: acpype/acpype:2022.7.21
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
 
 acpype_params_cns_singularity:
@@ -417,7 +417,7 @@ acpype_params_cns_singularity:
     basename: "BBB"
     charge: 0
     container_path: singularity
-    container_image: shub://bioexcel/acpype_container
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
     container_working_dir: /tmp
     container_shell_path: /bin/sh
@@ -432,3 +432,33 @@ acpype_convert_amber_to_gmx:
     ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
   properties:
     basename: "BBB"
+
+acpype_convert_amber_to_gmx_docker:
+  paths:
+    input_crd_path: file:test_data_dir/acpype/acpype.coords.inpcrd
+    input_top_path: file:test_data_dir/acpype/acpype.top.prmtop
+    output_path_gro: ref_acpype.amber2gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.amber2gmx.gro
+    output_path_top: ref_acpype.amber2gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
+  properties:
+    basename: "BBB"
+    container_path: docker
+    container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
+    container_volume_path: /tmp
+
+acpype_convert_amber_to_gmx_singularity:
+  paths:
+    input_crd_path: file:test_data_dir/acpype/acpype.coords.inpcrd
+    input_top_path: file:test_data_dir/acpype/acpype.top.prmtop
+    output_path_gro: ref_acpype.amber2gmx.gro
+    ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.amber2gmx.gro
+    output_path_top: ref_acpype.amber2gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
+  properties:
+    basename: "BBB"
+    container_path: singularity
+    container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
+    container_volume_path: /tmp
+    container_working_dir: /tmp
+    container_shell_path: /bin/sh

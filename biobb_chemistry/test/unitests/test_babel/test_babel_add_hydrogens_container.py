@@ -2,6 +2,7 @@
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.babelm.babel_add_hydrogens import babel_add_hydrogens
+import sys
 
 
 class TestBabelAddHydrogensDocker():
@@ -18,7 +19,7 @@ class TestBabelAddHydrogensDocker():
         # assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])
 
 
-@pytest.mark.skip(reason="singularity currently not available")
+@pytest.mark.skipif(sys.platform == 'darwin', reason="singularity not available on macOS")
 class TestBabelAddHydrogensSingularity():
     def setup_class(self):
         fx.test_setup(self, 'babel_add_hydrogens_singularity')

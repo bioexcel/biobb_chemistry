@@ -2,6 +2,7 @@
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.babelm.babel_minimize import babel_minimize
+import sys
 
 
 class TestBabelMinimizeDocker():
@@ -18,7 +19,7 @@ class TestBabelMinimizeDocker():
         assert fx.equal(self.paths['output_path'], self.paths['ref_output_babel_path'])
 
 
-@pytest.mark.skip(reason="singularity currently not available")
+@pytest.mark.skipif(sys.platform == 'darwin', reason="singularity not available on macOS")
 class TestBabelMinimizeSingularity():
     def setup_class(self):
         fx.test_setup(self, 'babel_minimize_singularity')

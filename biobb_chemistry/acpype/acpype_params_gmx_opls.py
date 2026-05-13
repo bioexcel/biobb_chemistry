@@ -5,6 +5,7 @@ from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx
+import os
 
 
 class AcpypeParamsGMXOPLS(BiobbObject):
@@ -95,7 +96,8 @@ class AcpypeParamsGMXOPLS(BiobbObject):
 
         # generating output path
         if self.container_path:
-            out_pth = self.container_volume_path + '/' + get_basename(self.basename, out_log) + '.' + self.unique_name
+            self.container_working_dir = self.container_volume_path
+            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
         else:
             out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
 
@@ -145,8 +147,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         # move files to output_path and removes temporary folder
         if self.container_path:
             process_output_gmx(self.unique_name,
-                               # self.stage_io_dict['unique_dir'],
-                               self.remove_tmp,
+                               os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".amb2gmx"),
                                self.basename,
                                get_default_value(self.__class__.__name__),
                                self.output_files, self.out_log)
@@ -154,7 +155,6 @@ class AcpypeParamsGMXOPLS(BiobbObject):
             self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
             process_output_gmx(self.unique_name,
                                self.basename + "." + self.unique_name + ".acpype",
-                               self.remove_tmp,
                                self.basename,
                                get_default_value(self.__class__.__name__),
                                self.output_files, self.out_log)

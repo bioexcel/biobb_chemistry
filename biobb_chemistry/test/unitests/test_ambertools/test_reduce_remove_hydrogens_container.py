@@ -2,6 +2,7 @@
 import pytest
 from biobb_common.tools import test_fixtures as fx
 from biobb_chemistry.ambertools.reduce_remove_hydrogens import reduce_remove_hydrogens
+import sys
 
 
 class TestReduceRemoveHydrogensDocker():
@@ -17,7 +18,7 @@ class TestReduceRemoveHydrogensDocker():
         assert fx.not_empty(self.paths['output_path'])
 
 
-@pytest.mark.skip(reason="singularity currently not available")
+@pytest.mark.skipif(sys.platform == 'darwin', reason="singularity not available on macOS")
 class TestReduceRemoveHydrogensSingularity():
     def setup_class(self):
         fx.test_setup(self, 'reduce_remove_hydrogens_singularity')
