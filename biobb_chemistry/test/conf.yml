@@ -407,13 +407,15 @@ acpype_params_cns_docker:
 
 acpype_params_cns_singularity:
   paths:
-    input_path: file:test_data_dir/acpype/acpype.params.pdb
-    output_path_par: output.par
-    ref_output_acpype_path_par: file:test_reference_dir/acpype/ref_acpype.cns.container.par
-    output_path_inp: output.inp
-    ref_output_acpype_path_inp: file:test_reference_dir/acpype/ref_acpype.cns.container.inp
-    output_path_top: output.top
-    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.cns.container.top
+      input_path: file:test_data_dir/acpype/acpype.params.pdb
+      output_path_par: output.par
+      ref_output_acpype_path_par: file:test_reference_dir/acpype/ref_acpype.cns.par
+      output_path_inp: output.inp
+      ref_output_acpype_path_inp: file:test_reference_dir/acpype/ref_acpype.cns.inp
+      output_path_top: output.top
+      ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.cns.top
+      output_path_pdb: output.pdb
+      ref_output_acpype_path_pdb: file:test_reference_dir/acpype/ref_acpype.cns.pdb
   properties:
     basename: "BBB"
     charge: 0

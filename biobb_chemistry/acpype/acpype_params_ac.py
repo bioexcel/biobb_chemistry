@@ -108,6 +108,7 @@ class AcpypeParamsAC(BiobbObject):
             # out_pth = self.container_volume_path + '/' + get_basename(self.basename, out_log) + '.' + self.unique_name
             self.container_working_dir = self.container_volume_path
             out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            instructions_list.append('cd ' + self.container_volume_path + ' &&')
         else:
             out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
 
