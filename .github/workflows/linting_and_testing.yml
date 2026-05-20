@@ -87,12 +87,6 @@ jobs:
         run: |
           genbadge flake8 --name "Flake8" --input-file ./reports/flake8/flake8stats.txt  --output-file ./reports/flake8/flake8badge.svg
 
-      - name: Checkout biobb_common
-        uses: actions/checkout@v4
-        with:
-          repository: bioexcel/biobb_common
-          path: './biobb_common'
-
       - name: Run tests
         shell: bash -l {0}
         run: |
