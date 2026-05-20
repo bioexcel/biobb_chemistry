@@ -91,7 +91,7 @@ jobs:
         shell: bash -l {0}
         run: |
           # Ignoring docker and singularity tests
-          export PYTHONPATH=.:./biobb_common:$PYTHONPATH
+          export PYTHONPATH=.:$PYTHONPATH
 
           # Create directory for tests reports
           mkdir -p ./reports/junit
