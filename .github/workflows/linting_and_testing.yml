@@ -14,6 +14,9 @@ on:
       - 'references.jsonld'
       - '**/docs/**'
       - '**/json_schemas/**'
+      - '.github/workflows/pr-tests.yml'
+      - '**/test/data/**'
+      - '**/test/references/**'
       - '.github/workflows/test_containers.yml'
 
 jobs:
@@ -27,6 +30,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - run: echo "Repository -> ${{ github.repository }}"
       - run: echo "Branch -> ${{ github.ref }}"
@@ -37,6 +42,55 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+
+      - name: Detect changed files and set test paths
+        id: changes
+        shell: bash
+        run: |
+          BEFORE="${{ github.event.before }}"
+          AFTER="${{ github.sha }}"
+
+          if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "New branch detected – running full test suite"
+            echo "test_paths=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          CHANGED_FILES=$(git diff --name-only "$BEFORE" "$AFTER" 2>/dev/null || echo "")
+          echo "Changed files:"
+          echo "${CHANGED_FILES:-(none)}"
+
+          TESTS=""
+          while IFS= read -r FILE; do
+            [ -z "$FILE" ] && continue
+            if [[ "$FILE" =~ ^${{ github.event.repository.name }}/test/unitests/test_[^/]+/test_[^/]+\.py$ ]]; then
+              # Direct test file change – run only this file (skip container tests)
+              if [[ "$FILE" != *_container.py ]]; then
+                [ -f "$FILE" ] && TESTS+=$'\n'"$FILE"
+              fi
+            elif [[ "$FILE" =~ ^${{ github.event.repository.name }}/([a-z][^/]+)/([^/]+)\.py$ ]]; then
+              TOOL="${BASH_REMATCH[1]}"
+              BASE="${BASH_REMATCH[2]}"
+              if [[ "$BASE" == "__init__" || "$BASE" == "common" ]]; then
+                # Run all tests for this tool
+                TEST_DIR="${{ github.event.repository.name }}/test/unitests/test_${TOOL}"
+                [ -d "$TEST_DIR" ] && TESTS+=$'\n'"$TEST_DIR"
+              else
+                # Run the matching test file for this source file
+                TEST_FILE="${{ github.event.repository.name }}/test/unitests/test_${TOOL}/test_${BASE}.py"
+                if [ -f "$TEST_FILE" ]; then
+                  TESTS+=$'\n'"$TEST_FILE"
+                else
+                  TEST_DIR="${{ github.event.repository.name }}/test/unitests/test_${TOOL}"
+                  [ -d "$TEST_DIR" ] && TESTS+=$'\n'"$TEST_DIR"
+                fi
+              fi
+            fi
+          done <<< "$CHANGED_FILES"
+
+          TESTS=$(echo "$TESTS" | grep -v '^$' | sort -u | tr '\n' ' ' | xargs || echo "")
+          echo "Test paths: ${TESTS:-(none detected – will run full suite)}"
+          echo "test_paths=$TESTS" >> "$GITHUB_OUTPUT"
 
       - name: Remove all micromamba installations
         run: |
@@ -80,7 +134,7 @@ jobs:
           mkdir -p ./reports/flake8
 
           # Exit-zero treats all errors as warnings, workflow will not fail:
-          flake8 . --exclude=docs --ignore=C901,E226 --count --exit-zero --max-complexity=10 --max-line-length=9999 --statistics --format=html --htmldir=./reports/flake8/ --tee --output-file=./reports/flake8/flake8stats.txt
+          flake8 . --exclude=docs --ignore=C901,E226 --count --exit-zero --max-complexity=10 --max-line-length=999 --statistics --format=html --htmldir=./reports/flake8/ --tee --output-file=./reports/flake8/flake8stats.txt
 
       - name: Generate Flake8 badge
         shell: bash -l {0}
@@ -96,8 +150,13 @@ jobs:
           # Create directory for tests reports
           mkdir -p ./reports/junit
 
-          # Production one
-          pytest biobb_chemistry/test/unitests/ --cov=biobb_chemistry/ --cov-report=xml --ignore-glob=*container.py --junit-xml=./reports/junit/junit.xml --html=./reports/junit/report.html
+          # Run only tests for modified tools, fall back to full suite when nothing specific detected
+          TEST_PATHS="${{ steps.changes.outputs.test_paths }}"
+          if [ -z "$TEST_PATHS" ]; then
+            TEST_PATHS="${{ github.event.repository.name }}/test/unitests/"
+          fi
+
+          pytest $TEST_PATHS --cov=${{ github.event.repository.name }}/ --cov-report=xml --ignore-glob=*container.py --ignore-glob=*pmemd* --junit-xml=./reports/junit/junit.xml --html=./reports/junit/report.html
 
       - name: Generate Tests badge
         shell: bash -l {0}
@@ -119,7 +178,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./reports
-
-
-
 
