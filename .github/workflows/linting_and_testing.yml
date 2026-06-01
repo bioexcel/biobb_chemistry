@@ -134,7 +134,7 @@ jobs:
           mkdir -p ./reports/flake8
 
           # Exit-zero treats all errors as warnings, workflow will not fail:
-          flake8 . --exclude=docs --ignore=C901,E226 --count --exit-zero --max-complexity=10 --max-line-length=999 --statistics --format=html --htmldir=./reports/flake8/ --tee --output-file=./reports/flake8/flake8stats.txt
+          flake8 . --exclude=docs --ignore=C901,E226 --count --exit-zero --max-complexity=10 --max-line-length=9999 --statistics --format=html --htmldir=./reports/flake8/ --tee --output-file=./reports/flake8/flake8stats.txt
 
       - name: Generate Flake8 badge
         shell: bash -l {0}
@@ -156,7 +156,7 @@ jobs:
             TEST_PATHS="${{ github.event.repository.name }}/test/unitests/"
           fi
 
-          pytest $TEST_PATHS --cov=${{ github.event.repository.name }}/ --cov-report=xml --ignore-glob=*container.py --ignore-glob=*pmemd* --junit-xml=./reports/junit/junit.xml --html=./reports/junit/report.html
+          pytest $TEST_PATHS --cov=${{ github.event.repository.name }}/ --cov-report=xml --ignore-glob=*container.py --junit-xml=./reports/junit/junit.xml --html=./reports/junit/report.html
 
       - name: Generate Tests badge
         shell: bash -l {0}
