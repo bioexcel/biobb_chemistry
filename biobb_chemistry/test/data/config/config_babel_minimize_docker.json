@@ -10,7 +10,7 @@
     "rele": 10.0,
     "frequency": 10,
     "container_path": "docker",
-    "container_image": "informaticsmatters/obabel:latest",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }

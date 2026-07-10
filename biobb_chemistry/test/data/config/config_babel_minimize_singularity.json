@@ -10,7 +10,7 @@
     "rele": 10.0,
     "frequency": 10,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }

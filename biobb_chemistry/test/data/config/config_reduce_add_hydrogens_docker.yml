@@ -1,5 +1,5 @@
 properties:
-  container_image: afandiadib/ambertools:serial
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
   nooh: true

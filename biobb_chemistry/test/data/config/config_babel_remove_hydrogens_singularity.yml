@@ -1,5 +1,5 @@
 properties:
-  container_image: shub://bioexcel/obabel_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
   coordinates: 3

@@ -1,8 +1,7 @@
 properties:
   basename: BBB
   charge: 0
-  container_image: shub://bioexcel/acpype_container
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
-  container_shell_path: /bin/sh
   container_volume_path: /tmp
   container_working_dir: /tmp

@@ -60,6 +60,26 @@ properties:
   basename: BBB
 
 ```
+#### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx_docker.yml)
+```python
+properties:
+  basename: BBB
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
+  container_path: docker
+  container_user_id: '1001'
+  container_volume_path: /tmp
+
+```
+#### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx_singularity.yml)
+```python
+properties:
+  basename: BBB
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
+  container_path: singularity
+  container_volume_path: /tmp
+  container_working_dir: /tmp
+
+```
 #### Command line
 ```python
 acpype_convert_amber_to_gmx --config config_acpype_convert_amber_to_gmx.yml --input_crd_path acpype.coords.inpcrd --input_top_path acpype.top.prmtop --output_path_gro ref_acpype.amber2gmx.gro --output_path_top ref_acpype.amber2gmx.top
@@ -70,6 +90,30 @@ acpype_convert_amber_to_gmx --config config_acpype_convert_amber_to_gmx.yml --in
 {
   "properties": {
     "basename": "BBB"
+  }
+}
+```
+#### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx_docker.json)
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "container_path": "docker",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
+    "container_volume_path": "/tmp",
+    "container_user_id": "1001"
+  }
+}
+```
+#### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_acpype_convert_amber_to_gmx_singularity.json)
+```python
+{
+  "properties": {
+    "basename": "BBB",
+    "container_path": "singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
+    "container_volume_path": "/tmp",
+    "container_working_dir": "/tmp"
   }
 }
 ```
@@ -143,8 +187,9 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: acpype/acpype:2022.7.21
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
+  container_user_id: '1001'
   container_volume_path: /tmp
 
 ```
@@ -153,9 +198,8 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: shub://bioexcel/acpype_container
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
-  container_shell_path: /bin/sh
   container_volume_path: /tmp
   container_working_dir: /tmp
 
@@ -181,8 +225,9 @@ acpype_params_ac --config config_acpype_params_ac.yml --input_path acpype.params
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp"
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
+    "container_volume_path": "/tmp",
+    "container_user_id": "1001"
   }
 }
 ```
@@ -193,10 +238,9 @@ acpype_params_ac --config config_acpype_params_ac.yml --input_path acpype.params
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/acpype_container",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh"
+    "container_working_dir": "/tmp"
   }
 }
 ```
@@ -270,8 +314,9 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: acpype/acpype:2022.7.21
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
+  container_user_id: '1001'
   container_volume_path: /tmp
 
 ```
@@ -280,9 +325,8 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: shub://bioexcel/acpype_container
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
-  container_shell_path: /bin/sh
   container_volume_path: /tmp
   container_working_dir: /tmp
 
@@ -308,8 +352,9 @@ acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp"
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
+    "container_volume_path": "/tmp",
+    "container_user_id": "1001"
   }
 }
 ```
@@ -320,10 +365,9 @@ acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/acpype_container",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh"
+    "container_working_dir": "/tmp"
   }
 }
 ```
@@ -394,8 +438,9 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: acpype/acpype:2022.7.21
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
+  container_user_id: '1001'
   container_volume_path: /tmp
 
 ```
@@ -404,9 +449,8 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: shub://bioexcel/acpype_container
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
-  container_shell_path: /bin/sh
   container_volume_path: /tmp
   container_working_dir: /tmp
 
@@ -432,8 +476,9 @@ acpype_params_gmx --config config_acpype_params_gmx.yml --input_path acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp"
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
+    "container_volume_path": "/tmp",
+    "container_user_id": "1001"
   }
 }
 ```
@@ -444,10 +489,9 @@ acpype_params_gmx --config config_acpype_params_gmx.yml --input_path acpype.para
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/acpype_container",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh"
+    "container_working_dir": "/tmp"
   }
 }
 ```
@@ -515,8 +559,9 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: acpype/acpype:2022.7.21
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
+  container_user_id: '1001'
   container_volume_path: /tmp
 
 ```
@@ -525,9 +570,8 @@ properties:
 properties:
   basename: BBB
   charge: 0
-  container_image: shub://bioexcel/acpype_container
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
-  container_shell_path: /bin/sh
   container_volume_path: /tmp
   container_working_dir: /tmp
 
@@ -553,8 +597,9 @@ acpype_params_gmx_opls --config config_acpype_params_gmx_opls.yml --input_path a
     "basename": "BBB",
     "charge": 0,
     "container_path": "docker",
-    "container_image": "acpype/acpype:2022.7.21",
-    "container_volume_path": "/tmp"
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
+    "container_volume_path": "/tmp",
+    "container_user_id": "1001"
   }
 }
 ```
@@ -565,10 +610,9 @@ acpype_params_gmx_opls --config config_acpype_params_gmx_opls.yml --input_path a
     "basename": "BBB",
     "charge": 0,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/acpype_container",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp",
-    "container_shell_path": "/bin/sh"
+    "container_working_dir": "/tmp"
   }
 }
 ```
@@ -638,7 +682,7 @@ properties:
 #### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_add_hydrogens_docker.yml)
 ```python
 properties:
-  container_image: informaticsmatters/obabel:latest
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
   coordinates: 3
@@ -650,7 +694,7 @@ properties:
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_add_hydrogens_singularity.yml)
 ```python
 properties:
-  container_image: shub://bioexcel/obabel_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
   coordinates: 3
@@ -684,7 +728,7 @@ babel_add_hydrogens --config config_babel_add_hydrogens.yml --input_path babel.n
     "coordinates": 3,
     "ph": 7.4,
     "container_path": "docker",
-    "container_image": "informaticsmatters/obabel:latest",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -698,7 +742,7 @@ babel_add_hydrogens --config config_babel_add_hydrogens.yml --input_path babel.n
     "coordinates": 3,
     "ph": 7.4,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -770,7 +814,7 @@ properties:
 #### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_convert_docker.yml)
 ```python
 properties:
-  container_image: informaticsmatters/obabel:latest
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
   coordinates: 2
@@ -782,7 +826,7 @@ properties:
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_convert_singularity.yml)
 ```python
 properties:
-  container_image: shub://bioexcel/obabel_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
   coordinates: 2
@@ -816,7 +860,7 @@ babel_convert --config config_babel_convert.yml --input_path babel.smi --output_
     "coordinates": 2,
     "ph": 7.4,
     "container_path": "docker",
-    "container_image": "informaticsmatters/obabel:latest",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -830,7 +874,7 @@ babel_convert --config config_babel_convert.yml --input_path babel.smi --output_
     "coordinates": 2,
     "ph": 7.4,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -908,7 +952,7 @@ properties:
 #### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_minimize_docker.yml)
 ```python
 properties:
-  container_image: informaticsmatters/obabel:latest
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
   criteria: 1e-6
@@ -925,7 +969,7 @@ properties:
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_minimize_singularity.yml)
 ```python
 properties:
-  container_image: shub://bioexcel/obabel_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
   criteria: 1e-6
@@ -974,7 +1018,7 @@ babel_minimize --config config_babel_minimize.yml --input_path babel.minimize.pd
     "rele": 10.0,
     "frequency": 10,
     "container_path": "docker",
-    "container_image": "informaticsmatters/obabel:latest",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -993,7 +1037,7 @@ babel_minimize --config config_babel_minimize.yml --input_path babel.minimize.pd
     "rele": 10.0,
     "frequency": 10,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -1064,7 +1108,7 @@ properties:
 #### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_remove_hydrogens_docker.yml)
 ```python
 properties:
-  container_image: informaticsmatters/obabel:latest
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
   coordinates: 3
@@ -1076,7 +1120,7 @@ properties:
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_babel_remove_hydrogens_singularity.yml)
 ```python
 properties:
-  container_image: shub://bioexcel/obabel_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
   coordinates: 3
@@ -1110,7 +1154,7 @@ babel_remove_hydrogens --config config_babel_remove_hydrogens.yml --input_path b
     "coordinates": 3,
     "ph": 7.4,
     "container_path": "docker",
-    "container_image": "informaticsmatters/obabel:latest",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -1124,7 +1168,7 @@ babel_remove_hydrogens --config config_babel_remove_hydrogens.yml --input_path b
     "coordinates": 3,
     "ph": 7.4,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/obabel_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -1204,7 +1248,7 @@ properties:
 #### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_reduce_add_hydrogens_docker.yml)
 ```python
 properties:
-  container_image: afandiadib/ambertools:serial
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
   nooh: true
@@ -1213,7 +1257,7 @@ properties:
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_reduce_add_hydrogens_singularity.yml)
 ```python
 properties:
-  container_image: shub://bioexcel/ambertools_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
   nooh: true
@@ -1238,7 +1282,7 @@ reduce_add_hydrogens --config config_reduce_add_hydrogens.yml --input_path reduc
   "properties": {
     "nooh": true,
     "container_path": "docker",
-    "container_image": "afandiadib/ambertools:serial",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -1249,7 +1293,7 @@ reduce_add_hydrogens --config config_reduce_add_hydrogens.yml --input_path reduc
   "properties": {
     "nooh": true,
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/ambertools_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -1310,7 +1354,7 @@ properties:
 #### [Docker config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_reduce_remove_hydrogens_docker.yml)
 ```python
 properties:
-  container_image: afandiadib/ambertools:serial
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
   container_volume_path: /tmp
 
@@ -1318,7 +1362,7 @@ properties:
 #### [Singularity config file](https://github.com/bioexcel/biobb_chemistry/blob/master/biobb_chemistry/test/data/config/config_reduce_remove_hydrogens_singularity.yml)
 ```python
 properties:
-  container_image: shub://bioexcel/ambertools_singularity
+  container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
 
@@ -1341,7 +1385,7 @@ reduce_remove_hydrogens --config config_reduce_remove_hydrogens.yml --input_path
 {
   "properties": {
     "container_path": "docker",
-    "container_image": "afandiadib/ambertools:serial",
+    "container_image": "quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }
@@ -1351,7 +1395,7 @@ reduce_remove_hydrogens --config config_reduce_remove_hydrogens.yml --input_path
 {
   "properties": {
     "container_path": "singularity",
-    "container_image": "shub://bioexcel/ambertools_singularity",
+    "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
     "container_volume_path": "/tmp"
   }
 }

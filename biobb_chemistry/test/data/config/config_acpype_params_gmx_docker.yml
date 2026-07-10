@@ -1,6 +1,7 @@
 properties:
   basename: BBB
   charge: 0
-  container_image: acpype/acpype:2022.7.21
+  container_image: quay.io/biocontainers/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: docker
+  container_user_id: '1001'
   container_volume_path: /tmp
