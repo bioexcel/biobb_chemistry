@@ -2,4 +2,4 @@ from . import acpype, ambertools, babelm
 
 name = "biobb_chemistry"
 __all__ = ["acpype", "ambertools", "babelm"]
-__version__ = "5.2.1"
+__version__ = "5.3.0"
