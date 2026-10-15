@@ -12,6 +12,7 @@ class TestReduceRemoveHydrogens():
         pass
 
     def test_remove_hydrogens(self):
-        reduce_remove_hydrogens(properties=self.properties, **self.paths)
+        returncode = reduce_remove_hydrogens(properties=self.properties, **self.paths)
         assert fx.not_empty(self.paths['output_path'])
+        assert fx.exe_success(returncode)
         # assert fx.equal(self.paths['output_path'], self.paths['ref_output_reduce_path'])
