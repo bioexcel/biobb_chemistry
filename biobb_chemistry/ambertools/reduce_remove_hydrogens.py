@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 """Module containing the ReduceRemoveHydrogens class and the command line interface."""
+import os
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.tools import file_utils as fu
 from biobb_common.tools.file_utils import launchlogger
 from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
@@ -110,6 +112,13 @@ class ReduceRemoveHydrogens(BiobbObject):
 
         # Copy files to host
         self.copy_to_host()
+
+        # reduce -Trim always exits with -1 (255): its return code is only set by the
+        # optimization step, which -Trim skips. Success is given by the output file.
+        output_path = self.io_dict["out"]["output_path"]
+        if self.return_code == 255 and os.path.isfile(output_path) and os.path.getsize(output_path) > 0:
+            fu.log("reduce -Trim exit code 255 ignored: it is always returned when the optimization is skipped", self.out_log, self.global_log)
+            self.return_code = 0
 
         # remove temporary folder(s)
         self.remove_tmp_files()

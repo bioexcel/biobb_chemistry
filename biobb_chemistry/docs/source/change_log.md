@@ -1,5 +1,11 @@
 # Biobb Chemistry changelog
 
+## What's new in the next version?
+
+### Changes
+
+* [FIX] `reduce_remove_hydrogens`: ignore the exit code 255 that `reduce -Trim` always returns when the output file is created.
+
 ## What's new in version [5.3.0](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.0)?
 
 ### Changes
