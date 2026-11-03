@@ -24,7 +24,8 @@ jobs:
   test_containers:
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        # apptainer PPA has no Ubuntu 26.04 build yet; distro apptainer fails on userns
+        os: [ubuntu-24.04]
         python-version: ["3.11"]
     runs-on: ${{ matrix.os }}
     steps:
