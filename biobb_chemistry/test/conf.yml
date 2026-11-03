@@ -432,6 +432,7 @@ acpype_convert_amber_to_gmx:
     ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.amber2gmx.gro
     output_path_top: ref_acpype.amber2gmx.top
     ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
+    ref_output_acpype_path_top_massless: file:test_reference_dir/acpype/ref_acpype.amber2gmx.massless.top
   properties:
     basename: "BBB"
 
@@ -442,7 +443,7 @@ acpype_convert_amber_to_gmx_docker:
     output_path_gro: ref_acpype.amber2gmx.gro
     ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.amber2gmx.gro
     output_path_top: ref_acpype.amber2gmx.top
-    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.massless.top
   properties:
     basename: "BBB"
     container_path: docker
@@ -457,7 +458,7 @@ acpype_convert_amber_to_gmx_singularity:
     output_path_gro: ref_acpype.amber2gmx.gro
     ref_output_acpype_path_gro: file:test_reference_dir/acpype/ref_acpype.amber2gmx.gro
     output_path_top: ref_acpype.amber2gmx.top
-    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.top
+    ref_output_acpype_path_top: file:test_reference_dir/acpype/ref_acpype.amber2gmx.massless.top
   properties:
     basename: "BBB"
     container_path: singularity
