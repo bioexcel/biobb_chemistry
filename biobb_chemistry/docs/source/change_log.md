@@ -2,9 +2,14 @@
 
 ## What's new in the next version?
 
+## What's new in version [5.3.1](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.1)?
+
 ### Changes
 
+* [FIX] `reduce_add_hydrogens` and `reduce_remove_hydrogens`: add the standalone `reduce` package as a dependency, as AmberTools >=26 no longer ships the `reduce` binary ([#13](https://github.com/bioexcel/biobb_chemistry/issues/13)).
 * [FIX] `reduce_remove_hydrogens`: ignore the exit code 255 that `reduce -Trim` always returns when the output file is created.
+* [TEST] `acpype_convert_amber_to_gmx`: accept the atom type masses that acpype >=2026.9.2 writes in the `[ atomtypes ]` section.
+* [CI] Run the tests on GitHub-hosted runners and pin the container tests to Ubuntu 24.04.
 
 ## What's new in version [5.3.0](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.0)?
 
