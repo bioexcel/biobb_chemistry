@@ -2,6 +2,10 @@
 
 ## What's new in the next version?
 
+### Changes
+
+* [FIX] `babel_convert`, `babel_add_hydrogens` and `babel_remove_hydrogens`: remove from a PDBQT output the PDB records of the input (`HEADER`, `COMPND`, `AUTHOR`, `SEQRES`...) that Open Babel >=3.2 copies to it, which AutoDock Vina rejects ("Unknown or inappropriate tag found").
+
 ## What's new in version [5.3.1](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.1)?
 
 ### Changes

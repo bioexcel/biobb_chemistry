@@ -223,6 +223,31 @@ def get_output_format(output_format, output_path, out_log):
     return oufr
 
 
+# Records of the PDBQT format (AutoDock / Vina). Open Babel >= 3.2 also copies the
+# PDB records of the input it does not use (HEADER, COMPND, AUTHOR, SEQRES...) to a
+# PDBQT output, and Vina rejects them: "Unknown or inappropriate tag found".
+PDBQT_RECORDS = ("ATOM", "HETATM", "REMARK", "ROOT", "ENDROOT", "BRANCH", "ENDBRANCH",
+                 "TORSDOF", "BEGIN_RES", "END_RES", "MODEL", "ENDMDL", "TER", "END")
+
+
+def remove_non_pdbqt_records(output_format, output_path, out_log):
+    """Removes from a PDBQT output file the lines that are not PDBQT records"""
+    if not is_valid_output(output_format):
+        output_format = PurePath(output_path).suffix[1:]
+    if output_format != "pdbqt" or not Path(output_path).exists():
+        return
+
+    lines = Path(output_path).read_text().splitlines(keepends=True)
+    pdbqt_lines = [line for line in lines if not line.strip() or line.startswith(PDBQT_RECORDS)]
+    if len(pdbqt_lines) < len(lines):
+        Path(output_path).write_text("".join(pdbqt_lines))
+        fu.log(
+            "Removed %d non PDBQT records (copied from the input by Open Babel) from %s"
+            % (len(lines) - len(pdbqt_lines), output_path),
+            out_log,
+        )
+
+
 def get_coordinates(coordinates, out_log):
     """Checks if provided coordinates value is correct"""
     crd = str(coordinates)

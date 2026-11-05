@@ -15,6 +15,7 @@ from biobb_chemistry.babelm.common import (
     get_input_format,
     get_output_format,
     get_ph,
+    remove_non_pdbqt_records,
 )
 
 
@@ -191,6 +192,9 @@ class BabelConvert(BiobbObject):
 
         # Copy files to host
         self.copy_to_host()
+
+        # remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output
+        remove_non_pdbqt_records(self.output_format, self.io_dict["out"]["output_path"], self.out_log)
 
         # remove temporary folder(s)
         self.remove_tmp_files()
