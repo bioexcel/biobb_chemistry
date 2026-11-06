@@ -1,6 +1,6 @@
 # Biobb Chemistry changelog
 
-## What's new in the next version?
+## What's new in version [5.3.2](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.2)?
 
 ### Changes
 
