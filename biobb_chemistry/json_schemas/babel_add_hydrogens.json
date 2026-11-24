@@ -179,7 +179,11 @@
                 ".*\\.sdf$",
                 ".*\\.smi$",
                 ".*\\.smiles$",
-                ".*\\.txt$"
+                ".*\\.txt$",
+                ".*\\.dat$",
+                ".*\\.log$",
+                ".*\\.xml$",
+                ".*\\.xtc$"
             ],
             "file_formats": [
                 {
@@ -266,6 +270,26 @@
                     "extension": ".*\\.txt$",
                     "description": "Path to the output file",
                     "edam": "format_2033"
+                },
+                {
+                    "extension": ".*\\.dat$",
+                    "description": "Path to the output file",
+                    "edam": "format_1637"
+                },
+                {
+                    "extension": ".*\\.log$",
+                    "description": "Path to the output file",
+                    "edam": "format_2330"
+                },
+                {
+                    "extension": ".*\\.xml$",
+                    "description": "Path to the output file",
+                    "edam": "format_2332"
+                },
+                {
+                    "extension": ".*\\.xtc$",
+                    "description": "Path to the output file",
+                    "edam": "format_3875"
                 }
             ]
         },
