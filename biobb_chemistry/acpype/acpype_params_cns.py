@@ -3,8 +3,7 @@
 """Module containing the AcpypeParamsCNS class and the command line interface."""
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
+from biobb_chemistry.acpype.common import get_binary_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
 import os
 
 
@@ -92,17 +91,6 @@ class AcpypeParamsCNS(BiobbObject):
         get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_par"] = check_output_path(self.io_dict["out"]["output_path_par"], 'par', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_inp"] = check_output_path(self.io_dict["out"]["output_path_inp"], 'inp', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_top"] = check_output_path(self.io_dict["out"]["output_path_top"], 'top', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_pdb"] = check_output_path(self.io_dict["out"]["output_path_pdb"], 'pdb', out_log, self.__class__.__name__)
         self.output_files = {
             'par': self.io_dict["out"]["output_path_par"],
             'inp': self.io_dict["out"]["output_path_inp"],
@@ -144,17 +132,8 @@ class AcpypeParamsCNS(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> int:
         """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` acpype.acpype_params_cns.AcpypeParamsCNS object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)

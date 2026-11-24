@@ -3,8 +3,7 @@
 """Module containing the AcpypeParamsGMXOPLS class and the command line interface."""
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, GMX_OPTIONS, PARAMS_OPTIONS
+from biobb_chemistry.acpype.common import get_binary_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, GMX_OPTIONS, PARAMS_OPTIONS
 import os
 
 
@@ -89,15 +88,6 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_itp"] = check_output_path(self.io_dict["out"]["output_path_itp"], 'itp', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_top"] = check_output_path(self.io_dict["out"]["output_path_top"], 'top', out_log, self.__class__.__name__)
         self.output_files = {
             'itp': self.io_dict["out"]["output_path_itp"],
             'top': self.io_dict["out"]["output_path_top"],
@@ -137,17 +127,8 @@ class AcpypeParamsGMXOPLS(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> int:
         """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)

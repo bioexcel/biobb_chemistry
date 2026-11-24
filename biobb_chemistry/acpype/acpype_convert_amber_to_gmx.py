@@ -2,8 +2,7 @@
 
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_output_path, get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
+from biobb_chemistry.acpype.common import get_binary_path, get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
 from typing import Optional
 import os
 
@@ -81,15 +80,6 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        # NOTE: missing check input paths
-        self.io_dict["out"]["output_path_gro"] = check_output_path(self.io_dict["out"]["output_path_gro"], 'gro', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_top"] = check_output_path(self.io_dict["out"]["output_path_top"], 'top', out_log, self.__class__.__name__)
         self.output_files = {
             'gro': self.io_dict["out"]["output_path_gro"],
             'top': self.io_dict["out"]["output_path_top"],
@@ -125,17 +115,8 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> int:
         """Execute the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)

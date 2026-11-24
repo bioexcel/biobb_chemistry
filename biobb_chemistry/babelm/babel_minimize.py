@@ -4,8 +4,7 @@
 from typing import Optional
 from pathlib import PurePath
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.babelm.common import check_minimize_property, check_input_path_minimize, check_output_path_minimize
+from biobb_chemistry.babelm.common import check_minimize_property
 
 
 class BabelMinimize(BiobbObject):
@@ -89,15 +88,6 @@ class BabelMinimize(BiobbObject):
         self.binary_path = properties.get('binary_path', 'obminimize')
         self.properties = properties
 
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path_minimize(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path"] = check_output_path_minimize(self.io_dict["out"]["output_path"], out_log, self.__class__.__name__)
-
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
         instructions_list = []
@@ -146,17 +136,8 @@ class BabelMinimize(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> int:
         """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` babelm.babel_minimize.BabelMinimize object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create command line instruction
         self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
