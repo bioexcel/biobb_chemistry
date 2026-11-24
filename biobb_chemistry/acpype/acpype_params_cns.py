@@ -4,7 +4,7 @@
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns
+from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
 import os
 
 
@@ -23,6 +23,16 @@ class AcpypeParamsCNS(BiobbObject):
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
             * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+            * **charge_method** (*str*) - ("bcc") Charge method. Values: gas (Gasteiger charges), bcc (AM1-BCC charges), abcg2 (ABCG2 charges; recommended for GAFF2; not available in acpype 2023.10.27), user (charges read from the mol2 input file).
+            * **multiplicity** (*int*) - (1) [1~10|1] Multiplicity (2S+1) of the molecule.
+            * **atom_type** (*str*) - ("gaff2") Atom type. Values: gaff (General AMBER Force Field), amber (protein force field set in protein_ff + GAFF), gaff2 (General AMBER Force Field 2), amber2 (protein force field set in protein_ff + GAFF2).
+            * **protein_ff** (*str*) - ("ff14SB") Protein force field used with the amber and amber2 atom types; only written to the command line when it is not the default value, not available in acpype 2023.10.27. Values: ff14SB (AMBER ff14SB), ff99SB (AMBER ff99SB).
+            * **qprog** (*str*) - ("sqm") AM1-BCC charges engine; mopac and divcon need a full external AmberTools. Values: sqm (sqm), mopac (MOPAC), divcon (DivCon).
+            * **keyword** (*str*) - (None) Keyword of the mopac or sqm engine, ie: "qm_theory='AM1', grms_tol=0.0005, scfconv=1.d-10".
+            * **max_time** (*int*) - (10800) [1~1000000|1] Maximum time (in seconds) for the sqm or mopac execution.
+            * **predindex** (*int*) - (4) [0~5|1] Antechamber atom and bond type prediction index, the antechamber -j flag; only 1, 4 and 5 produce a topology. Only written to the command line when it is not the default value, not available in acpype 2023.10.27. Values: 0 (no prediction), 1 (atom type), 2 (full bond types), 3 (part bond types), 4 (atom and full bond type), 5 (atom and part bond type).
+            * **cnstop** (*bool*) - (False) Write the CNS topology with allhdg-like parameters (experimental).
+            * **chiral** (*bool*) - (False) Create improper dihedral parameters for chiral atoms in CNS.
             * **binary_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -78,6 +88,8 @@ class AcpypeParamsCNS(BiobbObject):
         self.basename = properties.get('basename', 'BBB')
         self.charge = properties.get('charge', '')
         self.binary_path = get_binary_path(properties, 'binary_path')
+        self.acpype_options = PARAMS_OPTIONS + CNS_OPTIONS
+        get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
         # Check the properties
@@ -126,6 +138,9 @@ class AcpypeParamsCNS(BiobbObject):
         if charge:
             charge = '-n ' + charge
             instructions_list.append(charge)
+
+        # adding the acpype options
+        instructions_list.extend(get_acpype_options_cmd(self, self.acpype_options, out_log, self.__class__.__name__))
 
         return instructions_list
 

@@ -13,6 +13,8 @@ Command:
 ```python
 acpype_convert_amber_to_gmx -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: acpype_convert_amber_to_gmx [-h] [-c CONFIG] --input_crd_path INPUT_CRD_PATH --input_top_path INPUT_TOP_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_top OUTPUT_PATH_TOP
     
     Small molecule parameterization for GROMACS MD package.
@@ -44,6 +46,11 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
+* **gmx4** (*boolean*): (False) Write Ryckaert-Bellemans dihedrals for the old GROMACS 4.0.
+* **merge** (*boolean*): (False) Merge lower and uppercase atom types in the GROMACS topology if their parameters match.
+* **sorted** (*boolean*): (False) Sort atoms for the GROMACS ordering.
+* **split_molecules** (*boolean*): (False) Write one [ moleculetype ] per molecule found in the AMBER topology, ie: protein and ligand apart (not available in acpype 2023.10.27).
+* **direct** (*boolean*): (False) Do a direct conversion of any solvent (experimental).
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.
@@ -129,6 +136,8 @@ Command:
 ```python
 acpype_params_ac -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: acpype_params_ac [-h] [-c CONFIG] -i INPUT_PATH --output_path_frcmod OUTPUT_PATH_FRCMOD --output_path_inpcrd OUTPUT_PATH_INPCRD --output_path_lib OUTPUT_PATH_LIB --output_path_prmtop OUTPUT_PATH_PRMTOP
     
     Small molecule parameterization for AMBER MD package.
@@ -164,6 +173,14 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
 * **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge_method** (*string*): (bcc) Charge method. 
+* **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
+* **atom_type** (*string*): (gaff2) Atom type. 
+* **protein_ff** (*string*): (ff14SB) Protein force field used with the amber and amber2 atom types; only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **qprog** (*string*): (sqm) AM1-BCC charges engine; mopac and divcon need a full external AmberTools. 
+* **keyword** (*string*): (None) Keyword of the mopac or sqm engine, ie: "qm_theory='AM1', grms_tol=0.0005, scfconv=1.d-10".
+* **max_time** (*integer*): (10800) Maximum time (in seconds) for the sqm or mopac execution.
+* **predindex** (*integer*): (4) Antechamber atom and bond type prediction index, the antechamber -j flag; only 1, 4 and 5 produce a topology. Only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.
@@ -256,6 +273,8 @@ Command:
 ```python
 acpype_params_cns -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: acpype_params_cns [-h] [-c CONFIG] -i INPUT_PATH --output_path_par OUTPUT_PATH_PAR --output_path_inp OUTPUT_PATH_INP --output_path_top OUTPUT_PATH_TOP --output_path_pdb OUTPUT_PATH_PDB
     
     Small molecule parameterization for CNS/XPLOR MD package.
@@ -291,6 +310,16 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
 * **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge_method** (*string*): (bcc) Charge method. 
+* **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
+* **atom_type** (*string*): (gaff2) Atom type. 
+* **protein_ff** (*string*): (ff14SB) Protein force field used with the amber and amber2 atom types; only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **qprog** (*string*): (sqm) AM1-BCC charges engine; mopac and divcon need a full external AmberTools. 
+* **keyword** (*string*): (None) Keyword of the mopac or sqm engine, ie: "qm_theory='AM1', grms_tol=0.0005, scfconv=1.d-10".
+* **max_time** (*integer*): (10800) Maximum time (in seconds) for the sqm or mopac execution.
+* **predindex** (*integer*): (4) Antechamber atom and bond type prediction index, the antechamber -j flag; only 1, 4 and 5 produce a topology. Only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **cnstop** (*boolean*): (False) Write the CNS topology with allhdg-like parameters (experimental).
+* **chiral** (*boolean*): (False) Create improper dihedral parameters for chiral atoms in CNS.
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.
@@ -383,6 +412,8 @@ Command:
 ```python
 acpype_params_gmx -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: acpype_params_gmx [-h] [-c CONFIG] -i INPUT_PATH --output_path_gro OUTPUT_PATH_GRO --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
     
     Small molecule parameterization for GROMACS MD package.
@@ -415,6 +446,17 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
 * **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge_method** (*string*): (bcc) Charge method. 
+* **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
+* **atom_type** (*string*): (gaff2) Atom type. 
+* **protein_ff** (*string*): (ff14SB) Protein force field used with the amber and amber2 atom types; only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **qprog** (*string*): (sqm) AM1-BCC charges engine; mopac and divcon need a full external AmberTools. 
+* **keyword** (*string*): (None) Keyword of the mopac or sqm engine, ie: "qm_theory='AM1', grms_tol=0.0005, scfconv=1.d-10".
+* **max_time** (*integer*): (10800) Maximum time (in seconds) for the sqm or mopac execution.
+* **predindex** (*integer*): (4) Antechamber atom and bond type prediction index, the antechamber -j flag; only 1, 4 and 5 produce a topology. Only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **gmx4** (*boolean*): (False) Write Ryckaert-Bellemans dihedrals for the old GROMACS 4.0.
+* **merge** (*boolean*): (False) Merge lower and uppercase atom types in the GROMACS topology if their parameters match.
+* **sorted** (*boolean*): (False) Sort atoms for the GROMACS ordering.
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.
@@ -507,6 +549,8 @@ Command:
 ```python
 acpype_params_gmx_opls -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: acpype_params_gmx_opls [-h] [-c CONFIG] -i INPUT_PATH --output_path_itp OUTPUT_PATH_ITP --output_path_top OUTPUT_PATH_TOP
     
     Small molecule parameterization for OPLS/AA MD package.
@@ -536,6 +580,17 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
 * **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge_method** (*string*): (bcc) Charge method. 
+* **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
+* **atom_type** (*string*): (gaff2) Atom type. 
+* **protein_ff** (*string*): (ff14SB) Protein force field used with the amber and amber2 atom types; only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **qprog** (*string*): (sqm) AM1-BCC charges engine; mopac and divcon need a full external AmberTools. 
+* **keyword** (*string*): (None) Keyword of the mopac or sqm engine, ie: "qm_theory='AM1', grms_tol=0.0005, scfconv=1.d-10".
+* **max_time** (*integer*): (10800) Maximum time (in seconds) for the sqm or mopac execution.
+* **predindex** (*integer*): (4) Antechamber atom and bond type prediction index, the antechamber -j flag; only 1, 4 and 5 produce a topology. Only written to the command line when it is not the default value, not available in acpype 2023.10.27. 
+* **gmx4** (*boolean*): (False) Write Ryckaert-Bellemans dihedrals for the old GROMACS 4.0.
+* **merge** (*boolean*): (False) Merge lower and uppercase atom types in the GROMACS topology if their parameters match.
+* **sorted** (*boolean*): (False) Sort atoms for the GROMACS ordering.
 * **binary_path** (*string*): (acpype) Path to the acpype executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.
@@ -628,6 +683,8 @@ Command:
 ```python
 babel_add_hydrogens -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: babel_add_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Adds hydrogen atoms to small molecules.
@@ -759,6 +816,8 @@ Command:
 ```python
 babel_convert -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: babel_convert [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Small molecule format conversion.
@@ -891,6 +950,8 @@ Command:
 ```python
 babel_minimize -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: babel_minimize [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Energetically minimize small molecules.
@@ -1054,6 +1115,8 @@ Command:
 ```python
 babel_remove_hydrogens -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: babel_remove_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Removes hydrogen atoms to small molecules.
@@ -1185,6 +1248,8 @@ Command:
 ```python
 reduce_add_hydrogens -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: reduce_add_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Adds hydrogen atoms to small molecules.
@@ -1310,6 +1375,8 @@ Command:
 ```python
 reduce_remove_hydrogens -h
 ```
+    /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages/Bio/__init__.py:138: BiopythonWarning: You may be importing Biopython from inside the source tree. This is bad practice and might lead to downstream issues. In particular, you might encounter ImportErrors due to missing compiled C extensions. We recommend that you try running your code from outside the source tree. If you are outside the source tree then you have a pyproject.toml file in an unexpected directory: /home/rchaves/miniforge3/envs/biobb_all/lib/python3.12/site-packages
+      warnings.warn(
     usage: reduce_remove_hydrogens [-h] [-c CONFIG] -i INPUT_PATH -o OUTPUT_PATH
     
     Removes hydrogen atoms to small molecules.

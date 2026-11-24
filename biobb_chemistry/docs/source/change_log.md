@@ -1,5 +1,11 @@
 # Biobb Chemistry changelog
 
+## [Unreleased]
+
+### Changes
+
+* [FEATURE] `acpype_params_ac`, `acpype_params_cns`, `acpype_params_gmx`, `acpype_params_gmx_opls` and `acpype_convert_amber_to_gmx`: new properties for the acpype options (`charge_method`, `multiplicity`, `atom_type`, `protein_ff`, `qprog`, `keyword`, `max_time`, `predindex`, `gmx4`, `merge`, `sorted`, `cnstop`, `chiral`, `split_molecules`, `direct`), set to the acpype defaults so that the provenance records the values used.
+
 ## What's new in version [5.3.2](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.2)?
 
 ### Changes

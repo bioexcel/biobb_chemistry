@@ -108,6 +108,36 @@
                     "wf_prop": false,
                     "description": "A basename for the project (folder and output files)."
                 },
+                "gmx4": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Write Ryckaert-Bellemans dihedrals for the old GROMACS 4.0."
+                },
+                "merge": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Merge lower and uppercase atom types in the GROMACS topology if their parameters match."
+                },
+                "sorted": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Sort atoms for the GROMACS ordering."
+                },
+                "split_molecules": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Write one [ moleculetype ] per molecule found in the AMBER topology, ie: protein and ligand apart (not available in acpype 2023.10.27)."
+                },
+                "direct": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Do a direct conversion of any solvent (experimental)."
+                },
                 "binary_path": {
                     "type": "string",
                     "default": "acpype",

@@ -1,6 +1,7 @@
 """ Common functions for package biobb_chemistry.acpype """
 from pathlib import Path, PurePath
 import glob
+import shlex
 import shutil
 import string
 import random
@@ -34,6 +35,78 @@ def check_output_path(path, type, out_log, classname):
         raise SystemExit(classname + ': Format %s in %s input file is not compatible' % (file_extension[1:], type))
 
     return path
+
+
+# acpype options available as properties: property name -> (acpype flag, acpype default)
+ACPYPE_OPTIONS = {
+    "charge_method": ("-c", "bcc"),
+    "multiplicity": ("-m", 1),
+    "atom_type": ("-a", "gaff2"),
+    "protein_ff": ("-F", "ff14SB"),
+    "qprog": ("-q", "sqm"),
+    "keyword": ("-k", None),
+    "max_time": ("-s", 10800),
+    "predindex": ("-r", 4),
+    "gmx4": ("-z", False),
+    "merge": ("-g", False),
+    "sorted": ("-l", False),
+    "cnstop": ("-t", False),
+    "chiral": ("-j", False),
+    "split_molecules": ("-S", False),
+    "direct": ("-u", False),
+}
+
+# Accepted values of the options with a closed list of values
+ACPYPE_CHOICES = {
+    "charge_method": ["gas", "bcc", "abcg2", "user"],
+    "atom_type": ["gaff", "amber", "gaff2", "amber2"],
+    "protein_ff": ["ff14SB", "ff99SB"],
+    "qprog": ["mopac", "sqm", "divcon"],
+    "predindex": [0, 1, 2, 3, 4, 5],
+}
+
+# Options that acpype 2023.10.27 (the oldest supported version) does not have:
+# they are only written to the command line when they are not the default value
+ACPYPE_NEW_OPTIONS = {"protein_ff", "predindex", "split_molecules"}
+
+# Options of the blocks that parameterize a molecule (-i input)
+PARAMS_OPTIONS = ["charge_method", "multiplicity", "atom_type", "protein_ff", "qprog", "keyword", "max_time", "predindex"]
+# Options of the GROMACS topologies
+GMX_OPTIONS = ["gmx4", "merge", "sorted"]
+# Options of the CNS topologies
+CNS_OPTIONS = ["cnstop", "chiral"]
+# Options of the AMBER to GROMACS conversion (-x inpcrd -p prmtop)
+AMB2GMX_OPTIONS = GMX_OPTIONS + ["split_molecules", "direct"]
+
+
+def get_acpype_options(obj, properties, names):
+    """ Sets the given acpype options as attributes of the block, with the acpype default
+    when they are not in the properties, so that the provenance records the values used """
+    for name in names:
+        setattr(obj, name, properties.get(name, ACPYPE_OPTIONS[name][1]))
+
+
+def get_acpype_options_cmd(obj, names, out_log, classname):
+    """ Returns the command line flags of the given acpype options of the block """
+    instructions_list = []
+    for name in names:
+        flag, default = ACPYPE_OPTIONS[name]
+        value = getattr(obj, name)
+        if name in ACPYPE_CHOICES and value not in ACPYPE_CHOICES[name]:
+            fu.log(classname + ': Value %s of the %s property is not valid, accepted values: %s' % (value, name, ', '.join(map(str, ACPYPE_CHOICES[name]))), out_log)
+            raise SystemExit(classname + ': Value %s of the %s property is not valid' % (value, name))
+        if isinstance(default, bool):
+            if value:
+                instructions_list.append(flag)
+        elif value is None or value == '':
+            continue
+        elif name in ACPYPE_NEW_OPTIONS and value == default:
+            continue
+        elif name == "keyword":
+            instructions_list.append(flag + ' ' + shlex.quote(str(value)))
+        else:
+            instructions_list.append(flag + ' ' + str(value))
+    return instructions_list
 
 
 def get_binary_path(properties, type):

@@ -134,6 +134,190 @@
                     "max": 20,
                     "step": 1
                 },
+                "charge_method": {
+                    "type": "string",
+                    "default": "bcc",
+                    "wf_prop": false,
+                    "description": "Charge method. ",
+                    "enum": [
+                        "gas",
+                        "bcc",
+                        "abcg2",
+                        "user"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "gas",
+                            "description": "Gasteiger charges"
+                        },
+                        {
+                            "name": "bcc",
+                            "description": "AM1-BCC charges"
+                        },
+                        {
+                            "name": "abcg2",
+                            "description": "ABCG2 charges; recommended for GAFF2; not available in acpype 2023.10.27"
+                        },
+                        {
+                            "name": "user",
+                            "description": "charges read from the mol2 input file"
+                        }
+                    ]
+                },
+                "multiplicity": {
+                    "type": "integer",
+                    "default": 1,
+                    "wf_prop": false,
+                    "description": "Multiplicity (2S+1) of the molecule.",
+                    "min": 1,
+                    "max": 10,
+                    "step": 1
+                },
+                "atom_type": {
+                    "type": "string",
+                    "default": "gaff2",
+                    "wf_prop": false,
+                    "description": "Atom type. ",
+                    "enum": [
+                        "gaff",
+                        "amber",
+                        "gaff2",
+                        "amber2"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "gaff",
+                            "description": "General AMBER Force Field"
+                        },
+                        {
+                            "name": "amber",
+                            "description": "protein force field set in protein_ff + GAFF"
+                        },
+                        {
+                            "name": "gaff2",
+                            "description": "General AMBER Force Field 2"
+                        },
+                        {
+                            "name": "amber2",
+                            "description": "protein force field set in protein_ff + GAFF2"
+                        }
+                    ]
+                },
+                "protein_ff": {
+                    "type": "string",
+                    "default": "ff14SB",
+                    "wf_prop": false,
+                    "description": "Protein force field used with the amber and amber2 atom types; only written to the command line when it is not the default value, not available in acpype 2023.10.27. ",
+                    "enum": [
+                        "ff14SB",
+                        "ff99SB"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "ff14SB",
+                            "description": "AMBER ff14SB"
+                        },
+                        {
+                            "name": "ff99SB",
+                            "description": "AMBER ff99SB"
+                        }
+                    ]
+                },
+                "qprog": {
+                    "type": "string",
+                    "default": "sqm",
+                    "wf_prop": false,
+                    "description": "AM1-BCC charges engine; mopac and divcon need a full external AmberTools. ",
+                    "enum": [
+                        "sqm",
+                        "mopac",
+                        "divcon"
+                    ],
+                    "property_formats": [
+                        {
+                            "name": "sqm",
+                            "description": "sqm"
+                        },
+                        {
+                            "name": "mopac",
+                            "description": "MOPAC"
+                        },
+                        {
+                            "name": "divcon",
+                            "description": "DivCon"
+                        }
+                    ]
+                },
+                "keyword": {
+                    "type": "string",
+                    "default": null,
+                    "wf_prop": false,
+                    "description": "Keyword of the mopac or sqm engine, ie: \"qm_theory='AM1', grms_tol=0.0005, scfconv=1.d-10\"."
+                },
+                "max_time": {
+                    "type": "integer",
+                    "default": 10800,
+                    "wf_prop": false,
+                    "description": "Maximum time (in seconds) for the sqm or mopac execution.",
+                    "min": 1,
+                    "max": 1000000,
+                    "step": 1
+                },
+                "predindex": {
+                    "type": "integer",
+                    "default": 4,
+                    "wf_prop": false,
+                    "description": "Antechamber atom and bond type prediction index, the antechamber -j flag; only 1, 4 and 5 produce a topology. Only written to the command line when it is not the default value, not available in acpype 2023.10.27. ",
+                    "min": 0,
+                    "max": 5,
+                    "step": 1,
+                    "enum": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "property_formats": [
+                        {
+                            "name": 0,
+                            "description": "no prediction"
+                        },
+                        {
+                            "name": 1,
+                            "description": "atom type"
+                        },
+                        {
+                            "name": 2,
+                            "description": "full bond types"
+                        },
+                        {
+                            "name": 3,
+                            "description": "part bond types"
+                        },
+                        {
+                            "name": 4,
+                            "description": "atom and full bond type"
+                        },
+                        {
+                            "name": 5,
+                            "description": "atom and part bond type"
+                        }
+                    ]
+                },
+                "cnstop": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Write the CNS topology with allhdg-like parameters (experimental)."
+                },
+                "chiral": {
+                    "type": "boolean",
+                    "default": false,
+                    "wf_prop": false,
+                    "description": "Create improper dihedral parameters for chiral atoms in CNS."
+                },
                 "binary_path": {
                     "type": "string",
                     "default": "acpype",

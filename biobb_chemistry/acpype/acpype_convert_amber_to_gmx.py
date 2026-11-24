@@ -3,7 +3,7 @@
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_output_path, get_basename, create_unique_name, get_default_value, process_output_gmx
+from biobb_chemistry.acpype.common import get_binary_path, check_output_path, get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
 from typing import Optional
 import os
 
@@ -21,6 +21,11 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         output_path_top (str): Path to the TOP output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.amber2gmx.top>`_. Accepted formats: top (edam:format_3880).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
+            * **gmx4** (*bool*) - (False) Write Ryckaert-Bellemans dihedrals for the old GROMACS 4.0.
+            * **merge** (*bool*) - (False) Merge lower and uppercase atom types in the GROMACS topology if their parameters match.
+            * **sorted** (*bool*) - (False) Sort atoms for the GROMACS ordering.
+            * **split_molecules** (*bool*) - (False) Write one [ moleculetype ] per molecule found in the AMBER topology, ie: protein and ligand apart (not available in acpype 2023.10.27).
+            * **direct** (*bool*) - (False) Do a direct conversion of any solvent (experimental).
             * **binary_path** (*str*) - ("acpype") Path to the acpype executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -72,6 +77,8 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         # Properties specific for BB
         self.basename = properties.get('basename', 'BBB')
         self.binary_path = get_binary_path(properties, 'binary_path')
+        self.acpype_options = AMB2GMX_OPTIONS
+        get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
         # Check the properties
@@ -112,6 +119,9 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         # generating output
         basename = '-b ' + out_pth
         instructions_list.append(basename)
+
+        # adding the acpype options
+        instructions_list.extend(get_acpype_options_cmd(self, self.acpype_options, out_log, self.__class__.__name__))
 
         return instructions_list
 
