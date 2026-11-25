@@ -181,7 +181,7 @@ def get_coordinates(coordinates, out_log):
 
 def get_ph(p, out_log):
     """Checks if provided coordinates value is correct"""
-    ph = str(p)
+    ph = str(p) if p is not None else ""
     if p and not isinstance(p, float) and not isinstance(p, int):
         ph = ""
         fu.log("Incorrect format for pH, no value assigned", out_log)
