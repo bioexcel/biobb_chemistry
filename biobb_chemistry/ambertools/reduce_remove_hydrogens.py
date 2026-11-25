@@ -91,10 +91,9 @@ class ReduceRemoveHydrogens(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-    def process_outputs(self) -> None:
-        """reduce -Trim always exits with -1 (255): its return code is only set by the
-        optimization step, which -Trim skips. Success is given by the output file."""
-        output_path = self.io_dict["out"]["output_path"]
+        # reduce -Trim always exits with -1 (255): its return code is only set by the
+        # optimization step, which -Trim skips. Success is given by the output file.
+        output_path = self.sandbox_file("output_path")
         if self.return_code == 255 and os.path.isfile(output_path) and os.path.getsize(output_path) > 0:
             fu.log("reduce -Trim exit code 255 ignored: it is always returned when the optimization is skipped", self.out_log, self.global_log)
             self.return_code = 0

@@ -91,11 +91,12 @@ class AcpypeParamsCNS(BiobbObject):
         get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
+        # Output files by extension, written by run() in the sandbox
         self.output_files = {
-            'par': self.io_dict["out"]["output_path_par"],
-            'inp': self.io_dict["out"]["output_path_inp"],
-            'top': self.io_dict["out"]["output_path_top"],
-            'pdb': self.io_dict["out"]["output_path_pdb"],
+            'par': "output_path_par",
+            'inp': "output_path_inp",
+            'top': "output_path_top",
+            'pdb': "output_path_pdb",
         }
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -145,15 +146,15 @@ class AcpypeParamsCNS(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-    def process_outputs(self) -> None:
-        """Copy the files that acpype writes in its folder to the output paths, with the original name in them."""
+        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
+        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
         if self.container_path or self.chdir_sandbox:
             process_output_cns(
                 self.unique_name,
                 os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
                 self.basename,
                 get_default_value(self.__class__.__name__),
-                self.output_files, self.out_log)
+                output_files, self.out_log)
         else:
             self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
             process_output_cns(
@@ -161,7 +162,7 @@ class AcpypeParamsCNS(BiobbObject):
                 self.basename + "." + self.unique_name + ".acpype",
                 self.basename,
                 get_default_value(self.__class__.__name__),
-                self.output_files, self.out_log)
+                output_files, self.out_log)
 
 
 def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str, properties: Optional[dict] = None, **kwargs) -> int:

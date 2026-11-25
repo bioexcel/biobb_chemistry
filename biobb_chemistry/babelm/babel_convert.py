@@ -165,9 +165,8 @@ class BabelConvert(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-    def process_outputs(self) -> None:
-        """Remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output."""
-        remove_non_pdbqt_records(self.output_format, self.io_dict["out"]["output_path"], self.out_log)
+        # Remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output.
+        remove_non_pdbqt_records(self.output_format, self.sandbox_file("output_path"), self.out_log)
 
 
 def babel_convert(

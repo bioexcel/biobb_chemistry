@@ -80,9 +80,10 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
+        # Output files by extension, written by run() in the sandbox
         self.output_files = {
-            'gro': self.io_dict["out"]["output_path_gro"],
-            'top': self.io_dict["out"]["output_path_top"],
+            'gro': "output_path_gro",
+            'top': "output_path_top",
         }
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -128,21 +129,21 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-    def process_outputs(self) -> None:
-        """Copy the files that acpype writes in its folder to the output paths, with the original name in them."""
+        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
+        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
         if self.container_path or self.chdir_sandbox:
             process_output_gmx(self.unique_name,
                                os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".amb2gmx"),
                                self.basename,
                                get_default_value(self.__class__.__name__),
-                               self.output_files, self.out_log)
+                               output_files, self.out_log)
         else:
             self.tmp_files.append(self.basename + "." + self.unique_name + ".amb2gmx")
             process_output_gmx(self.unique_name,
                                self.basename + "." + self.unique_name + ".amb2gmx",
                                self.basename,
                                get_default_value(self.__class__.__name__),
-                               self.output_files, self.out_log)
+                               output_files, self.out_log)
 
 
 def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:

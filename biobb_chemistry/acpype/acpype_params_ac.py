@@ -89,11 +89,12 @@ class AcpypeParamsAC(BiobbObject):
         get_acpype_options(self, properties, self.acpype_options)
         self.properties = properties
 
+        # Output files by extension, written by run() in the sandbox
         self.output_files = {
-            'frcmod': self.io_dict["out"]["output_path_frcmod"],
-            'inpcrd': self.io_dict["out"]["output_path_inpcrd"],
-            'lib': self.io_dict["out"]["output_path_lib"],
-            'prmtop': self.io_dict["out"]["output_path_prmtop"],
+            'frcmod': "output_path_frcmod",
+            'inpcrd': "output_path_inpcrd",
+            'lib': "output_path_lib",
+            'prmtop': "output_path_prmtop",
         }
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -144,21 +145,21 @@ class AcpypeParamsAC(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-    def process_outputs(self) -> None:
-        """Copy the files that acpype writes in its folder to the output paths, with the original name in them."""
+        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
+        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
         if self.container_path or self.chdir_sandbox:
             process_output(self.unique_name,
                            os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
                            self.basename,
                            get_default_value(self.__class__.__name__),
-                           self.output_files, self.out_log)
+                           output_files, self.out_log)
         else:
             self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
             process_output(self.unique_name,
                            self.basename + "." + self.unique_name + ".acpype",
                            self.basename,
                            get_default_value(self.__class__.__name__),
-                           self.output_files, self.out_log)
+                           output_files, self.out_log)
 
 
 def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: Optional[dict] = None, **kwargs) -> int:
