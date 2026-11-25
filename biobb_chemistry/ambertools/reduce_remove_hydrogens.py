@@ -5,7 +5,6 @@ import os
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools import file_utils as fu
-from biobb_chemistry.ambertools.common import get_binary_path
 
 
 class ReduceRemoveHydrogens(BiobbObject):
@@ -51,21 +50,9 @@ class ReduceRemoveHydrogens(BiobbObject):
 
     def __init__(self, input_path, output_path,
                  properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path}
-        }
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.binary_path = get_binary_path(properties, 'binary_path')
-        self.properties = properties
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""

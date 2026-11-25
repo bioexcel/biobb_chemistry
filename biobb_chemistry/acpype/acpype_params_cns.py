@@ -3,7 +3,7 @@
 """Module containing the AcpypeParamsCNS class and the command line interface."""
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_chemistry.acpype.common import get_binary_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
+from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
 import os
 
 
@@ -71,25 +71,11 @@ class AcpypeParamsCNS(BiobbObject):
 
     def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, output_path_pdb,
                  properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path_par": output_path_par, "output_path_inp": output_path_inp, "output_path_top": output_path_top, "output_path_pdb": output_path_pdb}
-        }
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.basename = properties.get('basename', 'BBB')
-        self.charge = properties.get('charge', '')
-        self.binary_path = get_binary_path(properties, 'binary_path')
         self.acpype_options = PARAMS_OPTIONS + CNS_OPTIONS
-        get_acpype_options(self, properties, self.acpype_options)
-        self.properties = properties
+        get_acpype_options(self, self.properties, self.acpype_options)
 
         # Output files by extension, written by run() in the sandbox
         self.output_files = {

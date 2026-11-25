@@ -68,28 +68,11 @@ class BabelRemoveHydrogens(BiobbObject):
     """
 
     def __init__(self, input_path, output_path, properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path},
-        }
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.input_format = properties.get("input_format", "")
-        self.output_format = properties.get("output_format", "")
-        self.fs_input = _from_string_to_list(properties.get("fs_input", None))
-        self.fs_output = _from_string_to_list(properties.get("fs_output", None))
-        self.coordinates = properties.get("coordinates", "")
-        self.effort = properties.get("effort", "medium")
-        self.ph = properties.get("ph", "")
-        self.binary_path = properties.get("binary_path", "obabel")
-        self.properties = properties
+        self.fs_input = _from_string_to_list(self.fs_input)
+        self.fs_output = _from_string_to_list(self.fs_output)
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""

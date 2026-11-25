@@ -2,7 +2,7 @@
 
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_chemistry.acpype.common import get_binary_path, get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
+from biobb_chemistry.acpype.common import get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
 from typing import Optional
 import os
 
@@ -61,24 +61,11 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
     def __init__(self, input_crd_path, input_top_path, output_path_gro, output_path_top,
                  properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_crd_path": input_crd_path, "input_top_path": input_top_path},
-            "out": {"output_path_gro": output_path_gro, "output_path_top": output_path_top}
-        }
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.basename = properties.get('basename', 'BBB')
-        self.binary_path = get_binary_path(properties, 'binary_path')
         self.acpype_options = AMB2GMX_OPTIONS
-        get_acpype_options(self, properties, self.acpype_options)
-        self.properties = properties
+        get_acpype_options(self, self.properties, self.acpype_options)
 
         # Output files by extension, written by run() in the sandbox
         self.output_files = {

@@ -3,7 +3,6 @@
 """Module containing the ReduceAddHydrogens class and the command line interface."""
 from typing import Optional
 from biobb_common.generic.biobb_object import BiobbObject
-from biobb_chemistry.ambertools.common import get_binary_path
 
 
 class ReduceAddHydrogens(BiobbObject):
@@ -72,40 +71,9 @@ class ReduceAddHydrogens(BiobbObject):
 
     def __init__(self, input_path, output_path,
                  properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path}
-        }
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.flip = properties.get('flip', False)
-        self.noflip = properties.get('noflip', False)
-        self.nuclear = properties.get('nuclear', False)
-        self.nooh = properties.get('nooh', False)
-        self.oh = properties.get('oh', True)
-        self.his = properties.get('his', False)
-        self.noheth = properties.get('noheth', False)
-        self.rotnh3 = properties.get('rotnh3', True)
-        self.norotnh3 = properties.get('norotnh3', False)
-        self.rotexist = properties.get('rotexist', False)
-        self.rotexoh = properties.get('rotexoh', False)
-        self.allalt = properties.get('allalt', True)
-        self.onlya = properties.get('onlya', False)
-        self.charges = properties.get('charges', False)
-        self.dorotmet = properties.get('dorotmet', False)
-        self.noadjust = properties.get('noadjust', False)
-        self.build = properties.get('build', False)
-        self.metal_bump = properties.get('metal_bump', None)
-        self.non_metal_bump = properties.get('non_metal_bump', None)
-        self.binary_path = get_binary_path(properties, 'binary_path')
-        self.properties = properties
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
