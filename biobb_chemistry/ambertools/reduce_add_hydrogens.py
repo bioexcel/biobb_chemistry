@@ -150,10 +150,10 @@ class ReduceAddHydrogens(BiobbObject):
             instructions_list.append('-BUILD')
 
         if self.metal_bump:
-            instructions_list.append('-METALBump ' + str(self.metal_bump))
+            instructions_list.append('-METALBump' + str(self.metal_bump))
 
         if self.non_metal_bump:
-            instructions_list.append('-NONMETALBump ' + str(self.non_metal_bump))
+            instructions_list.append('-NONMETALBump' + str(self.non_metal_bump))
 
         instructions_list.append(container_io_dict["in"]["input_path"])
         instructions_list.append('>')
