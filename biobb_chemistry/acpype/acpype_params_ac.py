@@ -148,7 +148,7 @@ class AcpypeParamsAC(BiobbObject):
         self.copy_to_host()
 
         # move files to output_path and removes temporary folder
-        if self.container_path:
+        if self.container_path or self.chdir_sandbox:
             process_output(self.unique_name,
                            os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
                            self.basename,
