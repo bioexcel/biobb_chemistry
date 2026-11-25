@@ -30,6 +30,8 @@ def get_input_format(input_format, input_path, out_log):
 def check_minimize_property(type, value, out_log):
     """Checks all minimize properties"""
     value = str(value)
+    if value == "":
+        return False
 
     if type == "criteria":
         if re.match(r"(\d+(\.\d+)?)", value) or re.match(
