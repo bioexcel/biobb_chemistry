@@ -30,7 +30,7 @@ class BabelRemoveHydrogens(BiobbObject):
             * **fs_output** (*list*) - (None) Format-specific output options. Values: b (enable automatic bonding), r (output as a rigid molecule), c (combine separate molecular pieces of input into a single rigid molecule), s (output as a flexible residue), p (preserve atom indices from input file), h (preserve hydrogens), n (preserve atom names).
             * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2 (2D coordinates), 3 (3D coordinates).
             * **effort** (*str*) - ("medium") Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. Values: fastest (only generate coordinates, no force field or conformer search), fast (perform quick forcefield optimization), medium (forcefield optimization + fast conformer search), better (more optimization + fast conformer search), best (more optimization + significant conformer search).
-            * **ph** (*float*) - (7.4) [0~14|0.1] Add hydrogens appropriate for pH.
+            * **ph** (*float*) - (None) [0~14|0.1] Add hydrogens appropriate for pH.
             * **binary_path** (*str*) - ("obabel") Path to the obabel executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
