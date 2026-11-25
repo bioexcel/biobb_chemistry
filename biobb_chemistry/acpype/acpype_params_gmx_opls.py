@@ -98,12 +98,13 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         instructions_list = []
 
         # generating output path
+        self.basename = get_basename(self.basename, out_log)
         if self.container_path:
             self.container_working_dir = self.container_volume_path
-            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            out_pth = self.basename + '.' + self.unique_name
             instructions_list.append('cd ' + self.container_volume_path + ' &&')
         else:
-            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            out_pth = self.basename + '.' + self.unique_name
 
         # executable path
         instructions_list.append(self.binary_path)
