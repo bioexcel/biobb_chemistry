@@ -172,7 +172,7 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge** (*integer*): (None) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
 * **charge_method** (*string*): (bcc) Charge method. 
 * **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
 * **atom_type** (*string*): (gaff2) Atom type. 
@@ -309,7 +309,7 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge** (*integer*): (None) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
 * **charge_method** (*string*): (bcc) Charge method. 
 * **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
 * **atom_type** (*string*): (gaff2) Atom type. 
@@ -445,7 +445,7 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge** (*integer*): (None) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
 * **charge_method** (*string*): (bcc) Charge method. 
 * **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
 * **atom_type** (*string*): (gaff2) Atom type. 
@@ -579,7 +579,7 @@ Syntax: input_parameter (datatype) - (default_value) Definition
 
 Config parameters for this building block:
 * **basename** (*string*): (BBB) A basename for the project (folder and output files).
-* **charge** (*integer*): (0) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+* **charge** (*integer*): (None) Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
 * **charge_method** (*string*): (bcc) Charge method. 
 * **multiplicity** (*integer*): (1) Multiplicity (2S+1) of the molecule.
 * **atom_type** (*string*): (gaff2) Atom type. 
