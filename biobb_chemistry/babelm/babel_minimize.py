@@ -136,7 +136,7 @@ class BabelMinimize(BiobbObject):
 
         return instructions_list
 
-    def run(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` babelm.babel_minimize.BabelMinimize object."""
 
         # create command line instruction
@@ -144,16 +144,6 @@ class BabelMinimize(BiobbObject):
 
         # Run Biobb block
         self.run_biobb()
-
-        # Copy files to host
-        self.copy_to_host()
-
-        # remove temporary folder(s)
-        self.remove_tmp_files()
-
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
 
 
 def babel_minimize(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:

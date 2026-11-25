@@ -155,7 +155,7 @@ class BabelAddHydrogens(BiobbObject):
 
         return instructions_list
 
-    def run(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` babelm.babel_add_hydrogens.BabelAddHydrogens object."""
 
         # create command line instruction
@@ -164,18 +164,9 @@ class BabelAddHydrogens(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
-
-        # remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output
+    def process_outputs(self) -> None:
+        """Remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output."""
         remove_non_pdbqt_records(self.output_format, self.io_dict["out"]["output_path"], self.out_log)
-
-        # remove temporary folder(s)
-        self.remove_tmp_files()
-
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
 
 
 def babel_add_hydrogens(

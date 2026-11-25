@@ -128,7 +128,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
 
         return instructions_list
 
-    def run(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS object."""
 
         # create unique name for temporary folder (created by acpype)
@@ -140,10 +140,8 @@ class AcpypeParamsGMXOPLS(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
-
-        # move files to output_path and removes temporary folder
+    def process_outputs(self) -> None:
+        """Copy the files that acpype writes in its folder to the output paths, with the original name in them."""
         if self.container_path or self.chdir_sandbox:
             process_output_gmx(self.unique_name,
                                os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
@@ -157,11 +155,6 @@ class AcpypeParamsGMXOPLS(BiobbObject):
                                self.basename,
                                get_default_value(self.__class__.__name__),
                                self.output_files, self.out_log)
-
-        self.remove_tmp_files()
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
 
 
 def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
