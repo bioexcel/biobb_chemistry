@@ -92,6 +92,8 @@ PDBQT_RECORDS = ("ATOM", "HETATM", "REMARK", "ROOT", "ENDROOT", "BRANCH", "ENDBR
 
 def remove_non_pdbqt_records(output_format, output_path, out_log):
     """Removes from a PDBQT output file the lines that are not PDBQT records"""
+    if not is_valid_output(output_format):
+        output_format = PurePath(output_path).suffix[1:]
     if output_format != "pdbqt" or not Path(output_path).exists():
         return
 
