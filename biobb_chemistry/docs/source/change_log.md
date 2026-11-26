@@ -9,6 +9,7 @@
 * [FIX] `acpype_params_cns`: the inp output loads the top, par and pdb outputs by their names, instead of the `BBB_CNS.top`, `BBB_CNS.par` and `BBB_NEW.pdb` files of acpype.
 * [CHANGE] `babel_minimize`: a property with a value that is not valid is left out with a log saying that obminimize uses its own default (the log said that a default value was assigned). `criteria`, `rvdw` and `rele` must be numbers: values like `1abc` were accepted.
 * [CHANGE] `babel_convert`, `babel_add_hydrogens` and `babel_remove_hydrogens`: no "not compatible" log for `input_format`, `output_format` or `coordinates` when they are not set.
+* [DOCS] `babel_convert`: the `flex` property is documented as it works: when False (the default), only the largest contiguous fragment is kept (strip salts).
 
 ## What's new in version [5.3.2](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.2)?
 

@@ -833,7 +833,7 @@ Config parameters for this building block:
 * **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. 
 * **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. 
 * **ph** (*number*): (None) Add hydrogens appropriate for pH.
-* **flex** (*boolean*): (False) Remove all but the largest contiguous fragment (strip salts).
+* **flex** (*boolean*): (False) Keep all the fragments of the molecule; if False, only the largest contiguous fragment is kept (strip salts).
 * **binary_path** (*string*): (obabel) Path to the obabel executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.

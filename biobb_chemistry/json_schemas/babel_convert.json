@@ -649,7 +649,7 @@
                     "type": "boolean",
                     "default": false,
                     "wf_prop": false,
-                    "description": "Remove all but the largest contiguous fragment (strip salts)."
+                    "description": "Keep all the fragments of the molecule; if False, only the largest contiguous fragment is kept (strip salts)."
                 },
                 "binary_path": {
                     "type": "string",
