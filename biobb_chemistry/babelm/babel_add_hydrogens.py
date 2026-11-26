@@ -5,9 +5,9 @@
 from typing import Optional
 
 from biobb_common.generic.biobb_object import BiobbObject, launcher
+from biobb_common.tools import file_utils as fu
 
 from biobb_chemistry.babelm.common import (
-    _from_string_to_list,
     get_coordinates,
     get_input_format,
     get_output_format,
@@ -72,8 +72,8 @@ class BabelAddHydrogens(BiobbObject):
         super().__init__(**locals())
 
         # Properties specific for BB
-        self.fs_input = _from_string_to_list(self.fs_input)
-        self.fs_output = _from_string_to_list(self.fs_output)
+        self.fs_input = fu.str_to_list(self.fs_input)
+        self.fs_output = fu.str_to_list(self.fs_output)
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
