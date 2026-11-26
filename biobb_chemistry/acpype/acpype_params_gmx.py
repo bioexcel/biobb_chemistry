@@ -2,7 +2,7 @@
 
 """Module containing the AcpypeParamsGMX class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, GMX_OPTIONS, PARAMS_OPTIONS
 import os
 
@@ -68,8 +68,8 @@ class AcpypeParamsGMX(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_gro, output_path_itp, output_path_top,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path_gro: str, output_path_itp: str, output_path_top: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -147,14 +147,7 @@ class AcpypeParamsGMX(BiobbObject):
                                output_files, self.out_log)
 
 
-def acpype_params_gmx(input_path: str, output_path_gro: str, output_path_itp: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeParamsGMX <acpype.acpype_params_gmx.AcpypeParamsGMX>` class and
-    execute the :meth:`launch() <acpype.acpype_params_gmx.AcpypeParamsGMX.launch>` method."""
-    return AcpypeParamsGMX(**dict(locals())).launch()
-
-
-acpype_params_gmx.__doc__ = AcpypeParamsGMX.__doc__
-main = AcpypeParamsGMX.get_main(acpype_params_gmx, "Small molecule parameterization for GROMACS MD package.")
+acpype_params_gmx = launcher(AcpypeParamsGMX)
 
 if __name__ == '__main__':
-    main()
+    AcpypeParamsGMX.main()

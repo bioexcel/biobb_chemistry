@@ -2,7 +2,7 @@
 
 """Module containing the BabelRemoveHydrogens class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 
 from biobb_chemistry.babelm.common import (
     _from_string_to_list,
@@ -67,7 +67,7 @@ class BabelRemoveHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path, properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -146,17 +146,8 @@ class BabelRemoveHydrogens(BiobbObject):
         remove_non_pdbqt_records(self.output_format, self.sandbox_file("output_path"), self.out_log)
 
 
-def babel_remove_hydrogens(
-    input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs
-) -> int:
-    """Create the :class:`BabelRemoveHydrogens <babelm.babel_remove_hydrogens.BabelRemoveHydrogens>` class and
-    execute the :meth:`launch() <babelm.babel_remove_hydrogens.BabelRemoveHydrogens.launch>` method."""
-    return BabelRemoveHydrogens(**dict(locals())).launch()
-
-
-babel_remove_hydrogens.__doc__ = BabelRemoveHydrogens.__doc__
-main = BabelRemoveHydrogens.get_main(babel_remove_hydrogens, "Removes hydrogen atoms to small molecules.")
+babel_remove_hydrogens = launcher(BabelRemoveHydrogens)
 
 
 if __name__ == "__main__":
-    main()
+    BabelRemoveHydrogens.main()

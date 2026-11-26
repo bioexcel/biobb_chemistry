@@ -2,7 +2,7 @@
 
 """Module containing the AcpypeParamsGMXOPLS class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, GMX_OPTIONS, PARAMS_OPTIONS
 import os
 
@@ -66,8 +66,8 @@ class AcpypeParamsGMXOPLS(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_itp, output_path_top,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path_itp: str, output_path_top: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -144,14 +144,7 @@ class AcpypeParamsGMXOPLS(BiobbObject):
                                output_files, self.out_log)
 
 
-def acpype_params_gmx_opls(input_path: str, output_path_itp: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` class and
-    execute the :meth:`launch() <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS.launch>` method."""
-    return AcpypeParamsGMXOPLS(**dict(locals())).launch()
-
-
-acpype_params_gmx_opls.__doc__ = AcpypeParamsGMXOPLS.__doc__
-main = AcpypeParamsGMXOPLS.get_main(acpype_params_gmx_opls, "Small molecule parameterization for OPLS/AA MD package.")
+acpype_params_gmx_opls = launcher(AcpypeParamsGMXOPLS)
 
 if __name__ == '__main__':
-    main()
+    AcpypeParamsGMXOPLS.main()

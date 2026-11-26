@@ -3,7 +3,7 @@
 """Module containing the ReduceRemoveHydrogens class and the command line interface."""
 import os
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_common.tools import file_utils as fu
 
 
@@ -48,8 +48,8 @@ class ReduceRemoveHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -86,15 +86,8 @@ class ReduceRemoveHydrogens(BiobbObject):
             self.return_code = 0
 
 
-def reduce_remove_hydrogens(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` class and
-    execute the :meth:`launch() <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens.launch>` method."""
-    return ReduceRemoveHydrogens(**dict(locals())).launch()
-
-
-reduce_remove_hydrogens.__doc__ = ReduceRemoveHydrogens.__doc__
-main = ReduceRemoveHydrogens.get_main(reduce_remove_hydrogens, "Removes hydrogen atoms to small molecules.")
+reduce_remove_hydrogens = launcher(ReduceRemoveHydrogens)
 
 
 if __name__ == '__main__':
-    main()
+    ReduceRemoveHydrogens.main()

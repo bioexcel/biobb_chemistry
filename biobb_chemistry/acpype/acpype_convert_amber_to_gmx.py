@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_chemistry.acpype.common import get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
 from typing import Optional
 import os
@@ -59,8 +59,8 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
     """
 
-    def __init__(self, input_crd_path, input_top_path, output_path_gro, output_path_top,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -133,14 +133,7 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
                                output_files, self.out_log)
 
 
-def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` class and
-    execute the :meth:`launch() <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX.launch>` method."""
-    return AcpypeConvertAMBERtoGMX(**dict(locals())).launch()
-
-
-acpype_convert_amber_to_gmx.__doc__ = AcpypeConvertAMBERtoGMX.__doc__
-main = AcpypeConvertAMBERtoGMX.get_main(acpype_convert_amber_to_gmx, "Small molecule parameterization for GROMACS MD package.")
+acpype_convert_amber_to_gmx = launcher(AcpypeConvertAMBERtoGMX)
 
 if __name__ == '__main__':
-    main()
+    AcpypeConvertAMBERtoGMX.main()

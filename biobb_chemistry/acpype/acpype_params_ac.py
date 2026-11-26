@@ -2,7 +2,7 @@
 
 """Module containing the AcpypeParamsAC class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output, get_acpype_options, get_acpype_options_cmd, PARAMS_OPTIONS
 import os
 
@@ -67,8 +67,8 @@ class AcpypeParamsAC(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_frcmod, output_path_inpcrd, output_path_lib, output_path_prmtop,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -148,14 +148,7 @@ class AcpypeParamsAC(BiobbObject):
                            output_files, self.out_log)
 
 
-def acpype_params_ac(input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` class and
-    execute the :meth:`launch() <acpype.acpype_params_ac.AcpypeParamsAC.launch>` method."""
-    return AcpypeParamsAC(**dict(locals())).launch()
-
-
-acpype_params_ac.__doc__ = AcpypeParamsAC.__doc__
-main = AcpypeParamsAC.get_main(acpype_params_ac, "Small molecule parameterization for AMBER MD package.")
+acpype_params_ac = launcher(AcpypeParamsAC)
 
 if __name__ == '__main__':
-    main()
+    AcpypeParamsAC.main()

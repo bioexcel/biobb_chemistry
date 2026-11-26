@@ -3,7 +3,7 @@
 """Module containing the BabelMinimize class and the command line interface."""
 from typing import Optional
 from pathlib import PurePath
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_chemistry.babelm.common import check_minimize_property
 
 
@@ -61,8 +61,8 @@ class BabelMinimize(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -123,15 +123,8 @@ class BabelMinimize(BiobbObject):
         self.run_biobb()
 
 
-def babel_minimize(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
-    execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
-    return BabelMinimize(**dict(locals())).launch()
-
-
-babel_minimize.__doc__ = BabelMinimize.__doc__
-main = BabelMinimize.get_main(babel_minimize, "Energetically minimize small molecules.")
+babel_minimize = launcher(BabelMinimize)
 
 
 if __name__ == '__main__':
-    main()
+    BabelMinimize.main()

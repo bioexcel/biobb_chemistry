@@ -2,7 +2,7 @@
 
 """Module containing the AcpypeParamsCNS class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
 import os
 
@@ -69,8 +69,8 @@ class AcpypeParamsCNS(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, output_path_pdb,
-                 properties=None, **kwargs) -> None:
+    def __init__(self, input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
         # Properties specific for BB
@@ -151,14 +151,7 @@ class AcpypeParamsCNS(BiobbObject):
                 output_files, self.out_log)
 
 
-def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
-    execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch>` method."""
-    return AcpypeParamsCNS(**dict(locals())).launch()
-
-
-acpype_params_cns.__doc__ = AcpypeParamsCNS.__doc__
-main = AcpypeParamsCNS.get_main(acpype_params_cns, "Small molecule parameterization for CNS/XPLOR MD package.")
+acpype_params_cns = launcher(AcpypeParamsCNS)
 
 if __name__ == '__main__':
-    main()
+    AcpypeParamsCNS.main()
