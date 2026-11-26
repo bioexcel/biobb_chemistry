@@ -638,7 +638,7 @@
                 },
                 "ph": {
                     "type": "number",
-                    "default": 7.4,
+                    "default": null,
                     "wf_prop": false,
                     "description": "Add hydrogens appropriate for pH.",
                     "min": 0.0,

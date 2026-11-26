@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
-from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_output_path, get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
+from biobb_common.generic.biobb_object import BiobbObject, launcher
+from biobb_chemistry.acpype.common import get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
 from typing import Optional
 import os
 
@@ -60,39 +59,18 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
     """
 
-    def __init__(self, input_crd_path, input_top_path, output_path_gro, output_path_top,
-                 properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_crd_path": input_crd_path, "input_top_path": input_top_path},
-            "out": {"output_path_gro": output_path_gro, "output_path_top": output_path_top}
-        }
+    def __init__(self, input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.basename = properties.get('basename', 'BBB')
-        self.binary_path = get_binary_path(properties, 'binary_path')
         self.acpype_options = AMB2GMX_OPTIONS
-        get_acpype_options(self, properties, self.acpype_options)
-        self.properties = properties
+        get_acpype_options(self, self.properties, self.acpype_options)
 
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        # NOTE: missing check input paths
-        self.io_dict["out"]["output_path_gro"] = check_output_path(self.io_dict["out"]["output_path_gro"], 'gro', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_top"] = check_output_path(self.io_dict["out"]["output_path_top"], 'top', out_log, self.__class__.__name__)
+        # Output files by extension, written by run() in the sandbox
         self.output_files = {
-            'gro': self.io_dict["out"]["output_path_gro"],
-            'top': self.io_dict["out"]["output_path_top"],
+            'gro': "output_path_gro",
+            'top': "output_path_top",
         }
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -100,12 +78,13 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         instructions_list = []
 
         # generating output path
+        self.basename = get_basename(self.basename, out_log)
         if self.container_path:
             self.container_working_dir = self.container_volume_path
-            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            out_pth = self.basename + '.' + self.unique_name
             instructions_list.append('cd ' + self.container_volume_path + ' &&')
         else:
-            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            out_pth = self.basename + '.' + self.unique_name
 
         # executable path
         instructions_list.append(self.binary_path)
@@ -125,17 +104,8 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)
@@ -146,38 +116,24 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
-
-        # move files to output_path and removes temporary folder
-        if self.container_path:
+        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
+        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
+        if self.container_path or self.chdir_sandbox:
             process_output_gmx(self.unique_name,
                                os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".amb2gmx"),
                                self.basename,
                                get_default_value(self.__class__.__name__),
-                               self.output_files, self.out_log)
+                               output_files, self.out_log)
         else:
             self.tmp_files.append(self.basename + "." + self.unique_name + ".amb2gmx")
             process_output_gmx(self.unique_name,
                                self.basename + "." + self.unique_name + ".amb2gmx",
                                self.basename,
                                get_default_value(self.__class__.__name__),
-                               self.output_files, self.out_log)
-
-        self.remove_tmp_files()
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
+                               output_files, self.out_log)
 
 
-def acpype_convert_amber_to_gmx(input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` class and
-    execute the :meth:`launch() <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX.launch>` method."""
-    return AcpypeConvertAMBERtoGMX(**dict(locals())).launch()
-
-
-acpype_convert_amber_to_gmx.__doc__ = AcpypeConvertAMBERtoGMX.__doc__
-main = AcpypeConvertAMBERtoGMX.get_main(acpype_convert_amber_to_gmx, "Small molecule parameterization for GROMACS MD package.")
+acpype_convert_amber_to_gmx = launcher(AcpypeConvertAMBERtoGMX)
 
 if __name__ == '__main__':
-    main()
+    AcpypeConvertAMBERtoGMX.main()

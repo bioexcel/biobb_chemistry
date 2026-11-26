@@ -2,9 +2,8 @@
 
 """Module containing the AcpypeParamsCNS class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.acpype.common import get_binary_path, check_input_path, check_output_path, get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
+from biobb_common.generic.biobb_object import BiobbObject, launcher
+from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output_cns, get_acpype_options, get_acpype_options_cmd, CNS_OPTIONS, PARAMS_OPTIONS
 import os
 
 
@@ -22,7 +21,7 @@ class AcpypeParamsCNS(BiobbObject):
         output_path_pdb (str): Path to the PDB output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/acpype/ref_acpype.cns.pdb>`_. Accepted formats: pdb (edam:format_1476).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
             * **basename** (*str*) - ("BBB") A basename for the project (folder and output files).
-            * **charge** (*int*) - (0) [-20~20|1] Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
+            * **charge** (*int*) - (None) [-20~20|1] Net molecular charge, for gas default is 0. If None the charge is guessed by acpype.
             * **charge_method** (*str*) - ("bcc") Charge method. Values: gas (Gasteiger charges), bcc (AM1-BCC charges), abcg2 (ABCG2 charges; recommended for GAFF2; not available in acpype 2023.10.27), user (charges read from the mol2 input file).
             * **multiplicity** (*int*) - (1) [1~10|1] Multiplicity (2S+1) of the molecule.
             * **atom_type** (*str*) - ("gaff2") Atom type. Values: gaff (General AMBER Force Field), amber (protein force field set in protein_ff + GAFF), gaff2 (General AMBER Force Field 2), amber2 (protein force field set in protein_ff + GAFF2).
@@ -70,44 +69,20 @@ class AcpypeParamsCNS(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path_par, output_path_inp, output_path_top, output_path_pdb,
-                 properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path_par": output_path_par, "output_path_inp": output_path_inp, "output_path_top": output_path_top, "output_path_pdb": output_path_pdb}
-        }
+    def __init__(self, input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.basename = properties.get('basename', 'BBB')
-        self.charge = properties.get('charge', '')
-        self.binary_path = get_binary_path(properties, 'binary_path')
         self.acpype_options = PARAMS_OPTIONS + CNS_OPTIONS
-        get_acpype_options(self, properties, self.acpype_options)
-        self.properties = properties
+        get_acpype_options(self, self.properties, self.acpype_options)
 
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_par"] = check_output_path(self.io_dict["out"]["output_path_par"], 'par', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_inp"] = check_output_path(self.io_dict["out"]["output_path_inp"], 'inp', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_top"] = check_output_path(self.io_dict["out"]["output_path_top"], 'top', out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path_pdb"] = check_output_path(self.io_dict["out"]["output_path_pdb"], 'pdb', out_log, self.__class__.__name__)
+        # Output files by extension, written by run() in the sandbox
         self.output_files = {
-            'par': self.io_dict["out"]["output_path_par"],
-            'inp': self.io_dict["out"]["output_path_inp"],
-            'top': self.io_dict["out"]["output_path_top"],
-            'pdb': self.io_dict["out"]["output_path_pdb"],
+            'par': "output_path_par",
+            'inp': "output_path_inp",
+            'top': "output_path_top",
+            'pdb': "output_path_pdb",
         }
 
     def create_cmd(self, container_io_dict, out_log, err_log):
@@ -115,12 +90,13 @@ class AcpypeParamsCNS(BiobbObject):
         instructions_list = []
 
         # generating output path
+        self.basename = get_basename(self.basename, out_log)
         if self.container_path:
             self.container_working_dir = self.container_volume_path
-            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            out_pth = self.basename + '.' + self.unique_name
             instructions_list.append('cd ' + self.container_volume_path + ' &&')
         else:
-            out_pth = get_basename(self.basename, out_log) + '.' + self.unique_name
+            out_pth = self.basename + '.' + self.unique_name
 
         # executable path
         instructions_list.append(self.binary_path)
@@ -144,17 +120,8 @@ class AcpypeParamsCNS(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` acpype.acpype_params_cns.AcpypeParamsCNS object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create unique name for temporary folder (created by acpype)
         self.unique_name = create_unique_name(6)
@@ -165,17 +132,15 @@ class AcpypeParamsCNS(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
-
-        # move files to output_path and removes temporary folder
-        if self.container_path:
+        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
+        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
+        if self.container_path or self.chdir_sandbox:
             process_output_cns(
                 self.unique_name,
                 os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
                 self.basename,
                 get_default_value(self.__class__.__name__),
-                self.output_files, self.out_log)
+                output_files, self.out_log)
         else:
             self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
             process_output_cns(
@@ -183,22 +148,10 @@ class AcpypeParamsCNS(BiobbObject):
                 self.basename + "." + self.unique_name + ".acpype",
                 self.basename,
                 get_default_value(self.__class__.__name__),
-                self.output_files, self.out_log)
-
-        self.remove_tmp_files()
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
+                output_files, self.out_log)
 
 
-def acpype_params_cns(input_path: str, output_path_par: str, output_path_inp: str, output_path_top: str, output_path_pdb: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`AcpypeParamsCNS <acpype.acpype_params_cns.AcpypeParamsCNS>` class and
-    execute the :meth:`launch() <acpype.acpype_params_cns.AcpypeParamsCNS.launch>` method."""
-    return AcpypeParamsCNS(**dict(locals())).launch()
-
-
-acpype_params_cns.__doc__ = AcpypeParamsCNS.__doc__
-main = AcpypeParamsCNS.get_main(acpype_params_cns, "Small molecule parameterization for CNS/XPLOR MD package.")
+acpype_params_cns = launcher(AcpypeParamsCNS)
 
 if __name__ == '__main__':
-    main()
+    AcpypeParamsCNS.main()

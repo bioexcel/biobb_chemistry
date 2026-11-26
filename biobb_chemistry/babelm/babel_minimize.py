@@ -3,9 +3,8 @@
 """Module containing the BabelMinimize class and the command line interface."""
 from typing import Optional
 from pathlib import PurePath
-from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.babelm.common import check_minimize_property, check_input_path_minimize, check_output_path_minimize
+from biobb_common.generic.biobb_object import BiobbObject, launcher
+from biobb_chemistry.babelm.common import check_minimize_property
 
 
 class BabelMinimize(BiobbObject):
@@ -18,15 +17,15 @@ class BabelMinimize(BiobbObject):
         input_path (str): Path to the input file. File type: input. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/data/babelm/babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
         output_path (str): Path to the output file. File type: output. `Sample file <https://github.com/bioexcel/biobb_chemistry/raw/master/biobb_chemistry/test/reference/babelm/ref_babel.minimize.pdb>`_. Accepted formats: pdb (edam:format_1476), mol2 (edam:format_3816).
         properties (dic - Python dictionary object containing the tool parameters, not input/output files):
-            * **criteria** (*float*) - (1e-6) Convergence criteria
-            * **method** (*str*) - ("cg") Method. Values: cg (conjugate gradients algorithm), sd (steepest descent algorithm).
-            * **force_field** (*str*) - (None) Force field. Values: GAFF (General Amber Force Field), Ghemical (Ghemical force field), MMFF94 (MMFF94 force field), MMFF94s (MMFF94s force field), UFF (Universal Force Field).
-            * **hydrogens** (*bool*) - (False) Add hydrogen atoms.
-            * **steps** (*int*) - (2500) [0~5000|1] Maximum number of steps.
-            * **cutoff** (*bool*) - (False) Use cut-off.
-            * **rvdw** (*float*) - (6.0) [0~50|1.0] VDW cut-off distance.
-            * **rele** (*float*) - (10.0) [0~50|1.0] Electrostatic cut-off distance.
-            * **frequency** (*int*) - (10) [0~50|1] Frequency to update the non-bonded pairs.
+            * **criteria** (*float*) - (None) Convergence criteria. If not set, obminimize uses its own default.
+            * **method** (*str*) - (None) Method. If not set, obminimize uses its own default. Values: cg (conjugate gradients algorithm), sd (steepest descent algorithm).
+            * **force_field** (*str*) - (None) Force field. If not set, obminimize uses its own default. Values: GAFF (General Amber Force Field), Ghemical (Ghemical force field), MMFF94 (MMFF94 force field), MMFF94s (MMFF94s force field), UFF (Universal Force Field).
+            * **hydrogens** (*bool*) - (None) Add hydrogen atoms. If not set, obminimize uses its own default.
+            * **steps** (*int*) - (None) [0~5000|1] Maximum number of steps. If not set, obminimize uses its own default.
+            * **cutoff** (*bool*) - (None) Use cut-off. If not set, obminimize uses its own default.
+            * **rvdw** (*float*) - (None) [0~50|1.0] VDW cut-off distance. If not set, obminimize uses its own default.
+            * **rele** (*float*) - (None) [0~50|1.0] Electrostatic cut-off distance. If not set, obminimize uses its own default.
+            * **frequency** (*int*) - (None) [0~50|1] Frequency to update the non-bonded pairs. If not set, obminimize uses its own default.
             * **binary_path** (*str*) - ("obminimize") Path to the obminimize executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -62,41 +61,9 @@ class BabelMinimize(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path,
-                 properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path}
-        }
-
-        # Properties specific for BB
-        self.criteria = properties.get('criteria', '')
-        self.method = properties.get('method', '')
-        self.force_field = properties.get('force_field', '')
-        self.hydrogens = properties.get('hydrogens', '')
-        self.steps = properties.get('steps', '')
-        self.cutoff = properties.get('cutoff', '')
-        self.rvdw = properties.get('rvdw', '')
-        self.rele = properties.get('rele', '')
-        self.frequency = properties.get('frequency', '')
-        self.binary_path = properties.get('binary_path', 'obminimize')
-        self.properties = properties
-
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path_minimize(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path"] = check_output_path_minimize(self.io_dict["out"]["output_path"], out_log, self.__class__.__name__)
+    def __init__(self, input_path: str, output_path: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
+        super().__init__(**locals())
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
@@ -146,17 +113,8 @@ class BabelMinimize(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` babelm.babel_minimize.BabelMinimize object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create command line instruction
         self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
@@ -164,26 +122,9 @@ class BabelMinimize(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
 
-        # remove temporary folder(s)
-        self.remove_tmp_files()
-
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
-
-
-def babel_minimize(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`BabelMinimize <babelm.babel_minimize.BabelMinimize>` class and
-    execute the :meth:`launch() <babelm.babel_minimize.BabelMinimize.launch>` method."""
-    return BabelMinimize(**dict(locals())).launch()
-
-
-babel_minimize.__doc__ = BabelMinimize.__doc__
-main = BabelMinimize.get_main(babel_minimize, "Energetically minimize small molecules.")
+babel_minimize = launcher(BabelMinimize)
 
 
 if __name__ == '__main__':
-    main()
+    BabelMinimize.main()

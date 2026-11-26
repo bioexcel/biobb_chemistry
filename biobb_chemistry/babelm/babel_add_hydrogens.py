@@ -4,13 +4,10 @@
 
 from typing import Optional
 
-from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 
 from biobb_chemistry.babelm.common import (
     _from_string_to_list,
-    check_input_path,
-    check_output_path,
     get_coordinates,
     get_input_format,
     get_output_format,
@@ -35,7 +32,7 @@ class BabelAddHydrogens(BiobbObject):
             * **fs_output** (*list*) - (["h"]) Format-specific output options. Values: b (enable automatic bonding), r (output as a rigid molecule), c (combine separate molecular pieces of input into a single rigid molecule), s (output as a flexible residue), p (preserve atom indices from input file), h (preserve hydrogens), n (preserve atom names).
             * **coordinates** (*int*) - (None) Type of coordinates: 2D or 3D. Values: 2 (2D coordinates), 3 (3D coordinates).
             * **effort** (*str*) - ("medium") Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. Values: fastest (only generate coordinates, no force field or conformer search), fast (perform quick forcefield optimization), medium (forcefield optimization + fast conformer search), better (more optimization + fast conformer search), best (more optimization + significant conformer search).
-            * **ph** (*float*) - (7.4) [0~14|0.1] Add hydrogens appropriate for pH.
+            * **ph** (*float*) - (None) [0~14|0.1] Add hydrogens appropriate for pH.
             * **binary_path** (*str*) - ("obabel") Path to the obabel executable binary.
             * **remove_tmp** (*bool*) - (True) [WF property] Remove temporal files.
             * **restart** (*bool*) - (False) [WF property] Do not execute if output files exist.
@@ -72,42 +69,12 @@ class BabelAddHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path, properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path},
-        }
+    def __init__(self, input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> None:
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.input_format = properties.get("input_format", "")
-        self.output_format = properties.get("output_format", "")
-        self.fs_input = _from_string_to_list(properties.get("fs_input", None))
-        self.fs_output = _from_string_to_list(properties.get("fs_output", ["h"]))
-        self.coordinates = properties.get("coordinates", "")
-        self.effort = properties.get("effort", "medium")
-        self.ph = properties.get("ph", "")
-        self.binary_path = properties.get("binary_path", "obabel")
-        self.properties = properties
-
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """Checks all the input/output paths and parameters"""
-        self.io_dict["in"]["input_path"] = check_input_path(
-            self.io_dict["in"]["input_path"], out_log, self.__class__.__name__
-        )
-        self.io_dict["out"]["output_path"] = check_output_path(
-            self.io_dict["out"]["output_path"], out_log, self.__class__.__name__
-        )
+        self.fs_input = _from_string_to_list(self.fs_input)
+        self.fs_output = _from_string_to_list(self.fs_output)
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
@@ -171,17 +138,8 @@ class BabelAddHydrogens(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` babelm.babel_add_hydrogens.BabelAddHydrogens object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create command line instruction
         self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
@@ -189,31 +147,12 @@ class BabelAddHydrogens(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
-
-        # remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output
-        remove_non_pdbqt_records(self.output_format, self.io_dict["out"]["output_path"], self.out_log)
-
-        # remove temporary folder(s)
-        self.remove_tmp_files()
-
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
+        # Remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output.
+        remove_non_pdbqt_records(self.output_format, self.sandbox_file("output_path"), self.out_log)
 
 
-def babel_add_hydrogens(
-    input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs
-) -> int:
-    """Create the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` class and
-    execute the :meth:`launch() <babelm.babel_add_hydrogens.BabelAddHydrogens.launch>` method."""
-    return BabelAddHydrogens(**dict(locals())).launch()
-
-
-babel_add_hydrogens.__doc__ = BabelAddHydrogens.__doc__
-main = BabelAddHydrogens.get_main(babel_add_hydrogens, "Adds hydrogen atoms to small molecules.")
+babel_add_hydrogens = launcher(BabelAddHydrogens)
 
 
 if __name__ == "__main__":
-    main()
+    BabelAddHydrogens.main()

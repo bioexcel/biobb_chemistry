@@ -23,17 +23,17 @@ setuptools.setup(
     python_requires=">=3.10",
     entry_points={
         "console_scripts": [
-            "acpype_params_ac = biobb_chemistry.acpype.acpype_params_ac:main",
-            "acpype_params_cns = biobb_chemistry.acpype.acpype_params_cns:main",
-            "acpype_params_gmx_opls = biobb_chemistry.acpype.acpype_params_gmx_opls:main",
-            "acpype_params_gmx = biobb_chemistry.acpype.acpype_params_gmx:main",
-            "acpype_convert_amber_to_gmx = biobb_chemistry.acpype.acpype_convert_amber_to_gmx:main",
-            "reduce_add_hydrogens = biobb_chemistry.ambertools.reduce_add_hydrogens:main",
-            "reduce_remove_hydrogens = biobb_chemistry.ambertools.reduce_remove_hydrogens:main",
-            "babel_add_hydrogens = biobb_chemistry.babelm.babel_add_hydrogens:main",
-            "babel_convert = biobb_chemistry.babelm.babel_convert:main",
-            "babel_minimize = biobb_chemistry.babelm.babel_minimize:main",
-            "babel_remove_hydrogens = biobb_chemistry.babelm.babel_remove_hydrogens:main",
+            "acpype_params_ac = biobb_chemistry.acpype.acpype_params_ac:AcpypeParamsAC.main",
+            "acpype_params_cns = biobb_chemistry.acpype.acpype_params_cns:AcpypeParamsCNS.main",
+            "acpype_params_gmx_opls = biobb_chemistry.acpype.acpype_params_gmx_opls:AcpypeParamsGMXOPLS.main",
+            "acpype_params_gmx = biobb_chemistry.acpype.acpype_params_gmx:AcpypeParamsGMX.main",
+            "acpype_convert_amber_to_gmx = biobb_chemistry.acpype.acpype_convert_amber_to_gmx:AcpypeConvertAMBERtoGMX.main",
+            "reduce_add_hydrogens = biobb_chemistry.ambertools.reduce_add_hydrogens:ReduceAddHydrogens.main",
+            "reduce_remove_hydrogens = biobb_chemistry.ambertools.reduce_remove_hydrogens:ReduceRemoveHydrogens.main",
+            "babel_add_hydrogens = biobb_chemistry.babelm.babel_add_hydrogens:BabelAddHydrogens.main",
+            "babel_convert = biobb_chemistry.babelm.babel_convert:BabelConvert.main",
+            "babel_minimize = biobb_chemistry.babelm.babel_minimize:BabelMinimize.main",
+            "babel_remove_hydrogens = biobb_chemistry.babelm.babel_remove_hydrogens:BabelRemoveHydrogens.main",
         ]
     },
     classifiers=[

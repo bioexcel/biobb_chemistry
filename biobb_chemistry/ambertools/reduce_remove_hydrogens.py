@@ -3,10 +3,8 @@
 """Module containing the ReduceRemoveHydrogens class and the command line interface."""
 import os
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 from biobb_common.tools import file_utils as fu
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
 
 
 class ReduceRemoveHydrogens(BiobbObject):
@@ -50,32 +48,11 @@ class ReduceRemoveHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path,
-                 properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path}
-        }
+    def __init__(self, input_path: str, output_path: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.binary_path = get_binary_path(properties, 'binary_path')
-        self.properties = properties
-
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path"] = check_output_path(self.io_dict["out"]["output_path"], out_log, self.__class__.__name__)
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
@@ -92,17 +69,8 @@ class ReduceRemoveHydrogens(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create command line instruction
         self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
@@ -110,33 +78,16 @@ class ReduceRemoveHydrogens(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
-
         # reduce -Trim always exits with -1 (255): its return code is only set by the
         # optimization step, which -Trim skips. Success is given by the output file.
-        output_path = self.io_dict["out"]["output_path"]
+        output_path = self.sandbox_file("output_path")
         if self.return_code == 255 and os.path.isfile(output_path) and os.path.getsize(output_path) > 0:
             fu.log("reduce -Trim exit code 255 ignored: it is always returned when the optimization is skipped", self.out_log, self.global_log)
             self.return_code = 0
 
-        # remove temporary folder(s)
-        self.remove_tmp_files()
 
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
-
-
-def reduce_remove_hydrogens(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`ReduceRemoveHydrogens <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens>` class and
-    execute the :meth:`launch() <ambertools.reduce_remove_hydrogens.ReduceRemoveHydrogens.launch>` method."""
-    return ReduceRemoveHydrogens(**dict(locals())).launch()
-
-
-reduce_remove_hydrogens.__doc__ = ReduceRemoveHydrogens.__doc__
-main = ReduceRemoveHydrogens.get_main(reduce_remove_hydrogens, "Removes hydrogen atoms to small molecules.")
+reduce_remove_hydrogens = launcher(ReduceRemoveHydrogens)
 
 
 if __name__ == '__main__':
-    main()
+    ReduceRemoveHydrogens.main()

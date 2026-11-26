@@ -2,9 +2,7 @@
 
 """Module containing the ReduceAddHydrogens class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject
-from biobb_common.tools.file_utils import launchlogger
-from biobb_chemistry.ambertools.common import get_binary_path, check_input_path, check_output_path
+from biobb_common.generic.biobb_object import BiobbObject, launcher
 
 
 class ReduceAddHydrogens(BiobbObject):
@@ -71,51 +69,11 @@ class ReduceAddHydrogens(BiobbObject):
 
     """
 
-    def __init__(self, input_path, output_path,
-                 properties=None, **kwargs) -> None:
-        properties = properties or {}
-
-        # Call parent class constructor
-        super().__init__(properties)
-        self.locals_var_dict = locals().copy()
-
-        # Input/Output files
-        self.io_dict = {
-            "in": {"input_path": input_path},
-            "out": {"output_path": output_path}
-        }
+    def __init__(self, input_path: str, output_path: str,
+                 properties: Optional[dict] = None, **kwargs) -> None:
+        super().__init__(**locals())
 
         # Properties specific for BB
-        self.flip = properties.get('flip', False)
-        self.noflip = properties.get('noflip', False)
-        self.nuclear = properties.get('nuclear', False)
-        self.nooh = properties.get('nooh', False)
-        self.oh = properties.get('oh', True)
-        self.his = properties.get('his', False)
-        self.noheth = properties.get('noheth', False)
-        self.rotnh3 = properties.get('rotnh3', True)
-        self.norotnh3 = properties.get('norotnh3', False)
-        self.rotexist = properties.get('rotexist', False)
-        self.rotexoh = properties.get('rotexoh', False)
-        self.allalt = properties.get('allalt', True)
-        self.onlya = properties.get('onlya', False)
-        self.charges = properties.get('charges', False)
-        self.dorotmet = properties.get('dorotmet', False)
-        self.noadjust = properties.get('noadjust', False)
-        self.build = properties.get('build', False)
-        self.metal_bump = properties.get('metal_bump', None)
-        self.non_metal_bump = properties.get('non_metal_bump', None)
-        self.binary_path = get_binary_path(properties, 'binary_path')
-        self.properties = properties
-
-        # Check the properties
-        self.check_properties(properties)
-        self.check_arguments()
-
-    def check_data_params(self, out_log, err_log):
-        """ Checks all the input/output paths and parameters """
-        self.io_dict["in"]["input_path"] = check_input_path(self.io_dict["in"]["input_path"], out_log, self.__class__.__name__)
-        self.io_dict["out"]["output_path"] = check_output_path(self.io_dict["out"]["output_path"], out_log, self.__class__.__name__)
 
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
@@ -160,10 +118,10 @@ class ReduceAddHydrogens(BiobbObject):
             instructions_list.append('-BUILD')
 
         if self.metal_bump:
-            instructions_list.append('-METALBump ' + str(self.metal_bump))
+            instructions_list.append('-METALBump' + str(self.metal_bump))
 
         if self.non_metal_bump:
-            instructions_list.append('-NONMETALBump ' + str(self.non_metal_bump))
+            instructions_list.append('-NONMETALBump' + str(self.non_metal_bump))
 
         instructions_list.append(container_io_dict["in"]["input_path"])
         instructions_list.append('>')
@@ -171,17 +129,8 @@ class ReduceAddHydrogens(BiobbObject):
 
         return instructions_list
 
-    @launchlogger
-    def launch(self) -> int:
+    def run(self) -> None:
         """Execute the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` ambertools.reduce_add_hydrogens.ReduceAddHydrogens object."""
-
-        # check input/output paths and parameters
-        self.check_data_params(self.out_log, self.err_log)
-
-        # Setup Biobb
-        if self.check_restart():
-            return 0
-        self.stage_files()
 
         # create command line instruction
         self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
@@ -189,25 +138,8 @@ class ReduceAddHydrogens(BiobbObject):
         # Run Biobb block
         self.run_biobb()
 
-        # Copy files to host
-        self.copy_to_host()
 
-        # remove temporary folder(s)
-        self.remove_tmp_files()
-
-        self.check_arguments(output_files_created=True, raise_exception=False)
-
-        return self.return_code
-
-
-def reduce_add_hydrogens(input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> int:
-    """Create the :class:`ReduceAddHydrogens <ambertools.reduce_add_hydrogens.ReduceAddHydrogens>` class and
-    execute the :meth:`launch() <ambertools.reduce_add_hydrogens.ReduceAddHydrogens.launch>` method."""
-    return ReduceAddHydrogens(**dict(locals())).launch()
-
-
-reduce_add_hydrogens.__doc__ = ReduceAddHydrogens.__doc__
-main = ReduceAddHydrogens.get_main(reduce_add_hydrogens, "Adds hydrogen atoms to small molecules.")
+reduce_add_hydrogens = launcher(ReduceAddHydrogens)
 
 if __name__ == '__main__':
-    main()
+    ReduceAddHydrogens.main()
