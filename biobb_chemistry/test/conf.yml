@@ -275,7 +275,6 @@ acpype_params_gmx_singularity:
     container_path: singularity
     container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_working_dir: /tmp
 
 acpype_params_ac:
   paths:
@@ -328,7 +327,6 @@ acpype_params_ac_singularity:
     container_path: singularity
     container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_working_dir: /tmp
 
 acpype_params_gmx_opls:
   paths:
@@ -369,7 +367,6 @@ acpype_params_gmx_opls_singularity:
     container_path: singularity
     container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_working_dir: /tmp
 
 acpype_params_cns:
   paths:
@@ -422,7 +419,6 @@ acpype_params_cns_singularity:
     container_path: singularity
     container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_working_dir: /tmp
 
 acpype_convert_amber_to_gmx:
   paths:
@@ -464,4 +460,3 @@ acpype_convert_amber_to_gmx_singularity:
     container_path: singularity
     container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
     container_volume_path: /tmp
-    container_working_dir: /tmp

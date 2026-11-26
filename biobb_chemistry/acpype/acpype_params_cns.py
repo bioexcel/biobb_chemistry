@@ -39,7 +39,6 @@ class AcpypeParamsCNS(BiobbObject):
             * **container_path** (*str*) - (None) Container path definition.
             * **container_image** (*str*) - ('acpype/acpype:2022.7.21') Container image definition.
             * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
-            * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
@@ -91,12 +90,7 @@ class AcpypeParamsCNS(BiobbObject):
 
         # generating output path
         self.basename = get_basename(self.basename, out_log)
-        if self.container_path:
-            self.container_working_dir = self.container_volume_path
-            out_pth = self.basename + '.' + self.unique_name
-            instructions_list.append('cd ' + self.container_volume_path + ' &&')
-        else:
-            out_pth = self.basename + '.' + self.unique_name
+        out_pth = self.basename + '.' + self.unique_name
 
         # executable path
         instructions_list.append(self.binary_path)
@@ -134,21 +128,13 @@ class AcpypeParamsCNS(BiobbObject):
 
         # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
         output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
-        if self.container_path or self.chdir_sandbox:
-            process_output_cns(
-                self.unique_name,
-                os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
-                self.basename,
-                get_default_value(self.__class__.__name__),
-                output_files, self.out_log)
-        else:
-            self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
-            process_output_cns(
-                self.unique_name,
-                self.basename + "." + self.unique_name + ".acpype",
-                self.basename,
-                get_default_value(self.__class__.__name__),
-                output_files, self.out_log)
+        # acpype writes its folder where it runs: in the sandbox
+        process_output_cns(
+            self.unique_name,
+            os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
+            self.basename,
+            get_default_value(self.__class__.__name__),
+            output_files, self.out_log)
 
 
 acpype_params_cns = launcher(AcpypeParamsCNS)
