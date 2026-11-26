@@ -1,16 +1,14 @@
 """ Common functions for package biobb_chemistry.acpype """
-from pathlib import Path, PurePath
-import glob
 import shlex
 import shutil
-import string
-import random
-import fileinput
+from pathlib import Path
+from biobb_common.generic.biobb_object import BiobbObject
 from biobb_common.tools import file_utils as fu
 
 
 # acpype options available as properties: property name -> (acpype flag, acpype default)
 ACPYPE_OPTIONS = {
+    "charge": ("-n", None),
     "charge_method": ("-c", "bcc"),
     "multiplicity": ("-m", 1),
     "atom_type": ("-a", "gaff2"),
@@ -42,7 +40,7 @@ ACPYPE_CHOICES = {
 ACPYPE_NEW_OPTIONS = {"protein_ff", "predindex", "split_molecules"}
 
 # Options of the blocks that parameterize a molecule (-i input)
-PARAMS_OPTIONS = ["charge_method", "multiplicity", "atom_type", "protein_ff", "qprog", "keyword", "max_time", "predindex"]
+PARAMS_OPTIONS = ["charge", "charge_method", "multiplicity", "atom_type", "protein_ff", "qprog", "keyword", "max_time", "predindex"]
 # Options of the GROMACS topologies
 GMX_OPTIONS = ["gmx4", "merge", "sorted"]
 # Options of the CNS topologies
@@ -51,178 +49,75 @@ CNS_OPTIONS = ["cnstop", "chiral"]
 AMB2GMX_OPTIONS = GMX_OPTIONS + ["split_molecules", "direct"]
 
 
-def get_acpype_options(obj, properties, names):
-    """ Sets the given acpype options as attributes of the block, with the acpype default
-    when they are not in the properties, so that the provenance records the values used """
-    for name in names:
-        setattr(obj, name, properties.get(name, ACPYPE_OPTIONS[name][1]))
+class AcpypeBase(BiobbObject):
+    """Base class of the acpype blocks: goes from the properties to the acpype command, run in the
+    sandbox, and from the files acpype writes to the outputs."""
 
+    #: Input arguments -> acpype flag
+    acpype_inputs: dict[str, str] = {"input_path": "-i"}
+    #: Properties of the block that are acpype options, see ACPYPE_OPTIONS
+    acpype_options: list[str] = []
+    #: Output arguments -> file acpype writes, after the basename (ie: "_GMX.gro" for BBB_GMX.gro)
+    acpype_outputs: dict[str, str] = {}
+    #: Files included by an output (#include of a GROMACS top, @ of a CNS inp), renamed to the
+    #: name of the output: {output argument: {file acpype includes, after the basename: output argument}}
+    acpype_includes: dict[str, dict[str, str]] = {}
+    #: Folder acpype writes, after the basename
+    acpype_folder = ".acpype"
 
-def get_acpype_options_cmd(obj, names, out_log, classname):
-    """ Returns the command line flags of the given acpype options of the block """
-    instructions_list = []
-    for name in names:
-        flag, default = ACPYPE_OPTIONS[name]
-        value = getattr(obj, name)
-        if name in ACPYPE_CHOICES and value not in ACPYPE_CHOICES[name]:
-            fu.log(classname + ': Value %s of the %s property is not valid, accepted values: %s' % (value, name, ', '.join(map(str, ACPYPE_CHOICES[name]))), out_log)
-            raise SystemExit(classname + ': Value %s of the %s property is not valid' % (value, name))
-        if isinstance(default, bool):
-            if value:
-                instructions_list.append(flag)
-        elif value is None or value == '':
-            continue
-        elif name in ACPYPE_NEW_OPTIONS and value == default:
-            continue
-        elif name == "keyword":
-            instructions_list.append(flag + ' ' + shlex.quote(str(value)))
-        else:
-            instructions_list.append(flag + ' ' + str(value))
-    return instructions_list
+    def prepare(self) -> None:
+        """Checks the basename, the charge and the values of the acpype options"""
+        if not self.basename:
+            fu.log('No basename provided, default value BBB assigned', self.out_log)
+        self.basename = str(self.basename or 'BBB')
 
+        if "charge" in self.acpype_options:
+            if self.charge is None or self.charge == '':
+                fu.log('Charge will be guessed by acpype.', self.out_log)
+                self.charge = None
+            elif not isinstance(self.charge, int):
+                fu.log('Value %s is not compatible as a charge value, default value 0 assigned' % self.charge, self.out_log)
+                self.charge = 0
 
-def get_binary_path(properties, type):
-    """ Gets binary path """
-    return properties.get(type, get_default_value(type))
+        classname = type(self).__name__
+        for name in self.acpype_options:
+            value = getattr(self, name)
+            if name in ACPYPE_CHOICES and value not in ACPYPE_CHOICES[name]:
+                fu.log(classname + ': Value %s of the %s property is not valid, accepted values: %s' % (value, name, ', '.join(map(str, ACPYPE_CHOICES[name]))), self.out_log)
+                raise SystemExit(classname + ': Value %s of the %s property is not valid' % (value, name))
 
+    def run(self) -> None:
+        """Runs acpype in the sandbox and copies the files it writes to the outputs"""
+        self.cmd = [self.binary_path]
+        self.cmd += [flag + ' ' + self.stage_io_dict["in"][arg] for arg, flag in self.acpype_inputs.items()]
+        self.cmd.append('-b ' + self.basename)
+        for name in self.acpype_options:
+            flag, default = ACPYPE_OPTIONS[name]
+            value = getattr(self, name)
+            if isinstance(default, bool):
+                if value:
+                    self.cmd.append(flag)
+            elif value is None or value == '' or (name in ACPYPE_NEW_OPTIONS and value == default):
+                continue
+            elif name == "keyword":
+                self.cmd.append(flag + ' ' + shlex.quote(str(value)))
+            else:
+                self.cmd.append(flag + ' ' + str(value))
 
-def get_basename(basename, out_log):
-    """ Checks if provided basename value is correct """
-    bsn = str(basename)
-    if basename == '':
-        fu.log('No basename provided, default value %s assigned' % get_default_value('basename'), out_log)
-        bsn = get_default_value('basename')
+        self.run_biobb()
 
-    return bsn
+        # acpype writes its folder where it runs: in the sandbox
+        folder = Path(self.stage_io_dict["unique_dir"]) / (self.basename + self.acpype_folder)
+        for arg, suffix in self.acpype_outputs.items():
+            src = folder / (self.basename + suffix)
+            if src.is_file():
+                shutil.copy(src, self.sandbox_file(arg))
+                fu.log('File %s created' % self.io_dict["out"][arg], self.out_log)
 
-
-def get_charge(charge, out_log):
-    """ Checks if provided charge value is correct """
-    ch = charge
-    if ch is None or ch == '':
-        fu.log('Charge will be guessed by acpype.', out_log)
-        return ch
-
-    if not isinstance(ch, int):
-        fu.log('Value %s is not compatible as a charge value, default value %d assigned' % (ch, get_default_value('charge')), out_log)
-        ch = get_default_value('charge')
-
-    return str(ch)
-
-
-def create_unique_name(length=10, char=string.ascii_uppercase + string.digits + string.ascii_lowercase):
-    return ''.join(random.choice(char) for x in range(length))
-
-
-def get_default_value(key):
-    """ Gives default values according to the given key """
-    default_values = {
-        "charge": 0,
-        "basename": "BBB",
-        "binary_path": "acpype",
-        "AcpypeParamsGMX": {
-            "topology": "GROMACS",
-            "suffix": "_GMX."
-        },
-        "AcpypeParamsAC": {
-            "topology": "Antechamber",
-            "suffix": "_AC."
-        },
-        "AcpypeParamsGMXOPLS": {
-            "topology": "OPLS/AA",
-            "suffix": "_GMX_OPLS."
-        },
-        "AcpypeParamsCNS": {
-            "topology": "GROMACS",
-            "suffix": "_CNS."
-        },
-        "AcpypeConvertAMBERtoGMX": {
-            "topology": "GMX",
-            "suffix": "_GMX"
-        }
-    }
-
-    return default_values[key]
-
-
-def process_output(unique_name, files_folder, basename, class_params, output_files, out_log):
-    """ Moves and removes temporal files generated by the wrapper """
-    path = files_folder
-    suffix = class_params['suffix']
-    src_files = glob.glob(path + '/' + basename + '.' + unique_name + suffix + '*')
-
-    # copy files for the requested topology to the output_path
-    for file_name in src_files:
-        # replace random name by original name in all files
-        with fileinput.FileInput(file_name, inplace=True) as file:
-            for line in file:
-                print(line.replace(basename + '.' + unique_name, basename), end='')
-
-        if (Path(file_name).is_file()):
-            file_extension = PurePath(file_name).suffix
-            shutil.copy(file_name, output_files[file_extension[1:]])
-            fu.log('File %s succesfully created' % output_files[file_extension[1:]], out_log)
-
-    # if remove_tmp:
-    #     # remove temporary folder
-    #     fu.rm(files_folder)
-    #     fu.log('Removed temporary folder: %s' % files_folder, out_log)
-
-
-def process_output_gmx(unique_name, files_folder, basename, class_params, output_files, out_log):
-    """ Moves and removes temporal files generated by the wrapper """
-    path = files_folder
-    suffix = class_params['suffix']
-    src_files = glob.glob(path + '/' + basename + '.' + unique_name + suffix + '*')
-
-    # copy files for the requested topology to the output_path
-    for file_name in src_files:
-        # replace random name by original name in all files
-        with fileinput.FileInput(file_name, inplace=True) as file:
-            for line in file:
-                print(line.replace(basename + '.' + unique_name, basename), end='')
-
-        if (Path(file_name).is_file()):
-            file_extension = PurePath(file_name).suffix
-            # in top files for gromacs, replace file.itp by name given by user
-            if (file_extension[1:] == 'top') and ('itp' in output_files):
-                with open(file_name) as f:
-                    newText = f.read().replace(basename + '_GMX.itp', PurePath(output_files['itp']).name)
-                with open(file_name, "w") as f:
-                    f.write(newText)
-            shutil.copy(file_name, output_files[file_extension[1:]])
-            fu.log('File %s succesfully created' % output_files[file_extension[1:]], out_log)
-
-
-def process_output_cns(unique_name, files_folder, basename, class_params, output_files, out_log):
-    """ Moves and removes temporal files generated by the wrapper """
-    path = files_folder
-    suffix = class_params['suffix']
-    src_files = glob.glob(path + '/' + basename + '.' + unique_name + suffix + '*')
-
-    # copy files for the requested topology to the output_path
-    for file_name in src_files:
-        # replace random name by original name in all files
-        with fileinput.FileInput(file_name, inplace=True) as file:
-            for line in file:
-                print(line.replace(basename + '.' + unique_name, basename), end='')
-
-        if (Path(file_name).is_file()):
-            file_extension = PurePath(file_name).suffix
-            fu.log('Files: %s' % str(file_name), out_log)
-            shutil.copy(file_name, output_files[file_extension[1:]])
-            fu.log('File %s succesfully created' % output_files[file_extension[1:]], out_log)
-
-    file_extension = ".pdb"
-    file_name = path + '/' + basename + '.' + unique_name + "_NEW.pdb"
-    with open(file_name) as f:
-        newText = f.read().replace(basename + '_NEW.pdb', PurePath(output_files['pdb']).name)
-    with open(file_name, "w") as f:
-        f.write(newText)
-    shutil.copy(file_name, output_files[file_extension[1:]])
-    fu.log('File %s succesfully created' % output_files[file_extension[1:]], out_log)
-
-    # if remove_tmp:
-    #     # remove temporary folder
-    #     fu.rm(files_folder)
-    #     fu.log('Removed temporary folder: %s' % files_folder, out_log)
+        for arg, includes in self.acpype_includes.items():
+            output = Path(self.sandbox_file(arg))
+            if output.is_file():
+                text = output.read_text()
+                for suffix, included in includes.items():
+                    text = text.replace(self.basename + suffix, Path(self.sandbox_file(included)).name)
+                output.write_text(text)

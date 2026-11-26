@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 """Module containing the AcpypeConvertAMBERtoGMX class and the command line interface."""
-from biobb_common.generic.biobb_object import BiobbObject, launcher
-from biobb_chemistry.acpype.common import get_basename, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, AMB2GMX_OPTIONS
 from typing import Optional
-import os
+from biobb_common.generic.biobb_object import launcher
+from biobb_chemistry.acpype import common
 
 
-class AcpypeConvertAMBERtoGMX(BiobbObject):
+class AcpypeConvertAMBERtoGMX(common.AcpypeBase):
     """
     | biobb_chemistry AcpypeConvertAMBERtoGMX
     | This class is a wrapper of `Acpype <https://github.com/alanwilter/acpype>`_ tool for the conversion of AMBER topologies to GROMACS.
@@ -58,66 +57,14 @@ class AcpypeConvertAMBERtoGMX(BiobbObject):
 
     """
 
+    acpype_inputs = {'input_crd_path': '-x', 'input_top_path': '-p'}
+    acpype_options = common.AMB2GMX_OPTIONS
+    acpype_outputs = {'output_path_gro': '_GMX.gro', 'output_path_top': '_GMX.top'}
+    acpype_folder = '.amb2gmx'
+
     def __init__(self, input_crd_path: str, input_top_path: str, output_path_gro: str, output_path_top: str,
                  properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
-
-        # Properties specific for BB
-        self.acpype_options = AMB2GMX_OPTIONS
-        get_acpype_options(self, self.properties, self.acpype_options)
-
-        # Output files by extension, written by run() in the sandbox
-        self.output_files = {
-            'gro': "output_path_gro",
-            'top': "output_path_top",
-        }
-
-    def create_cmd(self, container_io_dict, out_log, err_log):
-        """Creates the command line instruction using the properties file settings"""
-        instructions_list = []
-
-        # generating output path
-        self.basename = get_basename(self.basename, out_log)
-        out_pth = self.basename + '.' + self.unique_name
-
-        # executable path
-        instructions_list.append(self.binary_path)
-
-        # generating inputs
-        crdpath = '-x ' + container_io_dict["in"]["input_crd_path"]
-        instructions_list.append(crdpath)
-        prmtopath = '-p ' + container_io_dict["in"]["input_top_path"]
-        instructions_list.append(prmtopath)
-
-        # generating output
-        basename = '-b ' + out_pth
-        instructions_list.append(basename)
-
-        # adding the acpype options
-        instructions_list.extend(get_acpype_options_cmd(self, self.acpype_options, out_log, self.__class__.__name__))
-
-        return instructions_list
-
-    def run(self) -> None:
-        """Execute the :class:`AcpypeConvertAMBERtoGMX <acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX>` acpype.acpype_convert_amber_to_gmx.AcpypeConvertAMBERtoGMX object."""
-
-        # create unique name for temporary folder (created by acpype)
-        self.unique_name = create_unique_name(6)
-
-        # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
-
-        # Run Biobb block
-        self.run_biobb()
-
-        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
-        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
-        # acpype writes its folder where it runs: in the sandbox
-        process_output_gmx(self.unique_name,
-                           os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".amb2gmx"),
-                           self.basename,
-                           get_default_value(self.__class__.__name__),
-                           output_files, self.out_log)
 
 
 acpype_convert_amber_to_gmx = launcher(AcpypeConvertAMBERtoGMX)

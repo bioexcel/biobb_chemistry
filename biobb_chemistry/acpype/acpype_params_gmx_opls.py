@@ -2,12 +2,11 @@
 
 """Module containing the AcpypeParamsGMXOPLS class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject, launcher
-from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output_gmx, get_acpype_options, get_acpype_options_cmd, GMX_OPTIONS, PARAMS_OPTIONS
-import os
+from biobb_common.generic.biobb_object import launcher
+from biobb_chemistry.acpype import common
 
 
-class AcpypeParamsGMXOPLS(BiobbObject):
+class AcpypeParamsGMXOPLS(common.AcpypeBase):
     """
     | biobb_chemistry AcpypeParamsGMXOPLS
     | This class is a wrapper of `Acpype <https://github.com/alanwilter/acpype>`_ tool for generation of topologies for OPLS/AA.
@@ -65,70 +64,14 @@ class AcpypeParamsGMXOPLS(BiobbObject):
 
     """
 
+    acpype_options = common.PARAMS_OPTIONS + common.GMX_OPTIONS
+    acpype_outputs = {'output_path_itp': '_GMX_OPLS.itp', 'output_path_top': '_GMX_OPLS.top'}
+    # acpype includes BBB_GMX.itp in the OPLS/AA top
+    acpype_includes = {'output_path_top': {'_GMX.itp': 'output_path_itp'}}
+
     def __init__(self, input_path: str, output_path_itp: str, output_path_top: str,
                  properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
-
-        # Properties specific for BB
-        self.acpype_options = PARAMS_OPTIONS + GMX_OPTIONS
-        get_acpype_options(self, self.properties, self.acpype_options)
-
-        # Output files by extension, written by run() in the sandbox
-        self.output_files = {
-            'itp': "output_path_itp",
-            'top': "output_path_top",
-        }
-
-    def create_cmd(self, container_io_dict, out_log, err_log):
-        """Creates the command line instruction using the properties file settings"""
-        instructions_list = []
-
-        # generating output path
-        self.basename = get_basename(self.basename, out_log)
-        out_pth = self.basename + '.' + self.unique_name
-
-        # executable path
-        instructions_list.append(self.binary_path)
-
-        # generating input
-        ipath = '-i ' + container_io_dict["in"]["input_path"]
-        instructions_list.append(ipath)
-
-        # generating output
-        basename = '-b ' + out_pth
-        instructions_list.append(basename)
-
-        # adding charge if not none
-        charge = get_charge(self.charge, out_log)
-        if charge:
-            charge = '-n ' + charge
-            instructions_list.append(charge)
-
-        # adding the acpype options
-        instructions_list.extend(get_acpype_options_cmd(self, self.acpype_options, out_log, self.__class__.__name__))
-
-        return instructions_list
-
-    def run(self) -> None:
-        """Execute the :class:`AcpypeParamsGMXOPLS <acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS>` acpype.acpype_params_gmx_opls.AcpypeParamsGMXOPLS object."""
-
-        # create unique name for temporary folder (created by acpype)
-        self.unique_name = create_unique_name(6)
-
-        # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
-
-        # Run Biobb block
-        self.run_biobb()
-
-        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
-        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
-        # acpype writes its folder where it runs: in the sandbox
-        process_output_gmx(self.unique_name,
-                           os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
-                           self.basename,
-                           get_default_value(self.__class__.__name__),
-                           output_files, self.out_log)
 
 
 acpype_params_gmx_opls = launcher(AcpypeParamsGMXOPLS)
