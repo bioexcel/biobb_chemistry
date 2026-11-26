@@ -7,6 +7,8 @@
 * [FEATURE] `acpype_params_ac`, `acpype_params_cns`, `acpype_params_gmx`, `acpype_params_gmx_opls` and `acpype_convert_amber_to_gmx`: new properties for the acpype options (`charge_method`, `multiplicity`, `atom_type`, `protein_ff`, `qprog`, `keyword`, `max_time`, `predindex`, `gmx4`, `merge`, `sorted`, `cnstop`, `chiral`, `split_molecules`, `direct`), set to the acpype defaults so that the provenance records the values used.
 * [FIX] `acpype_params_gmx`, `acpype_params_gmx_opls` and `acpype_convert_amber_to_gmx`: the molecule name of the `[ moleculetype ]` and `[ molecules ]` sections of the itp and top outputs keeps the column width written by acpype. acpype runs with the `basename` itself (`-b BBB`) instead of a random name that was replaced afterwards.
 * [FIX] `acpype_params_cns`: the inp output loads the top, par and pdb outputs by their names, instead of the `BBB_CNS.top`, `BBB_CNS.par` and `BBB_NEW.pdb` files of acpype.
+* [CHANGE] `babel_minimize`: a property with a value that is not valid is left out with a log saying that obminimize uses its own default (the log said that a default value was assigned). `criteria`, `rvdw` and `rele` must be numbers: values like `1abc` were accepted.
+* [CHANGE] `babel_convert`, `babel_add_hydrogens` and `babel_remove_hydrogens`: no "not compatible" log for `input_format`, `output_format` or `coordinates` when they are not set.
 
 ## What's new in version [5.3.2](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.2)?
 
