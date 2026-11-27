@@ -2,14 +2,23 @@
 
 ## [Unreleased]
 
+## What's new in version [5.4.0](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.4.0)?
+
 ### Changes
 
+* [UPDATE] Update to biobb_common 5.4.0.
 * [FEATURE] `acpype_params_ac`, `acpype_params_cns`, `acpype_params_gmx`, `acpype_params_gmx_opls` and `acpype_convert_amber_to_gmx`: new properties for the acpype options (`charge_method`, `multiplicity`, `atom_type`, `protein_ff`, `qprog`, `keyword`, `max_time`, `predindex`, `gmx4`, `merge`, `sorted`, `cnstop`, `chiral`, `split_molecules`, `direct`), set to the acpype defaults so that the provenance records the values used.
 * [FIX] `acpype_params_gmx`, `acpype_params_gmx_opls` and `acpype_convert_amber_to_gmx`: the molecule name of the `[ moleculetype ]` and `[ molecules ]` sections of the itp and top outputs keeps the column width written by acpype. acpype runs with the `basename` itself (`-b BBB`) instead of a random name that was replaced afterwards.
 * [FIX] `acpype_params_cns`: the inp output loads the top, par and pdb outputs by their names, instead of the `BBB_CNS.top`, `BBB_CNS.par` and `BBB_NEW.pdb` files of acpype.
-* [CHANGE] `babel_minimize`: a property with a value that is not valid is left out with a log saying that obminimize uses its own default (the log said that a default value was assigned). `criteria`, `rvdw` and `rele` must be numbers: values like `1abc` were accepted.
+* [FIX] `acpype_params_ac`, `acpype_params_cns`, `acpype_params_gmx`, `acpype_params_gmx_opls` and `acpype_convert_amber_to_gmx`: an empty `basename` is replaced by `BBB` also where the block looks for the outputs of acpype, which it did not find.
+* [FIX] `acpype_params_ac`, `acpype_params_cns`, `acpype_params_gmx` and `acpype_params_gmx_opls`: a `charge` that is not an integer is replaced by 0 with a log, instead of raising a `TypeError`.
+* [FIX] `reduce_add_hydrogens`: the `metal_bump` and `non_metal_bump` values are written next to their flags (`-METALBump<value>`, `-NONMETALBump<value>`), the way reduce reads them.
+* [CHANGE] `babel_minimize`: a property with a value that is not valid is left out with a log saying that obminimize uses its own default (the log said that a default value was assigned). `criteria`, `rvdw` and `rele` must be numbers: values like `1abc` were accepted. Properties that are not set are no longer logged as not valid.
 * [CHANGE] `babel_convert`, `babel_add_hydrogens` and `babel_remove_hydrogens`: no "not compatible" log for `input_format`, `output_format` or `coordinates` when they are not set.
+* [FIX] `babel_convert`, `babel_add_hydrogens` and `babel_remove_hydrogens`: `ph` set to None adds no `-p None` to the obabel command.
 * [DOCS] `babel_convert`: the `flex` property is documented as it works: when False (the default), only the largest contiguous fragment is kept (strip salts).
+* [DOCS] `acpype_params_ac`, `acpype_params_cns`, `acpype_params_gmx` and `acpype_params_gmx_opls`: the `charge` default is None (guessed by acpype). `babel_convert`, `babel_add_hydrogens` and `babel_remove_hydrogens`: the `ph` default is None (the documented 7.4 was not used), and the output formats `dat`, `log`, `xml` and `xtc`, accepted by the blocks, are documented.
+* [UPDATE] Python 3.11 to 3.13.
 
 ## What's new in version [5.3.2](https://github.com/bioexcel/biobb_chemistry/releases/tag/v5.3.2)?
 
