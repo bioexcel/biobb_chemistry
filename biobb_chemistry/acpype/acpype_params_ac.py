@@ -2,12 +2,11 @@
 
 """Module containing the AcpypeParamsAC class and the command line interface."""
 from typing import Optional
-from biobb_common.generic.biobb_object import BiobbObject, launcher
-from biobb_chemistry.acpype.common import get_basename, get_charge, create_unique_name, get_default_value, process_output, get_acpype_options, get_acpype_options_cmd, PARAMS_OPTIONS
-import os
+from biobb_common.generic.biobb_object import launcher
+from biobb_chemistry.acpype import common
 
 
-class AcpypeParamsAC(BiobbObject):
+class AcpypeParamsAC(common.AcpypeBase):
     """
     | biobb_chemistry AcpypeParamsAC
     | This class is a wrapper of `Acpype <https://github.com/alanwilter/acpype>`_ tool for small molecule parameterization for AMBER MD package.
@@ -37,7 +36,6 @@ class AcpypeParamsAC(BiobbObject):
             * **container_path** (*str*) - (None) Container path definition.
             * **container_image** (*str*) - ('acpype/acpype:2022.7.21') Container image definition.
             * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
-            * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
@@ -67,85 +65,13 @@ class AcpypeParamsAC(BiobbObject):
 
     """
 
+    acpype_options = common.PARAMS_OPTIONS
+    acpype_outputs = {'output_path_frcmod': '_AC.frcmod', 'output_path_inpcrd': '_AC.inpcrd',
+                      'output_path_lib': '_AC.lib', 'output_path_prmtop': '_AC.prmtop'}
+
     def __init__(self, input_path: str, output_path_frcmod: str, output_path_inpcrd: str, output_path_lib: str, output_path_prmtop: str,
                  properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
-
-        # Properties specific for BB
-        self.acpype_options = PARAMS_OPTIONS
-        get_acpype_options(self, self.properties, self.acpype_options)
-
-        # Output files by extension, written by run() in the sandbox
-        self.output_files = {
-            'frcmod': "output_path_frcmod",
-            'inpcrd': "output_path_inpcrd",
-            'lib': "output_path_lib",
-            'prmtop': "output_path_prmtop",
-        }
-
-    def create_cmd(self, container_io_dict, out_log, err_log):
-        """Creates the command line instruction using the properties file settings"""
-        instructions_list = []
-
-        # generating output path
-        self.basename = get_basename(self.basename, out_log)
-        if self.container_path:
-            # instructions_list.append('cd ' + self.container_volume_path + ';')
-            # out_pth = self.container_volume_path + '/' + get_basename(self.basename, out_log) + '.' + self.unique_name
-            self.container_working_dir = self.container_volume_path
-            out_pth = self.basename + '.' + self.unique_name
-            instructions_list.append('cd ' + self.container_volume_path + ' &&')
-        else:
-            out_pth = self.basename + '.' + self.unique_name
-
-        # executable path
-        instructions_list.append(self.binary_path)
-
-        # generating input
-        ipath = '-i ' + container_io_dict["in"]["input_path"]
-        instructions_list.append(ipath)
-
-        basename = '-b ' + out_pth
-        instructions_list.append(basename)
-
-        # adding charge if not none
-        charge = get_charge(self.charge, out_log)
-        if charge:
-            charge = '-n ' + charge
-            instructions_list.append(charge)
-
-        # adding the acpype options
-        instructions_list.extend(get_acpype_options_cmd(self, self.acpype_options, out_log, self.__class__.__name__))
-
-        return instructions_list
-
-    def run(self) -> None:
-        """Execute the :class:`AcpypeParamsAC <acpype.acpype_params_ac.AcpypeParamsAC>` acpype.acpype_params_ac.AcpypeParamsAC object."""
-
-        # create unique name for temporary folder (created by acpype)
-        self.unique_name = create_unique_name(6)
-
-        # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
-
-        # Run Biobb block
-        self.run_biobb()
-
-        # Copy the files that acpype writes in its folder to the output paths, with the original name in them.
-        output_files = {extension: self.sandbox_file(file_ref) for extension, file_ref in self.output_files.items()}
-        if self.container_path or self.chdir_sandbox:
-            process_output(self.unique_name,
-                           os.path.join(self.stage_io_dict['unique_dir'], self.basename + "." + self.unique_name + ".acpype"),
-                           self.basename,
-                           get_default_value(self.__class__.__name__),
-                           output_files, self.out_log)
-        else:
-            self.tmp_files.append(self.basename + "." + self.unique_name + ".acpype")
-            process_output(self.unique_name,
-                           self.basename + "." + self.unique_name + ".acpype",
-                           self.basename,
-                           get_default_value(self.__class__.__name__),
-                           output_files, self.out_log)
 
 
 acpype_params_ac = launcher(AcpypeParamsAC)

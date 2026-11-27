@@ -649,7 +649,7 @@
                     "type": "boolean",
                     "default": false,
                     "wf_prop": false,
-                    "description": "Remove all but the largest contiguous fragment (strip salts)."
+                    "description": "Keep all the fragments of the molecule; if False, only the largest contiguous fragment is kept (strip salts)."
                 },
                 "binary_path": {
                     "type": "string",
@@ -692,12 +692,6 @@
                     "default": "/tmp",
                     "wf_prop": false,
                     "description": "Container volume path definition."
-                },
-                "container_working_dir": {
-                    "type": "string",
-                    "default": null,
-                    "wf_prop": false,
-                    "description": "Container working directory definition."
                 },
                 "container_user_id": {
                     "type": "string",

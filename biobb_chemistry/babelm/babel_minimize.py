@@ -4,7 +4,8 @@
 from typing import Optional
 from pathlib import PurePath
 from biobb_common.generic.biobb_object import BiobbObject, launcher
-from biobb_chemistry.babelm.common import check_minimize_property
+from biobb_common.tools import file_utils as fu
+from biobb_chemistry.babelm.common import MINIMIZE_OPTIONS, is_valid_minimize_value
 
 
 class BabelMinimize(BiobbObject):
@@ -33,7 +34,6 @@ class BabelMinimize(BiobbObject):
             * **container_path** (*str*) - (None) Container path definition.
             * **container_image** (*str*) - ('informaticsmatters/obabel:latest') Container image definition.
             * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
-            * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
@@ -65,40 +65,23 @@ class BabelMinimize(BiobbObject):
                  properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
+    def prepare(self) -> None:
+        """Leaves out the options with a value that is not valid: obminimize uses its own default"""
+        for name, (flag, kind) in MINIMIZE_OPTIONS.items():
+            value = getattr(self, name)
+            if value is not None and str(value) != "" and not is_valid_minimize_value(value, kind):
+                fu.log("Value %s of the %s property is not valid, obminimize default used" % (value, name), self.out_log)
+                setattr(self, name, None)
+
     def create_cmd(self, container_io_dict, out_log, err_log):
         """Creates the command line instruction using the properties file settings"""
-        instructions_list = []
+        instructions_list = [self.binary_path]
 
-        # executable path
-        instructions_list.append(self.binary_path)
-
-        # check all properties
-        if check_minimize_property("criteria", self.criteria, out_log):
-            instructions_list.append('-c ' + str(self.criteria))
-
-        if check_minimize_property("method", self.method, out_log):
-            instructions_list.append('-' + self.method)
-
-        if check_minimize_property("force_field", self.force_field, out_log):
-            instructions_list.append('-ff ' + self.force_field)
-
-        if check_minimize_property("hydrogens", self.hydrogens, out_log):
-            instructions_list.append('-h')
-
-        if check_minimize_property("steps", self.steps, out_log):
-            instructions_list.append('-n ' + str(self.steps))
-
-        if check_minimize_property("cutoff", self.cutoff, out_log):
-            instructions_list.append('-cut')
-
-        if check_minimize_property("rvdw", self.rvdw, out_log):
-            instructions_list.append('-rvdw ' + str(self.rvdw))
-
-        if check_minimize_property("rele", self.rele, out_log):
-            instructions_list.append('-rele ' + str(self.rele))
-
-        if check_minimize_property("frequency", self.frequency, out_log):
-            instructions_list.append('-pf ' + str(self.frequency))
+        for name, (flag, kind) in MINIMIZE_OPTIONS.items():
+            value = getattr(self, name)
+            if value is None or str(value) == "" or (kind is bool and str(value) == "False"):
+                continue
+            instructions_list.append(flag.format(value))
 
         iextension = PurePath(container_io_dict["in"]["input_path"]).suffix
         oextension = PurePath(container_io_dict["out"]["output_path"]).suffix

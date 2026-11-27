@@ -19,7 +19,7 @@
 
 [ moleculetype ]
 ;name            nrexcl
- BBB       3
+ BBB              3
 
 [ atoms ]
 ;   nr  type  resi  res  atom  cgnr     charge      mass       ; qtot   bond_type

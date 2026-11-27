@@ -57,7 +57,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -84,7 +83,6 @@ properties:
   container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### Command line
@@ -119,8 +117,7 @@ acpype_convert_amber_to_gmx --config config_acpype_convert_amber_to_gmx.yml --in
     "basename": "BBB",
     "container_path": "singularity",
     "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -188,7 +185,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -218,7 +214,6 @@ properties:
   container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### Command line
@@ -256,8 +251,7 @@ acpype_params_ac --config config_acpype_params_ac.yml --input_path acpype.params
     "charge": 0,
     "container_path": "singularity",
     "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -327,7 +321,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -357,7 +350,6 @@ properties:
   container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### Command line
@@ -395,8 +387,7 @@ acpype_params_cns --config config_acpype_params_cns.yml --input_path acpype.para
     "charge": 0,
     "container_path": "singularity",
     "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -464,7 +455,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -494,7 +484,6 @@ properties:
   container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### Command line
@@ -532,8 +521,7 @@ acpype_params_gmx --config config_acpype_params_gmx.yml --input_path acpype.para
     "charge": 0,
     "container_path": "singularity",
     "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -598,7 +586,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (acpype/acpype:2022.7.21) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -628,7 +615,6 @@ properties:
   container_image: https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0
   container_path: singularity
   container_volume_path: /tmp
-  container_working_dir: /tmp
 
 ```
 #### Command line
@@ -666,8 +652,7 @@ acpype_params_gmx_opls --config config_acpype_params_gmx_opls.yml --input_path a
     "charge": 0,
     "container_path": "singularity",
     "container_image": "https://depot.galaxyproject.org/singularity/biobb_chemistry:5.2.1--pyhdfd78af_0",
-    "container_volume_path": "/tmp",
-    "container_working_dir": "/tmp"
+    "container_volume_path": "/tmp"
   }
 }
 ```
@@ -723,7 +708,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -849,7 +833,7 @@ Config parameters for this building block:
 * **coordinates** (*integer*): (None) Type of coordinates: 2D or 3D. 
 * **effort** (*string*): (medium) Computational effort wanted to dedicate for the conformer generation coordinates calculations, only for 3D coordinates. 
 * **ph** (*number*): (None) Add hydrogens appropriate for pH.
-* **flex** (*boolean*): (False) Remove all but the largest contiguous fragment (strip salts).
+* **flex** (*boolean*): (False) Keep all the fragments of the molecule; if False, only the largest contiguous fragment is kept (strip salts).
 * **binary_path** (*string*): (obabel) Path to the obabel executable binary.
 * **remove_tmp** (*boolean*): (True) Remove temporal files.
 * **restart** (*boolean*): (False) Do not execute if output files exist.
@@ -857,7 +841,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -992,7 +975,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -1155,7 +1137,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (informaticsmatters/obabel:latest) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -1300,7 +1281,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML
@@ -1408,7 +1388,6 @@ Config parameters for this building block:
 * **container_path** (*string*): (None) Container path definition.
 * **container_image** (*string*): (afandiadib/ambertools:serial) Container image definition.
 * **container_volume_path** (*string*): (/tmp) Container volume path definition.
-* **container_working_dir** (*string*): (None) Container working directory definition.
 * **container_user_id** (*string*): (None) Container user_id definition.
 * **container_shell_path** (*string*): (/bin/bash) Path to default shell inside the container.
 ### YAML

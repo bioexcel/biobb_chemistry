@@ -1,11 +1,11 @@
 Remarks BBB_CNS.inp created by acpype (v: 2022.6.6) on Wed Sep  6 15:30:15 2023
 
 topology
-  @BBB_CNS.top
+  @output.top
 end
 
 parameters
-  @BBB_CNS.par
+  @output.par
   nbonds
       atom cdie shift eps=1.0  e14fac=0.4   tolerance=0.5
       cutnb=9.0 ctonnb=7.5 ctofnb=8.0
@@ -18,10 +18,10 @@ flags exclude elec ? end
 
 segment name="    "
   chain
-   coordinates @BBB_NEW.pdb
+   coordinates @output.pdb
   end
 end
-coordinates @BBB_NEW.pdb
+coordinates @output.pdb
 coord copy end
 
 ! Remarks If you want to shake up the coordinates a bit ...

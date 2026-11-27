@@ -1,22 +1,12 @@
 #!/usr/bin/env python3
 
 """Module containing the BabelAddHydrogens class and the command line interface."""
-
 from typing import Optional
-
-from biobb_common.generic.biobb_object import BiobbObject, launcher
-
-from biobb_chemistry.babelm.common import (
-    _from_string_to_list,
-    get_coordinates,
-    get_input_format,
-    get_output_format,
-    get_ph,
-    remove_non_pdbqt_records,
-)
+from biobb_common.generic.biobb_object import launcher
+from biobb_chemistry.babelm import common
 
 
-class BabelAddHydrogens(BiobbObject):
+class BabelAddHydrogens(common.BabelBase):
     """
     | biobb_chemistry BabelAddHydrogens
     | This class is a wrapper of the Open Babel tool.
@@ -40,7 +30,6 @@ class BabelAddHydrogens(BiobbObject):
             * **container_path** (*str*) - (None) Container path definition.
             * **container_image** (*str*) - ('informaticsmatters/obabel:latest') Container image definition.
             * **container_volume_path** (*str*) - ('/tmp') Container volume path definition.
-            * **container_working_dir** (*str*) - (None) Container working directory definition.
             * **container_user_id** (*str*) - (None) Container user_id definition.
             * **container_shell_path** (*str*) - ('/bin/bash') Path to default shell inside the container.
 
@@ -72,83 +61,9 @@ class BabelAddHydrogens(BiobbObject):
     def __init__(self, input_path: str, output_path: str, properties: Optional[dict] = None, **kwargs) -> None:
         super().__init__(**locals())
 
-        # Properties specific for BB
-        self.fs_input = _from_string_to_list(self.fs_input)
-        self.fs_output = _from_string_to_list(self.fs_output)
-
-    def create_cmd(self, container_io_dict, out_log, err_log):
-        """Creates the command line instruction using the properties file settings"""
-        instructions_list = []
-
-        # executable path
-        instructions_list.append(self.binary_path)
-
-        # generating input
-        infr = get_input_format(
-            self.input_format, container_io_dict["in"]["input_path"], out_log
-        )
-        iformat = "-i" + infr
-        instructions_list.append(iformat)
-        ipath = container_io_dict["in"]["input_path"]
-        instructions_list.append(ipath)
-
-        # generating output
-        oufr = get_output_format(
-            self.output_format, container_io_dict["out"]["output_path"], out_log
-        )
-        oformat = "-o" + oufr
-        instructions_list.append(oformat)
-        opath = "-O" + container_io_dict["out"]["output_path"]
-        instructions_list.append(opath)
-
-        # adding coordinates
-        crd = get_coordinates(self.coordinates, out_log)
-        coordinates = ""
-        if crd:
-            coordinates = "--gen" + crd + "d"
-            instructions_list.append(coordinates)
-
-        # checking pH
-        p = get_ph(self.ph, out_log)
-
-        # adding H
-        hydrogens = "-h"
-
-        # adding pH
-        ph = ""
-        if p:
-            ph = "-p " + p
-            instructions_list.append(ph)
-        else:
-            instructions_list.append(hydrogens)
-
-        # fs_input
-        if self.fs_input is not None:
-            for fsi in self.fs_input:
-                instructions_list.append("-a" + fsi)
-
-        # fs_output
-        if self.fs_output is not None:
-            for fso in self.fs_output:
-                instructions_list.append("-x" + fso)
-
-        # adding effort (only for 3D coordinates)
-        if crd == "3":
-            instructions_list.append("--" + self.effort)
-
-        return instructions_list
-
-    def run(self) -> None:
-        """Execute the :class:`BabelAddHydrogens <babelm.babel_add_hydrogens.BabelAddHydrogens>` babelm.babel_add_hydrogens.BabelAddHydrogens object."""
-
-        # create command line instruction
-        self.cmd = self.create_cmd(self.stage_io_dict, self.out_log, self.err_log)
-
-        # Run Biobb block
-        self.run_biobb()
-
-        # Remove the input PDB records that Open Babel >= 3.2 copies to a PDBQT output.
-        remove_non_pdbqt_records(self.output_format, self.sandbox_file("output_path"), self.out_log)
+    def obabel_flags(self) -> list[str]:
+        """Goes from the pH property to the -p flag, or -h to add the hydrogens without pH"""
+        return ["-p " + str(self.ph)] if self.ph is not None else ["-h"]
 
 
 babel_add_hydrogens = launcher(BabelAddHydrogens)
