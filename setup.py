@@ -20,7 +20,7 @@ setuptools.setup(
     packages=setuptools.find_packages(exclude=["docs", "test"]),
     package_data={"biobb_chemistry": ["py.typed"]},
     install_requires=["biobb_common==5.3.1"],
-    python_requires=">=3.10",
+    python_requires=">=3.11",
     entry_points={
         "console_scripts": [
             "acpype_params_ac = biobb_chemistry.acpype.acpype_params_ac:AcpypeParamsAC.main",
@@ -38,7 +38,9 @@ setuptools.setup(
     },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
-        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: POSIX",
